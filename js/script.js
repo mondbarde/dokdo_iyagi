@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   // --- Navigation (always active) ---
-  initNavigation();
   initNavBackground();
 
   // --- Hero scroll deblur (always active — user-controlled) ---
@@ -44,43 +43,6 @@ document.addEventListener('DOMContentLoaded', () => {
 /* ========================================
    Navigation
    ======================================== */
-
-function initNavigation() {
-  const sections = document.querySelectorAll('.section');
-  const dotsContainer = document.getElementById('nav-dots');
-  if (!dotsContainer || sections.length === 0) return;
-
-  const dotLabels = translations[currentLang].dots;
-
-  // Create dots
-  sections.forEach((section, i) => {
-    const dot = document.createElement('button');
-    dot.className = 'nav__dot';
-    dot.setAttribute('aria-label', dotLabels[i] || section.id);
-    dot.innerHTML = `<span class="nav__dot-label">${dotLabels[i] || section.id}</span>`;
-
-    dot.addEventListener('click', () => {
-      section.scrollIntoView({ behavior: 'smooth' });
-    });
-
-    dotsContainer.appendChild(dot);
-
-    // ScrollTrigger to update active dot
-    ScrollTrigger.create({
-      trigger: section,
-      start: 'top center',
-      end: 'bottom center',
-      onEnter: () => setActiveDot(i),
-      onEnterBack: () => setActiveDot(i)
-    });
-  });
-
-  function setActiveDot(index) {
-    dotsContainer.querySelectorAll('.nav__dot').forEach((d, i) => {
-      d.classList.toggle('nav__dot--active', i === index);
-    });
-  }
-}
 
 function initNavBackground() {
   const nav = document.getElementById('main-nav');
@@ -188,58 +150,58 @@ function initHeroAnimations(reducedMotion) {
    ======================================== */
 
 function initGeoAnimations() {
-  // SVG map path draw
-  const mapPaths = document.querySelectorAll('.map-path');
-  mapPaths.forEach(path => {
-    const length = path.getTotalLength();
-    gsap.set(path, { strokeDasharray: length, strokeDashoffset: length });
-    gsap.to(path, {
+  // Map markers pop in sequentially
+  gsap.from('.map-marker', {
+    scale: 0,
+    opacity: 0,
+    duration: 0.8,
+    stagger: 0.25,
+    ease: 'back.out(2.5)',
+    transformOrigin: 'center center',
+    scrollTrigger: {
+      trigger: '.geo-section',
+      start: 'top 65%',
+      once: true
+    }
+  });
+
+  // Distance lines draw in (stroke-dashoffset animation)
+  const distanceLines = document.querySelectorAll('.distance-line');
+  distanceLines.forEach(line => {
+    const length = line.getTotalLength();
+    gsap.set(line, { strokeDasharray: length, strokeDashoffset: length });
+    gsap.to(line, {
       strokeDashoffset: 0,
-      duration: 2,
+      duration: 1.5,
       ease: 'power2.out',
       scrollTrigger: {
         trigger: '.geo-section',
-        start: 'top 70%',
+        start: 'top 55%',
         once: true
       }
     });
   });
 
-  // Distance lines animate
-  gsap.from('.distance-line', {
-    scaleX: 0,
-    transformOrigin: 'left center',
-    duration: 1.5,
-    stagger: 0.4,
-    ease: 'power2.out',
-    scrollTrigger: {
-      trigger: '.geo-section',
-      start: 'top 60%',
-      once: true
-    }
-  });
-
-  // Map labels fade in
-  gsap.from('.map-label', {
+  // Distance labels + backgrounds fade in after lines
+  gsap.from('.distance-group text, .distance-label-bg', {
     opacity: 0,
-    duration: 1,
-    stagger: 0.1,
+    duration: 0.8,
+    stagger: 0.2,
     scrollTrigger: {
       trigger: '.geo-section',
-      start: 'top 60%',
+      start: 'top 50%',
       once: true
     }
   });
 
-  // Map islands pop in
-  gsap.from('.map-island', {
-    scale: 0,
-    duration: 0.6,
-    stagger: 0.15,
-    ease: 'back.out(3)',
+  // East Sea label fades in last
+  gsap.from('.map-label--sea', {
+    opacity: 0,
+    y: 15,
+    duration: 1.2,
     scrollTrigger: {
       trigger: '.geo-section',
-      start: 'top 65%',
+      start: 'top 50%',
       once: true
     }
   });

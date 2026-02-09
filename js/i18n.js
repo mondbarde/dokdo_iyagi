@@ -474,8 +474,6 @@ function setLanguage(lang) {
   renderClaims('japan', lang);
   renderComparisonTable(lang);
   renderLawPrinciples(lang);
-  updateNavDotLabels(lang);
-
   // Refresh GSAP ScrollTrigger
   if (typeof ScrollTrigger !== 'undefined') {
     setTimeout(() => ScrollTrigger.refresh(), 100);
@@ -539,13 +537,6 @@ function renderLawPrinciples(lang) {
       <p class="law__principle-text">${p.text}</p>
     </div>
   `).join('');
-}
-
-function updateNavDotLabels(lang) {
-  const dots = translations[lang].dots;
-  document.querySelectorAll('.nav__dot-label').forEach((label, i) => {
-    if (dots[i]) label.textContent = dots[i];
-  });
 }
 
 /* --- Initialize --- */

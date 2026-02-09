@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>독도 이야기 | Dokdo Iyagi</title>
-  <meta name="description" content="독도의 역사와 한일 양측의 주장을 객관적으로 살펴보는 인터랙티브 웹사이트 | An interactive website exploring the history of Dokdo and perspectives from both Korea and Japan">
+  <meta name="description"
+    content="독도의 역사와 한일 양측의 주장을 객관적으로 살펴보는 인터랙티브 웹사이트 | An interactive website exploring the history of Dokdo and perspectives from both Korea and Japan">
   <meta property="og:title" content="독도 이야기 | Dokdo Iyagi">
   <meta property="og:description" content="독도의 역사와 한일 양측의 주장을 객관적으로 살펴보는 인터랙티브 웹사이트">
   <meta property="og:type" content="website">
@@ -12,18 +14,20 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700;900&family=Playfair+Display:wght@700;900&display=swap"
+    rel="stylesheet">
 
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="css/styles.css?v=6">
+  <link rel="stylesheet" href="css/styles.css?v=11">
 </head>
+
 <body class="lang-ko">
 
   <!-- Navigation -->
   <nav id="main-nav" class="nav">
     <div class="nav__logo" data-i18n="nav.title">독도 이야기</div>
-    <div class="nav__dots" id="nav-dots"></div>
-    <button id="lang-toggle" class="lang-toggle" aria-label="언어 전환">
+<button id="lang-toggle" class="lang-toggle" aria-label="언어 전환">
       <span class="lang-toggle__option lang-toggle__option--ko active">한국어</span>
       <span class="lang-toggle__slider"></span>
       <span class="lang-toggle__option lang-toggle__option--en">EN</span>
@@ -46,7 +50,7 @@
       <span class="scroll-indicator__text" data-i18n="hero.scroll">스크롤하여 탐험하기</span>
       <div class="scroll-indicator__arrow">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M12 5v14M5 12l7 7 7-7"/>
+          <path d="M12 5v14M5 12l7 7 7-7" />
         </svg>
       </div>
     </div>
@@ -55,7 +59,7 @@
   <!-- Wave Divider -->
   <div class="wave-divider wave-divider--1">
     <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
-      <path d="M0,40 C360,80 720,0 1080,40 C1260,60 1380,20 1440,40 L1440,80 L0,80 Z"/>
+      <path d="M0,40 C360,80 720,0 1080,40 C1260,60 1380,20 1440,40 L1440,80 L0,80 Z" />
     </svg>
   </div>
 
@@ -66,39 +70,64 @@
       <div class="title-underline"></div>
 
       <div class="geo__layout">
-        <!-- SVG Map -->
+        <!-- Map: real image + SVG overlay -->
         <div class="geo__map">
-          <svg viewBox="0 0 600 500" class="map-svg" xmlns="http://www.w3.org/2000/svg">
-            <!-- Korean Peninsula East Coast -->
-            <path class="map-path map-path--coast" d="M80,80 C90,120 85,180 95,240 C105,300 90,360 100,420" fill="none" stroke="#6b5a42" stroke-width="3"/>
-            <text x="50" y="250" class="map-label map-label--region" data-i18n="geo.map.korea">대한민국</text>
+          <img class="geo__map-img" src="assets/images/IMG_6394_marked.png" alt="동해 지도 — 울릉도, 독도, 오키 제도" />
 
-            <!-- Japan (Simplified) -->
-            <path class="map-path map-path--coast" d="M520,100 C510,160 525,220 515,280 C505,340 520,380 510,440" fill="none" stroke="#6b5a42" stroke-width="3"/>
-            <text x="530" y="260" class="map-label map-label--region" data-i18n="geo.map.japan">일본</text>
+          <!--
+            SVG 오버레이: viewBox 비율 = 이미지 비율 (1275:896 ≈ 1000:703)
+            검은 점 기준: 울릉도(353,302), 독도(494,357), 오키 제도(722,545)
+          -->
+          <svg class="geo__map-overlay" viewBox="0 0 1000 703" xmlns="http://www.w3.org/2000/svg">
 
-            <!-- Ulleungdo -->
-            <circle class="map-island" cx="220" cy="200" r="8" fill="#2a6b5a"/>
-            <text x="220" y="180" class="map-label map-label--island" text-anchor="middle" data-i18n="geo.map.ulleungdo">울릉도</text>
+            <!-- Ulleungdo marker -->
+            <g class="map-marker map-marker--ulleung">
+              <circle cx="353" cy="302" r="12" fill="var(--color-korea)" opacity="0.2" />
+              <circle cx="353" cy="302" r="6" fill="var(--color-korea)" />
+              <text x="353" y="282" class="map-label map-label--island" text-anchor="middle"
+                data-i18n="geo.map.ulleungdo">울릉도</text>
+            </g>
 
-            <!-- Dokdo (highlighted) -->
-            <circle class="map-island map-island--dokdo" cx="310" cy="210" r="10" fill="#b83a2a"/>
-            <circle class="map-island map-island--dokdo-glow" cx="310" cy="210" r="18" fill="none" stroke="#b83a2a" stroke-width="1" opacity="0.3"/>
-            <text x="310" y="190" class="map-label map-label--dokdo" text-anchor="middle" data-i18n="geo.map.dokdo">독도</text>
+            <!-- Dokdo marker -->
+            <g class="map-marker map-marker--dokdo">
+              <circle class="map-island--dokdo-glow" cx="494" cy="357" r="28" fill="none" stroke="var(--color-red-seal)"
+                stroke-width="1.5" opacity="0.3" />
+              <circle cx="494" cy="357" r="14" fill="var(--color-red-seal)" opacity="0.15" />
+              <circle class="map-island--dokdo" cx="494" cy="357" r="8" fill="var(--color-red-seal)" />
+              <text x="494" y="328" class="map-label map-label--dokdo" text-anchor="middle"
+                data-i18n="geo.map.dokdo">독도</text>
+            </g>
 
-            <!-- Oki Islands -->
-            <circle class="map-island" cx="430" cy="240" r="6" fill="#9b3a30"/>
-            <text x="430" y="224" class="map-label map-label--island" text-anchor="middle" data-i18n="geo.map.oki">오키 제도</text>
+            <!-- Oki Islands marker (closer Dozen group dot) -->
+            <g class="map-marker map-marker--oki">
+              <circle cx="698" cy="531" r="10" fill="var(--color-japan)" opacity="0.2" />
+              <circle cx="698" cy="531" r="5" fill="var(--color-japan)" />
+              <text x="698" y="518" class="map-label map-label--island" text-anchor="middle" data-i18n="geo.map.oki">오키
+                제도</text>
+            </g>
 
-            <!-- Distance Lines -->
-            <line class="distance-line distance-line--ulleung" x1="228" y1="200" x2="300" y2="210" stroke="#2a6b5a" stroke-width="1.5" stroke-dasharray="6,4"/>
-            <text x="260" y="196" class="map-label map-label--distance" text-anchor="middle">87.4km</text>
+            <!-- Distance line: Ulleungdo → Dokdo (87.4km) -->
+            <g class="distance-group distance-group--ulleung">
+              <line class="distance-line distance-line--ulleung" x1="365" y1="302" x2="480" y2="353"
+                stroke="var(--color-korea)" stroke-width="2.5" stroke-dasharray="10,6" />
+              <rect class="distance-label-bg" x="377" y="310" width="90" height="26" rx="4"
+                fill="var(--color-parchment)" fill-opacity="0.9" />
+              <text x="422" y="329" class="map-label map-label--distance" text-anchor="middle">87.4km</text>
+            </g>
 
-            <line class="distance-line distance-line--oki" x1="320" y1="215" x2="424" y2="240" stroke="#9b3a30" stroke-width="1.5" stroke-dasharray="6,4"/>
-            <text x="375" y="220" class="map-label map-label--distance" text-anchor="middle">157.5km</text>
+            <!-- Distance line: Dokdo → Oki Islands (157.5km) -->
+            <g class="distance-group distance-group--oki">
+              <line class="distance-line distance-line--oki" x1="508" y1="361" x2="683" y2="522"
+                stroke="var(--color-japan)" stroke-width="2.5" stroke-dasharray="10,6" />
+              <rect class="distance-label-bg" x="547" y="440" width="98" height="26" rx="4"
+                fill="var(--color-parchment)" fill-opacity="0.9" />
+              <text x="596" y="459" class="map-label map-label--distance" text-anchor="middle">157.5km</text>
+            </g>
 
-            <!-- East Sea / Sea of Japan label -->
-            <text x="300" y="350" class="map-label map-label--sea" text-anchor="middle" data-i18n="geo.map.sea">동해 / East Sea</text>
+            <!-- East Sea label -->
+            <text x="480" y="170" class="map-label map-label--sea" text-anchor="middle" data-i18n="geo.map.sea">동해 /
+              East Sea</text>
+
           </svg>
         </div>
 
@@ -132,7 +161,7 @@
   <!-- Wave Divider -->
   <div class="wave-divider wave-divider--2">
     <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
-      <path d="M0,20 C240,60 480,0 720,40 C960,80 1200,10 1440,50 L1440,80 L0,80 Z"/>
+      <path d="M0,20 C240,60 480,0 720,40 C960,80 1200,10 1440,50 L1440,80 L0,80 Z" />
     </svg>
   </div>
 
@@ -153,7 +182,7 @@
   <!-- Wave Divider -->
   <div class="wave-divider wave-divider--3">
     <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
-      <path d="M0,50 C180,10 360,70 540,30 C720,0 900,60 1080,20 C1260,0 1380,50 1440,30 L1440,80 L0,80 Z"/>
+      <path d="M0,50 C180,10 360,70 540,30 C720,0 900,60 1080,20 C1260,0 1380,50 1440,30 L1440,80 L0,80 Z" />
     </svg>
   </div>
 
@@ -172,7 +201,7 @@
   <!-- Wave Divider -->
   <div class="wave-divider wave-divider--4">
     <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
-      <path d="M0,40 C360,80 720,0 1080,40 C1260,60 1380,20 1440,40 L1440,80 L0,80 Z"/>
+      <path d="M0,40 C360,80 720,0 1080,40 C1260,60 1380,20 1440,40 L1440,80 L0,80 Z" />
     </svg>
   </div>
 
@@ -191,7 +220,7 @@
   <!-- Wave Divider -->
   <div class="wave-divider wave-divider--5">
     <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
-      <path d="M0,20 C240,60 480,0 720,40 C960,80 1200,10 1440,50 L1440,80 L0,80 Z"/>
+      <path d="M0,20 C240,60 480,0 720,40 C960,80 1200,10 1440,50 L1440,80 L0,80 Z" />
     </svg>
   </div>
 
@@ -199,13 +228,14 @@
   <section id="law" class="section law-section">
     <div class="section__inner section__inner--narrow">
       <div class="law__scale-icon">
-        <svg viewBox="0 0 80 80" fill="none" stroke="#8b6914" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="40" y1="10" x2="40" y2="65"/>
-          <line x1="15" y1="28" x2="65" y2="28"/>
-          <path d="M15,28 L8,48 C8,54 22,54 22,48 Z"/>
-          <path d="M65,28 L58,48 C58,54 72,54 72,48 Z"/>
-          <line x1="30" y1="65" x2="50" y2="65"/>
-          <circle cx="40" cy="10" r="4"/>
+        <svg viewBox="0 0 80 80" fill="none" stroke="#8b6914" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round">
+          <line x1="40" y1="10" x2="40" y2="65" />
+          <line x1="15" y1="28" x2="65" y2="28" />
+          <path d="M15,28 L8,48 C8,54 22,54 22,48 Z" />
+          <path d="M65,28 L58,48 C58,54 72,54 72,48 Z" />
+          <line x1="30" y1="65" x2="50" y2="65" />
+          <circle cx="40" cy="10" r="4" />
         </svg>
       </div>
       <h2 class="section-title" data-i18n="law.title">국제법적 관점</h2>
@@ -226,7 +256,7 @@
   <!-- Wave Divider -->
   <div class="wave-divider wave-divider--6">
     <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
-      <path d="M0,50 C360,10 720,70 1080,30 C1260,10 1380,50 1440,30 L1440,80 L0,80 Z"/>
+      <path d="M0,50 C360,10 720,70 1080,30 C1260,10 1380,50 1440,30 L1440,80 L0,80 Z" />
     </svg>
   </div>
 
@@ -234,15 +264,19 @@
   <section id="conclusion" class="section conclusion-section">
     <div class="section__inner">
       <div class="conclusion__content">
-        <p class="conclusion__line conclusion__line1" data-i18n="conclusion.line1">독도를 둘러싼 한일 간의 영유권 분쟁은 단순한 영토 문제를 넘어, 역사 인식과 국제법 해석의 복합적 갈등입니다.</p>
-        <p class="conclusion__line conclusion__line2" data-i18n="conclusion.line2">양국의 주장을 객관적으로 이해하는 것은 평화로운 해결을 향한 첫걸음입니다.</p>
-        <p class="conclusion__line conclusion__line3" data-i18n="conclusion.line3">역사적 사실에 기반한 대화와 상호 존중만이 동북아시아의 지속 가능한 평화를 만들어갈 수 있습니다.</p>
+        <p class="conclusion__line conclusion__line1" data-i18n="conclusion.line1">독도를 둘러싼 한일 간의 영유권 분쟁은 단순한 영토 문제를 넘어,
+          역사 인식과 국제법 해석의 복합적 갈등입니다.</p>
+        <p class="conclusion__line conclusion__line2" data-i18n="conclusion.line2">양국의 주장을 객관적으로 이해하는 것은 평화로운 해결을 향한
+          첫걸음입니다.</p>
+        <p class="conclusion__line conclusion__line3" data-i18n="conclusion.line3">역사적 사실에 기반한 대화와 상호 존중만이 동북아시아의 지속 가능한
+          평화를 만들어갈 수 있습니다.</p>
       </div>
       <div class="conclusion__sources">
         <h3 data-i18n="conclusion.sourcesTitle">참고 자료</h3>
         <ul>
           <li><a href="https://dokdo.mofa.go.kr" target="_blank" rel="noopener">대한민국 외교부 독도 (dokdo.mofa.go.kr)</a></li>
-          <li><a href="https://www.mofa.go.jp/a_o/na/takeshima/" target="_blank" rel="noopener">日本国外務省 竹島 (mofa.go.jp)</a></li>
+          <li><a href="https://www.mofa.go.jp/a_o/na/takeshima/" target="_blank" rel="noopener">日本国外務省 竹島
+              (mofa.go.jp)</a></li>
           <li>San Francisco Peace Treaty (1951)</li>
           <li>SCAPIN 677 (1946)</li>
           <li data-i18n="conclusion.source5">태정관지령 (太政官指令, 1877)</li>
@@ -263,7 +297,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
   <!-- App Scripts -->
-  <script src="js/i18n.js?v=6"></script>
-  <script src="js/script.js?v=6"></script>
+  <script src="js/i18n.js?v=11"></script>
+  <script src="js/script.js?v=11"></script>
 </body>
+
 </html>
