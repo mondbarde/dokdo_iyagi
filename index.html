@@ -15,7 +15,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
 
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/styles.css?v=6">
 </head>
 <body class="lang-ko">
 
@@ -32,6 +32,9 @@
 
   <!-- Section 1: Hero -->
   <section id="hero" class="section hero">
+    <div class="hero__map-img">
+      <img src="assets/images/view0503_img02_b.jpg" alt="磯竹島略圖 - 1877년 태정관 부속지도" />
+    </div>
     <div class="hero__particles"></div>
     <div class="hero__bg"></div>
     <div class="hero__content">
@@ -67,31 +70,31 @@
         <div class="geo__map">
           <svg viewBox="0 0 600 500" class="map-svg" xmlns="http://www.w3.org/2000/svg">
             <!-- Korean Peninsula East Coast -->
-            <path class="map-path map-path--coast" d="M80,80 C90,120 85,180 95,240 C105,300 90,360 100,420" fill="none" stroke="#2a3f5f" stroke-width="3"/>
+            <path class="map-path map-path--coast" d="M80,80 C90,120 85,180 95,240 C105,300 90,360 100,420" fill="none" stroke="#6b5a42" stroke-width="3"/>
             <text x="50" y="250" class="map-label map-label--region" data-i18n="geo.map.korea">대한민국</text>
 
             <!-- Japan (Simplified) -->
-            <path class="map-path map-path--coast" d="M520,100 C510,160 525,220 515,280 C505,340 520,380 510,440" fill="none" stroke="#2a3f5f" stroke-width="3"/>
+            <path class="map-path map-path--coast" d="M520,100 C510,160 525,220 515,280 C505,340 520,380 510,440" fill="none" stroke="#6b5a42" stroke-width="3"/>
             <text x="530" y="260" class="map-label map-label--region" data-i18n="geo.map.japan">일본</text>
 
             <!-- Ulleungdo -->
-            <circle class="map-island" cx="220" cy="200" r="8" fill="#1abc9c"/>
+            <circle class="map-island" cx="220" cy="200" r="8" fill="#2a6b5a"/>
             <text x="220" y="180" class="map-label map-label--island" text-anchor="middle" data-i18n="geo.map.ulleungdo">울릉도</text>
 
             <!-- Dokdo (highlighted) -->
-            <circle class="map-island map-island--dokdo" cx="310" cy="210" r="10" fill="#00d4ff"/>
-            <circle class="map-island map-island--dokdo-glow" cx="310" cy="210" r="18" fill="none" stroke="#00d4ff" stroke-width="1" opacity="0.4"/>
+            <circle class="map-island map-island--dokdo" cx="310" cy="210" r="10" fill="#b83a2a"/>
+            <circle class="map-island map-island--dokdo-glow" cx="310" cy="210" r="18" fill="none" stroke="#b83a2a" stroke-width="1" opacity="0.3"/>
             <text x="310" y="190" class="map-label map-label--dokdo" text-anchor="middle" data-i18n="geo.map.dokdo">독도</text>
 
             <!-- Oki Islands -->
-            <circle class="map-island" cx="430" cy="240" r="6" fill="#e74c3c"/>
+            <circle class="map-island" cx="430" cy="240" r="6" fill="#9b3a30"/>
             <text x="430" y="224" class="map-label map-label--island" text-anchor="middle" data-i18n="geo.map.oki">오키 제도</text>
 
             <!-- Distance Lines -->
-            <line class="distance-line distance-line--ulleung" x1="228" y1="200" x2="300" y2="210" stroke="#1abc9c" stroke-width="1.5" stroke-dasharray="6,4"/>
+            <line class="distance-line distance-line--ulleung" x1="228" y1="200" x2="300" y2="210" stroke="#2a6b5a" stroke-width="1.5" stroke-dasharray="6,4"/>
             <text x="260" y="196" class="map-label map-label--distance" text-anchor="middle">87.4km</text>
 
-            <line class="distance-line distance-line--oki" x1="320" y1="215" x2="424" y2="240" stroke="#e74c3c" stroke-width="1.5" stroke-dasharray="6,4"/>
+            <line class="distance-line distance-line--oki" x1="320" y1="215" x2="424" y2="240" stroke="#9b3a30" stroke-width="1.5" stroke-dasharray="6,4"/>
             <text x="375" y="220" class="map-label map-label--distance" text-anchor="middle">157.5km</text>
 
             <!-- East Sea / Sea of Japan label -->
@@ -196,7 +199,7 @@
   <section id="law" class="section law-section">
     <div class="section__inner section__inner--narrow">
       <div class="law__scale-icon">
-        <svg viewBox="0 0 80 80" fill="none" stroke="#f1c40f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg viewBox="0 0 80 80" fill="none" stroke="#8b6914" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <line x1="40" y1="10" x2="40" y2="65"/>
           <line x1="15" y1="28" x2="65" y2="28"/>
           <path d="M15,28 L8,48 C8,54 22,54 22,48 Z"/>
@@ -260,7 +263,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
   <!-- App Scripts -->
-  <script src="js/i18n.js"></script>
-  <script src="js/script.js"></script>
+  <script src="js/i18n.js?v=6"></script>
+  <script src="js/script.js?v=6"></script>
 </body>
 </html>

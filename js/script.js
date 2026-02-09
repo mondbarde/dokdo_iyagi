@@ -7,11 +7,17 @@ document.addEventListener('DOMContentLoaded', () => {
   // Register GSAP plugins
   gsap.registerPlugin(ScrollTrigger);
 
-  // Respect reduced motion preference
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  // --- Navigation (always active) ---
+  initNavigation();
+  initNavBackground();
+
+  // --- Hero scroll deblur (always active — user-controlled) ---
+  initHeroAnimations(prefersReducedMotion);
+
   if (prefersReducedMotion) {
-    // Make all content visible without animation
+    // Make all content visible without entrance animations
     gsap.set('.fade-up, .claim-card, .timeline__event, .timeline__dot, .law__principle', {
       opacity: 1, y: 0, x: 0, scale: 1
     });
@@ -24,12 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
     duration: 1
   });
 
-  // --- Navigation ---
-  initNavigation();
-  initNavBackground();
-
   // --- Section Animations ---
-  initHeroAnimations();
   initGeoAnimations();
   initTimelineAnimations();
   initClaimAnimations();
@@ -97,31 +98,54 @@ function initNavBackground() {
    Hero Section Animations
    ======================================== */
 
-function initHeroAnimations() {
-  // Parallax on hero background
-  gsap.to('.hero__bg', {
-    yPercent: 30,
-    ease: 'none',
-    scrollTrigger: {
+function initHeroAnimations(reducedMotion) {
+  var mapImg = document.querySelector('.hero__map-img img');
+  var mapContainer = document.querySelector('.hero__map-img');
+  var heroBg = document.querySelector('.hero__bg');
+  var heroParticles = document.querySelector('.hero__particles');
+
+  // All fixed hero layers to show/hide together
+  var fixedLayers = [mapContainer, heroBg, heroParticles].filter(Boolean);
+
+  if (mapImg && mapContainer) {
+    ScrollTrigger.create({
       trigger: '.hero',
       start: 'top top',
       end: 'bottom top',
-      scrub: true
-    }
-  });
+      onUpdate: function(self) {
+        var p = self.progress;
+        // Deblur: first 60% of scroll clears the blur
+        var blurP = Math.min(p / 0.6, 1);
+        var blur = 20 * (1 - blurP);
+        var opacity = 0.3 + 0.5 * blurP;
+        var scale = 1.08 - 0.08 * blurP;
+        mapImg.style.filter = 'blur(' + blur + 'px)';
+        mapImg.style.opacity = String(opacity);
+        mapImg.style.transform = 'scale(' + scale + ')';
 
-  // Title scale-down + fade on scroll
-  gsap.to('.hero__content', {
-    scale: 0.85,
-    opacity: 0,
-    ease: 'none',
-    scrollTrigger: {
-      trigger: '.hero',
-      start: 'top top',
-      end: '60% top',
-      scrub: true
-    }
-  });
+        // Hero text: fades out in first 30%
+        var textP = Math.min(p / 0.3, 1);
+        var heroContent = document.querySelector('.hero__content');
+        var scrollInd = document.querySelector('.scroll-indicator');
+        if (heroContent) {
+          heroContent.style.opacity = String(1 - textP);
+          heroContent.style.transform = 'translateY(' + (-50 * textP) + 'px)';
+        }
+        if (scrollInd) {
+          scrollInd.style.opacity = String(1 - textP);
+        }
+      },
+      onLeave: function() {
+        fixedLayers.forEach(function(el) { el.style.visibility = 'hidden'; });
+      },
+      onEnterBack: function() {
+        fixedLayers.forEach(function(el) { el.style.visibility = 'visible'; });
+      }
+    });
+  }
+
+  // Skip entrance animations if reduced motion
+  if (reducedMotion) return;
 
   // Scroll indicator pulse
   gsap.to('.scroll-indicator', {
@@ -134,7 +158,7 @@ function initHeroAnimations() {
   });
 
   // Initial hero entrance animation
-  const heroTl = gsap.timeline({ delay: 0.3 });
+  var heroTl = gsap.timeline({ delay: 0.3 });
 
   heroTl
     .from('.hero__coords', {
