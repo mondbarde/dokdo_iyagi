@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (prefersReducedMotion) {
     // Make all content visible without entrance animations
-    gsap.set('.fade-up, .claim-card, .timeline__event, .timeline__dot, .law__principle, .geo__map, .map-marker, .map-label--sea, .distance-group, .distance-group text, .distance-label-bg, .fact-card', {
+    gsap.set('.fade-up, .claim-card, .timeline__event, .timeline__dot, .law__principle, .fact-card', {
       opacity: 1, y: 0, x: 0, scale: 1
     });
     return;
@@ -292,69 +292,17 @@ function initHeroAnimations(reducedMotion) {
 
 function initGeoAnimations() {
   var section = document.querySelector('.geo-section');
-  var map = document.querySelector('.geo__map');
-  if (!section || !map) return;
+  if (!section) return;
 
-  // --- Initial hidden states ---
-  gsap.set('.geo__map', { scale: 0.92, opacity: 0 });
-  gsap.set('.map-marker', { scale: 0, opacity: 0, transformOrigin: 'center center' });
-  gsap.set('.map-label--sea', { opacity: 0 });
-  gsap.set('.distance-group--ulleung', { opacity: 0 });
-  gsap.set('.distance-group--oki', { opacity: 0 });
-  gsap.set('.distance-group--ulleung text, .distance-group--ulleung .distance-label-bg', { opacity: 0 });
-  gsap.set('.distance-group--oki text, .distance-group--oki .distance-label-bg', { opacity: 0 });
   gsap.set('.fact-card', { y: 40, opacity: 0 });
 
-  // Set up distance line stroke offsets
-  document.querySelectorAll('.distance-line').forEach(function (line) {
-    var len = line.getTotalLength();
-    gsap.set(line, { strokeDasharray: len, strokeDashoffset: len });
+  ScrollTrigger.batch('.fact-card', {
+    onEnter: function (elements) {
+      gsap.to(elements, { y: 0, opacity: 1, duration: 0.8, stagger: 0.15 });
+    },
+    start: 'top 85%',
+    once: true
   });
-
-  // --- Pinned scroll-driven timeline ---
-  var tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: '.geo-section',
-      start: 'top top',
-      end: '+=200%',
-      pin: true,
-      scrub: 1,
-      anticipatePin: 1
-    }
-  });
-
-  tl
-    // 1. Map entrance — scale up and fade in
-    .to('.geo__map', { scale: 1, opacity: 1, duration: 1, ease: 'power2.out' })
-
-    // 2. East Sea label
-    .to('.map-label--sea', { opacity: 0.6, duration: 0.5 }, '-=0.3')
-
-    // 3. Ulleungdo marker pops in
-    .to('.map-marker--ulleung', { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(2)' })
-
-    // 4. Dokdo marker pops in with emphasis
-    .to('.map-marker--dokdo', { scale: 1, opacity: 1, duration: 0.6, ease: 'back.out(3)' })
-
-    // 5. Distance line: Ulleungdo → Dokdo draws
-    .to('.distance-group--ulleung', { opacity: 1, duration: 0.2 })
-    .to('.distance-line--ulleung', { strokeDashoffset: 0, duration: 1, ease: 'power2.inOut' }, '<')
-
-    // 6. 87.4km label fades in
-    .to('.distance-group--ulleung text, .distance-group--ulleung .distance-label-bg', { opacity: 1, duration: 0.5 })
-
-    // 7. Oki Islands marker pops in
-    .to('.map-marker--oki', { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(2)' })
-
-    // 8. Distance line: Dokdo → Oki draws
-    .to('.distance-group--oki', { opacity: 1, duration: 0.2 })
-    .to('.distance-line--oki', { strokeDashoffset: 0, duration: 1, ease: 'power2.inOut' }, '<')
-
-    // 9. 157.5km label fades in
-    .to('.distance-group--oki text, .distance-group--oki .distance-label-bg', { opacity: 1, duration: 0.5 })
-
-    // 10. Fact cards stagger in
-    .to('.fact-card', { y: 0, opacity: 1, duration: 0.8, stagger: 0.15 });
 }
 
 /* ========================================

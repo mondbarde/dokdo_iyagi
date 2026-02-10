@@ -116,67 +116,6 @@
       <div class="title-underline"></div>
 
       <div class="geo__layout">
-        <!-- Map: real image + SVG overlay -->
-        <div class="geo__map">
-          <img class="geo__map-img" src="assets/images/IMG_6394_marked.png" alt="동해 지도 — 울릉도, 독도, 오키 제도" />
-
-          <!--
-            SVG 오버레이: viewBox 비율 = 이미지 비율 (1275:896 ≈ 1000:703)
-            검은 점 기준: 울릉도(353,302), 독도(494,357), 오키 제도(722,545)
-          -->
-          <svg class="geo__map-overlay" viewBox="0 0 1000 703" xmlns="http://www.w3.org/2000/svg">
-
-            <!-- Ulleungdo marker -->
-            <g class="map-marker map-marker--ulleung">
-              <circle cx="353" cy="302" r="12" fill="var(--color-korea)" opacity="0.2" />
-              <circle cx="353" cy="302" r="6" fill="var(--color-korea)" />
-              <text x="353" y="282" class="map-label map-label--island" text-anchor="middle"
-                data-i18n="geo.map.ulleungdo">울릉도</text>
-            </g>
-
-            <!-- Dokdo marker -->
-            <g class="map-marker map-marker--dokdo">
-              <circle class="map-island--dokdo-glow" cx="494" cy="357" r="28" fill="none" stroke="var(--color-red-seal)"
-                stroke-width="1.5" opacity="0.3" />
-              <circle cx="494" cy="357" r="14" fill="var(--color-red-seal)" opacity="0.15" />
-              <circle class="map-island--dokdo" cx="494" cy="357" r="8" fill="var(--color-red-seal)" />
-              <text x="494" y="328" class="map-label map-label--dokdo" text-anchor="middle"
-                data-i18n="geo.map.dokdo">독도</text>
-            </g>
-
-            <!-- Oki Islands marker (closer Dozen group dot) -->
-            <g class="map-marker map-marker--oki">
-              <circle cx="698" cy="531" r="10" fill="var(--color-japan)" opacity="0.2" />
-              <circle cx="698" cy="531" r="5" fill="var(--color-japan)" />
-              <text x="698" y="518" class="map-label map-label--island" text-anchor="middle" data-i18n="geo.map.oki">오키
-                제도</text>
-            </g>
-
-            <!-- Distance line: Ulleungdo → Dokdo (87.4km) -->
-            <g class="distance-group distance-group--ulleung">
-              <line class="distance-line distance-line--ulleung" x1="365" y1="302" x2="480" y2="353"
-                stroke="var(--color-korea)" stroke-width="2.5" stroke-dasharray="10,6" />
-              <rect class="distance-label-bg" x="377" y="310" width="90" height="26" rx="4"
-                fill="var(--color-parchment)" fill-opacity="0.9" />
-              <text x="422" y="329" class="map-label map-label--distance" text-anchor="middle">87.4km</text>
-            </g>
-
-            <!-- Distance line: Dokdo → Oki Islands (157.5km) -->
-            <g class="distance-group distance-group--oki">
-              <line class="distance-line distance-line--oki" x1="508" y1="361" x2="683" y2="522"
-                stroke="var(--color-japan)" stroke-width="2.5" stroke-dasharray="10,6" />
-              <rect class="distance-label-bg" x="547" y="440" width="98" height="26" rx="4"
-                fill="var(--color-parchment)" fill-opacity="0.9" />
-              <text x="596" y="459" class="map-label map-label--distance" text-anchor="middle">157.5km</text>
-            </g>
-
-            <!-- East Sea label -->
-            <text x="480" y="170" class="map-label map-label--sea" text-anchor="middle" data-i18n="geo.map.sea">동해 /
-              East Sea</text>
-
-          </svg>
-        </div>
-
         <!-- Fact Cards -->
         <div class="geo__facts fact-cards">
           <div class="fact-card glass-card">
