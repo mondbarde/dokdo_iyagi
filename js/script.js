@@ -294,6 +294,44 @@ function initGeoAnimations() {
   var section = document.querySelector('.geo-section');
   if (!section) return;
 
+  // 3D rotating Dokdo video — scroll-scrubbed
+  var geo3dVideo = document.getElementById('geo-3d-video');
+  var geo3dViewer = document.querySelector('.geo__3d-viewer');
+
+  if (geo3dVideo && geo3dViewer) {
+    geo3dVideo.pause();
+
+    var geo3dReady = false;
+    var geo3dDuration = 5;
+
+    var onGeo3dReady = function () {
+      geo3dReady = true;
+      if (geo3dVideo.duration && isFinite(geo3dVideo.duration)) {
+        geo3dDuration = geo3dVideo.duration;
+      }
+      geo3dVideo.currentTime = 0;
+    };
+
+    if (geo3dVideo.readyState >= 1) {
+      onGeo3dReady();
+    } else {
+      geo3dVideo.addEventListener('loadedmetadata', onGeo3dReady);
+    }
+
+    ScrollTrigger.create({
+      trigger: geo3dViewer,
+      start: 'top 60%',
+      end: 'top 10%',
+      scrub: 0.5,
+      onUpdate: function (self) {
+        if (geo3dReady) {
+          geo3dVideo.currentTime = self.progress * geo3dDuration;
+        }
+      }
+    });
+  }
+
+  // Fact cards fade-in
   gsap.set('.fact-card', { y: 40, opacity: 0 });
 
   ScrollTrigger.batch('.fact-card', {

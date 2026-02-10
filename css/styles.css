@@ -509,6 +509,20 @@ body.lang-ko .hero__title {
   background: var(--color-parchment-alt);
 }
 
+.geo__3d-viewer {
+  max-width: 800px;
+  margin: 0 auto var(--space-lg);
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid var(--color-worn);
+  box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.12);
+}
+
+.geo__3d-video {
+  width: 100%;
+  display: block;
+}
+
 .geo__layout {
   display: grid;
   grid-template-columns: 1fr;
