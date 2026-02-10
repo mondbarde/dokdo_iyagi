@@ -173,10 +173,10 @@ function initHeroAnimations(reducedMotion) {
           if (satellite) satellite.style.opacity = '0';
         }
 
-        // Phase 3 (30-92%): Satellite zoom out via video scrub
-        // Phase 4 (92-100%): Brief hold before next section
+        // Phase 3 (30-80%): Satellite zoom out via video scrub
+        // Phase 4 (80-100%): Hold on zoomed-out map before next section
         if (p > 0.30 && video && videoReady) {
-          var zoomP = Math.min((p - 0.30) / 0.62, 1);
+          var zoomP = Math.min((p - 0.30) / 0.50, 1);
           video.currentTime = zoomP * videoDuration;
 
           var zEff = ZOOM_VIDEO_START - ZOOM_VIDEO_RANGE * zoomP;
