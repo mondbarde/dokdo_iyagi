@@ -86,6 +86,23 @@ function initHeroAnimations(reducedMotion) {
     } else {
       video.addEventListener('loadedmetadata', onReady);
     }
+
+    // Mobile: force video loading (browsers may ignore preload="auto")
+    video.load();
+
+    // iOS Safari: briefly play+pause on first interaction to activate decoder
+    var activateVideo = function () {
+      if (video.readyState < 1) {
+        video.play().then(function () {
+          video.pause();
+          video.currentTime = 0;
+        }).catch(function () {});
+      }
+      document.removeEventListener('touchstart', activateVideo);
+      document.removeEventListener('scroll', activateVideo);
+    };
+    document.addEventListener('touchstart', activateVideo, { passive: true });
+    document.addEventListener('scroll', activateVideo, { passive: true });
   }
 
   // Distance overlay elements
