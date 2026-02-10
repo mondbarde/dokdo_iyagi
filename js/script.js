@@ -106,7 +106,7 @@ function initHeroAnimations(reducedMotion) {
   var DOKDO_LNG = 131.8669, DOKDO_LAT = 37.2408;
   var ULLEUNG_LNG = 130.9057, ULLEUNG_LAT = 37.4844;
   var OKI_LNG = 133.10, OKI_LAT = 36.22;
-  var ZOOM_VIDEO_START = 14, ZOOM_VIDEO_RANGE = 9;
+  var ZOOM_VIDEO_START = 14, ZOOM_VIDEO_RANGE = 6;
 
   function mercatorY(lat) {
     var rad = lat * Math.PI / 180;
@@ -156,9 +156,10 @@ function initHeroAnimations(reducedMotion) {
           if (satellite) satellite.style.opacity = '0';
         }
 
-        // Phase 3 (55-100%): Satellite zoom out via video scrub
+        // Phase 3 (55-85%): Satellite zoom out via video scrub
+        // Phase 4 (85-100%): Hold at zoom 7 before next section
         if (p > 0.55 && video && videoReady) {
-          var zoomP = Math.min((p - 0.55) / 0.45, 1);
+          var zoomP = Math.min((p - 0.55) / 0.30, 1);
           video.currentTime = zoomP * videoDuration;
 
           var zEff = ZOOM_VIDEO_START - ZOOM_VIDEO_RANGE * zoomP;
