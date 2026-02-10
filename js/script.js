@@ -159,9 +159,9 @@ function initHeroAnimations(reducedMotion) {
         var oldOpacity = 0.3 + 0.5 * blurP;
         var scale = 1.08 - 0.08 * blurP;
 
-        // Phase 2 (30-55%): Crossfade — old map fades out, satellite fades in
-        if (p > 0.3) {
-          var fadeP = Math.min((p - 0.3) / 0.25, 1);
+        // Phase 2 (15-30%): Crossfade — old map fades out, satellite fades in
+        if (p > 0.15) {
+          var fadeP = Math.min((p - 0.15) / 0.15, 1);
           oldOpacity = 0.8 * (1 - fadeP);
           // Fade grid/vignette overlays out with the old map
           if (heroBg) heroBg.style.opacity = String(0.6 * (1 - fadeP));
@@ -173,10 +173,10 @@ function initHeroAnimations(reducedMotion) {
           if (satellite) satellite.style.opacity = '0';
         }
 
-        // Phase 3 (55-85%): Satellite zoom out via video scrub
-        // Phase 4 (85-100%): Hold at zoom 7 before next section
-        if (p > 0.55 && video && videoReady) {
-          var zoomP = Math.min((p - 0.55) / 0.30, 1);
+        // Phase 3 (30-70%): Satellite zoom out via video scrub
+        // Phase 4 (70-100%): Hold at zoom 7 before next section
+        if (p > 0.30 && video && videoReady) {
+          var zoomP = Math.min((p - 0.30) / 0.40, 1);
           video.currentTime = zoomP * videoDuration;
 
           var zEff = ZOOM_VIDEO_START - ZOOM_VIDEO_RANGE * zoomP;
