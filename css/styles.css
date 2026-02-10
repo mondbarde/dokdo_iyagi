@@ -57,6 +57,7 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
+  overflow-x: hidden;
 }
 
 body {
@@ -343,11 +344,7 @@ body.lang-ko .hero__title {
 /* Hero: satellite zoom-out video layer — fixed, initially hidden */
 .hero__satellite {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  height: 100dvh;
+  inset: 0;
   z-index: 0;
   opacity: 0;
   pointer-events: none;
