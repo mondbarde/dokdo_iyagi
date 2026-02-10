@@ -153,8 +153,8 @@ function initHeroAnimations(reducedMotion) {
           scrollInd.style.opacity = String(1 - textP);
         }
 
-        // Phase 1 (0-30%): Old map deblurs
-        var blurP = Math.min(p / 0.3, 1);
+        // Phase 1 (0-15%): Old map deblurs
+        var blurP = Math.min(p / 0.15, 1);
         var blur = 20 * (1 - blurP);
         var oldOpacity = 0.3 + 0.5 * blurP;
         var scale = 1.08 - 0.08 * blurP;
