@@ -46,6 +46,46 @@
              muted playsinline preload="auto">
         <source src="assets/video/dokdo_zoom.mp4" type="video/mp4">
       </video>
+      <svg id="hero-distance-overlay" class="hero__distance-overlay"
+           viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice">
+        <g id="hero-dist" opacity="0">
+          <line id="hero-dist-line" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"
+                stroke-dasharray="10,6" x1="960" y1="540" x2="960" y2="540" />
+          <circle id="hero-dist-dokdo" cx="960" cy="540" r="4"
+                  fill="none" stroke="#fff" stroke-width="1.5" />
+          <circle id="hero-dist-ulleung" cx="960" cy="540" r="4"
+                  fill="none" stroke="#fff" stroke-width="1.5" />
+          <g id="hero-dist-label">
+            <rect x="-38" y="-12" width="76" height="24" rx="4"
+                  fill="rgba(0,0,0,0.55)" />
+            <text x="0" y="0" fill="#fff" text-anchor="middle"
+                  dominant-baseline="central" font-size="13"
+                  font-weight="600" font-family="'Noto Sans KR', sans-serif">87.4km</text>
+          </g>
+          <text id="hero-dist-dokdo-name" fill="rgba(255,255,255,0.85)" text-anchor="middle"
+                font-size="12" font-family="'Noto Sans KR', sans-serif"
+                data-i18n="geo.map.dokdo">독도</text>
+          <text id="hero-dist-ulleung-name" fill="rgba(255,255,255,0.85)" text-anchor="middle"
+                font-size="12" font-family="'Noto Sans KR', sans-serif"
+                data-i18n="geo.map.ulleungdo">울릉도</text>
+        </g>
+        <g id="hero-dist-oki" opacity="0">
+          <line id="hero-dist-oki-line" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"
+                stroke-dasharray="10,6" x1="960" y1="540" x2="960" y2="540" />
+          <circle id="hero-dist-oki-dot" cx="960" cy="540" r="4"
+                  fill="none" stroke="#fff" stroke-width="1.5" />
+          <g id="hero-dist-oki-label">
+            <rect x="-45" y="-12" width="90" height="24" rx="4"
+                  fill="rgba(0,0,0,0.55)" />
+            <text x="0" y="0" fill="#fff" text-anchor="middle"
+                  dominant-baseline="central" font-size="13"
+                  font-weight="600" font-family="'Noto Sans KR', sans-serif">157.5km</text>
+          </g>
+          <text id="hero-dist-oki-name" fill="rgba(255,255,255,0.85)" text-anchor="middle"
+                font-size="12" font-family="'Noto Sans KR', sans-serif"
+                data-i18n="geo.map.oki">오키 제도</text>
+        </g>
+      </svg>
     </div>
     <div class="hero__content">
       <p class="hero__coords">37.2426°N 131.8597°E</p>

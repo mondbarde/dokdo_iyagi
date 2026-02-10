@@ -88,6 +88,31 @@ function initHeroAnimations(reducedMotion) {
     }
   }
 
+  // Distance overlay elements
+  var distGroup = document.getElementById('hero-dist');
+  var distLine = document.getElementById('hero-dist-line');
+  var distUlleung = document.getElementById('hero-dist-ulleung');
+  var distLabel = document.getElementById('hero-dist-label');
+  var distDokdoName = document.getElementById('hero-dist-dokdo-name');
+  var distUlleungName = document.getElementById('hero-dist-ulleung-name');
+
+  var distOkiGroup = document.getElementById('hero-dist-oki');
+  var distOkiLine = document.getElementById('hero-dist-oki-line');
+  var distOkiDot = document.getElementById('hero-dist-oki-dot');
+  var distOkiLabel = document.getElementById('hero-dist-oki-label');
+  var distOkiName = document.getElementById('hero-dist-oki-name');
+
+  // Web Mercator constants for distance overlay
+  var DOKDO_LNG = 131.8669, DOKDO_LAT = 37.2408;
+  var ULLEUNG_LNG = 130.9057, ULLEUNG_LAT = 37.4844;
+  var OKI_LNG = 133.10, OKI_LAT = 36.22;
+  var ZOOM_VIDEO_START = 14, ZOOM_VIDEO_RANGE = 9;
+
+  function mercatorY(lat) {
+    var rad = lat * Math.PI / 180;
+    return (1 - Math.log(Math.tan(rad) + 1 / Math.cos(rad)) / Math.PI) / 2;
+  }
+
   // All fixed hero layers to show/hide together
   var fixedLayers = [mapContainer, heroBg, heroParticles, satellite].filter(Boolean);
 
@@ -135,6 +160,77 @@ function initHeroAnimations(reducedMotion) {
         if (p > 0.55 && video && videoReady) {
           var zoomP = Math.min((p - 0.55) / 0.45, 1);
           video.currentTime = zoomP * videoDuration;
+
+          var zEff = ZOOM_VIDEO_START - ZOOM_VIDEO_RANGE * zoomP;
+          var worldSize = 256 * Math.pow(2, zEff);
+          var margin = 100;
+
+          // Distance overlay: Dokdo ↔ Ulleungdo
+          if (distGroup) {
+            var dx = (ULLEUNG_LNG - DOKDO_LNG) / 360 * worldSize;
+            var dy = (mercatorY(ULLEUNG_LAT) - mercatorY(DOKDO_LAT)) * worldSize;
+            var ux = 960 + dx;
+            var uy = 540 + dy;
+
+            var lineLen = Math.sqrt(dx * dx + dy * dy);
+            var insideX = Math.min(ux - margin, 1920 - margin - ux);
+            var insideY = Math.min(uy - margin, 1080 - margin - uy);
+            var fadeIn = Math.max(0, Math.min(Math.min(insideX, insideY) / 80, 1));
+            var fadeOut = lineLen < 60 ? lineLen / 60 : 1;
+            var distOpacity = fadeIn * fadeOut;
+            distGroup.setAttribute('opacity', distOpacity.toFixed(3));
+
+            if (distOpacity > 0.01) {
+              distLine.setAttribute('x2', ux.toFixed(1));
+              distLine.setAttribute('y2', uy.toFixed(1));
+              distUlleung.setAttribute('cx', ux.toFixed(1));
+              distUlleung.setAttribute('cy', uy.toFixed(1));
+
+              var mx = (960 + ux) / 2;
+              var my = (540 + uy) / 2;
+              distLabel.setAttribute('transform',
+                'translate(' + mx.toFixed(1) + ',' + my.toFixed(1) + ')');
+
+              distDokdoName.setAttribute('x', '960');
+              distDokdoName.setAttribute('y', '560');
+              distUlleungName.setAttribute('x', ux.toFixed(1));
+              distUlleungName.setAttribute('y', (uy + 20).toFixed(1));
+            }
+          }
+
+          // Distance overlay: Dokdo ↔ Oki Islands
+          if (distOkiGroup) {
+            var odx = (OKI_LNG - DOKDO_LNG) / 360 * worldSize;
+            var ody = (mercatorY(OKI_LAT) - mercatorY(DOKDO_LAT)) * worldSize;
+            var ox = 960 + odx;
+            var oy = 540 + ody;
+
+            var okiLineLen = Math.sqrt(odx * odx + ody * ody);
+            var okiInsideX = Math.min(ox - margin, 1920 - margin - ox);
+            var okiInsideY = Math.min(oy - margin, 1080 - margin - oy);
+            var okiFadeIn = Math.max(0, Math.min(Math.min(okiInsideX, okiInsideY) / 80, 1));
+            var okiFadeOut = okiLineLen < 60 ? okiLineLen / 60 : 1;
+            var okiOpacity = okiFadeIn * okiFadeOut;
+            distOkiGroup.setAttribute('opacity', okiOpacity.toFixed(3));
+
+            if (okiOpacity > 0.01) {
+              distOkiLine.setAttribute('x2', ox.toFixed(1));
+              distOkiLine.setAttribute('y2', oy.toFixed(1));
+              distOkiDot.setAttribute('cx', ox.toFixed(1));
+              distOkiDot.setAttribute('cy', oy.toFixed(1));
+
+              var omx = (960 + ox) / 2;
+              var omy = (540 + oy) / 2;
+              distOkiLabel.setAttribute('transform',
+                'translate(' + omx.toFixed(1) + ',' + omy.toFixed(1) + ')');
+
+              distOkiName.setAttribute('x', ox.toFixed(1));
+              distOkiName.setAttribute('y', (oy + 20).toFixed(1));
+            }
+          }
+        } else {
+          if (distGroup) distGroup.setAttribute('opacity', '0');
+          if (distOkiGroup) distOkiGroup.setAttribute('opacity', '0');
         }
 
         mapImg.style.filter = 'blur(' + blur + 'px)';
