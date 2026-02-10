@@ -10,9 +10,10 @@ import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
 (function () {
   'use strict';
 
+  var section = document.querySelector('.geo-section');
   var container = document.getElementById('geo-3d-container');
   var canvas = document.getElementById('geo-3d-canvas');
-  if (!container || !canvas) return;
+  if (!section || !container || !canvas) return;
 
   // Access GSAP globals (loaded before this module)
   var gsap = window.gsap;
@@ -26,42 +27,46 @@ import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
   });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1.2;
+  renderer.toneMappingExposure = 1.8;
   renderer.outputColorSpace = THREE.SRGBColorSpace;
 
   // --- Scene ---
   var scene = new THREE.Scene();
-  scene.background = new THREE.Color(0x0c1d2e);
+  scene.background = new THREE.Color(0x6ab4d6);
 
-  // Fog for depth
-  scene.fog = new THREE.FogExp2(0x0c1d2e, 0.0015);
+  // Fog for depth (light sky-blue tint)
+  scene.fog = new THREE.FogExp2(0x6ab4d6, 0.0008);
 
   // --- Camera ---
   var camera = new THREE.PerspectiveCamera(45, 1, 0.1, 5000);
 
-  // --- Lighting ---
-  // Hemisphere light (sky blue ↔ ocean dark)
-  var hemiLight = new THREE.HemisphereLight(0x87ceeb, 0x0c1d2e, 0.6);
+  // --- Lighting (bright daylight) ---
+  // Hemisphere light (bright sky ↔ ground bounce)
+  var hemiLight = new THREE.HemisphereLight(0xd0e8ff, 0x8fbc8f, 1.0);
   scene.add(hemiLight);
 
-  // Directional light (sun from northeast)
-  var sunLight = new THREE.DirectionalLight(0xfff4e0, 1.5);
-  sunLight.position.set(200, 300, 200);
+  // Main sun (high, warm white)
+  var sunLight = new THREE.DirectionalLight(0xfffaf0, 2.5);
+  sunLight.position.set(200, 400, 150);
   sunLight.castShadow = false;
   scene.add(sunLight);
 
-  // Ambient fill
-  var ambientLight = new THREE.AmbientLight(0x404060, 0.4);
+  // Fill light (opposite side, cooler)
+  var fillLight = new THREE.DirectionalLight(0xc0d8f0, 1.0);
+  fillLight.position.set(-150, 200, -100);
+  scene.add(fillLight);
+
+  // Ambient fill (bright)
+  var ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
   scene.add(ambientLight);
 
-  // --- Ocean plane ---
-  var oceanGeo = new THREE.PlaneGeometry(4000, 4000);
+  // --- Ocean plane (large enough to fill view to horizon) ---
+  var oceanGeo = new THREE.PlaneGeometry(80000, 80000);
   var oceanMat = new THREE.MeshStandardMaterial({
-    color: 0x0f3d5c,
-    roughness: 0.3,
+    color: 0x062d52,
+    roughness: 0.15,
     metalness: 0.1,
-    transparent: true,
-    opacity: 0.85
+    transparent: false
   });
   var ocean = new THREE.Mesh(oceanGeo, oceanMat);
   ocean.rotation.x = -Math.PI / 2;
@@ -103,8 +108,8 @@ import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
 
       // Camera distance based on model size
       var maxDim = Math.max(size.x, size.y, size.z);
-      var camDistance = maxDim * 2.0;
-      var camElevation = 35 * (Math.PI / 180); // 35° above horizon
+      var camDistance = maxDim * 0.8;
+      var camElevation = 15 * (Math.PI / 180); // 35° above horizon
 
       camera.position.set(
         camDistance * Math.cos(camElevation),
@@ -119,7 +124,7 @@ import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
       scene.add(sunLight.target);
 
       // Update fog density based on model scale
-      scene.fog = new THREE.FogExp2(0x0c1d2e, 0.8 / camDistance);
+      scene.fog = new THREE.FogExp2(0x6ab4d6, 0.4 / camDistance);
 
       modelLoaded = true;
       needsRender = true;
@@ -167,12 +172,13 @@ import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
   // Initial render (shows ocean + background before model loads)
   renderFrame();
 
-  // --- ScrollTrigger integration ---
+  // --- ScrollTrigger integration (pin entire section) ---
   if (gsap && ScrollTrigger) {
     ScrollTrigger.create({
-      trigger: container,
-      start: 'top 60%',
-      end: 'top -40%',
+      trigger: section,
+      start: 'top top',
+      end: '+=150%',
+      pin: true,
       scrub: 0.5,
       onUpdate: function (self) {
         scrollRotation = self.progress * Math.PI * 2;
