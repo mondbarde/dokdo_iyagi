@@ -141,8 +141,8 @@ function initHeroAnimations(reducedMotion) {
       onUpdate: function (self) {
         var p = self.progress;
 
-        // Hero text: fades out in first 15%
-        var textP = Math.min(p / 0.15, 1);
+        // Hero text: fades out in first 10%
+        var textP = Math.min(p / 0.10, 1);
         var heroContent = document.querySelector('.hero__content');
         var scrollInd = document.querySelector('.scroll-indicator');
         if (heroContent) {
@@ -173,10 +173,10 @@ function initHeroAnimations(reducedMotion) {
           if (satellite) satellite.style.opacity = '0';
         }
 
-        // Phase 3 (30-70%): Satellite zoom out via video scrub
-        // Phase 4 (70-100%): Hold at zoom 7 before next section
+        // Phase 3 (30-92%): Satellite zoom out via video scrub
+        // Phase 4 (92-100%): Brief hold before next section
         if (p > 0.30 && video && videoReady) {
-          var zoomP = Math.min((p - 0.30) / 0.40, 1);
+          var zoomP = Math.min((p - 0.30) / 0.62, 1);
           video.currentTime = zoomP * videoDuration;
 
           var zEff = ZOOM_VIDEO_START - ZOOM_VIDEO_RANGE * zoomP;

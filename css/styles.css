@@ -315,7 +315,7 @@ body.lang-ko .hero__title {
   background: transparent;
   flex-direction: column;
   text-align: center;
-  min-height: 800vh;
+  min-height: 500vh;
   align-items: center;
   justify-content: flex-start;
   padding-top: 35vh;
