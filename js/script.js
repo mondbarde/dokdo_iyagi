@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (prefersReducedMotion) {
     // Make all content visible without entrance animations
-    gsap.set('.fade-up, .claim-card, .timeline__event, .timeline__dot, .law__principle', {
+    gsap.set('.fade-up, .claim-card, .timeline__event, .timeline__dot, .law__principle, .geo__map, .map-marker, .map-label--sea, .distance-group, .distance-group text, .distance-label-bg, .fact-card', {
       opacity: 1, y: 0, x: 0, scale: 1
     });
     return;
@@ -65,28 +65,42 @@ function initHeroAnimations(reducedMotion) {
   var mapContainer = document.querySelector('.hero__map-img');
   var heroBg = document.querySelector('.hero__bg');
   var heroParticles = document.querySelector('.hero__particles');
+  var satellite = document.getElementById('hero-satellite');
+  var video = document.getElementById('hero-satellite-video');
+
+  // Prepare video for scroll-scrubbing: pause it and wait for metadata
+  var videoReady = false;
+  var videoDuration = 5; // fallback duration (seconds)
+  if (video) {
+    video.pause();
+    var onReady = function () {
+      videoReady = true;
+      if (video.duration && isFinite(video.duration)) {
+        videoDuration = video.duration;
+      }
+      // Set to first frame
+      video.currentTime = 0;
+    };
+    if (video.readyState >= 1) {
+      onReady();
+    } else {
+      video.addEventListener('loadedmetadata', onReady);
+    }
+  }
 
   // All fixed hero layers to show/hide together
-  var fixedLayers = [mapContainer, heroBg, heroParticles].filter(Boolean);
+  var fixedLayers = [mapContainer, heroBg, heroParticles, satellite].filter(Boolean);
 
   if (mapImg && mapContainer) {
     ScrollTrigger.create({
       trigger: '.hero',
       start: 'top top',
       end: 'bottom top',
-      onUpdate: function(self) {
+      onUpdate: function (self) {
         var p = self.progress;
-        // Deblur: first 60% of scroll clears the blur
-        var blurP = Math.min(p / 0.6, 1);
-        var blur = 20 * (1 - blurP);
-        var opacity = 0.3 + 0.5 * blurP;
-        var scale = 1.08 - 0.08 * blurP;
-        mapImg.style.filter = 'blur(' + blur + 'px)';
-        mapImg.style.opacity = String(opacity);
-        mapImg.style.transform = 'scale(' + scale + ')';
 
-        // Hero text: fades out in first 30%
-        var textP = Math.min(p / 0.3, 1);
+        // Hero text: fades out in first 15%
+        var textP = Math.min(p / 0.15, 1);
         var heroContent = document.querySelector('.hero__content');
         var scrollInd = document.querySelector('.scroll-indicator');
         if (heroContent) {
@@ -96,12 +110,42 @@ function initHeroAnimations(reducedMotion) {
         if (scrollInd) {
           scrollInd.style.opacity = String(1 - textP);
         }
+
+        // Phase 1 (0-30%): Old map deblurs
+        var blurP = Math.min(p / 0.3, 1);
+        var blur = 20 * (1 - blurP);
+        var oldOpacity = 0.3 + 0.5 * blurP;
+        var scale = 1.08 - 0.08 * blurP;
+
+        // Phase 2 (30-55%): Crossfade — old map fades out, satellite fades in
+        if (p > 0.3) {
+          var fadeP = Math.min((p - 0.3) / 0.25, 1);
+          oldOpacity = 0.8 * (1 - fadeP);
+          // Fade grid/vignette overlays out with the old map
+          if (heroBg) heroBg.style.opacity = String(0.6 * (1 - fadeP));
+          if (heroParticles) heroParticles.style.opacity = String(1 - fadeP);
+          if (satellite) satellite.style.opacity = String(fadeP);
+        } else {
+          if (heroBg) heroBg.style.opacity = '0.6';
+          if (heroParticles) heroParticles.style.opacity = '1';
+          if (satellite) satellite.style.opacity = '0';
+        }
+
+        // Phase 3 (55-100%): Satellite zoom out via video scrub
+        if (p > 0.55 && video && videoReady) {
+          var zoomP = Math.min((p - 0.55) / 0.45, 1);
+          video.currentTime = zoomP * videoDuration;
+        }
+
+        mapImg.style.filter = 'blur(' + blur + 'px)';
+        mapImg.style.opacity = String(oldOpacity);
+        mapImg.style.transform = 'scale(' + scale + ')';
       },
-      onLeave: function() {
-        fixedLayers.forEach(function(el) { el.style.visibility = 'hidden'; });
+      onLeave: function () {
+        fixedLayers.forEach(function (el) { el.style.visibility = 'hidden'; });
       },
-      onEnterBack: function() {
-        fixedLayers.forEach(function(el) { el.style.visibility = 'visible'; });
+      onEnterBack: function () {
+        fixedLayers.forEach(function (el) { el.style.visibility = 'visible'; });
       }
     });
   }
@@ -150,61 +194,70 @@ function initHeroAnimations(reducedMotion) {
    ======================================== */
 
 function initGeoAnimations() {
-  // Map markers pop in sequentially
-  gsap.from('.map-marker', {
-    scale: 0,
-    opacity: 0,
-    duration: 0.8,
-    stagger: 0.25,
-    ease: 'back.out(2.5)',
-    transformOrigin: 'center center',
+  var section = document.querySelector('.geo-section');
+  var map = document.querySelector('.geo__map');
+  if (!section || !map) return;
+
+  // --- Initial hidden states ---
+  gsap.set('.geo__map', { scale: 0.92, opacity: 0 });
+  gsap.set('.map-marker', { scale: 0, opacity: 0, transformOrigin: 'center center' });
+  gsap.set('.map-label--sea', { opacity: 0 });
+  gsap.set('.distance-group--ulleung', { opacity: 0 });
+  gsap.set('.distance-group--oki', { opacity: 0 });
+  gsap.set('.distance-group--ulleung text, .distance-group--ulleung .distance-label-bg', { opacity: 0 });
+  gsap.set('.distance-group--oki text, .distance-group--oki .distance-label-bg', { opacity: 0 });
+  gsap.set('.fact-card', { y: 40, opacity: 0 });
+
+  // Set up distance line stroke offsets
+  document.querySelectorAll('.distance-line').forEach(function (line) {
+    var len = line.getTotalLength();
+    gsap.set(line, { strokeDasharray: len, strokeDashoffset: len });
+  });
+
+  // --- Pinned scroll-driven timeline ---
+  var tl = gsap.timeline({
     scrollTrigger: {
       trigger: '.geo-section',
-      start: 'top 65%',
-      once: true
+      start: 'top top',
+      end: '+=200%',
+      pin: true,
+      scrub: 1,
+      anticipatePin: 1
     }
   });
 
-  // Distance lines draw in (stroke-dashoffset animation)
-  const distanceLines = document.querySelectorAll('.distance-line');
-  distanceLines.forEach(line => {
-    const length = line.getTotalLength();
-    gsap.set(line, { strokeDasharray: length, strokeDashoffset: length });
-    gsap.to(line, {
-      strokeDashoffset: 0,
-      duration: 1.5,
-      ease: 'power2.out',
-      scrollTrigger: {
-        trigger: '.geo-section',
-        start: 'top 55%',
-        once: true
-      }
-    });
-  });
+  tl
+    // 1. Map entrance — scale up and fade in
+    .to('.geo__map', { scale: 1, opacity: 1, duration: 1, ease: 'power2.out' })
 
-  // Distance labels + backgrounds fade in after lines
-  gsap.from('.distance-group text, .distance-label-bg', {
-    opacity: 0,
-    duration: 0.8,
-    stagger: 0.2,
-    scrollTrigger: {
-      trigger: '.geo-section',
-      start: 'top 50%',
-      once: true
-    }
-  });
+    // 2. East Sea label
+    .to('.map-label--sea', { opacity: 0.6, duration: 0.5 }, '-=0.3')
 
-  // East Sea label fades in last
-  gsap.from('.map-label--sea', {
-    opacity: 0,
-    y: 15,
-    duration: 1.2,
-    scrollTrigger: {
-      trigger: '.geo-section',
-      start: 'top 50%',
-      once: true
-    }
-  });
+    // 3. Ulleungdo marker pops in
+    .to('.map-marker--ulleung', { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(2)' })
+
+    // 4. Dokdo marker pops in with emphasis
+    .to('.map-marker--dokdo', { scale: 1, opacity: 1, duration: 0.6, ease: 'back.out(3)' })
+
+    // 5. Distance line: Ulleungdo → Dokdo draws
+    .to('.distance-group--ulleung', { opacity: 1, duration: 0.2 })
+    .to('.distance-line--ulleung', { strokeDashoffset: 0, duration: 1, ease: 'power2.inOut' }, '<')
+
+    // 6. 87.4km label fades in
+    .to('.distance-group--ulleung text, .distance-group--ulleung .distance-label-bg', { opacity: 1, duration: 0.5 })
+
+    // 7. Oki Islands marker pops in
+    .to('.map-marker--oki', { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(2)' })
+
+    // 8. Distance line: Dokdo → Oki draws
+    .to('.distance-group--oki', { opacity: 1, duration: 0.2 })
+    .to('.distance-line--oki', { strokeDashoffset: 0, duration: 1, ease: 'power2.inOut' }, '<')
+
+    // 9. 157.5km label fades in
+    .to('.distance-group--oki text, .distance-group--oki .distance-label-bg', { opacity: 1, duration: 0.5 })
+
+    // 10. Fact cards stagger in
+    .to('.fact-card', { y: 0, opacity: 1, duration: 0.8, stagger: 0.15 });
 }
 
 /* ========================================

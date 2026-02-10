@@ -19,7 +19,7 @@
     rel="stylesheet">
 
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="css/styles.css?v=11">
+  <link rel="stylesheet" href="css/styles.css?v=12">
 </head>
 
 <body class="lang-ko">
@@ -41,6 +41,12 @@
     </div>
     <div class="hero__particles"></div>
     <div class="hero__bg"></div>
+    <div id="hero-satellite" class="hero__satellite">
+      <video id="hero-satellite-video" class="hero__satellite-video"
+             muted playsinline preload="auto">
+        <source src="assets/video/dokdo_zoom.mp4" type="video/mp4">
+      </video>
+    </div>
     <div class="hero__content">
       <p class="hero__coords">37.2426°N 131.8597°E</p>
       <h1 class="hero__title" data-i18n="hero.title">독도</h1>
@@ -133,22 +139,22 @@
 
         <!-- Fact Cards -->
         <div class="geo__facts fact-cards">
-          <div class="fact-card glass-card fade-up">
+          <div class="fact-card glass-card">
             <div class="fact-card__icon">🏝️</div>
             <h3 class="fact-card__title" data-i18n="geo.fact1.title">두 개의 섬</h3>
             <p class="fact-card__text" data-i18n="geo.fact1.text">동도(East Islet)와 서도(West Islet) 및 89개의 부속 암초로 구성</p>
           </div>
-          <div class="fact-card glass-card fade-up">
+          <div class="fact-card glass-card">
             <div class="fact-card__icon">📐</div>
             <h3 class="fact-card__title" data-i18n="geo.fact2.title">총 면적</h3>
             <p class="fact-card__text" data-i18n="geo.fact2.text">187,554 m² (약 46에이커). 동도 73,297 m², 서도 88,740 m²</p>
           </div>
-          <div class="fact-card glass-card fade-up">
+          <div class="fact-card glass-card">
             <div class="fact-card__icon">🌋</div>
             <h3 class="fact-card__title" data-i18n="geo.fact3.title">화산섬 기원</h3>
             <p class="fact-card__text" data-i18n="geo.fact3.text">약 460만 년 전 해저 화산 활동으로 형성. 울릉도보다 약 200만 년 먼저 생성</p>
           </div>
-          <div class="fact-card glass-card fade-up">
+          <div class="fact-card glass-card">
             <div class="fact-card__icon">🗺️</div>
             <h3 class="fact-card__title" data-i18n="geo.fact4.title">다양한 명칭</h3>
             <p class="fact-card__text" data-i18n="geo.fact4.text">독도(한국), 다케시마/竹島(일본), 리앙쿠르 암초/Liancourt Rocks(국제)</p>
@@ -297,8 +303,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
   <!-- App Scripts -->
-  <script src="js/i18n.js?v=11"></script>
-  <script src="js/script.js?v=11"></script>
+  <script src="js/i18n.js?v=12"></script>
+  <script src="js/script.js?v=13"></script>
 </body>
 
 </html>

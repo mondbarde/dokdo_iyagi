@@ -6,35 +6,35 @@
 /* --- CSS Custom Properties --- */
 :root {
   /* Parchment palette */
-  --color-parchment:     #f5f0e1;
+  --color-parchment: #f5f0e1;
   --color-parchment-alt: #ede6d3;
-  --color-aged:          #e2d9c3;
-  --color-worn:          #d5cab0;
-  --color-leather:       #c4b898;
+  --color-aged: #e2d9c3;
+  --color-worn: #d5cab0;
+  --color-leather: #c4b898;
 
   /* Ink & text palette */
-  --color-ink:           #2c2418;
-  --color-ink-medium:    #4a3d2e;
-  --color-ink-light:     #6b5a42;
-  --color-ink-faded:     #8c7b63;
-  --color-ink-ghost:     #b0a48e;
+  --color-ink: #2c2418;
+  --color-ink-medium: #4a3d2e;
+  --color-ink-light: #6b5a42;
+  --color-ink-faded: #8c7b63;
+  --color-ink-ghost: #b0a48e;
 
   /* Accent palette (muted, map-like) */
-  --color-korea:         #2a6b5a;
-  --color-korea-light:   rgba(42, 107, 90, 0.12);
-  --color-japan:         #9b3a30;
-  --color-japan-light:   rgba(155, 58, 48, 0.12);
-  --color-gold:          #8b6914;
-  --color-gold-light:    rgba(139, 105, 20, 0.15);
-  --color-sea-blue:      #4a6e82;
-  --color-red-seal:      #b83a2a;
+  --color-korea: #2a6b5a;
+  --color-korea-light: rgba(42, 107, 90, 0.12);
+  --color-japan: #9b3a30;
+  --color-japan-light: rgba(155, 58, 48, 0.12);
+  --color-gold: #8b6914;
+  --color-gold-light: rgba(139, 105, 20, 0.15);
+  --color-sea-blue: #4a6e82;
+  --color-red-seal: #b83a2a;
 
   /* Grid lines */
-  --color-grid:          rgba(139, 105, 20, 0.10);
-  --color-grid-strong:   rgba(139, 105, 20, 0.18);
+  --color-grid: rgba(139, 105, 20, 0.10);
+  --color-grid-strong: rgba(139, 105, 20, 0.18);
 
   /* Typography */
-  --font-body:    'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-display: 'Playfair Display', 'Noto Sans KR', serif;
 
   /* Spacing */
@@ -76,17 +76,21 @@ a {
   transition: color 0.3s;
   border-bottom: 1px solid transparent;
 }
+
 a:hover {
   color: var(--color-ink);
   border-bottom-color: var(--color-ink-light);
 }
 
-img, svg {
+img,
+svg {
   max-width: 100%;
   display: block;
 }
 
-ul { list-style: none; }
+ul {
+  list-style: none;
+}
 
 /* --- Map Grid Background (global texture) --- */
 body::before {
@@ -96,20 +100,16 @@ body::before {
   pointer-events: none;
   z-index: 0;
   background:
-    repeating-linear-gradient(
-      0deg,
+    repeating-linear-gradient(0deg,
       transparent,
       transparent 99px,
       var(--color-grid) 99px,
-      var(--color-grid) 100px
-    ),
-    repeating-linear-gradient(
-      90deg,
+      var(--color-grid) 100px),
+    repeating-linear-gradient(90deg,
       transparent,
       transparent 99px,
       var(--color-grid) 99px,
-      var(--color-grid) 100px
-    );
+      var(--color-grid) 100px);
 }
 
 /* Parchment noise texture overlay */
@@ -129,6 +129,7 @@ body.lang-en .hero__title {
   font-family: var(--font-display);
   letter-spacing: -0.02em;
 }
+
 body.lang-ko .section-title,
 body.lang-ko .hero__title {
   font-family: var(--font-body);
@@ -242,9 +243,17 @@ body.lang-ko .hero__title {
   transform-origin: left center;
 }
 
-.title-underline--gold { background: var(--color-gold); }
-.title-underline--teal { background: var(--color-korea); }
-.title-underline--coral { background: var(--color-japan); }
+.title-underline--gold {
+  background: var(--color-gold);
+}
+
+.title-underline--teal {
+  background: var(--color-korea);
+}
+
+.title-underline--coral {
+  background: var(--color-japan);
+}
 
 /* --- Section Dividers (replaces wave dividers) --- */
 .wave-divider {
@@ -267,14 +276,12 @@ body.lang-ko .hero__title {
   left: 10%;
   right: 10%;
   height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    var(--color-worn) 20%,
-    var(--color-leather) 50%,
-    var(--color-worn) 80%,
-    transparent
-  );
+  background: linear-gradient(90deg,
+      transparent,
+      var(--color-worn) 20%,
+      var(--color-leather) 50%,
+      var(--color-worn) 80%,
+      transparent);
 }
 
 .wave-divider::after {
@@ -307,7 +314,7 @@ body.lang-ko .hero__title {
   background: transparent;
   flex-direction: column;
   text-align: center;
-  min-height: 200vh;
+  min-height: 800vh;
   align-items: center;
   justify-content: flex-start;
   padding-top: 35vh;
@@ -326,11 +333,31 @@ body.lang-ko .hero__title {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 30%;
+  object-position: center center;
   filter: blur(20px);
   opacity: 0.3;
   transform: scale(1.08);
   will-change: filter, opacity, transform;
+}
+
+/* Hero: satellite zoom-out video layer — fixed, initially hidden */
+.hero__satellite {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  opacity: 0;
+  pointer-events: none;
+  background: #0c1d2e;
+  overflow: hidden;
+}
+
+.hero__satellite-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* Hero: compass rose grid overlay — fixed with image */
@@ -340,20 +367,16 @@ body.lang-ko .hero__title {
   z-index: 0;
   pointer-events: none;
   background:
-    repeating-linear-gradient(
-      0deg,
+    repeating-linear-gradient(0deg,
       transparent,
       transparent 99px,
       var(--color-grid-strong) 99px,
-      var(--color-grid-strong) 100px
-    ),
-    repeating-linear-gradient(
-      90deg,
+      var(--color-grid-strong) 100px),
+    repeating-linear-gradient(90deg,
       transparent,
       transparent 99px,
       var(--color-grid-strong) 99px,
-      var(--color-grid-strong) 100px
-    );
+      var(--color-grid-strong) 100px);
   opacity: 0.6;
 }
 
@@ -364,11 +387,9 @@ body.lang-ko .hero__title {
   overflow: hidden;
   pointer-events: none;
   z-index: 0;
-  background: radial-gradient(
-    ellipse at center,
-    transparent 50%,
-    rgba(197, 186, 160, 0.4) 100%
-  );
+  background: radial-gradient(ellipse at center,
+      transparent 50%,
+      rgba(197, 186, 160, 0.4) 100%);
 }
 
 /* Diagonal grid lines for hero (map aesthetic) */
@@ -377,20 +398,16 @@ body.lang-ko .hero__title {
   position: absolute;
   inset: -50%;
   background:
-    repeating-linear-gradient(
-      45deg,
+    repeating-linear-gradient(45deg,
       transparent,
       transparent 199px,
       var(--color-grid) 199px,
-      var(--color-grid) 200px
-    ),
-    repeating-linear-gradient(
-      -45deg,
+      var(--color-grid) 200px),
+    repeating-linear-gradient(-45deg,
       transparent,
       transparent 199px,
       var(--color-grid) 199px,
-      var(--color-grid) 200px
-    );
+      var(--color-grid) 200px);
   animation: none;
 }
 
@@ -571,8 +588,15 @@ body.lang-ko .hero__title {
 }
 
 @keyframes pulse-glow {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 0.08; }
+
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+
+  50% {
+    opacity: 0.08;
+  }
 }
 
 .fact-cards {
@@ -1036,6 +1060,7 @@ body.lang-ko .hero__title {
 
 /* --- Reduced Motion --- */
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
