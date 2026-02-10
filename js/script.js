@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (prefersReducedMotion) {
     // Make all content visible without entrance animations
-    gsap.set('.fade-up, .claim-card, .timeline__event, .timeline__dot, .law__principle, .fact-card', {
+    gsap.set('.fade-up, .claim-card, .timeline__event, .timeline__dot, .law__principle, .fact-card, .fact-card--overlay', {
       opacity: 1, y: 0, x: 0, scale: 1
     });
     return;
@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // --- Section Animations ---
-  initGeoAnimations();
+  // Geo section cards + 3D rotation are handled by dokdo3d.js
   initTimelineAnimations();
   initClaimAnimations();
   initLawAnimations();
@@ -284,28 +284,6 @@ function initHeroAnimations(reducedMotion) {
       opacity: 0,
       duration: 0.6
     }, '-=0.2');
-}
-
-/* ========================================
-   Geography Section Animations
-   ======================================== */
-
-function initGeoAnimations() {
-  var section = document.querySelector('.geo-section');
-  if (!section) return;
-
-  // 3D viewer is handled by dokdo3d.js (Three.js module)
-
-  // Fact cards fade-in
-  gsap.set('.fact-card', { y: 40, opacity: 0 });
-
-  ScrollTrigger.batch('.fact-card', {
-    onEnter: function (elements) {
-      gsap.to(elements, { y: 0, opacity: 1, duration: 0.8, stagger: 0.15 });
-    },
-    start: 'top 85%',
-    once: true
-  });
 }
 
 /* ========================================

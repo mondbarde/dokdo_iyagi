@@ -19,7 +19,7 @@
     rel="stylesheet">
 
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="css/styles.css?v=13">
+  <link rel="stylesheet" href="css/styles.css?v=15">
 
   <!-- Three.js import map -->
   <script type="importmap">
@@ -119,40 +119,65 @@
     </svg>
   </div>
 
-  <!-- Section 2: Geographic Overview -->
+  <!-- Section 2: Geographic Overview (Immersive) -->
   <section id="geography" class="section geo-section">
-    <div class="section__inner">
-      <h2 class="section-title" data-i18n="geo.title">지리적 개요</h2>
-      <div class="title-underline"></div>
+    <div class="geo__3d-viewer" id="geo-3d-container">
+      <canvas id="geo-3d-canvas" class="geo__3d-canvas"></canvas>
+    </div>
 
-      <div class="geo__3d-viewer" id="geo-3d-container">
-        <canvas id="geo-3d-canvas" class="geo__3d-canvas"></canvas>
+    <div class="geo__overlay-title">
+      <h2 class="section-title section-title--overlay" data-i18n="geo.title">지리적 개요</h2>
+      <div class="title-underline title-underline--overlay"></div>
+    </div>
+
+    <div class="geo__card-area" id="geo-card-area">
+      <div class="fact-card fact-card--overlay" data-geo-card="0" data-geo-position="right">
+        <div class="fact-card__number">01</div>
+        <div class="fact-card__divider"></div>
+        <h3 class="fact-card__title" data-i18n="geo.fact1.title">두 개의 섬</h3>
+        <p class="fact-card__text" data-i18n="geo.fact1.text">동도(East Islet, 높이 98.6m)와 서도(West Islet, 높이 168.5m) 및 89개의 부속 암초로 구성. 두 섬 사이 거리는 약 151m입니다.</p>
       </div>
-
-      <div class="geo__layout">
-        <!-- Fact Cards -->
-        <div class="geo__facts fact-cards">
-          <div class="fact-card glass-card">
-            <div class="fact-card__icon">🏝️</div>
-            <h3 class="fact-card__title" data-i18n="geo.fact1.title">두 개의 섬</h3>
-            <p class="fact-card__text" data-i18n="geo.fact1.text">동도(East Islet)와 서도(West Islet) 및 89개의 부속 암초로 구성</p>
-          </div>
-          <div class="fact-card glass-card">
-            <div class="fact-card__icon">📐</div>
-            <h3 class="fact-card__title" data-i18n="geo.fact2.title">총 면적</h3>
-            <p class="fact-card__text" data-i18n="geo.fact2.text">187,554 m² (약 46에이커). 동도 73,297 m², 서도 88,740 m²</p>
-          </div>
-          <div class="fact-card glass-card">
-            <div class="fact-card__icon">🌋</div>
-            <h3 class="fact-card__title" data-i18n="geo.fact3.title">화산섬 기원</h3>
-            <p class="fact-card__text" data-i18n="geo.fact3.text">약 460만 년 전 해저 화산 활동으로 형성. 울릉도보다 약 200만 년 먼저 생성</p>
-          </div>
-          <div class="fact-card glass-card">
-            <div class="fact-card__icon">🗺️</div>
-            <h3 class="fact-card__title" data-i18n="geo.fact4.title">다양한 명칭</h3>
-            <p class="fact-card__text" data-i18n="geo.fact4.text">독도(한국), 다케시마/竹島(일본), 리앙쿠르 암초/Liancourt Rocks(국제)</p>
-          </div>
-        </div>
+      <div class="fact-card fact-card--overlay" data-geo-card="1" data-geo-position="left">
+        <div class="fact-card__number">02</div>
+        <div class="fact-card__divider"></div>
+        <h3 class="fact-card__title" data-i18n="geo.fact2.title">총 면적</h3>
+        <p class="fact-card__text" data-i18n="geo.fact2.text">187,554 m² (약 46에이커). 동도 73,297 m², 서도 88,740 m². 두 섬 사이 좁은 수로로 분리되어 있습니다.</p>
+      </div>
+      <div class="fact-card fact-card--overlay" data-geo-card="2" data-geo-position="right">
+        <div class="fact-card__number">03</div>
+        <div class="fact-card__divider"></div>
+        <h3 class="fact-card__title" data-i18n="geo.fact3.title">화산섬 기원</h3>
+        <p class="fact-card__text" data-i18n="geo.fact3.text">약 460만 년 전 해저 화산 활동으로 형성된 화산섬. 울릉도보다 약 200만 년 먼저 생성되었으며, 현재는 침식이 진행된 상태입니다.</p>
+      </div>
+      <div class="fact-card fact-card--overlay" data-geo-card="3" data-geo-position="left">
+        <div class="fact-card__number">04</div>
+        <div class="fact-card__divider"></div>
+        <h3 class="fact-card__title" data-i18n="geo.fact4.title">해양 생태계</h3>
+        <p class="fact-card__text" data-i18n="geo.fact4.text">한류와 난류가 교차하는 조경수역에 위치하여, 괭이갈매기·바다제비·슴새 등 희귀 해조류와 다양한 해양생물이 서식하는 천연보호구역(천연기념물 제336호)입니다.</p>
+      </div>
+      <div class="fact-card fact-card--overlay" data-geo-card="4" data-geo-position="right">
+        <div class="fact-card__number">05</div>
+        <div class="fact-card__divider"></div>
+        <h3 class="fact-card__title" data-i18n="geo.fact5.title">기후</h3>
+        <p class="fact-card__text" data-i18n="geo.fact5.text">연평균 기온 약 12°C, 연 강수량 약 1,324mm. 연중 흐린 날이 많고 안개가 잦으며, 겨울철 강한 북서풍의 영향을 받는 해양성 기후입니다.</p>
+      </div>
+      <div class="fact-card fact-card--overlay" data-geo-card="5" data-geo-position="left">
+        <div class="fact-card__number">06</div>
+        <div class="fact-card__divider"></div>
+        <h3 class="fact-card__title" data-i18n="geo.fact6.title">해저 지형</h3>
+        <p class="fact-card__text" data-i18n="geo.fact6.text">수심 약 2,000m의 동해 해저에서 솟아오른 거대한 해산의 정상부에 해당합니다. 해수면 위로 드러난 부분은 전체 해산의 극히 일부에 불과합니다.</p>
+      </div>
+      <div class="fact-card fact-card--overlay" data-geo-card="6" data-geo-position="right">
+        <div class="fact-card__number">07</div>
+        <div class="fact-card__divider"></div>
+        <h3 class="fact-card__title" data-i18n="geo.fact7.title">현재 상태</h3>
+        <p class="fact-card__text" data-i18n="geo.fact7.text">독도경비대(경찰) 약 40명이 상시 주둔하며, 등대·접안시설·헬기장을 운영 중입니다. 1991년부터 민간인 주민이 거주하고 있습니다.</p>
+      </div>
+      <div class="fact-card fact-card--overlay" data-geo-card="7" data-geo-position="left">
+        <div class="fact-card__number">08</div>
+        <div class="fact-card__divider"></div>
+        <h3 class="fact-card__title" data-i18n="geo.fact8.title">다양한 명칭</h3>
+        <p class="fact-card__text" data-i18n="geo.fact8.text">독도(한국), 다케시마/竹島(일본), 리앙쿠르 암초/Liancourt Rocks(국제). 리앙쿠르는 1849년 이 섬을 발견한 프랑스 포경선의 이름입니다.</p>
       </div>
     </div>
   </section>
@@ -296,9 +321,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
   <!-- App Scripts -->
-  <script src="js/i18n.js?v=12"></script>
-  <script src="js/script.js?v=14"></script>
-  <script type="module" src="js/dokdo3d.js?v=1"></script>
+  <script src="js/i18n.js?v=13"></script>
+  <script src="js/script.js?v=15"></script>
+  <script type="module" src="js/dokdo3d.js?v=2"></script>
 </body>
 
 </html>

@@ -504,20 +504,33 @@ body.lang-ko .hero__title {
   background: radial-gradient(circle, rgba(180, 160, 120, 0.2), transparent 70%);
 }
 
-/* --- Geography Section --- */
+/* --- Geography Section (Immersive Full-Screen) --- */
 .geo-section {
-  background: var(--color-parchment-alt);
+  background: #0c1d2e;
+  position: relative;
+  overflow: hidden;
 }
 
+/* Bottom gradient for depth */
+.geo-section::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(to top, rgba(12, 29, 46, 0.6), transparent);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Full-viewport 3D viewer */
 .geo__3d-viewer {
-  max-width: 800px;
-  margin: 0 auto var(--space-lg);
-  border-radius: 8px;
-  overflow: hidden;
-  border: 2px solid var(--color-worn);
-  box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.12);
-  aspect-ratio: 1 / 1;
-  background: #0c1d2e;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
 }
 
 .geo__3d-canvas {
@@ -526,39 +539,110 @@ body.lang-ko .hero__title {
   display: block;
 }
 
-.geo__layout {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-lg);
-}
-
-
-.fact-cards {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: var(--space-sm);
-}
-
-.fact-card {
+/* Overlay title */
+.geo__overlay-title {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  padding: clamp(2rem, 5vh, 4rem) 2rem 3rem;
   text-align: center;
+  background: linear-gradient(
+    to bottom,
+    rgba(12, 29, 46, 0.7) 0%,
+    rgba(12, 29, 46, 0.3) 60%,
+    transparent 100%
+  );
+  pointer-events: none;
 }
 
-.fact-card__icon {
-  font-size: 2rem;
-  margin-bottom: var(--space-xs);
+.section-title--overlay {
+  color: rgba(245, 240, 225, 0.95);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
 
-.fact-card__title {
-  font-size: 1rem;
+.title-underline--overlay {
+  background: var(--color-gold);
+  opacity: 0.7;
+}
+
+/* Card overlay area */
+.geo__card-area {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Overlay fact cards — frosted parchment glass */
+.fact-card--overlay {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%) translateX(30px);
+  width: clamp(280px, 28vw, 420px);
+  padding: 2rem 2.5rem;
+  opacity: 0;
+  pointer-events: auto;
+  transition: none;
+  text-align: left;
+
+  background: rgba(245, 240, 225, 0.1);
+  backdrop-filter: blur(20px) saturate(1.2);
+  -webkit-backdrop-filter: blur(20px) saturate(1.2);
+  border: 1px solid rgba(245, 240, 225, 0.15);
+  border-radius: 8px;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(245, 240, 225, 0.1);
+}
+
+.fact-card--overlay[data-geo-position="right"] {
+  right: clamp(2rem, 5vw, 6rem);
+  left: auto;
+}
+
+.fact-card--overlay[data-geo-position="left"] {
+  left: clamp(2rem, 5vw, 6rem);
+  right: auto;
+}
+
+/* Card interior */
+.fact-card__number {
+  font-family: 'Courier New', monospace;
+  font-size: 0.8rem;
   font-weight: 700;
-  color: var(--color-ink);
-  margin-bottom: var(--space-xs);
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 0.2em;
+  margin-bottom: 0.5rem;
 }
 
-.fact-card__text {
-  font-size: 0.85rem;
-  color: var(--color-ink-light);
-  line-height: 1.6;
+.fact-card__divider {
+  width: 30px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.4);
+  margin-bottom: 1rem;
+}
+
+.fact-card--overlay .fact-card__title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: rgba(245, 240, 225, 0.95);
+  margin-bottom: 0.75rem;
+  line-height: 1.4;
+}
+
+.fact-card--overlay .fact-card__text {
+  font-size: 0.9rem;
+  color: rgba(245, 240, 225, 0.7);
+  line-height: 1.8;
+}
+
+/* Backdrop-filter fallback */
+@supports not (backdrop-filter: blur(1px)) {
+  .fact-card--overlay {
+    background: rgba(12, 29, 46, 0.85);
+  }
 }
 
 /* --- Timeline Section --- */
@@ -919,23 +1003,24 @@ body.lang-ko .hero__title {
 
 /* --- Responsive --- */
 @media (max-width: 1024px) {
-  .fact-cards {
-    grid-template-columns: 1fr 1fr;
-  }
-
   .claim-cards {
     grid-template-columns: 1fr 1fr;
   }
 }
 
 @media (max-width: 768px) {
-  .geo__layout {
-    grid-template-columns: 1fr;
-    gap: var(--space-md);
+  .fact-card--overlay {
+    width: calc(100% - 3rem);
+    max-width: 400px;
+    top: auto;
+    bottom: clamp(2rem, 5vh, 4rem);
+    left: 50% !important;
+    right: auto !important;
+    transform: translateX(-50%) translateY(20px);
   }
 
-  .fact-cards {
-    grid-template-columns: 1fr 1fr;
+  .geo__overlay-title {
+    padding: 1.5rem 1rem 2rem;
   }
 
   .timeline__line {

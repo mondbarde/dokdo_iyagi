@@ -23,19 +23,35 @@ const translations = {
       },
       fact1: {
         title: '두 개의 섬',
-        text: '동도(East Islet)와 서도(West Islet) 및 89개의 부속 암초로 구성'
+        text: '동도(East Islet, 높이 98.6m)와 서도(West Islet, 높이 168.5m) 및 89개의 부속 암초로 구성. 두 섬 사이 거리는 약 151m입니다.'
       },
       fact2: {
         title: '총 면적',
-        text: '187,554 m² (약 46에이커). 동도 73,297 m², 서도 88,740 m²'
+        text: '187,554 m² (약 46에이커). 동도 73,297 m², 서도 88,740 m². 두 섬 사이 좁은 수로로 분리되어 있습니다.'
       },
       fact3: {
         title: '화산섬 기원',
-        text: '약 460만 년 전 해저 화산 활동으로 형성. 울릉도보다 약 200만 년 먼저 생성'
+        text: '약 460만 년 전 해저 화산 활동으로 형성된 화산섬. 울릉도보다 약 200만 년 먼저 생성되었으며, 현재는 침식이 진행된 상태입니다.'
       },
       fact4: {
+        title: '해양 생태계',
+        text: '한류와 난류가 교차하는 조경수역에 위치하여, 괭이갈매기·바다제비·슴새 등 희귀 해조류와 다양한 해양생물이 서식하는 천연보호구역(천연기념물 제336호)입니다.'
+      },
+      fact5: {
+        title: '기후',
+        text: '연평균 기온 약 12°C, 연 강수량 약 1,324mm. 연중 흐린 날이 많고 안개가 잦으며, 겨울철 강한 북서풍의 영향을 받는 해양성 기후입니다.'
+      },
+      fact6: {
+        title: '해저 지형',
+        text: '수심 약 2,000m의 동해 해저에서 솟아오른 거대한 해산의 정상부에 해당합니다. 해수면 위로 드러난 부분은 전체 해산의 극히 일부에 불과합니다.'
+      },
+      fact7: {
+        title: '현재 상태',
+        text: '독도경비대(경찰) 약 40명이 상시 주둔하며, 등대·접안시설·헬기장을 운영 중입니다. 1991년부터 민간인 주민이 거주하고 있습니다.'
+      },
+      fact8: {
         title: '다양한 명칭',
-        text: '독도(한국), 다케시마/竹島(일본), 리앙쿠르 암초/Liancourt Rocks(국제)'
+        text: '독도(한국), 다케시마/竹島(일본), 리앙쿠르 암초/Liancourt Rocks(국제). 리앙쿠르는 1849년 이 섬을 발견한 프랑스 포경선의 이름입니다.'
       }
     },
     timeline: {
@@ -237,19 +253,35 @@ const translations = {
       },
       fact1: {
         title: 'Two Islets',
-        text: 'Composed of East Islet (Dongdo) and West Islet (Seodo), along with 89 surrounding rocks'
+        text: 'Composed of East Islet (Dongdo, 98.6m tall) and West Islet (Seodo, 168.5m tall), along with 89 surrounding rocks. The two main islets are about 151m apart.'
       },
       fact2: {
         title: 'Total Area',
-        text: '187,554 m² (~46 acres). East Islet: 73,297 m², West Islet: 88,740 m²'
+        text: '187,554 m² (~46 acres). East Islet: 73,297 m², West Islet: 88,740 m². Separated by a narrow channel approximately 151 meters wide.'
       },
       fact3: {
         title: 'Volcanic Origin',
-        text: 'Formed approximately 4.6 million years ago by submarine volcanic activity — about 2 million years before Ulleungdo'
+        text: 'Formed approximately 4.6 million years ago by submarine volcanic activity — about 2 million years before Ulleungdo. Now in an advanced state of erosion.'
       },
       fact4: {
+        title: 'Marine Ecosystem',
+        text: 'Located where warm and cold ocean currents converge, Dokdo hosts rare seabirds (black-tailed gulls, swinhoe\'s storm petrels) and diverse marine life. Designated Natural Monument No. 336.'
+      },
+      fact5: {
+        title: 'Climate',
+        text: 'Average annual temperature of ~12\u00B0C with ~1,324mm of rainfall. Frequent fog, overcast skies, and strong northwest winter monsoon winds — a typical oceanic climate.'
+      },
+      fact6: {
+        title: 'Undersea Terrain',
+        text: 'Dokdo is the summit of a massive seamount rising from the East Sea floor at approximately 2,000m depth. Only a tiny fraction of the overall volcanic structure is visible above sea level.'
+      },
+      fact7: {
+        title: 'Current Status',
+        text: 'Approximately 40 Korean coast guard police are permanently stationed on Dokdo. Facilities include a lighthouse, dock, and helipad. A civilian resident has lived on the island since 1991.'
+      },
+      fact8: {
         title: 'Multiple Names',
-        text: 'Dokdo (Korea), Takeshima/竹島 (Japan), Liancourt Rocks (international)'
+        text: 'Dokdo (Korea), Takeshima/\u7AF9\u5CF6 (Japan), Liancourt Rocks (international). The name "Liancourt" comes from the French whaling ship that spotted the rocks in 1849.'
       }
     },
     timeline: {
