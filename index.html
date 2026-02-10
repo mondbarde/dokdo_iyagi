@@ -19,7 +19,17 @@
     rel="stylesheet">
 
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="css/styles.css?v=12">
+  <link rel="stylesheet" href="css/styles.css?v=13">
+
+  <!-- Three.js import map -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+    }
+  }
+  </script>
 </head>
 
 <body class="lang-ko">
@@ -115,10 +125,8 @@
       <h2 class="section-title" data-i18n="geo.title">지리적 개요</h2>
       <div class="title-underline"></div>
 
-      <div class="geo__3d-viewer">
-        <video id="geo-3d-video" class="geo__3d-video" muted playsinline preload="auto">
-          <source src="assets/video/dokdo_3d.mp4" type="video/mp4">
-        </video>
+      <div class="geo__3d-viewer" id="geo-3d-container">
+        <canvas id="geo-3d-canvas" class="geo__3d-canvas"></canvas>
       </div>
 
       <div class="geo__layout">
@@ -289,7 +297,8 @@
 
   <!-- App Scripts -->
   <script src="js/i18n.js?v=12"></script>
-  <script src="js/script.js?v=13"></script>
+  <script src="js/script.js?v=14"></script>
+  <script type="module" src="js/dokdo3d.js?v=1"></script>
 </body>
 
 </html>
