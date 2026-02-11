@@ -599,31 +599,37 @@ function setupHorizontalTimeline() {
 
 function updateSlideContent(slides, progress, n) {
   var divisions = n - 1 || 1;
+  var segLen = 1 / divisions;
+  var halfSeg = segLen / 2;
+  var fadeWidth = segLen * 0.15;
+
   for (var i = 0; i < n; i++) {
-    var segStart = i / divisions;
-    var segEnd = (i + 1) / divisions;
-    if (i === n - 1) segEnd = 1.01;
-    var segLen = segEnd - segStart;
+    // Center each slide's visible range on its snap point i/(n-1)
+    var center = i / divisions;
+    var lo = center - halfSeg;
+    var hi = center + halfSeg;
 
-    var fadeInEnd    = segStart + segLen * 0.15;
-    var holdEnd      = segStart + segLen * 0.85;
+    if (progress <= lo || progress >= hi) {
+      hideSlideContent(slides[i]);
+      continue;
+    }
 
-    if (progress >= segStart && progress < fadeInEnd) {
+    var fadeInEnd = lo + fadeWidth;
+    var fadeOutStart = hi - fadeWidth;
+
+    if (progress < fadeInEnd) {
       // Entering
-      var t = (progress - segStart) / (fadeInEnd - segStart);
+      var t = Math.max(0, (progress - lo) / fadeWidth);
       t = t * t * (3 - 2 * t); // smoothstep
       showSlideContent(slides[i], t);
-    } else if (progress >= fadeInEnd && progress < holdEnd) {
+    } else if (progress > fadeOutStart) {
+      // Exiting
+      var t2 = Math.max(0, (hi - progress) / fadeWidth);
+      t2 = t2 * t2 * (3 - 2 * t2);
+      showSlideContent(slides[i], t2);
+    } else {
       // Holding
       showSlideContent(slides[i], 1);
-    } else if (progress >= holdEnd && progress < segEnd) {
-      // Exiting
-      var t2 = (progress - holdEnd) / (segEnd - holdEnd);
-      t2 = t2 * t2 * (3 - 2 * t2);
-      showSlideContent(slides[i], 1 - t2);
-    } else {
-      // Hidden
-      hideSlideContent(slides[i]);
     }
   }
 }
