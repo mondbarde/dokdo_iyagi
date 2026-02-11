@@ -136,6 +136,8 @@ body.lang-ko .hero__title {
 }
 
 body.lang-ja {
+  --font-body: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: 'Playfair Display', 'Noto Sans JP', serif;
   font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
@@ -170,6 +172,11 @@ body.lang-ja .hero__title {
   font-weight: 700;
   font-size: 1.1rem;
   color: var(--color-ink);
+  border-bottom: none;
+}
+.nav__logo:hover {
+  color: var(--color-ink);
+  border-bottom: none;
 }
 
 /* Language Toggle */
@@ -978,6 +985,8 @@ body.lang-ja .hero__title {
 }
 
 .tl-slide__image img {
+  display: block;
+  margin: 0 auto;
   max-width: 100%;
   max-height: 160px;
   border: 1px solid var(--color-worn);
