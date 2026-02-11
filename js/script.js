@@ -16,6 +16,9 @@ document.addEventListener('DOMContentLoaded', () => {
   initTimelineAnimations(prefersReducedMotion);
   initConclusionAnimations();
 
+  // --- Lightbox for timeline images (always active) ---
+  initLightbox();
+
   if (prefersReducedMotion) {
     // Make all non-pinned content visible without entrance animations
     gsap.set('.fade-up, .claim-card, .law__principle, .fact-card, .fact-card--overlay', {
@@ -908,4 +911,55 @@ function initFadeUpBatch() {
     start: 'top 85%',
     once: true
   });
+}
+
+/* ========================================
+   Lightbox for Timeline Images
+   ======================================== */
+
+function initLightbox() {
+  // Create lightbox overlay (once)
+  var overlay = document.createElement('div');
+  overlay.className = 'lightbox';
+  overlay.innerHTML =
+    '<div class="lightbox__backdrop"></div>' +
+    '<div class="lightbox__content">' +
+      '<button class="lightbox__close" aria-label="Close">&times;</button>' +
+      '<img class="lightbox__img" src="" alt="" />' +
+      '<div class="lightbox__info">' +
+        '<span class="lightbox__caption"></span>' +
+        '<span class="lightbox__credit"></span>' +
+      '</div>' +
+    '</div>';
+  document.body.appendChild(overlay);
+
+  var lbImg = overlay.querySelector('.lightbox__img');
+  var caption = overlay.querySelector('.lightbox__caption');
+  var credit = overlay.querySelector('.lightbox__credit');
+  var closeBtn = overlay.querySelector('.lightbox__close');
+  var backdrop = overlay.querySelector('.lightbox__backdrop');
+
+  function close() {
+    overlay.classList.remove('lightbox--open');
+    document.body.style.overflow = '';
+  }
+
+  closeBtn.addEventListener('click', function (e) { e.stopPropagation(); close(); });
+  backdrop.addEventListener('click', close);
+  overlay.addEventListener('click', function (e) {
+    if (e.target === overlay) close();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && overlay.classList.contains('lightbox--open')) close();
+  });
+
+  // Expose globally — called via onclick="window._openLightbox(this)" in image HTML
+  window._openLightbox = function (el) {
+    lbImg.src = el.getAttribute('data-lightbox') || el.src;
+    lbImg.alt = el.alt || '';
+    caption.textContent = el.getAttribute('data-lightbox-caption') || '';
+    credit.textContent = el.getAttribute('data-lightbox-credit') || '';
+    overlay.classList.add('lightbox--open');
+    document.body.style.overflow = 'hidden';
+  };
 }

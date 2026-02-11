@@ -75,7 +75,7 @@ const translations = {
             title: '우산국의 범위에 대한 의문',
             text: '우산국이 울릉도만을 지칭하는지, 독도까지 포함하는지 역사적으로 불분명. 6세기 기록만으로 독도 영유권을 주장하기 어려움.'
           },
-          image: null
+          image: { url: 'assets/images/three_kingdom.jpeg', alt: '삼국사기 신라본기', caption: '삼국사기 신라본기 — 우산국 복속 기록', credit: '연세대학교 소장' }
         },
         {
           date: '1145년', year: 1145, side: 'korea', era: 'ancient',
@@ -101,7 +101,11 @@ const translations = {
             title: '지리적 기술의 불일치',
             text: '"맑은 날 서로 보인다"는 기술이 울릉도에서 독도까지의 실제 거리(약 87km)와 가시성 조건에 맞지 않음. 우산도가 울릉도 부속 섬일 가능성.'
           },
-          image: { url: 'https://upload.wikimedia.org/wikipedia/commons/6/63/Veritable_Records_of_Sejong_Cover.jpg', alt: '세종실록', caption: '세종실록 표지', credit: 'Wikimedia Commons, Public Domain' }
+          images: [
+            { url: 'assets/images/sejong_jiriji.jpeg', alt: '세종실록지리지', caption: '세종실록지리지 원문' },
+            { url: 'assets/images/dokdo_from_uleung01.png', alt: '울릉도에서 본 독도', caption: '울릉도에서 바라본 독도' },
+            { url: 'assets/images/dokdo_from_uleung02.png', alt: '울릉도에서 본 독도', caption: '울릉도에서 바라본 독도 (새벽)' }
+          ]
         },
         {
           date: '1531년', year: 1531, side: 'korea', era: 'ancient',
@@ -114,7 +118,10 @@ const translations = {
             title: '지도상 위치의 오류',
             text: '팔도총도에서 우산도가 울릉도의 서쪽(한반도 쪽)에 그려져 있어, 동남쪽에 위치한 독도와 일치하지 않음. 우산도가 독도인지 의문.'
           },
-          image: { url: 'https://upload.wikimedia.org/wikipedia/commons/a/a1/Ulleungdo_and_Usando.jpg', alt: '팔도총도', caption: '팔도총도 - 울릉도와 우산도 (1530)', credit: 'Wikimedia Commons, Public Domain' }
+          images: [
+            { url: 'assets/images/new_dongguk_yeoji.jpeg', alt: '신증동국여지승람', caption: '신증동국여지승람 원문' },
+            { url: 'https://upload.wikimedia.org/wikipedia/commons/a/a1/Ulleungdo_and_Usando.jpg', alt: '팔도총도', caption: '팔도총도 - 울릉도와 우산도 (1530)', credit: 'Wikimedia Commons, Public Domain' }
+          ]
         },
         {
           date: '1618년', year: 1618, side: 'japan', era: 'edo',
@@ -127,7 +134,9 @@ const translations = {
             title: '17세기 영유 활동의 근거',
             text: '에도 막부가 오야·무라카와 가문에 도해면허를 발급, 울릉도(다케시마) 및 마쓰시마(독도)를 경유지이자 어업 근거지로 활용. 17세기부터의 실효적 이용.'
           },
-          image: null
+          images: [
+            { url: 'assets/images/oya_murakawa.png', alt: '오야·무라카와 도해면허', caption: '오야·무라카와 도해면허 원문' }
+          ]
         },
         {
           date: '1667년', year: 1667, side: 'japan', era: 'edo',
@@ -153,7 +162,10 @@ const translations = {
             title: '안용복 진술의 신빙성 문제',
             text: '안용복의 도일 경위와 일본 측과의 교섭 내용은 과장이 많으며, 조선 측 기록과 일본 측 기록이 상충. 공식 외교 문서로서의 가치가 낮음.'
           },
-          image: { url: 'https://upload.wikimedia.org/wikipedia/commons/f/fc/Old_Map_of_Liancourt_Rocks.jpg', alt: '17세기 울릉도·독도 항로도', caption: '오키 제도에서 울릉도·독도 항로를 보여주는 17세기 일본 지도', credit: 'Wikimedia Commons, Public Domain' }
+          images: [
+            { url: 'assets/images/bakufu-published-document.png', alt: '막부 공문서', caption: '울릉도쟁계 관련 막부 공문서' },
+            { url: 'https://upload.wikimedia.org/wikipedia/commons/f/fc/Old_Map_of_Liancourt_Rocks.jpg', alt: '17세기 울릉도·독도 항로도', caption: '오키 제도에서 울릉도·독도 항로를 보여주는 17세기 일본 지도', credit: 'Wikimedia Commons, Public Domain' }
+          ]
         },
         {
           date: '1696년', year: 1696, side: 'both', era: 'edo',
@@ -166,7 +178,9 @@ const translations = {
             title: '울릉도에 한정된 금지',
             text: '도해금지령은 다케시마(울릉도)에 대한 것이며, 마쓰시마(독도)에 대한 도해는 금지하지 않음. 독도에 대한 일본의 영유 의사는 유지됨.'
           },
-          image: null
+          images: [
+            { url: 'assets/images/toukai_kinshirei.png', alt: '울릉도 도해금지령', caption: '울릉도 도해금지령 원문' }
+          ]
         },
         {
           date: '1770년', year: 1770, side: 'korea', era: 'edo',
@@ -179,7 +193,9 @@ const translations = {
             title: '후대 주석의 정확성 의문',
             text: '동국문헌비고의 해당 기술은 편찬자의 주석이며, 원래 자료에 근거한 것인지 불분명. 후대의 해석이 역사적 사실을 입증하기 어려움.'
           },
-          image: null
+          images: [
+            { url: 'assets/images/dongguk_munheon_bigo.jpeg', alt: '동국문헌비고', caption: '동국문헌비고 원문' }
+          ]
         },
         {
           date: '1877년', year: 1877, side: 'both', era: 'imperial',
@@ -192,7 +208,10 @@ const translations = {
             title: '"외 1도"의 해석 문제',
             text: '태정관 문서의 "그 외 1도"가 현재의 독도(다케시마)를 지칭하는지, 당시 지명 혼란(다케시마/마쓰시마의 혼용) 속에서 다른 섬일 가능성도 있음.'
           },
-          image: null
+          images: [
+            { url: 'assets/images/view0503_img01_b.jpg', alt: '태정관지령 문서', caption: '태정관지령 원문' },
+            { url: 'assets/images/view0503_img02_b (1).jpg', alt: '태정관지령 첨부 문서', caption: '태정관지령 첨부 문서' }
+          ]
         },
         {
           date: '1900년', year: 1900, side: 'korea', era: 'imperial',
@@ -218,7 +237,9 @@ const translations = {
             title: '국제법상 합법적 편입',
             text: '일본 각의 결정으로 무주지(terra nullius)인 다케시마를 국제법 원칙에 따라 합법적으로 시마네현에 편입. 한반도 병합(1910)과는 별개의 독립적 조치.'
           },
-          image: null
+          images: [
+            { url: 'assets/images/takeshima01-0310.jpg', alt: '시마네현 고시 제40호', caption: '시마네현 고시 제40호 (1905)' }
+          ]
         },
         {
           date: '1906년', year: 1906, side: 'korea', era: 'imperial',
@@ -231,7 +252,9 @@ const translations = {
             title: '실효적 대응 부재',
             text: '대한제국의 항의는 이미 외교권을 상실한 상태에서의 형식적 반응이며, 편입에 대한 구체적인 법적 이의 제기나 국제적 항의는 이루어지지 않음.'
           },
-          image: null
+          images: [
+            { url: 'assets/images/daehanilbo-article.jpg', alt: '대한일보 기사', caption: '심흥택 보고 관련 대한일보 기사' }
+          ]
         },
         {
           date: '1945년', year: 1945, side: 'both', era: 'modern',
@@ -244,7 +267,9 @@ const translations = {
             title: '전후 영토 처리의 시작',
             text: '포츠담 선언에 따라 일본의 주권은 본토 4도와 연합국이 결정하는 도서로 한정. 다케시마의 최종 귀속은 강화조약에서 결정될 사안.'
           },
-          image: null
+          images: [
+            { url: 'assets/images/58365_201801251132046430.png', alt: '포츠담 선언 수락 칙령', caption: '포츠담 선언 수락에 따라 발하는 명령에 관한 건 (1945년 칙령 제542호)' }
+          ]
         },
         {
           date: '1946년', year: 1946, side: 'both', era: 'modern',
@@ -296,7 +321,9 @@ const translations = {
             title: '무력 점거의 증거',
             text: '한국 민간인의 무장 주둔은 평화적 영토 관리가 아닌 무력에 의한 점거. 일본 어민과 해상보안청 순시선에 대한 발포 사건도 발생.'
           },
-          image: null
+          images: [
+            { url: 'assets/images/K0000002_0091000001200503030304_31_1[W680-].jpg', alt: '독도의용수비대', caption: '독도의용수비대 단체 사진' }
+          ]
         },
         {
           date: '1954년', year: 1954, side: 'japan', era: 'modern',
@@ -309,7 +336,10 @@ const translations = {
             title: '국제법적 평화적 해결',
             text: '일본은 독도 문제를 국제사법재판소(ICJ)에 회부하여 국제법에 따른 평화적 해결을 추구. 한국의 거부는 법적 근거에 대한 자신감 부족을 시사.'
           },
-          image: null
+          images: [
+            { url: 'assets/images/icj01_01.png', alt: 'ICJ 제소 제안 문서 1', caption: '1차 ICJ 제소 제안 문서' },
+            { url: 'assets/images/icj01_02.png', alt: 'ICJ 제소 제안 문서 2', caption: '1차 ICJ 제소 제안 문서 (2)' }
+          ]
         },
         {
           date: '1965년', year: 1965, side: 'both', era: 'modern',
@@ -322,7 +352,9 @@ const translations = {
             title: '미해결 상태로 유보',
             text: '국교 정상화를 위해 독도 문제를 미해결 상태로 남겨두기로 합의. "분쟁은 외교로 해결"이라는 포괄 조항에 포함.'
           },
-          image: null
+          images: [
+            { url: 'assets/images/A_copy_of_Treaty_on_Basic_Relations_between_Japan_and_the_Republic_of_Korea.jpg', alt: '한일기본조약', caption: '한일기본조약 원본' }
+          ]
         },
         {
           date: '2005년', year: 2005, side: 'japan', era: 'contemporary',
@@ -335,7 +367,9 @@ const translations = {
             title: '영유권 주장의 표현',
             text: '1905년 각의 결정에 의한 시마네현 편입 100주년을 기념하여 2월 22일을 "다케시마의 날"로 제정. 일본의 정당한 영유권 주장의 평화적 표현.'
           },
-          image: null
+          images: [
+            { url: 'assets/images/takeshima_day.png', alt: '다케시마의 날', caption: '다케시마의 날 제정 관련 자료' }
+          ]
         },
         {
           date: '2012년', year: 2012, side: 'both', era: 'contemporary',
@@ -348,7 +382,9 @@ const translations = {
             title: 'ICJ를 통한 해결 재촉구',
             text: '한국 대통령의 독도 방문을 도발로 규정. 일본은 3차 ICJ 제소를 제안하여 국제법적 해결을 다시 촉구했으나 한국이 거부. 한일 관계 크게 경색.'
           },
-          image: null
+          images: [
+            { url: 'assets/images/20130222102054.jpeg', alt: '이명박 대통령 독도 방문', caption: '이명박 대통령 독도 방문 (2012)' }
+          ]
         }
       ]
     },
@@ -548,7 +584,7 @@ const translations = {
             title: 'Scope of Usan-guk unclear',
             text: 'Whether Usan-guk referred only to Ulleungdo or also included Dokdo is historically uncertain. A 6th-century record alone is insufficient to claim sovereignty over Dokdo.'
           },
-          image: null
+          image: { url: 'assets/images/three_kingdom.jpeg', alt: 'Samguk Sagi, Silla Bongi', caption: 'Samguk Sagi, Silla Bongi — Record of Usan-guk subjugation', credit: 'Yonsei University Collection' }
         },
         {
           date: '1145', year: 1145, side: 'korea', era: 'ancient',
@@ -574,7 +610,11 @@ const translations = {
             title: 'Geographic description mismatch',
             text: 'The claim that the islands "can be seen from each other on clear days" is inconsistent with the actual distance between Ulleungdo and Dokdo (~87km). Usando may refer to a nearby islet of Ulleungdo.'
           },
-          image: { url: 'https://upload.wikimedia.org/wikipedia/commons/6/63/Veritable_Records_of_Sejong_Cover.jpg', alt: 'Sejong Sillok', caption: 'Cover of the Veritable Records of King Sejong', credit: 'Wikimedia Commons, Public Domain' }
+          images: [
+            { url: 'assets/images/sejong_jiriji.jpeg', alt: 'Sejong Sillok Jiriji', caption: 'Original text of Sejong Sillok Jiriji' },
+            { url: 'assets/images/dokdo_from_uleung01.png', alt: 'Dokdo seen from Ulleungdo', caption: 'Dokdo as seen from Ulleungdo' },
+            { url: 'assets/images/dokdo_from_uleung02.png', alt: 'Dokdo seen from Ulleungdo', caption: 'Dokdo seen from Ulleungdo (dawn)' }
+          ]
         },
         {
           date: '1531', year: 1531, side: 'korea', era: 'ancient',
@@ -587,7 +627,10 @@ const translations = {
             title: 'Map placement error',
             text: 'In the Paldo Chongdo map, Usando is drawn west of Ulleungdo (toward the Korean peninsula), inconsistent with Dokdo\'s actual position to the southeast. The identification of Usando as Dokdo is questionable.'
           },
-          image: { url: 'https://upload.wikimedia.org/wikipedia/commons/a/a1/Ulleungdo_and_Usando.jpg', alt: 'Paldo Chongdo map', caption: 'Map of the Eight Provinces showing Ulleungdo and Usando (1530)', credit: 'Wikimedia Commons, Public Domain' }
+          images: [
+            { url: 'assets/images/new_dongguk_yeoji.jpeg', alt: 'Sinjeung Dongguk Yeoji Seungnam', caption: 'Original text of Sinjeung Dongguk Yeoji Seungnam' },
+            { url: 'https://upload.wikimedia.org/wikipedia/commons/a/a1/Ulleungdo_and_Usando.jpg', alt: 'Paldo Chongdo map', caption: 'Map of the Eight Provinces showing Ulleungdo and Usando (1530)', credit: 'Wikimedia Commons, Public Domain' }
+          ]
         },
         {
           date: '1618', year: 1618, side: 'japan', era: 'edo',
@@ -600,7 +643,9 @@ const translations = {
             title: '17th-century territorial activity',
             text: 'The Edo Shogunate granted the Oya and Murakawa families licenses to sail to Ulleungdo (Takeshima) and Matsushima (Dokdo), using them as fishing bases. Evidence of effective utilization since the 17th century.'
           },
-          image: null
+          images: [
+            { url: 'assets/images/oya_murakawa.png', alt: 'Oya-Murakawa Passage License', caption: 'Original Oya-Murakawa passage license document' }
+          ]
         },
         {
           date: '1667', year: 1667, side: 'japan', era: 'edo',
@@ -626,7 +671,10 @@ const translations = {
             title: 'Unreliable testimony',
             text: 'An Yong-bok\'s accounts of his journey and Japanese negotiations are exaggerated and inconsistent with Japanese records. His testimony lacks credibility as official diplomatic documentation.'
           },
-          image: { url: 'https://upload.wikimedia.org/wikipedia/commons/f/fc/Old_Map_of_Liancourt_Rocks.jpg', alt: '17th century route map', caption: '17th century Japanese map showing the route from Oki Islands to Ulleungdo and Dokdo', credit: 'Wikimedia Commons, Public Domain' }
+          images: [
+            { url: 'assets/images/bakufu-published-document.png', alt: 'Bakufu official document', caption: 'Bakufu document related to the Ulleungdo Dispute' },
+            { url: 'https://upload.wikimedia.org/wikipedia/commons/f/fc/Old_Map_of_Liancourt_Rocks.jpg', alt: '17th century route map', caption: '17th century Japanese map showing the route from Oki Islands to Ulleungdo and Dokdo', credit: 'Wikimedia Commons, Public Domain' }
+          ]
         },
         {
           date: '1696', year: 1696, side: 'both', era: 'edo',
@@ -639,7 +687,9 @@ const translations = {
             title: 'Ban limited to Ulleungdo only',
             text: 'The passage ban applied to Takeshima (Ulleungdo), not Matsushima (Dokdo). Japan\'s claim to Dokdo was maintained, as no prohibition was placed on travel to the islets.'
           },
-          image: null
+          images: [
+            { url: 'assets/images/toukai_kinshirei.png', alt: 'Ulleungdo Passage Ban', caption: 'Original Ulleungdo passage ban document' }
+          ]
         },
         {
           date: '1770', year: 1770, side: 'korea', era: 'edo',
@@ -652,7 +702,9 @@ const translations = {
             title: 'Questionable later annotation',
             text: 'This statement is a compiler\'s annotation, not from original source material. Whether this later interpretation accurately reflects historical fact is debatable.'
           },
-          image: null
+          images: [
+            { url: 'assets/images/dongguk_munheon_bigo.jpeg', alt: 'Dongguk Munheon Bigo', caption: 'Original text of Dongguk Munheon Bigo' }
+          ]
         },
         {
           date: '1877', year: 1877, side: 'both', era: 'imperial',
@@ -665,7 +717,10 @@ const translations = {
             title: 'Identity of "one other island" disputed',
             text: 'Whether "one other island" in the Dajokan document refers to present-day Dokdo (Takeshima) is uncertain. Name confusion between Takeshima and Matsushima at the time may mean a different island was intended.'
           },
-          image: null
+          images: [
+            { url: 'assets/images/view0503_img01_b.jpg', alt: 'Dajokan Order document', caption: 'Original Dajokan Order' },
+            { url: 'assets/images/view0503_img02_b (1).jpg', alt: 'Dajokan Order attachment', caption: 'Dajokan Order attached document' }
+          ]
         },
         {
           date: '1900', year: 1900, side: 'korea', era: 'imperial',
@@ -691,7 +746,9 @@ const translations = {
             title: 'Legitimate incorporation under international law',
             text: 'Japan incorporated terra nullius Takeshima into Shimane Prefecture by Cabinet decision, following international law principles. This was independent of and separate from the 1910 annexation of Korea.'
           },
-          image: null
+          images: [
+            { url: 'assets/images/takeshima01-0310.jpg', alt: 'Shimane Prefecture Notice No. 40', caption: 'Shimane Prefecture Notice No. 40 (1905)' }
+          ]
         },
         {
           date: '1906', year: 1906, side: 'korea', era: 'imperial',
@@ -704,7 +761,9 @@ const translations = {
             title: 'No effective response',
             text: 'The Korean Empire\'s protest was a formality from a state that had already lost diplomatic rights. No concrete legal challenge or international objection was raised against the incorporation.'
           },
-          image: null
+          images: [
+            { url: 'assets/images/daehanilbo-article.jpg', alt: 'Daehan Ilbo article', caption: 'Daehan Ilbo article on Sim Heung-taek\'s report' }
+          ]
         },
         {
           date: '1945', year: 1945, side: 'both', era: 'modern',
@@ -717,7 +776,9 @@ const translations = {
             title: 'Start of post-war territorial settlement',
             text: 'Under the Potsdam Declaration, Japanese sovereignty was limited to the four main islands and such islands as the Allies determined. Takeshima\'s final disposition was to be decided by the peace treaty.'
           },
-          image: null
+          images: [
+            { url: 'assets/images/58365_201801251132046430.png', alt: 'Potsdam Declaration Imperial Edict', caption: 'Imperial Edict No. 542 on Orders under the Potsdam Declaration (1945)' }
+          ]
         },
         {
           date: '1946', year: 1946, side: 'both', era: 'modern',
@@ -769,7 +830,9 @@ const translations = {
             title: 'Evidence of forceful occupation',
             text: 'The armed stationing of Korean civilians was not peaceful territorial management but forceful occupation. Firing incidents against Japanese fishermen and maritime patrol vessels occurred.'
           },
-          image: null
+          images: [
+            { url: 'assets/images/K0000002_0091000001200503030304_31_1[W680-].jpg', alt: 'Dokdo Volunteer Guards', caption: 'Dokdo Volunteer Guards group photo' }
+          ]
         },
         {
           date: '1954', year: 1954, side: 'japan', era: 'modern',
@@ -782,7 +845,10 @@ const translations = {
             title: 'Seeking peaceful legal resolution',
             text: 'Japan proposed referring the dispute to the International Court of Justice for peaceful resolution under international law. Korea\'s rejection suggests a lack of confidence in its legal position.'
           },
-          image: null
+          images: [
+            { url: 'assets/images/icj01_01.png', alt: 'ICJ referral proposal document 1', caption: '1st ICJ referral proposal document' },
+            { url: 'assets/images/icj01_02.png', alt: 'ICJ referral proposal document 2', caption: '1st ICJ referral proposal document (2)' }
+          ]
         },
         {
           date: '1965', year: 1965, side: 'both', era: 'modern',
@@ -795,7 +861,9 @@ const translations = {
             title: 'Left unresolved by agreement',
             text: 'To achieve diplomatic normalization, both sides agreed to leave the Dokdo issue unresolved. It falls under the general clause that "disputes shall be settled through diplomacy."'
           },
-          image: null
+          images: [
+            { url: 'assets/images/A_copy_of_Treaty_on_Basic_Relations_between_Japan_and_the_Republic_of_Korea.jpg', alt: 'Treaty on Basic Relations', caption: 'Original copy of the Treaty on Basic Relations between Japan and the Republic of Korea' }
+          ]
         },
         {
           date: '2005', year: 2005, side: 'japan', era: 'contemporary',
@@ -808,7 +876,9 @@ const translations = {
             title: 'Peaceful expression of territorial claim',
             text: 'February 22 was designated "Takeshima Day" to commemorate the 100th anniversary of the 1905 Cabinet decision incorporating Takeshima into Shimane Prefecture. A peaceful expression of Japan\'s legitimate sovereignty claim.'
           },
-          image: null
+          images: [
+            { url: 'assets/images/takeshima_day.png', alt: 'Takeshima Day', caption: 'Materials related to Takeshima Day designation' }
+          ]
         },
         {
           date: '2012', year: 2012, side: 'both', era: 'contemporary',
@@ -821,7 +891,9 @@ const translations = {
             title: 'Renewed call for ICJ resolution',
             text: 'Japan characterized the presidential visit as a provocation and proposed a third ICJ referral seeking international legal resolution. Korea again rejected. Korea-Japan relations deteriorated significantly.'
           },
-          image: null
+          images: [
+            { url: 'assets/images/20130222102054.jpeg', alt: 'President Lee Myung-bak visits Dokdo', caption: 'President Lee Myung-bak\'s visit to Dokdo (2012)' }
+          ]
         }
       ]
     },
@@ -1057,9 +1129,26 @@ function renderTimeline(lang) {
     }
 
     var imageHtml = '';
-    if (evt.image && evt.image.url) {
+    if (evt.images && evt.images.length) {
+      imageHtml = '<div class="tl-slide__image tl-slide__image--gallery">'
+        + evt.images.map(function(img) {
+          return '<figure class="tl-slide__gallery-item">'
+            + '<img src="' + img.url + '" alt="' + (img.alt || '') + '" loading="lazy"'
+            + ' data-lightbox="' + img.url + '"'
+            + ' data-lightbox-caption="' + (img.caption || '') + '"'
+            + ' data-lightbox-credit="' + (img.credit || '') + '"'
+            + ' onclick="window._openLightbox(this)" />'
+            + '<figcaption class="tl-slide__image-caption">' + (img.caption || '') + '</figcaption>'
+            + '</figure>';
+        }).join('')
+        + '</div>';
+    } else if (evt.image && evt.image.url) {
       imageHtml = '<div class="tl-slide__image">'
-        + '<img src="' + evt.image.url + '" alt="' + (evt.image.alt || '') + '" loading="lazy" />'
+        + '<img src="' + evt.image.url + '" alt="' + (evt.image.alt || '') + '" loading="lazy"'
+        + ' data-lightbox="' + evt.image.url + '"'
+        + ' data-lightbox-caption="' + (evt.image.caption || '') + '"'
+        + ' data-lightbox-credit="' + (evt.image.credit || '') + '"'
+        + ' onclick="window._openLightbox(this)" />'
         + '<span class="tl-slide__image-caption">' + (evt.image.caption || '') + '</span>'
         + '</div>';
     } else {
