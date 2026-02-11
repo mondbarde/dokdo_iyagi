@@ -1,6 +1,6 @@
 /* ===================================
    독도 이야기 - Internationalization
-   Korean / English bilingual support
+   Korean / English / Japanese trilingual support
    =================================== */
 
 const translations = {
@@ -514,10 +514,10 @@ const translations = {
   },
 
   en: {
-    nav: { title: 'Dokdo Iyagi' },
+    nav: { title: 'Liancourt Rocks' },
     hero: {
-      title: 'Dokdo',
-      subtitle: 'The Beautiful Islands of Korea\'s East Sea — A Journey Through History',
+      title: 'Liancourt Rocks',
+      subtitle: 'The Disputed Islands of the East Sea — A Journey Through History',
       scroll: 'Scroll to explore'
     },
     geo: {
@@ -526,7 +526,7 @@ const translations = {
         korea: 'South Korea',
         japan: 'Japan',
         ulleungdo: 'Ulleungdo',
-        dokdo: 'Dokdo',
+        dokdo: 'Liancourt Rocks',
         oki: 'Oki Islands',
         sea: 'East Sea / Sea of Japan'
       },
@@ -544,7 +544,7 @@ const translations = {
       },
       fact4: {
         title: 'Marine Ecosystem',
-        text: 'Located where warm and cold ocean currents converge, Dokdo hosts rare seabirds (black-tailed gulls, swinhoe\'s storm petrels) and diverse marine life. Designated Natural Monument No. 336.'
+        text: 'Located where warm and cold ocean currents converge, Liancourt Rocks hosts rare seabirds (black-tailed gulls, swinhoe\'s storm petrels) and diverse marine life. Designated Natural Monument No. 336.'
       },
       fact5: {
         title: 'Climate',
@@ -552,20 +552,20 @@ const translations = {
       },
       fact6: {
         title: 'Undersea Terrain',
-        text: 'Dokdo is the summit of a massive seamount rising from the East Sea floor at approximately 2,000m depth. Only a tiny fraction of the overall volcanic structure is visible above sea level.'
+        text: 'Liancourt Rocks is the summit of a massive seamount rising from the East Sea (Sea of Japan) floor at approximately 2,000m depth. Only a tiny fraction of the overall volcanic structure is visible above sea level.'
       },
       fact7: {
         title: 'Current Status',
-        text: 'Approximately 40 Korean coast guard police are permanently stationed on Dokdo. Facilities include a lighthouse, dock, and helipad. A civilian resident has lived on the island since 1991.'
+        text: 'Approximately 40 Korean coast guard police are permanently stationed on Liancourt Rocks. Facilities include a lighthouse, dock, and helipad. A civilian resident has lived on the island since 1991.'
       },
       fact8: {
         title: 'Multiple Names',
-        text: 'Dokdo (Korea), Takeshima/\u7AF9\u5CF6 (Japan), Liancourt Rocks (international). The name "Liancourt" comes from the French whaling ship that spotted the rocks in 1849.'
+        text: 'Known internationally as the Liancourt Rocks; called Dokdo (\uB3C5\uB3C4) in Korea and Takeshima (\u7AF9\u5CF6) in Japan. The name "Liancourt" comes from the French whaling ship that spotted the rocks in 1849.'
       }
     },
     timeline: {
       title: 'Historical Timeline',
-      coverSubtitle: 'A chronological look at historical records and perspectives from Korea and Japan regarding Dokdo.',
+      coverSubtitle: 'A chronological look at historical records and perspectives from Korea and Japan regarding Liancourt Rocks.',
       scrollHint: 'Scroll to explore',
       legendKorea: 'Korean Side',
       legendJapan: 'Japanese Side',
@@ -578,11 +578,11 @@ const translations = {
           title: 'Subjugation of Usan-guk',
           koreaView: {
             title: 'Historical origin of sovereignty',
-            text: 'Under King Jijeung of Silla, General Isabu subjugated Usan-guk (including Ulleungdo and Usando). Recorded in the Samguk Sagi. Dokdo was part of Usan-guk, marking the start of Korean sovereignty.'
+            text: 'Under King Jijeung of Silla, General Isabu subjugated Usan-guk (including Ulleungdo and Usando). Recorded in the Samguk Sagi. Liancourt Rocks was part of Usan-guk, marking the start of Korean sovereignty.'
           },
           japanView: {
             title: 'Scope of Usan-guk unclear',
-            text: 'Whether Usan-guk referred only to Ulleungdo or also included Dokdo is historically uncertain. A 6th-century record alone is insufficient to claim sovereignty over Dokdo.'
+            text: 'Whether Usan-guk referred only to Ulleungdo or also included Liancourt Rocks is historically uncertain. A 6th-century record alone is insufficient to claim sovereignty over Liancourt Rocks.'
           },
           image: { url: 'assets/images/three_kingdom.jpeg', alt: 'Samguk Sagi, Silla Bongi', caption: 'Samguk Sagi, Silla Bongi — Record of Usan-guk subjugation', credit: 'Yonsei University Collection' }
         },
@@ -591,11 +591,11 @@ const translations = {
           title: 'Samguk Sagi Compilation',
           koreaView: {
             title: 'Official historical record',
-            text: 'The Samguk Sagi, compiled by Kim Busik, officially records the subjugation of Usan-guk in 512 AD. A key document Korea presents as the historical basis of its Dokdo sovereignty.'
+            text: 'The Samguk Sagi, compiled by Kim Busik, officially records the subjugation of Usan-guk in 512 AD. A key document Korea presents as the historical basis of its Liancourt Rocks sovereignty.'
           },
           japanView: {
-            title: 'No direct link to Dokdo',
-            text: 'The Samguk Sagi\'s Usan-guk records contain no specific mention of Dokdo (Takeshima). Records of Ulleungdo\'s subjugation cannot serve as grounds for Dokdo sovereignty.'
+            title: 'No direct link to Liancourt Rocks',
+            text: 'The Samguk Sagi\'s Usan-guk records contain no specific mention of Liancourt Rocks (Takeshima). Records of Ulleungdo\'s subjugation cannot serve as grounds for Liancourt Rocks sovereignty.'
           },
           image: { url: 'https://upload.wikimedia.org/wikipedia/commons/d/de/Samguk.JPG', alt: 'Samguk Sagi', caption: 'Original Samguk Sagi manuscript', credit: 'Wikimedia Commons, Public Domain' }
         },
@@ -604,16 +604,16 @@ const translations = {
           title: 'Sejong Sillok Jiriji',
           koreaView: {
             title: 'Confirmation of two islands',
-            text: '"The two islands of Usan and Mureung are in the sea east of the county. On clear days, they can be seen from each other." Clear evidence that Usando (Dokdo) was recognized as Korean territory.'
+            text: '"The two islands of Usan and Mureung are in the sea east of the county. On clear days, they can be seen from each other." Clear evidence that Usando (Liancourt Rocks) was recognized as Korean territory.'
           },
           japanView: {
             title: 'Geographic description mismatch',
-            text: 'The claim that the islands "can be seen from each other on clear days" is inconsistent with the actual distance between Ulleungdo and Dokdo (~87km). Usando may refer to a nearby islet of Ulleungdo.'
+            text: 'The claim that the islands "can be seen from each other on clear days" is inconsistent with the actual distance between Ulleungdo and Liancourt Rocks (~87km). Usando may refer to a nearby islet of Ulleungdo.'
           },
           images: [
             { url: 'assets/images/sejong_jiriji.jpeg', alt: 'Sejong Sillok Jiriji', caption: 'Original text of Sejong Sillok Jiriji' },
-            { url: 'assets/images/dokdo_from_uleung01.png', alt: 'Dokdo seen from Ulleungdo', caption: 'Dokdo as seen from Ulleungdo' },
-            { url: 'assets/images/dokdo_from_uleung02.png', alt: 'Dokdo seen from Ulleungdo', caption: 'Dokdo seen from Ulleungdo (dawn)' }
+            { url: 'assets/images/dokdo_from_uleung01.png', alt: 'Liancourt Rocks seen from Ulleungdo', caption: 'Liancourt Rocks as seen from Ulleungdo' },
+            { url: 'assets/images/dokdo_from_uleung02.png', alt: 'Liancourt Rocks seen from Ulleungdo', caption: 'Liancourt Rocks seen from Ulleungdo (dawn)' }
           ]
         },
         {
@@ -621,11 +621,11 @@ const translations = {
           title: 'Sinjeung Dongguk Yeoji Seungnam',
           koreaView: {
             title: 'Official geographic atlas',
-            text: 'An official Joseon geographic encyclopedia that maps both Usando and Ulleungdo, demonstrating Joseon\'s awareness and administrative control of Dokdo.'
+            text: 'An official Joseon geographic encyclopedia that maps both Usando and Ulleungdo, demonstrating Joseon\'s awareness and administrative control of Liancourt Rocks.'
           },
           japanView: {
             title: 'Map placement error',
-            text: 'In the Paldo Chongdo map, Usando is drawn west of Ulleungdo (toward the Korean peninsula), inconsistent with Dokdo\'s actual position to the southeast. The identification of Usando as Dokdo is questionable.'
+            text: 'In the Paldo Chongdo map, Usando is drawn west of Ulleungdo (toward the Korean peninsula), inconsistent with Liancourt Rocks\'s actual position to the southeast. The identification of Usando as Liancourt Rocks is questionable.'
           },
           images: [
             { url: 'assets/images/new_dongguk_yeoji.jpeg', alt: 'Sinjeung Dongguk Yeoji Seungnam', caption: 'Original text of Sinjeung Dongguk Yeoji Seungnam' },
@@ -641,7 +641,7 @@ const translations = {
           },
           japanView: {
             title: '17th-century territorial activity',
-            text: 'The Edo Shogunate granted the Oya and Murakawa families licenses to sail to Ulleungdo (Takeshima) and Matsushima (Dokdo), using them as fishing bases. Evidence of effective utilization since the 17th century.'
+            text: 'The Edo Shogunate granted the Oya and Murakawa families licenses to sail to Ulleungdo (Takeshima) and Matsushima (Liancourt Rocks), using them as fishing bases. Evidence of effective utilization since the 17th century.'
           },
           images: [
             { url: 'assets/images/oya_murakawa.png', alt: 'Oya-Murakawa Passage License', caption: 'Original Oya-Murakawa passage license document' }
@@ -652,11 +652,11 @@ const translations = {
           title: 'Onshu Shicho Goki',
           koreaView: {
             title: 'Japan\'s own boundary admission',
-            text: 'The statement "the northwest boundary of Japan ends at this province (Oki Islands)" confirms that Ulleungdo and Dokdo lay outside Japanese territory — acknowledged by a Japanese author.'
+            text: 'The statement "the northwest boundary of Japan ends at this province (Oki Islands)" confirms that Ulleungdo and Liancourt Rocks lay outside Japanese territory — acknowledged by a Japanese author.'
           },
           japanView: {
-            title: 'Evidence of Dokdo awareness',
-            text: 'The Onshu Shicho Goki contains detailed descriptions of Matsushima (Dokdo) and Takeshima (Ulleungdo), proving that Japan accurately knew Dokdo\'s existence and location in the 17th century.'
+            title: 'Evidence of Liancourt Rocks awareness',
+            text: 'The Onshu Shicho Goki contains detailed descriptions of Matsushima (Liancourt Rocks) and Takeshima (Ulleungdo), proving that Japan accurately knew Liancourt Rocks\'s existence and location in the 17th century.'
           },
           image: { url: 'https://upload.wikimedia.org/wikipedia/commons/8/8a/Eunju2.jpg', alt: 'Onshu Shicho Goki map', caption: 'Map from the Onshu Shicho Goki (1667)', credit: 'Wikimedia Commons, CC BY-SA 4.0' }
         },
@@ -665,7 +665,7 @@ const translations = {
           title: 'An Yong-bok\'s Visit & Ulleungdo Dispute',
           koreaView: {
             title: 'Diplomatic confirmation of sovereignty',
-            text: 'Korean fisherman An Yong-bok traveled to Japan asserting Joseon sovereignty over Ulleungdo and Dokdo, receiving acknowledgment from Japanese officials. Triggered the Ulleungdo Dispute.'
+            text: 'Korean fisherman An Yong-bok traveled to Japan asserting Joseon sovereignty over Ulleungdo and Liancourt Rocks, receiving acknowledgment from Japanese officials. Triggered the Ulleungdo Dispute.'
           },
           japanView: {
             title: 'Unreliable testimony',
@@ -673,7 +673,7 @@ const translations = {
           },
           images: [
             { url: 'assets/images/bakufu-published-document.png', alt: 'Bakufu official document', caption: 'Bakufu document related to the Ulleungdo Dispute' },
-            { url: 'https://upload.wikimedia.org/wikipedia/commons/f/fc/Old_Map_of_Liancourt_Rocks.jpg', alt: '17th century route map', caption: '17th century Japanese map showing the route from Oki Islands to Ulleungdo and Dokdo', credit: 'Wikimedia Commons, Public Domain' }
+            { url: 'https://upload.wikimedia.org/wikipedia/commons/f/fc/Old_Map_of_Liancourt_Rocks.jpg', alt: '17th century route map', caption: '17th century Japanese map showing the route from Oki Islands to Ulleungdo and Liancourt Rocks', credit: 'Wikimedia Commons, Public Domain' }
           ]
         },
         {
@@ -681,11 +681,11 @@ const translations = {
           title: 'Ulleungdo Passage Ban',
           koreaView: {
             title: 'Japan\'s recognition of Korean sovereignty',
-            text: 'The Tokugawa Shogunate officially banned Japanese fishermen from traveling to Ulleungdo. Decisive evidence that Japan recognized Joseon\'s sovereignty over both Ulleungdo and Dokdo.'
+            text: 'The Tokugawa Shogunate officially banned Japanese fishermen from traveling to Ulleungdo. Decisive evidence that Japan recognized Joseon\'s sovereignty over both Ulleungdo and Liancourt Rocks.'
           },
           japanView: {
             title: 'Ban limited to Ulleungdo only',
-            text: 'The passage ban applied to Takeshima (Ulleungdo), not Matsushima (Dokdo). Japan\'s claim to Dokdo was maintained, as no prohibition was placed on travel to the islets.'
+            text: 'The passage ban applied to Takeshima (Ulleungdo), not Matsushima (Liancourt Rocks). Japan\'s claim to Liancourt Rocks was maintained, as no prohibition was placed on travel to the islets.'
           },
           images: [
             { url: 'assets/images/toukai_kinshirei.png', alt: 'Ulleungdo Passage Ban', caption: 'Original Ulleungdo passage ban document' }
@@ -695,8 +695,8 @@ const translations = {
           date: '1770', year: 1770, side: 'korea', era: 'edo',
           title: 'Dongguk Munheon Bigo',
           koreaView: {
-            title: 'Definitive identification: Usando = Dokdo',
-            text: '"Usan is what the Japanese call Matsushima (松島)." The most direct historical record confirming that Usando refers to Dokdo.'
+            title: 'Definitive identification: Usando = Liancourt Rocks',
+            text: '"Usan is what the Japanese call Matsushima (松島)." The most direct historical record confirming that Usando refers to Liancourt Rocks.'
           },
           japanView: {
             title: 'Questionable later annotation',
@@ -711,11 +711,11 @@ const translations = {
           title: 'Dajokan Order',
           koreaView: {
             title: 'Japan\'s own government confirms exclusion',
-            text: 'Japan\'s highest governmental body officially determined that "Ulleungdo and one other island are not related to Japan." The strongest evidence, from Japan\'s own records, confirming Dokdo is not Japanese territory.'
+            text: 'Japan\'s highest governmental body officially determined that "Ulleungdo and one other island are not related to Japan." The strongest evidence, from Japan\'s own records, confirming Liancourt Rocks is not Japanese territory.'
           },
           japanView: {
             title: 'Identity of "one other island" disputed',
-            text: 'Whether "one other island" in the Dajokan document refers to present-day Dokdo (Takeshima) is uncertain. Name confusion between Takeshima and Matsushima at the time may mean a different island was intended.'
+            text: 'Whether "one other island" in the Dajokan document refers to present-day Liancourt Rocks (Takeshima) is uncertain. Name confusion between Takeshima and Matsushima at the time may mean a different island was intended.'
           },
           images: [
             { url: 'assets/images/view0503_img01_b.jpg', alt: 'Dajokan Order document', caption: 'Original Dajokan Order' },
@@ -727,11 +727,11 @@ const translations = {
           title: 'Korean Imperial Edict No. 41',
           koreaView: {
             title: 'Official administration before 1905',
-            text: 'The Korean Empire established Uldo County with jurisdiction including "Seokdo (石島)." Seokdo is Dokdo\'s name at the time, proving Korean administration before Japan\'s 1905 incorporation.'
+            text: 'The Korean Empire established Uldo County with jurisdiction including "Seokdo (石島)." Seokdo is Liancourt Rocks\'s name at the time, proving Korean administration before Japan\'s 1905 incorporation.'
           },
           japanView: {
-            title: 'Insufficient evidence for "Seokdo = Dokdo"',
-            text: 'There is no direct evidence that "Seokdo" refers to Dokdo. The phonetic and written connection between Seokdo (石島) and Dokdo (獨島) is unclear, and no records show Uldo County actually administered Dokdo.'
+            title: 'Insufficient evidence for "Seokdo = Liancourt Rocks"',
+            text: 'There is no direct evidence that "Seokdo" refers to Liancourt Rocks. The phonetic and written connection between Seokdo (石島) and Liancourt Rocks (獨島) is unclear, and no records show Uldo County actually administered Liancourt Rocks.'
           },
           image: { url: 'https://upload.wikimedia.org/wikipedia/commons/3/3f/Royal_Decree_No.41.jpg', alt: 'Korean Imperial Edict No. 41', caption: 'Original Korean Imperial Edict No. 41 (1900)', credit: 'Wikimedia Commons, Public Domain' }
         },
@@ -740,7 +740,7 @@ const translations = {
           title: 'Shimane Prefecture Incorporation',
           koreaView: {
             title: 'Part of imperial aggression',
-            text: 'The incorporation in January 1905 — just months before the Eulsa Treaty stripped Korea\'s diplomatic rights — was part of Japan\'s imperial aggression. Dokdo was not terra nullius but already Korean territory; this was illegal seizure.'
+            text: 'The incorporation in January 1905 — just months before the Eulsa Treaty stripped Korea\'s diplomatic rights — was part of Japan\'s imperial aggression. Liancourt Rocks was not terra nullius but already Korean territory; this was illegal seizure.'
           },
           japanView: {
             title: 'Legitimate incorporation under international law',
@@ -770,7 +770,7 @@ const translations = {
           title: 'Japan\'s Surrender',
           koreaView: {
             title: 'Return of colonial territories',
-            text: 'Japan\'s unconditional surrender and acceptance of the Potsdam Declaration. The Cairo Declaration (1943) stipulated the return of "all territories taken by violence and greed" — which includes Dokdo.'
+            text: 'Japan\'s unconditional surrender and acceptance of the Potsdam Declaration. The Cairo Declaration (1943) stipulated the return of "all territories taken by violence and greed" — which includes Liancourt Rocks.'
           },
           japanView: {
             title: 'Start of post-war territorial settlement',
@@ -784,8 +784,8 @@ const translations = {
           date: '1946', year: 1946, side: 'both', era: 'modern',
           title: 'SCAPIN 677',
           koreaView: {
-            title: 'Dokdo excluded from Japan',
-            text: 'The Allied Supreme Command explicitly excluded Dokdo from Japanese administrative authority. Evidence that the post-war settlement recognized Dokdo as Korean territory.'
+            title: 'Liancourt Rocks excluded from Japan',
+            text: 'The Allied Supreme Command explicitly excluded Liancourt Rocks from Japanese administrative authority. Evidence that the post-war settlement recognized Liancourt Rocks as Korean territory.'
           },
           japanView: {
             title: 'Merely a provisional measure',
@@ -798,11 +798,11 @@ const translations = {
           title: 'SF Peace Treaty & Rusk Documents',
           koreaView: {
             title: 'Omission was not exclusion',
-            text: 'Dokdo\'s absence from the list of renounced territories was a simple omission. SCAPIN 677 had already confirmed Dokdo as Korean territory, making separate mention unnecessary.'
+            text: 'Liancourt Rocks\'s absence from the list of renounced territories was a simple omission. SCAPIN 677 had already confirmed Liancourt Rocks as Korean territory, making separate mention unnecessary.'
           },
           japanView: {
             title: 'Not renounced = Japanese territory',
-            text: 'Article 2 specifically listed territories Japan renounced (Jeju, Geomundo, Ulleungdo) but excluded Dokdo. The Rusk Documents confirm: the U.S. stated "Dokdo was never treated as part of Korea."'
+            text: 'Article 2 specifically listed territories Japan renounced (Jeju, Geomundo, Ulleungdo) but excluded Liancourt Rocks. The Rusk Documents confirm: the U.S. stated "Liancourt Rocks was never treated as part of Korea."'
           },
           image: { url: 'https://upload.wikimedia.org/wikipedia/commons/0/02/Treaty_of_peace_with_japan.jpg', alt: 'San Francisco Peace Treaty signing', caption: 'Secretary of State Dean Acheson signing the Peace Treaty (1951)', credit: 'Wikimedia Commons, Public Domain' }
         },
@@ -811,7 +811,7 @@ const translations = {
           title: 'Syngman Rhee Line',
           koreaView: {
             title: 'Exercise of sovereign rights',
-            text: 'South Korea declared the "Peace Line," placing Dokdo within Korean waters. A legitimate exercise of sovereign rights over adjacent maritime areas; the beginning of effective control over Dokdo.'
+            text: 'South Korea declared the "Peace Line," placing Liancourt Rocks within Korean waters. A legitimate exercise of sovereign rights over adjacent maritime areas; the beginning of effective control over Liancourt Rocks.'
           },
           japanView: {
             title: 'Unilateral violation of international law',
@@ -821,17 +821,17 @@ const translations = {
         },
         {
           date: '1953', year: 1953, side: 'korea', era: 'modern',
-          title: 'Dokdo Volunteer Guards',
+          title: 'Liancourt Rocks Volunteer Guards',
           koreaView: {
-            title: 'Symbol of Dokdo protection',
-            text: 'A civilian defense corps of 33 members stationed on Dokdo, guarding the islands until handing over to the Korean National Police in 1956. A symbol of the Korean people\'s commitment to protecting Dokdo.'
+            title: 'Symbol of Liancourt Rocks protection',
+            text: 'A civilian defense corps of 33 members stationed on Liancourt Rocks, guarding the islands until handing over to the Korean National Police in 1956. A symbol of the Korean people\'s commitment to protecting Liancourt Rocks.'
           },
           japanView: {
             title: 'Evidence of forceful occupation',
             text: 'The armed stationing of Korean civilians was not peaceful territorial management but forceful occupation. Firing incidents against Japanese fishermen and maritime patrol vessels occurred.'
           },
           images: [
-            { url: 'assets/images/K0000002_0091000001200503030304_31_1[W680-].jpg', alt: 'Dokdo Volunteer Guards', caption: 'Dokdo Volunteer Guards group photo' }
+            { url: 'assets/images/K0000002_0091000001200503030304_31_1[W680-].jpg', alt: 'Liancourt Rocks Volunteer Guards', caption: 'Liancourt Rocks Volunteer Guards group photo' }
           ]
         },
         {
@@ -839,7 +839,7 @@ const translations = {
           title: '1st ICJ Referral Proposal',
           koreaView: {
             title: 'No dispute exists to adjudicate',
-            text: 'Dokdo is inherently Korean territory, not a subject of dispute. An ICJ referral is a Japanese strategy to elevate Dokdo to "disputed territory" status; Korea rightfully rejected it.'
+            text: 'Liancourt Rocks is inherently Korean territory, not a subject of dispute. An ICJ referral is a Japanese strategy to elevate Liancourt Rocks to "disputed territory" status; Korea rightfully rejected it.'
           },
           japanView: {
             title: 'Seeking peaceful legal resolution',
@@ -854,12 +854,12 @@ const translations = {
           date: '1965', year: 1965, side: 'both', era: 'modern',
           title: 'Treaty on Basic Relations',
           koreaView: {
-            title: 'Dokdo was not a negotiation item',
-            text: 'During Korea-Japan normalization, the Dokdo issue was not placed on the agenda. As inherent Korean territory, Dokdo cannot be a subject of negotiation.'
+            title: 'Liancourt Rocks was not a negotiation item',
+            text: 'During Korea-Japan normalization, the Liancourt Rocks issue was not placed on the agenda. As inherent Korean territory, Liancourt Rocks cannot be a subject of negotiation.'
           },
           japanView: {
             title: 'Left unresolved by agreement',
-            text: 'To achieve diplomatic normalization, both sides agreed to leave the Dokdo issue unresolved. It falls under the general clause that "disputes shall be settled through diplomacy."'
+            text: 'To achieve diplomatic normalization, both sides agreed to leave the Liancourt Rocks issue unresolved. It falls under the general clause that "disputes shall be settled through diplomacy."'
           },
           images: [
             { url: 'assets/images/A_copy_of_Treaty_on_Basic_Relations_between_Japan_and_the_Republic_of_Korea.jpg', alt: 'Treaty on Basic Relations', caption: 'Original copy of the Treaty on Basic Relations between Japan and the Republic of Korea' }
@@ -870,7 +870,7 @@ const translations = {
           title: 'Takeshima Day Established',
           koreaView: {
             title: 'Provocative historical distortion',
-            text: 'Shimane Prefecture\'s "Takeshima Day" glorifies Japan\'s seizure of Dokdo. The Korean government and public strongly protested, deepening diplomatic tensions.'
+            text: 'Shimane Prefecture\'s "Takeshima Day" glorifies Japan\'s seizure of Liancourt Rocks. The Korean government and public strongly protested, deepening diplomatic tensions.'
           },
           japanView: {
             title: 'Peaceful expression of territorial claim',
@@ -885,21 +885,21 @@ const translations = {
           title: 'Presidential Visit & 3rd ICJ Proposal',
           koreaView: {
             title: 'Presidential affirmation of sovereignty',
-            text: 'President Lee Myung-bak became the first Korean president to visit Dokdo, declaring Korea\'s firm territorial sovereignty to the domestic and international community.'
+            text: 'President Lee Myung-bak became the first Korean president to visit Liancourt Rocks, declaring Korea\'s firm territorial sovereignty to the domestic and international community.'
           },
           japanView: {
             title: 'Renewed call for ICJ resolution',
             text: 'Japan characterized the presidential visit as a provocation and proposed a third ICJ referral seeking international legal resolution. Korea again rejected. Korea-Japan relations deteriorated significantly.'
           },
           images: [
-            { url: 'assets/images/20130222102054.jpeg', alt: 'President Lee Myung-bak visits Dokdo', caption: 'President Lee Myung-bak\'s visit to Dokdo (2012)' }
+            { url: 'assets/images/20130222102054.jpeg', alt: 'President Lee Myung-bak visits Liancourt Rocks', caption: 'President Lee Myung-bak\'s visit to Liancourt Rocks (2012)' }
           ]
         }
       ]
     },
     korea: {
       title: 'Korea\'s Position',
-      subtitle: 'The basis for the Republic of Korea\'s sovereignty claim over Dokdo',
+      subtitle: 'The basis for the Republic of Korea\'s sovereignty claim over Liancourt Rocks',
       claims: [
         {
           title: 'Historical Precedence',
@@ -907,23 +907,23 @@ const translations = {
         },
         {
           title: 'An Yong-bok\'s Diplomacy (1693–1696)',
-          text: 'Korean fisherman An Yong-bok traveled to Japan and asserted Joseon sovereignty over Ulleungdo and Dokdo. The Tokugawa Shogunate subsequently banned Japanese fishermen from traveling to Ulleungdo. Korea argues this constitutes Japanese acknowledgment of Korean sovereignty.'
+          text: 'Korean fisherman An Yong-bok traveled to Japan and asserted Joseon sovereignty over Ulleungdo and Liancourt Rocks. The Tokugawa Shogunate subsequently banned Japanese fishermen from traveling to Ulleungdo. Korea argues this constitutes Japanese acknowledgment of Korean sovereignty.'
         },
         {
           title: 'Dajokan Order (1877)',
-          text: 'Japan\'s highest governmental body officially determined that "Ulleungdo and one other island are not related to Japan." Korea argues "the other island" refers to Dokdo, meaning Japan itself confirmed Dokdo was not Japanese territory.'
+          text: 'Japan\'s highest governmental body officially determined that "Ulleungdo and one other island are not related to Japan." Korea argues "the other island" refers to Liancourt Rocks, meaning Japan itself confirmed Liancourt Rocks was not Japanese territory.'
         },
         {
           title: 'Imperial Edict No. 41 (1900)',
-          text: 'The Korean Empire established Uldo County with jurisdiction including "Seokdo (石島)." Korea argues Seokdo refers to Dokdo, proving Korean administration of the islands before Japan\'s 1905 incorporation.'
+          text: 'The Korean Empire established Uldo County with jurisdiction including "Seokdo (石島)." Korea argues Seokdo refers to Liancourt Rocks, proving Korean administration of the islands before Japan\'s 1905 incorporation.'
         },
         {
           title: 'Effective Control (1952–Present)',
-          text: 'South Korea has maintained a coast guard garrison on Dokdo since 1952, constructed a lighthouse and dock facilities, and permitted civilian residence — exercising continuous, peaceful effective control for over 70 years.'
+          text: 'South Korea has maintained a coast guard garrison on Liancourt Rocks since 1952, constructed a lighthouse and dock facilities, and permitted civilian residence — exercising continuous, peaceful effective control for over 70 years.'
         },
         {
           title: 'SCAPIN 677 (1946)',
-          text: 'The post-WWII Allied directive SCAPIN 677 explicitly excluded Dokdo from Japanese administrative authority. Korea presents this as evidence that Dokdo was recognized as Korean territory in the post-war settlement.'
+          text: 'The post-WWII Allied directive SCAPIN 677 explicitly excluded Liancourt Rocks from Japanese administrative authority. Korea presents this as evidence that Liancourt Rocks was recognized as Korean territory in the post-war settlement.'
         }
       ]
     },
@@ -933,7 +933,7 @@ const translations = {
       claims: [
         {
           title: 'Terra Nullius (1905)',
-          text: 'The Japanese government maintains that Takeshima (Dokdo) was terra nullius — belonging to no state — at the time of its 1905 Cabinet decision, and that its incorporation was a legitimate exercise of sovereignty under international law.'
+          text: 'The Japanese government maintains that Takeshima (Liancourt Rocks) was terra nullius — belonging to no state — at the time of its 1905 Cabinet decision, and that its incorporation was a legitimate exercise of sovereignty under international law.'
         },
         {
           title: '17th Century Fishing Activity',
@@ -945,7 +945,7 @@ const translations = {
         },
         {
           title: 'Rusk Documents (1951)',
-          text: 'U.S. Assistant Secretary of State Dean Rusk\'s letter to the Korean ambassador stated that "Dokdo was never treated as part of Korea" and had been under Shimane Prefecture\'s jurisdiction since approximately 1905. Japan considers this a significant expression of the U.S. position.'
+          text: 'U.S. Assistant Secretary of State Dean Rusk\'s letter to the Korean ambassador stated that "Liancourt Rocks was never treated as part of Korea" and had been under Shimane Prefecture\'s jurisdiction since approximately 1905. Japan considers this a significant expression of the U.S. position.'
         },
         {
           title: 'ICJ Referral Proposals',
@@ -964,8 +964,8 @@ const translations = {
         rows: [
           [
             'Historical Title',
-            'Korea has continuously recognized and governed Dokdo since 512 AD, supported by numerous historical texts and maps',
-            'Whether "Usando" in Korean records refers to Dokdo is unclear; historical title has not been proven'
+            'Korea has continuously recognized and governed Liancourt Rocks since 512 AD, supported by numerous historical texts and maps',
+            'Whether "Usando" in Korean records refers to Liancourt Rocks is unclear; historical title has not been proven'
           ],
           [
             'Legality of 1905 Incorporation',
@@ -974,8 +974,8 @@ const translations = {
           ],
           [
             'SF Peace Treaty Interpretation',
-            'Dokdo\'s omission from renounced territories was a simple oversight; SCAPIN 677 had already confirmed Dokdo as Korean territory',
-            'Dokdo\'s exclusion from renounced territories reflects Allied recognition of Japanese sovereignty'
+            'Liancourt Rocks\'s omission from renounced territories was a simple oversight; SCAPIN 677 had already confirmed Liancourt Rocks as Korean territory',
+            'Liancourt Rocks\'s exclusion from renounced territories reflects Allied recognition of Japanese sovereignty'
           ],
           [
             'Effective Control',
@@ -984,7 +984,7 @@ const translations = {
           ],
           [
             'International Adjudication',
-            'Dokdo is inherently Korean territory with no dispute; ICJ referral is unnecessary',
+            'Liancourt Rocks is inherently Korean territory with no dispute; ICJ referral is unnecessary',
             'Japan seeks peaceful resolution through international law; Korea\'s ICJ refusal suggests weak legal standing'
           ]
         ]
@@ -992,7 +992,7 @@ const translations = {
       principles: [
         {
           title: 'Effective Occupation',
-          text: 'One of the key criteria for proving territorial sovereignty under international law. Korea has exercised effective control over Dokdo for over 70 years, while Japan characterizes this as illegal occupation and has continuously protested.'
+          text: 'One of the key criteria for proving territorial sovereignty under international law. Korea has exercised effective control over Liancourt Rocks for over 70 years, while Japan characterizes this as illegal occupation and has continuously protested.'
         },
         {
           title: 'Critical Date',
@@ -1000,16 +1000,16 @@ const translations = {
         },
         {
           title: 'Terra Nullius',
-          text: 'Japan claims Dokdo was terra nullius (belonging to no state) in 1905, while Korea counters that it had already been exercising sovereignty, meaning the territory was not unclaimed.'
+          text: 'Japan claims Liancourt Rocks was terra nullius (belonging to no state) in 1905, while Korea counters that it had already been exercising sovereignty, meaning the territory was not unclaimed.'
         },
         {
           title: 'Treaty Interpretation',
-          text: 'The fact that Dokdo was not explicitly mentioned in the 1951 San Francisco Peace Treaty leaves room for interpretation by both sides, and this ambiguity is one of the core causes of the dispute.'
+          text: 'The fact that Liancourt Rocks was not explicitly mentioned in the 1951 San Francisco Peace Treaty leaves room for interpretation by both sides, and this ambiguity is one of the core causes of the dispute.'
         }
       ]
     },
     conclusion: {
-      line1: 'The sovereignty dispute between Korea and Japan over Dokdo transcends a simple territorial issue — it is a complex conflict involving historical awareness and the interpretation of international law.',
+      line1: 'The sovereignty dispute between Korea and Japan over Liancourt Rocks transcends a simple territorial issue — it is a complex conflict involving historical awareness and the interpretation of international law.',
       line2: 'Objectively understanding both nations\' claims is the first step toward a peaceful resolution.',
       line3: 'Only dialogue based on historical facts and mutual respect can build sustainable peace in Northeast Asia.',
       sourcesTitle: 'References',
@@ -1020,6 +1020,515 @@ const translations = {
       text: 'This website was created for educational purposes and aims to present both perspectives objectively.'
     },
     dots: ['Home', 'Geography', 'Timeline', 'Korea', 'Japan', 'Law', 'Conclusion']
+  },
+
+  ja: {
+    nav: { title: '竹島物語' },
+    hero: {
+      title: '竹島',
+      subtitle: '日本海に浮かぶ美しい島々 ― その歴史をたどる',
+      scroll: 'スクロールして探索'
+    },
+    geo: {
+      title: '地理概要',
+      map: {
+        korea: '大韓民国',
+        japan: '日本',
+        ulleungdo: '鬱陵島',
+        dokdo: '竹島',
+        oki: '隠岐諸島',
+        sea: '日本海 / 東海'
+      },
+      fact1: {
+        title: '二つの島',
+        text: '東島（高さ98.6m）と西島（高さ168.5m）、及び89の付属岩礁で構成されています。二つの島の間隔は約151mです。'
+      },
+      fact2: {
+        title: '総面積',
+        text: '187,554 m²（約46エーカー）。東島73,297 m²、西島88,740 m²。二つの島は狭い水路で隔てられています。'
+      },
+      fact3: {
+        title: '火山島の起源',
+        text: '約460万年前の海底火山活動により形成された火山島です。鬱陵島より約200万年早く形成され、現在は浸食が進んでいます。'
+      },
+      fact4: {
+        title: '海洋生態系',
+        text: '寒流と暖流が交差する潮境水域に位置し、ウミネコ・オオミズナギドリなど希少な海鳥や多様な海洋生物が生息する天然保護区域（天然記念物第336号）です。'
+      },
+      fact5: {
+        title: '気候',
+        text: '年間平均気温約12°C、年間降水量約1,324mm。年間を通じて曇りの日が多く霧が頻繁で、冬季には強い北西風の影響を受ける海洋性気候です。'
+      },
+      fact6: {
+        title: '海底地形',
+        text: '水深約2,000mの日本海海底からそびえる巨大な海山の頂上部にあたります。海面上に露出している部分は海山全体のごく一部に過ぎません。'
+      },
+      fact7: {
+        title: '現在の状況',
+        text: '韓国の竹島警備隊（警察）約40名が常駐し、灯台・接岸施設・ヘリポートを運営しています。1991年から民間人が居住しています。'
+      },
+      fact8: {
+        title: '様々な名称',
+        text: '독도/独島（韓国）、竹島（日本）、リアンクール岩礁（国際）。リアンクールは1849年にこの島を発見したフランスの捕鯨船の名前に由来します。'
+      }
+    },
+    timeline: {
+      title: '歴史年表',
+      coverSubtitle: '竹島をめぐる日韓両国の歴史的記録と見解を年代順にたどります。',
+      scrollHint: 'スクロールして探索',
+      legendKorea: '韓国側',
+      legendJapan: '日本側',
+      legendBoth: '両国・国際',
+      labelKorea: '韓国側の見解',
+      labelJapan: '日本側の見解',
+      events: [
+        {
+          date: '512年', year: 512, side: 'korea', era: 'ancient',
+          title: '于山国の服属',
+          koreaView: {
+            title: '竹島領有権の歴史的出発点',
+            text: '新羅の智証王13年、異斯夫が于山国（鬱陵島・于山島を含む）を服属させた。三国史記に記録。于山国に竹島が含まれており、韓国の領有権の歴史的起源とされる。'
+          },
+          japanView: {
+            title: '于山国の範囲に関する疑問',
+            text: '于山国が鬱陵島のみを指すのか、竹島まで含むのかは歴史的に不明確である。6世紀の記録だけでは竹島の領有権を主張することは困難である。'
+          },
+          image: { url: 'assets/images/three_kingdom.jpeg', alt: '三国史記 新羅本紀', caption: '三国史記 新羅本紀 ― 于山国服属の記録', credit: '延世大学校所蔵' }
+        },
+        {
+          date: '1145年', year: 1145, side: 'korea', era: 'ancient',
+          title: '三国史記の編纂',
+          koreaView: {
+            title: '公式歴史書の記録',
+            text: '金富軾が編纂した三国史記に512年の于山国服属の事実が公式に記録された。韓国が竹島領有権の歴史的出発点として提示する核心的文献。'
+          },
+          japanView: {
+            title: '竹島との関連性の欠如',
+            text: '三国史記の于山国関連記録には竹島に関する具体的な言及がなく、鬱陵島の服属記録が竹島の領有権の根拠となることは困難である。'
+          },
+          image: { url: 'https://upload.wikimedia.org/wikipedia/commons/d/de/Samguk.JPG', alt: '三国史記', caption: '三国史記原本', credit: 'Wikimedia Commons, Public Domain' }
+        },
+        {
+          date: '1454年', year: 1454, side: 'korea', era: 'ancient',
+          title: '世宗実録地理志',
+          koreaView: {
+            title: '二つの島の存在確認',
+            text: '「于山と武陵の二島が県の東の海にある。天候が晴れれば互いに望み見ることができる。」于山島が竹島を指す明白な記録。'
+          },
+          japanView: {
+            title: '地理的記述の不一致',
+            text: '「晴れた日に互いに見える」という記述は、鬱陵島から竹島までの実際の距離（約87km）と可視性の条件に合致しない。于山島は鬱陵島の付属島である可能性がある。'
+          },
+          images: [
+            { url: 'assets/images/sejong_jiriji.jpeg', alt: '世宗実録地理志', caption: '世宗実録地理志原文' },
+            { url: 'assets/images/dokdo_from_uleung01.png', alt: '鬱陵島から見た竹島', caption: '鬱陵島から望む竹島' },
+            { url: 'assets/images/dokdo_from_uleung02.png', alt: '鬱陵島から見た竹島', caption: '鬱陵島から望む竹島（夜明け）' }
+          ]
+        },
+        {
+          date: '1531年', year: 1531, side: 'korea', era: 'ancient',
+          title: '新増東国輿地勝覧',
+          koreaView: {
+            title: '官撰地理書の根拠',
+            text: '朝鮮の官撰地理書として于山島と鬱陵島を地図に併記。朝鮮が竹島の存在を認識し自国領土として管理していたことを示す古文献上の根拠。'
+          },
+          japanView: {
+            title: '地図上の位置の誤り',
+            text: '八道総図では于山島が鬱陵島の西側（朝鮮半島側）に描かれており、実際に東南に位置する竹島とは一致しない。于山島が竹島であるか疑問が残る。'
+          },
+          images: [
+            { url: 'assets/images/new_dongguk_yeoji.jpeg', alt: '新増東国輿地勝覧', caption: '新増東国輿地勝覧原文' },
+            { url: 'https://upload.wikimedia.org/wikipedia/commons/a/a1/Ulleungdo_and_Usando.jpg', alt: '八道総図', caption: '八道総図 - 鬱陵島と于山島 (1530)', credit: 'Wikimedia Commons, Public Domain' }
+          ]
+        },
+        {
+          date: '1618年', year: 1618, side: 'japan', era: 'edo',
+          title: '大谷・村川渡海免許',
+          koreaView: {
+            title: '外国領土認識の証拠',
+            text: '「渡海免許」は外国領土への航海に発給されるものであり、幕府が鬱陵島を日本領土ではなく外国として認識していたことをむしろ証明している。'
+          },
+          japanView: {
+            title: '17世紀の領有活動の根拠',
+            text: '江戸幕府が大谷・村川両家に渡海免許を発給し、竹島（鬱陵島）及び松島（竹島）を経由地かつ漁業根拠地として活用。17世紀からの実効的利用の証拠。'
+          },
+          images: [
+            { url: 'assets/images/oya_murakawa.png', alt: '大谷・村川渡海免許', caption: '大谷・村川渡海免許原文' }
+          ]
+        },
+        {
+          date: '1667年', year: 1667, side: 'japan', era: 'edo',
+          title: '隠州視聴合記',
+          koreaView: {
+            title: '日本領土外の確認',
+            text: '「日本の西北の限りはこの州（隠岐島）をもって境とす」という記述は、鬱陵島と竹島が日本領土の外にあることを日本人自ら確認したもの。'
+          },
+          japanView: {
+            title: '竹島認知の証拠',
+            text: '隠州視聴合記に松島（竹島）と竹島（鬱陵島）に関する詳細な記述があり、17世紀に日本が竹島の存在と位置を正確に認知していたことを証明している。'
+          },
+          image: { url: 'https://upload.wikimedia.org/wikipedia/commons/8/8a/Eunju2.jpg', alt: '隠州視聴合記の地図', caption: '隠州視聴合記収録地図 (1667)', credit: 'Wikimedia Commons, CC BY-SA 4.0' }
+        },
+        {
+          date: '1693年', year: 1693, side: 'both', era: 'edo',
+          title: '安龍福渡日と鬱陵島争界',
+          koreaView: {
+            title: '領有権の外交的確認',
+            text: '朝鮮の漁師・安龍福が日本に渡り、鬱陵島・竹島の朝鮮領有権を主張し、日本側から確認を得た。日朝外交紛争の契機となった。'
+          },
+          japanView: {
+            title: '安龍福の証言の信憑性問題',
+            text: '安龍福の渡日経緯と日本側との交渉内容には誇張が多く、朝鮮側記録と日本側記録が矛盾している。公式外交文書としての価値は低い。'
+          },
+          images: [
+            { url: 'assets/images/bakufu-published-document.png', alt: '幕府公文書', caption: '鬱陵島争界関連幕府公文書' },
+            { url: 'https://upload.wikimedia.org/wikipedia/commons/f/fc/Old_Map_of_Liancourt_Rocks.jpg', alt: '17世紀の航路図', caption: '隠岐諸島から鬱陵島・竹島への航路を示す17世紀の日本地図', credit: 'Wikimedia Commons, Public Domain' }
+          ]
+        },
+        {
+          date: '1696年', year: 1696, side: 'both', era: 'edo',
+          title: '鬱陵島渡海禁止令',
+          koreaView: {
+            title: '朝鮮領有権認定の決定的証拠',
+            text: '徳川幕府が日本漁民の鬱陵島渡海を公式に禁止。日本政府が鬱陵島・竹島の朝鮮領有権を認定した決定的証拠。'
+          },
+          japanView: {
+            title: '鬱陵島に限定された禁止',
+            text: '渡海禁止令は竹島（鬱陵島）に対するものであり、松島（竹島）への渡海は禁止されていない。竹島に対する日本の領有意思は維持された。'
+          },
+          images: [
+            { url: 'assets/images/toukai_kinshirei.png', alt: '鬱陵島渡海禁止令', caption: '鬱陵島渡海禁止令原文' }
+          ]
+        },
+        {
+          date: '1770年', year: 1770, side: 'korea', era: 'edo',
+          title: '東国文献備考',
+          koreaView: {
+            title: '于山島＝竹島の決定的記録',
+            text: '「于山はすなわち倭人が言う松島である」と明記。于山島が竹島であることを確認する最も直接的な記録。'
+          },
+          japanView: {
+            title: '後代の注釈の正確性に疑問',
+            text: '東国文献備考の当該記述は編纂者の注釈であり、元の資料に基づいているか不明確。後代の解釈が歴史的事実を立証することは困難である。'
+          },
+          images: [
+            { url: 'assets/images/dongguk_munheon_bigo.jpeg', alt: '東国文献備考', caption: '東国文献備考原文' }
+          ]
+        },
+        {
+          date: '1877年', year: 1877, side: 'both', era: 'imperial',
+          title: '太政官指令',
+          koreaView: {
+            title: '日本最高機関による領土外確認',
+            text: '日本の最高国家機関である太政官が「鬱陵島とその外一島は日本と関係なし」と公式決定。日本自らが竹島の非日本領土性を確認した最も強力な根拠。'
+          },
+          japanView: {
+            title: '「外一島」の解釈問題',
+            text: '太政官文書の「その外一島」が現在の竹島を指すのか、当時の地名混乱（竹島/松島の混用）の中で他の島である可能性もある。'
+          },
+          images: [
+            { url: 'assets/images/view0503_img01_b.jpg', alt: '太政官指令文書', caption: '太政官指令原文' },
+            { url: 'assets/images/view0503_img02_b (1).jpg', alt: '太政官指令添付文書', caption: '太政官指令添付文書' }
+          ]
+        },
+        {
+          date: '1900年', year: 1900, side: 'korea', era: 'imperial',
+          title: '大韓帝国勅令第41号',
+          koreaView: {
+            title: '1905年以前の公式管轄',
+            text: '鬱島郡を設置し管轄に「石島」を含めた。石島は竹島の当時の名称であり、日本の1905年編入以前に韓国が竹島を公式に管轄していた証拠。'
+          },
+          japanView: {
+            title: '「石島＝竹島」の根拠不十分',
+            text: '「石島」が竹島を指すという直接的な証拠が不足している。石島と竹島の発音・表記上の関連性が不明確であり、当時鬱島郡が竹島を実際に管轄していた記録もない。'
+          },
+          image: { url: 'https://upload.wikimedia.org/wikipedia/commons/3/3f/Royal_Decree_No.41.jpg', alt: '大韓帝国勅令第41号', caption: '大韓帝国勅令第41号原本 (1900)', credit: 'Wikimedia Commons, Public Domain' }
+        },
+        {
+          date: '1905年', year: 1905, side: 'japan', era: 'imperial',
+          title: '島根県編入',
+          koreaView: {
+            title: '韓半島侵奪の一環',
+            text: '乙巳条約（1905年11月）直前の1905年1月に行われた編入は韓半島侵奪過程の一環。竹島は無主地ではなく既に韓国の領土であったため、違法な強奪である。'
+          },
+          japanView: {
+            title: '国際法上の合法的編入',
+            text: '日本政府の閣議決定により、無主地である竹島を国際法の原則に従い合法的に島根県に編入。朝鮮半島の併合（1910年）とは別個の独立した措置。'
+          },
+          images: [
+            { url: 'assets/images/takeshima01-0310.jpg', alt: '島根県告示第40号', caption: '島根県告示第40号 (1905)' }
+          ]
+        },
+        {
+          date: '1906年', year: 1906, side: 'korea', era: 'imperial',
+          title: '沈興沢報告書',
+          koreaView: {
+            title: '即時の抗議と竹島認識',
+            text: '鬱島郡守・沈興沢が日本の竹島編入を知り、即座に中央政府に報告。大韓帝国は抗議したが、乙巳条約により外交権が剥奪された状態であった。'
+          },
+          japanView: {
+            title: '実効的対応の不在',
+            text: '大韓帝国の抗議は既に外交権を喪失した状態での形式的反応であり、編入に対する具体的な法的異議申立てや国際的抗議は行われなかった。'
+          },
+          images: [
+            { url: 'assets/images/daehanilbo-article.jpg', alt: '大韓日報記事', caption: '沈興沢報告に関する大韓日報記事' }
+          ]
+        },
+        {
+          date: '1945年', year: 1945, side: 'both', era: 'modern',
+          title: '日本の敗戦',
+          koreaView: {
+            title: '植民地領土の返還',
+            text: '日本の無条件降伏とポツダム宣言の受諾。カイロ宣言（1943年）で「暴力及び貪欲により奪取した全ての地域」の返還を規定し、竹島もこれに該当する。'
+          },
+          japanView: {
+            title: '戦後領土処理の開始',
+            text: 'ポツダム宣言に基づき日本の主権は本土4島と連合国が決定する諸島に限定された。竹島の最終的帰属は講和条約で決定される事案であった。'
+          },
+          images: [
+            { url: 'assets/images/58365_201801251132046430.png', alt: 'ポツダム宣言受諾勅令', caption: 'ポツダム宣言受諾に伴う命令に関する件（1945年勅令第542号）' }
+          ]
+        },
+        {
+          date: '1946年', year: 1946, side: 'both', era: 'modern',
+          title: 'SCAPIN 677',
+          koreaView: {
+            title: '竹島の日本行政権からの除外',
+            text: '連合国最高司令部が竹島を日本の行政権から明示的に除外。戦後処理において竹島が韓国領土として認定された証拠。'
+          },
+          japanView: {
+            title: '暫定的行政措置に過ぎない',
+            text: 'SCAPIN 677は「領土の最終的決定ではない」という但し書きを明記。占領期の暫定的行政措置であり、領土主権の最終決定は講和条約に委ねられた。'
+          },
+          image: { url: 'https://upload.wikimedia.org/wikipedia/commons/0/05/SCAPIN_677_lq.jpg', alt: 'SCAPIN 677 行政区域地図', caption: 'SCAPIN 677に基づく日本行政区域地図 (1946)', credit: 'Wikimedia Commons, Public Domain' }
+        },
+        {
+          date: '1951年', year: 1951, side: 'both', era: 'modern',
+          title: 'SF講和条約とラスク書簡',
+          koreaView: {
+            title: '竹島の不記載は脱漏',
+            text: 'サンフランシスコ講和条約で竹島が放棄領土に含まれなかったのは単なる脱漏。SCAPIN 677で既に竹島が韓国領土であることが確認されていたため、別途明記は不要であった。'
+          },
+          japanView: {
+            title: '放棄対象からの除外＝日本領土',
+            text: '条約第2条で放棄領土として済州島・巨文島・鬱陵島を明記したが、竹島は除外された。ラスク書簡でも米国は「竹島は韓国の領土として扱われたことはない」と確認。'
+          },
+          image: { url: 'https://upload.wikimedia.org/wikipedia/commons/0/02/Treaty_of_peace_with_japan.jpg', alt: 'サンフランシスコ講和条約署名', caption: 'ディーン・アチソン米国務長官の講和条約署名 (1951)', credit: 'Wikimedia Commons, Public Domain' }
+        },
+        {
+          date: '1952年', year: 1952, side: 'korea', era: 'modern',
+          title: '李承晩ライン宣言',
+          koreaView: {
+            title: '主権的権利の行使',
+            text: '大韓民国が「平和線」を宣言し竹島を韓国側水域に含めた。国際法上の隣接海洋に対する主権的権利の行使であり、竹島の実効的支配の本格的な開始。'
+          },
+          japanView: {
+            title: '国際法違反の一方的宣言',
+            text: '李承晩ラインは公海上の一方的管轄権主張であり国際法に違反。竹島に対する韓国の不法占拠が始まった起点。'
+          },
+          image: { url: 'https://upload.wikimedia.org/wikipedia/commons/b/b5/Syngman_Rhee_Line_map.jpg', alt: '李承晩ライン地図', caption: '平和線（李承晩ライン）公式地図 (1952)', credit: 'Wikimedia Commons, Public Domain' }
+        },
+        {
+          date: '1953年', year: 1953, side: 'korea', era: 'modern',
+          title: '竹島義勇守備隊',
+          koreaView: {
+            title: '竹島守護の象徴',
+            text: '民間人33名で構成された義勇守備隊が竹島に駐留。1956年に警察に任務を引き継ぐまで竹島を守備。国民的な竹島守護意志の象徴。'
+          },
+          japanView: {
+            title: '武力占拠の証拠',
+            text: '韓国民間人の武装駐留は平和的領土管理ではなく武力による占拠。日本漁民や海上保安庁巡視船に対する発砲事件も発生した。'
+          },
+          images: [
+            { url: 'assets/images/K0000002_0091000001200503030304_31_1[W680-].jpg', alt: '竹島義勇守備隊', caption: '竹島義勇守備隊の集合写真' }
+          ]
+        },
+        {
+          date: '1954年', year: 1954, side: 'japan', era: 'modern',
+          title: '第1次ICJ付託提案',
+          koreaView: {
+            title: '紛争自体が存在しない',
+            text: '竹島は紛争対象ではなく韓国固有の領土。ICJ付託は竹島を紛争地域に格上げしようとする日本の戦略であるため拒否。'
+          },
+          japanView: {
+            title: '国際法に基づく平和的解決',
+            text: '日本は竹島問題を国際司法裁判所（ICJ）に付託し、国際法に基づく平和的解決を追求。韓国の拒否は法的根拠に対する自信の欠如を示唆している。'
+          },
+          images: [
+            { url: 'assets/images/icj01_01.png', alt: 'ICJ付託提案文書1', caption: '第1次ICJ付託提案文書' },
+            { url: 'assets/images/icj01_02.png', alt: 'ICJ付託提案文書2', caption: '第1次ICJ付託提案文書（2）' }
+          ]
+        },
+        {
+          date: '1965年', year: 1965, side: 'both', era: 'modern',
+          title: '日韓基本条約',
+          koreaView: {
+            title: '竹島は交渉の対象ではない',
+            text: '日韓国交正常化の過程で竹島問題は議題として扱われなかった。竹島は韓国の固有領土であるため、交渉の対象にはなり得ないという立場。'
+          },
+          japanView: {
+            title: '未解決のまま留保',
+            text: '国交正常化のため竹島問題は未解決のまま残すことで合意。「紛争は外交で解決する」という包括条項に含まれる。'
+          },
+          images: [
+            { url: 'assets/images/A_copy_of_Treaty_on_Basic_Relations_between_Japan_and_the_Republic_of_Korea.jpg', alt: '日韓基本条約', caption: '日韓基本条約原本' }
+          ]
+        },
+        {
+          date: '2005年', year: 2005, side: 'japan', era: 'contemporary',
+          title: '竹島の日の制定',
+          koreaView: {
+            title: '歴史歪曲と挑発',
+            text: '島根県の「竹島の日」制定は日本の竹島侵奪の歴史を美化する挑発的行為。韓国政府と国民が強く反発し、外交的対立が深化した。'
+          },
+          japanView: {
+            title: '領有権主張の表明',
+            text: '1905年の閣議決定による島根県編入100周年を記念し、2月22日を「竹島の日」に制定。日本の正当な領有権主張の平和的な表明。'
+          },
+          images: [
+            { url: 'assets/images/takeshima_day.png', alt: '竹島の日', caption: '竹島の日制定関連資料' }
+          ]
+        },
+        {
+          date: '2012年', year: 2012, side: 'both', era: 'contemporary',
+          title: '李明博竹島訪問と第3次ICJ提案',
+          koreaView: {
+            title: '大統領による主権確認',
+            text: '大韓民国大統領として初めて竹島を訪問。竹島に対する韓国の確固たる領土主権を国内外に宣言した歴史的行動。'
+          },
+          japanView: {
+            title: 'ICJを通じた解決の再要求',
+            text: '韓国大統領の竹島訪問を挑発と規定。日本は第3次ICJ付託を提案し国際法的解決を再度求めたが韓国が拒否。日韓関係が大幅に悪化した。'
+          },
+          images: [
+            { url: 'assets/images/20130222102054.jpeg', alt: '李明博大統領の竹島訪問', caption: '李明博大統領の竹島訪問 (2012)' }
+          ]
+        }
+      ]
+    },
+    korea: {
+      title: '韓国の立場',
+      subtitle: '大韓民国政府が主張する竹島領有権の根拠',
+      claims: [
+        {
+          title: '歴史的先占',
+          text: '512年の新羅による于山国服属以来、朝鮮時代の官撰記録（世宗実録地理志、東国輿地勝覧等）に于山島が継続的に登場します。これは韓国が日本より数世紀先んじて竹島を認知・領有してきたことを示しています。'
+        },
+        {
+          title: '安龍福の外交活動（1693〜1696年）',
+          text: '朝鮮の漁師・安龍福は日本に渡り、鬱陵島と竹島が朝鮮の領土であることを主張しました。その後、徳川幕府は日本漁民の鬱陵島渡海を禁止する措置を取りました。これは当時の日本政府もこれらの島の朝鮮領有権を認めたものだと韓国は主張しています。'
+        },
+        {
+          title: '太政官指令（1877年）',
+          text: '日本の最高国家機関であった太政官が「鬱陵島とその外一島は日本と関係なし」と公式決定しました。韓国側は「その外一島」が竹島を指すと主張し、日本自らが竹島の非日本領土性を確認したものだと見ています。'
+        },
+        {
+          title: '大韓帝国勅令第41号（1900年）',
+          text: '大韓帝国が鬱島郡を設置し、管轄に「石島」を含めました。韓国側は石島が竹島の当時の名称であると主張し、日本の1905年編入以前に韓国が既に竹島を公式に管轄していたことを示すとしています。'
+        },
+        {
+          title: '実効的支配（1952年〜現在）',
+          text: '大韓民国は1952年以来、竹島に警備隊を駐留させ、灯台・接岸施設等を建設し、民間人の居住を許可するなど、持続的かつ平和的な実効的支配を行使しています。'
+        },
+        {
+          title: 'SCAPIN 677（1946年）',
+          text: '第二次世界大戦終結後、連合国最高司令部が発したSCAPIN 677は竹島を日本の行政権から明示的に除外しました。韓国はこれを戦後処理において竹島が韓国領土として認定された証拠として提示しています。'
+        }
+      ]
+    },
+    japan: {
+      title: '日本の立場',
+      subtitle: '日本政府が主張する竹島領有権の根拠',
+      claims: [
+        {
+          title: '無主地の先占（1905年）',
+          text: '日本政府は、竹島が1905年の閣議決定当時どの国にも属さない無主地（terra nullius）であり、国際法の原則に従い合法的に領土に編入したものであると主張しています。'
+        },
+        {
+          title: '17世紀の漁業活動',
+          text: '江戸時代、大谷家と村川家が幕府の許可を得て鬱陵島へ向かう途中、竹島を中間寄港地かつ漁業根拠地として利用していたと主張しています。これは日本が17世紀から竹島を実質的に活用していたことを示すとしています。'
+        },
+        {
+          title: 'サンフランシスコ講和条約（1951年）',
+          text: '条約第2条で日本が放棄する領土として済州島・巨文島・鬱陵島を明記しましたが、竹島は放棄対象に含まれませんでした。日本はこれを連合国が竹島を日本領土として認めたものと解釈しています。'
+        },
+        {
+          title: 'ラスク書簡（1951年）',
+          text: '米国国務次官補ディーン・ラスクが韓国大使に送った書簡で、「竹島は韓国の領土として扱われたことはなく、1905年頃から島根県の管轄下にあった」と述べました。日本はこれを米国の公式見解として重視しています。'
+        },
+        {
+          title: 'ICJ付託提案',
+          text: '日本はこの紛争を国際司法裁判所（ICJ）に3回（1954年、1962年、2012年）付託することを提案しましたが、韓国は全て拒否しました。日本は国際法による平和的解決を追求する立場であり、韓国の拒否を法的自信の欠如と解釈しています。'
+        },
+        {
+          title: '行政的措置',
+          text: '1905年の編入以降、島根県が竹島を正式に登録し、アシカ捕獲許可を発給し、測量を実施するなどの行政的管轄行為を行ったと主張しています。'
+        }
+      ]
+    },
+    law: {
+      title: '国際法的観点',
+      table: {
+        headers: ['争点', '韓国の立場', '日本の立場'],
+        rows: [
+          [
+            '歴史的権原',
+            '512年以来継続的に竹島を認知・管轄しており、多数の古文献・古地図がこれを裏付けている',
+            '韓国の古文献に登場する「于山島」が竹島を指すか不明確であり、歴史的権原は立証されていない'
+          ],
+          [
+            '1905年編入の合法性',
+            '日本の韓半島侵奪過程の一部であり、無主地先占ではなく既に韓国領土であった竹島の違法な強奪',
+            '無主地を国際法の原則に従い合法的に編入したものであり、朝鮮半島の併合（1910年）とは別個の措置'
+          ],
+          [
+            'SF講和条約の解釈',
+            '竹島が放棄対象から外れたのは単純な脱漏であり、SCAPIN 677等を通じて竹島が韓国領土であることは既に確認されていた',
+            '竹島が日本の放棄領土から除外されたことは、竹島が日本領土であるという連合国の認識を反映している'
+          ],
+          [
+            '実効的支配',
+            '1952年以来70年以上にわたり平和的・持続的に実効的支配を行使中',
+            '韓国の占有は1952年の李承晩ラインによる不法占拠であり、日本の継続的な抗議があるため黙認（acquiescence）は成立しない'
+          ],
+          [
+            '国際裁判',
+            '竹島は紛争自体が存在しない韓国固有の領土であるためICJ付託は不要',
+            '国際法による平和的解決を追求しており、韓国のICJ拒否は法的根拠の脆弱性を示唆している'
+          ]
+        ]
+      },
+      principles: [
+        {
+          title: '実効的支配（Effective Occupation）',
+          text: '国際法において領土主権を立証する核心的基準の一つです。韓国は70年以上にわたり竹島に対する実効的支配を行使していますが、日本はこれを不法占拠と規定し継続的に抗議しています。'
+        },
+        {
+          title: '決定的期日（Critical Date）',
+          text: '領土紛争においてどの時点の状況を基準に判断するかという問題です。1905年、1945年、1952年のいずれの時点を決定的期日とするかにより、両国への有利不利が変わります。'
+        },
+        {
+          title: '無主地先占（Terra Nullius）',
+          text: '日本は1905年に竹島が無主地であったと主張していますが、韓国は既に歴史的に領有権を行使していたため無主地ではなかったと反論しています。'
+        },
+        {
+          title: '条約解釈',
+          text: '1951年のサンフランシスコ講和条約で竹島が明記されなかったことは両国いずれにとっても解釈の余地を残しており、この曖昧さが紛争の核心的原因の一つです。'
+        }
+      ]
+    },
+    conclusion: {
+      line1: '竹島をめぐる日韓間の領有権紛争は、単なる領土問題を超えた、歴史認識と国際法解釈の複合的な対立です。',
+      line2: '両国の主張を客観的に理解することは、平和的解決に向けた第一歩です。',
+      line3: '歴史的事実に基づく対話と相互尊重のみが、北東アジアの持続可能な平和を築くことができます。',
+      sourcesTitle: '参考資料',
+      source5: '太政官指令（1877年）',
+      source6: '大韓帝国勅令第41号（1900年）'
+    },
+    footer: {
+      text: 'このウェブサイトは教育目的で制作されたものであり、両国の視点を客観的に伝えることを目指しています。'
+    },
+    dots: ['ホーム', '地理', '年表', '韓国', '日本', '国際法', '結論']
   }
 };
 
@@ -1038,7 +1547,7 @@ function setLanguage(lang) {
   document.documentElement.lang = lang;
 
   // Toggle body class
-  document.body.classList.remove('lang-ko', 'lang-en');
+  document.body.classList.remove('lang-ko', 'lang-en', 'lang-ja');
   document.body.classList.add(`lang-${lang}`);
 
   // Update all static [data-i18n] elements
@@ -1053,10 +1562,10 @@ function setLanguage(lang) {
   // Update language toggle UI
   const koOption = document.querySelector('.lang-toggle__option--ko');
   const enOption = document.querySelector('.lang-toggle__option--en');
-  if (koOption && enOption) {
-    koOption.classList.toggle('active', lang === 'ko');
-    enOption.classList.toggle('active', lang === 'en');
-  }
+  const jaOption = document.querySelector('.lang-toggle__option--ja');
+  if (koOption) koOption.classList.toggle('active', lang === 'ko');
+  if (enOption) enOption.classList.toggle('active', lang === 'en');
+  if (jaOption) jaOption.classList.toggle('active', lang === 'ja');
 
   // Re-render dynamic content
   renderTimeline(lang);
@@ -1235,7 +1744,9 @@ function initI18n() {
   const langToggle = document.getElementById('lang-toggle');
   if (langToggle) {
     langToggle.addEventListener('click', () => {
-      const newLang = currentLang === 'ko' ? 'en' : 'ko';
+      var langs = ['ko', 'en', 'ja'];
+      var idx = langs.indexOf(currentLang);
+      const newLang = langs[(idx + 1) % langs.length];
 
       // Brief crossfade transition
       const overlay = document.createElement('div');

@@ -135,6 +135,16 @@ body.lang-ko .hero__title {
   letter-spacing: -0.04em;
 }
 
+body.lang-ja {
+  font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body.lang-ja .section-title,
+body.lang-ja .hero__title {
+  font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
+  letter-spacing: -0.02em;
+}
+
 /* --- Navigation --- */
 .nav {
   position: fixed;
