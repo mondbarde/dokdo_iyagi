@@ -444,6 +444,12 @@ function setupHorizontalTimeline() {
     start: 'top top',
     end: 'bottom bottom',
     scrub: 0.3,
+    snap: {
+      snapTo: 1 / (n - 1),
+      duration: { min: 0.2, max: 0.5 },
+      delay: 0.1,
+      ease: 'power1.inOut'
+    },
     onUpdate: function (self) {
       var progress = self.progress;
 
