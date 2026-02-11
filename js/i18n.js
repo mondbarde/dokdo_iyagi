@@ -56,6 +56,8 @@ const translations = {
     },
     timeline: {
       title: '역사 연대기',
+      coverSubtitle: '독도를 둘러싼 한·일 양국의 역사적 기록과 시각을 연대순으로 살펴봅니다.',
+      scrollHint: '스크롤하여 탐색',
       legendKorea: '한국 측',
       legendJapan: '일본 측',
       legendBoth: '양측·국제',
@@ -527,6 +529,8 @@ const translations = {
     },
     timeline: {
       title: 'Historical Timeline',
+      coverSubtitle: 'A chronological look at historical records and perspectives from Korea and Japan regarding Dokdo.',
+      scrollHint: 'Scroll to explore',
       legendKorea: 'Korean Side',
       legendJapan: 'Japanese Side',
       legendBoth: 'Both / International',
@@ -1003,7 +1007,26 @@ function renderTimeline(lang) {
   var dotsContainer = document.getElementById('tl-progress-dots');
   if (!trackContainer) return;
 
-  trackContainer.innerHTML = events.map(function(evt, i) {
+  // Cover slide (title card before first event)
+  var coverHtml = '<div class="tl-slide tl-slide--cover" data-era="ancient">'
+    + '<div class="tl-slide__cover-content">'
+    + '<h2 class="tl-slide__cover-title">' + data.title + '</h2>'
+    + '<div class="title-underline title-underline--gold"></div>'
+    + '<p class="tl-slide__cover-subtitle">' + (data.coverSubtitle || '') + '</p>'
+    + '<div class="tl-slide__cover-legend">'
+    + '<span class="tl__legend-item"><span class="tl__legend-dot tl__legend-dot--korea"></span>' + data.legendKorea + '</span>'
+    + '<span class="tl__legend-item"><span class="tl__legend-dot tl__legend-dot--japan"></span>' + data.legendJapan + '</span>'
+    + '<span class="tl__legend-item"><span class="tl__legend-dot tl__legend-dot--both"></span>' + data.legendBoth + '</span>'
+    + '</div>'
+    + '<div class="tl-slide__cover-hint">'
+    + '<span>' + (data.scrollHint || '') + '</span>'
+    + '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>'
+    + '</div>'
+    + '</div>'
+    + '<div class="tl-slide__seal"></div>'
+    + '</div>';
+
+  trackContainer.innerHTML = coverHtml + events.map(function(evt, i) {
     var side = evt.side || 'korea';
     var era = evt.era || 'ancient';
     var hasBoth = evt.koreaView && evt.japanView;

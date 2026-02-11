@@ -665,6 +665,7 @@ body.lang-ko .hero__title {
   text-align: center;
   background: linear-gradient(to bottom, var(--color-parchment) 0%, rgba(245,240,225,0.85) 60%, transparent 100%);
   pointer-events: none;
+  transition: opacity 0.4s ease;
 }
 
 .tl__header .section-title {
@@ -718,6 +719,7 @@ body.lang-ko .hero__title {
   pointer-events: none;
   z-index: 0;
   white-space: nowrap;
+  transition: opacity 0.4s ease;
 }
 
 /* Era background layer */
@@ -758,10 +760,79 @@ body.lang-ko .hero__title {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 5.5rem 4rem 5rem;
+  padding: 6rem 4rem 6rem;
   position: relative;
   box-sizing: border-box;
-  gap: 0.8rem;
+  gap: 1rem;
+}
+
+/* --- Cover slide (title card) --- */
+.tl-slide--cover {
+  justify-content: center;
+  padding: 4rem 2rem;
+}
+
+.tl-slide--cover::before {
+  display: none;
+}
+
+.tl-slide__cover-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.2rem;
+  max-width: 600px;
+}
+
+.tl-slide__cover-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 900;
+  color: var(--color-ink);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.tl-slide__cover-content .title-underline {
+  margin: 0 auto;
+}
+
+.tl-slide__cover-subtitle {
+  font-size: clamp(0.95rem, 1.5vw, 1.15rem);
+  color: var(--color-ink-faded);
+  line-height: 1.7;
+  max-width: 500px;
+}
+
+.tl-slide__cover-legend {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  font-size: 0.85rem;
+  color: var(--color-ink-faded);
+  margin-top: 0.5rem;
+}
+
+.tl-slide__cover-hint {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--color-ink-ghost);
+  margin-top: 1.5rem;
+  animation: coverHintPulse 2s ease-in-out infinite;
+}
+
+.tl-slide__cover-hint svg {
+  width: 18px;
+  height: 18px;
+  opacity: 0.6;
+}
+
+@keyframes coverHintPulse {
+  0%, 100% { opacity: 0.5; transform: translateX(0); }
+  50% { opacity: 1; transform: translateX(5px); }
 }
 
 /* Brush stroke accent */
@@ -817,7 +888,7 @@ body.lang-ko .hero__title {
   gap: 1.5rem;
   width: 100%;
   max-width: 1000px;
-  flex: 1;
+  flex-shrink: 1;
   min-height: 0;
   overflow-y: auto;
 }
@@ -833,12 +904,13 @@ body.lang-ko .hero__title {
 
 /* Panel */
 .tl-slide__panel {
-  flex: 1;
+  flex: 1 1 auto;
   padding: 1.2rem 1.5rem;
   border-radius: 4px;
   background: var(--color-parchment-alt);
   border: 1px solid var(--color-worn);
   overflow-y: auto;
+  align-self: stretch;
 }
 
 .tl-slide__panel--korea {
@@ -1331,6 +1403,16 @@ body.lang-ko .hero__title {
   /* Timeline horizontal — mobile adjustments */
   .tl-slide {
     padding: 4.5rem 1.5rem 4.5rem;
+  }
+
+  .tl-slide--cover {
+    padding: 3rem 1.5rem;
+  }
+
+  .tl-slide__cover-legend {
+    gap: 0.8rem;
+    font-size: 0.75rem;
+    flex-wrap: wrap;
   }
 
   .tl-slide__perspectives {

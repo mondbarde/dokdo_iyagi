@@ -338,6 +338,13 @@ function killTimelineScroll() {
   }
   gsap.set('#tl-track', { clearProps: 'transform' });
   gsap.set('.tl-slide__year-badge, .tl-slide__title, .tl-slide__panel, .tl-slide__image, .tl-slide__seal', { clearProps: 'all' });
+  gsap.set('.tl-slide__cover-content', { clearProps: 'all' });
+
+  // Reset header and year-bg visibility
+  var tlHeader = document.querySelector('.tl__header');
+  var yearBg = document.getElementById('tl-year-bg');
+  if (tlHeader) { tlHeader.style.opacity = ''; tlHeader.style.pointerEvents = ''; }
+  if (yearBg) yearBg.style.opacity = '';
 
   // Clean up sticky wrapper
   var section = document.querySelector('.timeline-section');
@@ -358,39 +365,65 @@ function setupHorizontalTimeline() {
   var eraBg    = document.getElementById('tl-era-bg');
   var progFill = document.getElementById('tl-progress-fill');
   var progDots = gsap.utils.toArray('.tl__progress-dot');
+  var tlHeader = document.querySelector('.tl__header');
   var n = slides.length;
   if (!section || !track || n === 0) return;
+
+  // Cover slide detection (first slide is title card, not an event)
+  var hasCover = slides[0] && slides[0].classList.contains('tl-slide--cover');
+  var eventOffset = hasCover ? 1 : 0;
 
   var totalTranslate = (n - 1) * window.innerWidth;
 
   if (_tlReducedMotion) {
     // Reduced motion: show all slide content immediately, no fade animations
     slides.forEach(function (slide) {
-      gsap.set(slide.querySelectorAll('.tl-slide__year-badge, .tl-slide__title, .tl-slide__panel, .tl-slide__image, .tl-slide__seal'), {
-        opacity: 1, y: 0, x: 0
-      });
+      if (slide.classList.contains('tl-slide--cover')) {
+        var cc = slide.querySelector('.tl-slide__cover-content');
+        if (cc) gsap.set(cc, { opacity: 1, y: 0 });
+        var seal = slide.querySelector('.tl-slide__seal');
+        if (seal) gsap.set(seal, { opacity: 0.12 });
+      } else {
+        gsap.set(slide.querySelectorAll('.tl-slide__year-badge, .tl-slide__title, .tl-slide__panel, .tl-slide__image, .tl-slide__seal'), {
+          opacity: 1, y: 0, x: 0
+        });
+      }
     });
   } else {
     // Hide all slide content initially (will animate per-slide)
     slides.forEach(function (slide) {
-      var els = slide.querySelectorAll('.tl-slide__year-badge, .tl-slide__title, .tl-slide__panel, .tl-slide__image, .tl-slide__seal');
-      gsap.set(els, { opacity: 0, y: 20 });
-      var kp = slide.querySelector('.tl-slide__panel--korea');
-      var jp = slide.querySelector('.tl-slide__panel--japan');
-      if (kp) gsap.set(kp, { x: -30 });
-      if (jp) gsap.set(jp, { x: 30 });
+      if (slide.classList.contains('tl-slide--cover')) {
+        var cc = slide.querySelector('.tl-slide__cover-content');
+        if (cc) gsap.set(cc, { opacity: 0, y: 20 });
+        var seal = slide.querySelector('.tl-slide__seal');
+        if (seal) gsap.set(seal, { opacity: 0 });
+      } else {
+        var els = slide.querySelectorAll('.tl-slide__year-badge, .tl-slide__title, .tl-slide__panel, .tl-slide__image, .tl-slide__seal');
+        gsap.set(els, { opacity: 0, y: 20 });
+        var kp = slide.querySelector('.tl-slide__panel--korea');
+        var jp = slide.querySelector('.tl-slide__panel--japan');
+        if (kp) gsap.set(kp, { x: -30 });
+        if (jp) gsap.set(jp, { x: 30 });
+      }
     });
 
     // Show first slide immediately
     showSlideContent(slides[0], 1);
   }
 
-  // Set initial background
-  if (yearBg) {
-    var firstYear = slides[0].querySelector('.tl-slide__year');
+  // Set initial background (use first event slide, not cover)
+  var firstEvent = slides[eventOffset];
+  if (yearBg && firstEvent) {
+    var firstYear = firstEvent.querySelector('.tl-slide__year');
     if (firstYear) yearBg.textContent = firstYear.textContent;
   }
-  if (eraBg) eraBg.setAttribute('data-era', slides[0].getAttribute('data-era') || 'ancient');
+  if (eraBg) eraBg.setAttribute('data-era', (firstEvent || slides[0]).getAttribute('data-era') || 'ancient');
+
+  // Initially hide header and year bg on cover
+  if (hasCover) {
+    if (tlHeader) { tlHeader.style.opacity = '0'; tlHeader.style.pointerEvents = 'none'; }
+    if (yearBg) yearBg.style.opacity = '0';
+  }
 
   // Create sticky wrapper (avoids broken GSAP pin-spacers)
   var wrapper = document.createElement('div');
@@ -407,12 +440,7 @@ function setupHorizontalTimeline() {
     trigger: wrapper,
     start: 'top top',
     end: 'bottom bottom',
-    scrub: 0.5,
-    snap: {
-      snapTo: 1 / (n - 1),
-      duration: { min: 0.15, max: 0.4 },
-      ease: 'power1.inOut'
-    },
+    scrub: 0.3,
     onUpdate: function (self) {
       var progress = self.progress;
 
@@ -423,43 +451,141 @@ function setupHorizontalTimeline() {
       var activeIdx = Math.round(progress * (n - 1));
       activeIdx = Math.max(0, Math.min(n - 1, activeIdx));
 
-      // 3. Background year
+      // 3. Background year (skip cover slide)
       if (yearBg) {
-        var yr = slides[activeIdx].querySelector('.tl-slide__year');
+        var eventIdx = Math.max(eventOffset, activeIdx);
+        var yr = slides[eventIdx].querySelector('.tl-slide__year');
         if (yr) yearBg.textContent = yr.textContent;
+        // Hide year bg on cover slide
+        yearBg.style.opacity = activeIdx < eventOffset ? '0' : '';
       }
 
       // 4. Era background
       if (eraBg) {
-        eraBg.setAttribute('data-era', slides[activeIdx].getAttribute('data-era') || 'ancient');
+        var eraIdx = Math.max(eventOffset, activeIdx);
+        eraBg.setAttribute('data-era', slides[eraIdx].getAttribute('data-era') || 'ancient');
       }
 
-      // 5. Progress bar fill
+      // 5. Progress bar fill (map to event range only)
       if (progFill) {
-        progFill.style.transform = 'scaleX(' + progress + ')';
+        var eventProgress = hasCover ? Math.max(0, (progress * (n - 1) - eventOffset) / (n - 1 - eventOffset)) : progress;
+        progFill.style.transform = 'scaleX(' + Math.min(1, eventProgress) + ')';
       }
 
-      // 6. Progress dots
+      // 6. Progress dots (offset by cover)
+      var activeDotIdx = activeIdx - eventOffset;
       progDots.forEach(function (dot, i) {
-        dot.classList.toggle('tl__progress-dot--active', i === activeIdx);
+        dot.classList.toggle('tl__progress-dot--active', i === activeDotIdx);
       });
 
-      // 7. Slide content animation (skip in reduced motion — all visible)
+      // 7. Header visibility (hide on cover, show on event slides)
+      if (tlHeader && hasCover) {
+        tlHeader.style.opacity = activeIdx < eventOffset ? '0' : '';
+        tlHeader.style.pointerEvents = activeIdx < eventOffset ? 'none' : '';
+      }
+
+      // 8. Slide content animation (skip in reduced motion — all visible)
       if (!_tlReducedMotion) updateSlideContent(slides, progress, n);
     }
   });
 
-  // Progress dot click handlers
+  // Progress dot click handlers (offset by cover slide)
   progDots.forEach(function (dot, i) {
     dot.addEventListener('click', function () {
       if (!_tlScrollTrigger) return;
-      var targetProgress = (n > 1) ? i / (n - 1) : 0;
+      var targetProgress = (n > 1) ? (i + eventOffset) / (n - 1) : 0;
       var stStart = _tlScrollTrigger.start;
       var stEnd = _tlScrollTrigger.end;
       var scrollTarget = stStart + targetProgress * (stEnd - stStart);
       gsap.to(window, { scrollTo: scrollTarget, duration: 0.8, ease: 'power2.inOut' });
     });
   });
+
+  // Wheel-based slide navigation — intercepts wheel events to bypass
+  // inertial scroll delay (Magic Mouse / trackpad momentum).
+  //
+  // Gesture detection: after a transition, absorb events where deltaY is
+  // decreasing (inertia decay). A new gesture is detected when:
+  //   - deltaY spikes up (more than 2× previous + 10), or
+  // One scroll gesture = exactly one page transition.
+  // Gesture end detected by: 200ms+ time gap OR velocity spike during decay.
+  // Key: spike detection only activates AFTER the gesture peak has passed
+  // (decay phase), preventing false triggers during the initial rising phase.
+  (function () {
+    var gestureUsed = false;
+    var lastWheelTime = 0;
+    var lastTriggeredIdx = -1;
+    var scrollTween = null;
+    var gesturePeak = 0;    // max |deltaY| seen in current gesture
+    var inDecay = false;    // true once |deltaY| drops below peak
+    var prevAbsDelta = 0;
+
+    wrapper.addEventListener('wheel', function (e) {
+      if (!_tlScrollTrigger || !_tlScrollTrigger.isActive) return;
+
+      var baseIdx = lastTriggeredIdx >= 0
+        ? lastTriggeredIdx
+        : Math.round(_tlScrollTrigger.progress * (n - 1));
+      var dir = e.deltaY > 0 ? 1 : -1;
+      var target = baseIdx + dir;
+
+      // At boundaries, allow natural scroll so user can exit the section
+      if (target < 0 || target >= n) return;
+
+      e.preventDefault();
+
+      var now = Date.now();
+      var absDelta = Math.abs(e.deltaY);
+      var elapsed = now - lastWheelTime;
+      lastWheelTime = now;
+
+      if (gestureUsed) {
+        // Detect new gesture: time gap OR velocity spike during inertia decay
+        if (elapsed > 200) {
+          gestureUsed = false;
+          lastTriggeredIdx = -1;
+        } else if (inDecay && absDelta > prevAbsDelta * 2 + 10) {
+          // Spike during decay phase → new intentional gesture
+          gestureUsed = false;
+        } else {
+          // Track peak and decay state
+          if (absDelta >= gesturePeak) {
+            gesturePeak = absDelta; // still rising, update peak
+          } else {
+            inDecay = true;         // past the peak, now decaying
+          }
+          prevAbsDelta = absDelta;
+          return;
+        }
+      }
+
+      // Recalculate base from real scroll position
+      if (lastTriggeredIdx < 0) {
+        baseIdx = Math.round(_tlScrollTrigger.progress * (n - 1));
+        target = baseIdx + dir;
+        if (target < 0 || target >= n) return;
+      }
+
+      // Trigger exactly one transition per gesture
+      gestureUsed = true;
+      gesturePeak = absDelta;
+      inDecay = false;
+      prevAbsDelta = absDelta;
+      lastTriggeredIdx = target;
+
+      if (scrollTween) scrollTween.kill();
+
+      var targetProgress = target / (n - 1);
+      var scrollDest = _tlScrollTrigger.start + targetProgress * (_tlScrollTrigger.end - _tlScrollTrigger.start);
+
+      scrollTween = gsap.to(window, {
+        scrollTo: scrollDest,
+        duration: 0.4,
+        ease: 'power2.inOut',
+        onComplete: function () { scrollTween = null; }
+      });
+    }, { passive: false });
+  })();
 }
 
 function updateSlideContent(slides, progress, n) {
@@ -494,6 +620,15 @@ function updateSlideContent(slides, progress, n) {
 }
 
 function showSlideContent(slide, t) {
+  // Cover slide: animate the single content block
+  if (slide.classList.contains('tl-slide--cover')) {
+    var cc = slide.querySelector('.tl-slide__cover-content');
+    var seal = slide.querySelector('.tl-slide__seal');
+    setElState(cc, { opacity: t, y: 20 * (1 - t) });
+    if (seal) setElState(seal, { opacity: 0.12 * t });
+    return;
+  }
+
   var badge = slide.querySelector('.tl-slide__year-badge');
   var title = slide.querySelector('.tl-slide__title');
   var kp = slide.querySelector('.tl-slide__panel--korea');
@@ -510,6 +645,15 @@ function showSlideContent(slide, t) {
 }
 
 function hideSlideContent(slide) {
+  // Cover slide
+  if (slide.classList.contains('tl-slide--cover')) {
+    var cc = slide.querySelector('.tl-slide__cover-content');
+    if (cc) cc.style.opacity = '0';
+    var seal = slide.querySelector('.tl-slide__seal');
+    if (seal) seal.style.opacity = '0';
+    return;
+  }
+
   var els = slide.querySelectorAll('.tl-slide__year-badge, .tl-slide__title, .tl-slide__panel, .tl-slide__image, .tl-slide__seal');
   for (var i = 0; i < els.length; i++) {
     els[i].style.opacity = '0';
