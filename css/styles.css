@@ -55,7 +55,6 @@
 }
 
 html {
-  scroll-behavior: smooth;
   font-size: 16px;
   overflow-x: hidden;
 }
@@ -66,7 +65,6 @@ body {
   color: var(--color-ink-medium);
   background-color: var(--color-parchment);
   line-height: 1.8;
-  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -507,6 +505,7 @@ body.lang-ko .hero__title {
   background: #0c1d2e;
   position: relative;
   overflow: hidden;
+  z-index: 3;
 }
 
 /* Bottom gradient for depth */
@@ -643,100 +642,408 @@ body.lang-ko .hero__title {
   }
 }
 
-/* --- Timeline Section --- */
+/* --- Timeline Section (Horizontal Scroll) --- */
 .timeline-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
   background: var(--color-parchment);
-  padding: var(--space-xl) 0;
+  min-height: 100vh;
+  display: block;
+  padding: 0;
 }
 
-.timeline__container {
-  position: relative;
-  max-width: none;
-  margin: 0 auto;
-}
-
-.timeline__line {
+/* Header overlay with fade */
+.tl__header {
   position: absolute;
-  left: 50%;
   top: 0;
-  bottom: 0;
-  width: 2px;
-  background: linear-gradient(to bottom, var(--color-korea), var(--color-gold), var(--color-japan));
-  transform: translateX(-50%);
-  transform-origin: top;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  padding: 1.2rem 2rem 1rem;
+  text-align: center;
+  background: linear-gradient(to bottom, var(--color-parchment) 0%, rgba(245,240,225,0.85) 60%, transparent 100%);
+  pointer-events: none;
 }
 
-.timeline__events {
-  position: relative;
+.tl__header .section-title {
+  font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+  margin-bottom: 0.2rem;
 }
 
-.timeline__event {
+.tl__header .title-underline {
+  margin-bottom: 0.5rem;
+}
+
+/* Legend */
+.tl__legend {
   display: flex;
-  align-items: flex-start;
-  margin-bottom: var(--space-lg);
-  position: relative;
+  justify-content: center;
+  gap: 1.5rem;
+  font-size: 0.75rem;
+  color: var(--color-ink-faded);
+  pointer-events: auto;
 }
 
-.timeline__event--left {
-  flex-direction: row-reverse;
-  text-align: right;
+.tl__legend-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
-.timeline__event--left .timeline__card {
-  margin-right: var(--space-lg);
-}
-
-.timeline__event--right .timeline__card {
-  margin-left: var(--space-lg);
-}
-
-.timeline__dot {
-  position: absolute;
-  left: 50%;
-  top: 8px;
-  width: 14px;
-  height: 14px;
+.tl__legend-dot {
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  background: var(--color-red-seal);
-  border: 3px solid var(--color-parchment);
-  transform: translateX(-50%);
+  flex-shrink: 0;
+}
+
+.tl__legend-dot--korea { background: var(--color-korea); }
+.tl__legend-dot--japan { background: var(--color-japan); }
+.tl__legend-dot--both { background: var(--color-gold); }
+
+/* Background year display */
+.tl__year-bg {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: clamp(10rem, 25vw, 20rem);
+  font-weight: 900;
+  color: var(--color-ink);
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: 0;
+  white-space: nowrap;
+}
+
+/* Era background layer */
+.tl__era-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  transition: background-color 0.8s ease;
+}
+
+.tl__era-bg[data-era="ancient"]       { background-color: rgba(180,160,120,0.08); }
+.tl__era-bg[data-era="edo"]           { background-color: rgba(160,140,100,0.10); }
+.tl__era-bg[data-era="imperial"]      { background-color: rgba(100,80,60,0.08); }
+.tl__era-bg[data-era="modern"]        { background-color: rgba(80,100,120,0.06); }
+.tl__era-bg[data-era="contemporary"]  { background-color: rgba(60,90,130,0.05); }
+
+/* Viewport and track */
+.tl__viewport {
+  position: absolute;
+  inset: 0;
   z-index: 2;
-  box-shadow: 0 0 0 2px var(--color-gold);
+  overflow: visible;
 }
 
-.timeline__card {
-  width: calc(50% - var(--space-lg));
-  background: var(--color-parchment-alt);
-  border: 1px solid var(--color-worn);
-  border-radius: 4px;
-  padding: var(--space-sm) var(--space-md);
-  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.05);
-  transition: box-shadow 0.3s;
+.tl__track {
+  display: flex;
+  height: 100%;
+  will-change: transform;
 }
 
-.timeline__card:hover {
-  box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.1);
+/* Individual slide */
+.tl-slide {
+  flex: 0 0 100vw;
+  width: 100vw;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5.5rem 4rem 5rem;
+  position: relative;
+  box-sizing: border-box;
+  gap: 0.8rem;
 }
 
-.timeline__date {
+/* Brush stroke accent */
+.tl-slide::before {
+  content: '';
+  position: absolute;
+  top: 5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 180px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-ink-ghost) 20%, var(--color-ink-ghost) 80%, transparent);
+  opacity: 0.25;
+}
+
+/* Year badge */
+.tl-slide__year-badge {
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.tl-slide__year {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 900;
+  line-height: 1;
+  display: block;
+}
+
+.tl-slide--korea .tl-slide__year { color: var(--color-korea); }
+.tl-slide--japan .tl-slide__year { color: var(--color-japan); }
+.tl-slide--both .tl-slide__year  { color: var(--color-gold); }
+
+.tl-slide__date {
   font-family: 'Courier New', monospace;
-  font-size: 0.85rem;
-  color: var(--color-gold);
-  font-weight: 700;
-  margin-bottom: 4px;
+  font-size: 0.75rem;
+  color: var(--color-ink-faded);
+  letter-spacing: 0.1em;
 }
 
-.timeline__card-title {
-  font-size: 1rem;
+/* Title */
+.tl-slide__title {
+  font-size: clamp(1.2rem, 2.5vw, 1.8rem);
   font-weight: 700;
   color: var(--color-ink);
-  margin-bottom: 6px;
+  text-align: center;
+  flex-shrink: 0;
 }
 
-.timeline__card-text {
+/* Perspective panels container */
+.tl-slide__perspectives {
+  display: flex;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 1000px;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+/* Single perspective: center the panel */
+.tl-slide__perspectives--single {
+  justify-content: center;
+}
+
+.tl-slide__perspectives--single .tl-slide__panel {
+  max-width: 600px;
+}
+
+/* Panel */
+.tl-slide__panel {
+  flex: 1;
+  padding: 1.2rem 1.5rem;
+  border-radius: 4px;
+  background: var(--color-parchment-alt);
+  border: 1px solid var(--color-worn);
+  overflow-y: auto;
+}
+
+.tl-slide__panel--korea {
+  border-left: 4px solid var(--color-korea);
+}
+
+.tl-slide__panel--japan {
+  border-right: 4px solid var(--color-japan);
+}
+
+/* Panel header */
+.tl-slide__panel-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 0.6rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.tl-slide__panel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.tl-slide__panel-dot--korea { background: var(--color-korea); }
+.tl-slide__panel-dot--japan { background: var(--color-japan); }
+
+.tl-slide__panel-label {
+  color: var(--color-ink-faded);
+}
+
+.tl-slide__panel-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-ink);
+  margin-bottom: 0.4rem;
+  line-height: 1.4;
+}
+
+.tl-slide__panel-text {
   font-size: 0.85rem;
   color: var(--color-ink-light);
-  line-height: 1.6;
+  line-height: 1.75;
+}
+
+/* Image area */
+.tl-slide__image {
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.tl-slide__image img {
+  width: 100%;
+  max-height: 160px;
+  object-fit: contain;
+  border: 1px solid var(--color-worn);
+  border-radius: 4px;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.06);
+}
+
+.tl-slide__image-caption {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--color-ink-ghost);
+  margin-top: 0.3rem;
+  font-style: italic;
+}
+
+/* Decorative fallback */
+.tl-slide__image--fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tl-slide__image-deco {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px solid var(--color-worn);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: radial-gradient(circle, var(--color-parchment-alt), var(--color-aged));
+}
+
+.tl-slide__image-deco::before {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border-radius: 50%;
+  border: 1px solid var(--color-leather);
+}
+
+.tl-slide__image-deco-year {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 900;
+  color: var(--color-ink-ghost);
+}
+
+/* Seal stamp decoration */
+.tl-slide__seal {
+  position: absolute;
+  bottom: 5rem;
+  right: 3rem;
+  width: 40px;
+  height: 40px;
+  opacity: 0.12;
+  pointer-events: none;
+  border-radius: 50%;
+}
+
+.tl-slide--korea .tl-slide__seal { background: radial-gradient(circle, var(--color-korea) 40%, transparent 60%); }
+.tl-slide--japan .tl-slide__seal { background: radial-gradient(circle, var(--color-red-seal) 40%, transparent 60%); }
+.tl-slide--both .tl-slide__seal  { background: radial-gradient(circle, var(--color-gold) 40%, transparent 60%); }
+
+/* --- Progress bar --- */
+.tl__progress {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 3rem;
+  right: 3rem;
+  height: 24px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+}
+
+.tl__progress-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--color-worn);
+}
+
+.tl__progress-fill {
+  position: absolute;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(90deg, var(--color-korea), var(--color-gold), var(--color-japan));
+  transform-origin: left center;
+  transform: scaleX(0);
+}
+
+.tl__progress-dots {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tl__progress-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 2px solid var(--color-worn);
+  background: var(--color-parchment);
+  cursor: pointer;
+  transition: transform 0.3s, border-color 0.3s, background 0.3s;
+  position: relative;
+  z-index: 1;
+}
+
+.tl__progress-dot--korea { border-color: var(--color-korea); }
+.tl__progress-dot--japan { border-color: var(--color-japan); }
+.tl__progress-dot--both  { border-color: var(--color-gold); }
+
+.tl__progress-dot--active {
+  transform: scale(1.8);
+  background: var(--color-gold);
+  border-color: var(--color-gold);
+  box-shadow: 0 0 0 3px rgba(139,105,20,0.2);
+}
+
+/* Year tooltip on hover/active */
+.tl__progress-dot::after {
+  content: attr(data-year);
+  position: absolute;
+  bottom: calc(100% + 4px);
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.6rem;
+  font-family: 'Courier New', monospace;
+  color: var(--color-ink-faded);
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.2s;
+  pointer-events: none;
+}
+
+.tl__progress-dot:hover::after,
+.tl__progress-dot--active::after {
+  opacity: 1;
 }
 
 /* --- Claims Sections --- */
@@ -1021,25 +1328,50 @@ body.lang-ko .hero__title {
     padding: 1.5rem 1rem 2rem;
   }
 
-  .timeline__line {
-    left: 20px;
+  /* Timeline horizontal — mobile adjustments */
+  .tl-slide {
+    padding: 4.5rem 1.5rem 4.5rem;
   }
 
-  .timeline__event,
-  .timeline__event--left {
-    flex-direction: row;
-    text-align: left;
+  .tl-slide__perspectives {
+    flex-direction: column;
+    gap: 0.8rem;
   }
 
-  .timeline__dot {
-    left: 20px;
+  .tl-slide__panel {
+    padding: 1rem 1.2rem;
   }
 
-  .timeline__event--left .timeline__card,
-  .timeline__event--right .timeline__card {
-    width: calc(100% - 50px);
-    margin-left: 50px;
-    margin-right: 0;
+  .tl-slide__image img {
+    max-height: 120px;
+  }
+
+  .tl__progress {
+    left: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+  }
+
+  .tl__header {
+    padding: 0.8rem 1rem 0.5rem;
+  }
+
+  .tl__header .section-title {
+    font-size: 1rem;
+  }
+
+  .tl__legend {
+    gap: 0.6rem;
+    font-size: 0.6rem;
+    flex-wrap: wrap;
+  }
+
+  .tl-slide__seal {
+    display: none;
+  }
+
+  .tl__year-bg {
+    font-size: clamp(5rem, 20vw, 10rem);
   }
 
   .claim-cards {
@@ -1086,7 +1418,4 @@ body.lang-ko .hero__title {
     transition-duration: 0.01ms !important;
   }
 
-  html {
-    scroll-behavior: auto;
-  }
 }

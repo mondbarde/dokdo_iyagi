@@ -19,7 +19,7 @@
     rel="stylesheet">
 
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="css/styles.css?v=15">
+  <link rel="stylesheet" href="css/styles.css?v=32">
 
   <!-- Three.js import map -->
   <script type="importmap">
@@ -189,16 +189,38 @@
     </svg>
   </div>
 
-  <!-- Section 3: Historical Timeline -->
+  <!-- Section 3: Historical Timeline (Horizontal Scroll) -->
   <section id="timeline" class="section timeline-section">
-    <div class="section__inner">
+    <div class="tl__header">
       <h2 class="section-title" data-i18n="timeline.title">역사 연대기</h2>
       <div class="title-underline title-underline--gold"></div>
-      <div class="timeline__container">
-        <div class="timeline__line"></div>
-        <div class="timeline__events" id="timeline-events">
-          <!-- Dynamically rendered from i18n.js -->
-        </div>
+      <div class="tl__legend">
+        <span class="tl__legend-item">
+          <span class="tl__legend-dot tl__legend-dot--korea"></span>
+          <span class="tl__legend-text--korea">한국 측</span>
+        </span>
+        <span class="tl__legend-item">
+          <span class="tl__legend-dot tl__legend-dot--japan"></span>
+          <span class="tl__legend-text--japan">일본 측</span>
+        </span>
+        <span class="tl__legend-item">
+          <span class="tl__legend-dot tl__legend-dot--both"></span>
+          <span class="tl__legend-text--both">양측·국제</span>
+        </span>
+      </div>
+    </div>
+    <div class="tl__year-bg" id="tl-year-bg"></div>
+    <div class="tl__era-bg" id="tl-era-bg"></div>
+    <div class="tl__viewport">
+      <div class="tl__track" id="tl-track">
+        <!-- Slides rendered dynamically by i18n.js -->
+      </div>
+    </div>
+    <div class="tl__progress" id="tl-progress">
+      <div class="tl__progress-line"></div>
+      <div class="tl__progress-fill" id="tl-progress-fill"></div>
+      <div class="tl__progress-dots" id="tl-progress-dots">
+        <!-- Dots rendered dynamically -->
       </div>
     </div>
   </section>
@@ -321,9 +343,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
   <!-- App Scripts -->
-  <script src="js/i18n.js?v=13"></script>
-  <script src="js/script.js?v=15"></script>
-  <script type="module" src="js/dokdo3d.js?v=2"></script>
+  <script src="js/i18n.js?v=15"></script>
+  <script src="js/script.js?v=32"></script>
+  <script type="module" src="js/dokdo3d.js?v=3"></script>
 </body>
 
 </html>

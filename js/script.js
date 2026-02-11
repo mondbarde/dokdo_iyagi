@@ -4,9 +4,6 @@
    =================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Register GSAP plugins
-  gsap.registerPlugin(ScrollTrigger);
-
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   // --- Navigation (always active) ---
@@ -15,11 +12,16 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- Hero scroll deblur (always active — user-controlled) ---
   initHeroAnimations(prefersReducedMotion);
 
+  // --- Pinned sections always initialize (core navigation, not decorative) ---
+  initTimelineAnimations(prefersReducedMotion);
+  initConclusionAnimations();
+
   if (prefersReducedMotion) {
-    // Make all content visible without entrance animations
-    gsap.set('.fade-up, .claim-card, .timeline__event, .timeline__dot, .law__principle, .fact-card, .fact-card--overlay', {
+    // Make all non-pinned content visible without entrance animations
+    gsap.set('.fade-up, .claim-card, .law__principle, .fact-card, .fact-card--overlay', {
       opacity: 1, y: 0, x: 0, scale: 1
     });
+    ScrollTrigger.refresh();
     return;
   }
 
@@ -31,13 +33,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- Section Animations ---
   // Geo section cards + 3D rotation are handled by dokdo3d.js
-  initTimelineAnimations();
   initClaimAnimations();
   initLawAnimations();
-  initConclusionAnimations();
 
   // --- Batch fade-up elements ---
   initFadeUpBatch();
+
+  // Force recalculation after all dynamic content is rendered
+  ScrollTrigger.refresh();
 });
 
 /* ========================================
@@ -304,88 +307,223 @@ function initHeroAnimations(reducedMotion) {
 }
 
 /* ========================================
-   Timeline Section Animations
+   Timeline Section Animations (Horizontal Scroll)
    ======================================== */
 
-function initTimelineAnimations() {
-  // Timeline line draws with scroll
-  gsap.fromTo('.timeline__line',
-    { scaleY: 0 },
-    {
-      scaleY: 1,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: '.timeline-section',
-        start: 'top 80%',
-        end: 'bottom 20%',
-        scrub: 1
-      }
-    }
-  );
+var _tlScrollTrigger = null;
 
-  // We use a MutationObserver to animate events after they're rendered
-  observeAndAnimateTimeline();
-}
+var _tlReducedMotion = false;
 
-function observeAndAnimateTimeline() {
-  const container = document.getElementById('timeline-events');
+function initTimelineAnimations(reducedMotion) {
+  _tlReducedMotion = !!reducedMotion;
+  var container = document.getElementById('tl-track');
   if (!container) return;
 
-  // If events already exist, animate them
   if (container.children.length > 0) {
-    animateTimelineEvents();
+    setupHorizontalTimeline();
   }
 
-  // Watch for changes (language switch re-renders)
-  const observer = new MutationObserver(() => {
-    animateTimelineEvents();
+  // Watch for language-switch re-renders
+  var observer = new MutationObserver(function () {
+    killTimelineScroll();
+    requestAnimationFrame(function () { setupHorizontalTimeline(); });
   });
-
   observer.observe(container, { childList: true });
 }
 
-function animateTimelineEvents() {
-  const events = document.querySelectorAll('.timeline__event');
-  const dots = document.querySelectorAll('.timeline__dot');
+function killTimelineScroll() {
+  if (_tlScrollTrigger) {
+    _tlScrollTrigger.kill();
+    _tlScrollTrigger = null;
+  }
+  gsap.set('#tl-track', { clearProps: 'transform' });
+  gsap.set('.tl-slide__year-badge, .tl-slide__title, .tl-slide__panel, .tl-slide__image, .tl-slide__seal', { clearProps: 'all' });
 
-  events.forEach((event, i) => {
-    const isLeft = event.classList.contains('timeline__event--left');
-    const direction = isLeft ? 80 : -80;
+  // Clean up sticky wrapper
+  var section = document.querySelector('.timeline-section');
+  var wrapper = document.querySelector('.tl-sticky-wrapper');
+  if (wrapper && section) {
+    section.style.position = '';
+    section.style.top = '';
+    wrapper.parentNode.insertBefore(section, wrapper);
+    wrapper.remove();
+  }
+}
 
-    // Kill any existing ScrollTriggers for this element
-    ScrollTrigger.getAll().forEach(st => {
-      if (st.trigger === event) st.kill();
+function setupHorizontalTimeline() {
+  var section  = document.querySelector('.timeline-section');
+  var track    = document.getElementById('tl-track');
+  var slides   = gsap.utils.toArray('.tl-slide');
+  var yearBg   = document.getElementById('tl-year-bg');
+  var eraBg    = document.getElementById('tl-era-bg');
+  var progFill = document.getElementById('tl-progress-fill');
+  var progDots = gsap.utils.toArray('.tl__progress-dot');
+  var n = slides.length;
+  if (!section || !track || n === 0) return;
+
+  var totalTranslate = (n - 1) * window.innerWidth;
+
+  if (_tlReducedMotion) {
+    // Reduced motion: show all slide content immediately, no fade animations
+    slides.forEach(function (slide) {
+      gsap.set(slide.querySelectorAll('.tl-slide__year-badge, .tl-slide__title, .tl-slide__panel, .tl-slide__image, .tl-slide__seal'), {
+        opacity: 1, y: 0, x: 0
+      });
+    });
+  } else {
+    // Hide all slide content initially (will animate per-slide)
+    slides.forEach(function (slide) {
+      var els = slide.querySelectorAll('.tl-slide__year-badge, .tl-slide__title, .tl-slide__panel, .tl-slide__image, .tl-slide__seal');
+      gsap.set(els, { opacity: 0, y: 20 });
+      var kp = slide.querySelector('.tl-slide__panel--korea');
+      var jp = slide.querySelector('.tl-slide__panel--japan');
+      if (kp) gsap.set(kp, { x: -30 });
+      if (jp) gsap.set(jp, { x: 30 });
     });
 
-    gsap.fromTo(event, {
-      x: direction,
-      opacity: 0
-    }, {
-      x: 0,
-      opacity: 1,
-      duration: 1,
-      scrollTrigger: {
-        trigger: event,
-        start: 'top 85%',
-        once: true
+    // Show first slide immediately
+    showSlideContent(slides[0], 1);
+  }
+
+  // Set initial background
+  if (yearBg) {
+    var firstYear = slides[0].querySelector('.tl-slide__year');
+    if (firstYear) yearBg.textContent = firstYear.textContent;
+  }
+  if (eraBg) eraBg.setAttribute('data-era', slides[0].getAttribute('data-era') || 'ancient');
+
+  // Create sticky wrapper (avoids broken GSAP pin-spacers)
+  var wrapper = document.createElement('div');
+  wrapper.className = 'tl-sticky-wrapper';
+  wrapper.style.height = (n + 1) * 100 + 'vh'; // section height + scroll distance
+  wrapper.style.position = 'relative';
+  section.parentNode.insertBefore(wrapper, section);
+  wrapper.appendChild(section);
+
+  section.style.position = 'sticky';
+  section.style.top = '0';
+
+  _tlScrollTrigger = ScrollTrigger.create({
+    trigger: wrapper,
+    start: 'top top',
+    end: 'bottom bottom',
+    scrub: 0.5,
+    snap: {
+      snapTo: 1 / (n - 1),
+      duration: { min: 0.15, max: 0.4 },
+      ease: 'power1.inOut'
+    },
+    onUpdate: function (self) {
+      var progress = self.progress;
+
+      // 1. Translate track horizontally
+      track.style.transform = 'translateX(' + (-progress * totalTranslate) + 'px)';
+
+      // 2. Active slide index
+      var activeIdx = Math.round(progress * (n - 1));
+      activeIdx = Math.max(0, Math.min(n - 1, activeIdx));
+
+      // 3. Background year
+      if (yearBg) {
+        var yr = slides[activeIdx].querySelector('.tl-slide__year');
+        if (yr) yearBg.textContent = yr.textContent;
       }
-    });
+
+      // 4. Era background
+      if (eraBg) {
+        eraBg.setAttribute('data-era', slides[activeIdx].getAttribute('data-era') || 'ancient');
+      }
+
+      // 5. Progress bar fill
+      if (progFill) {
+        progFill.style.transform = 'scaleX(' + progress + ')';
+      }
+
+      // 6. Progress dots
+      progDots.forEach(function (dot, i) {
+        dot.classList.toggle('tl__progress-dot--active', i === activeIdx);
+      });
+
+      // 7. Slide content animation (skip in reduced motion — all visible)
+      if (!_tlReducedMotion) updateSlideContent(slides, progress, n);
+    }
   });
 
-  dots.forEach(dot => {
-    gsap.fromTo(dot, {
-      scale: 0
-    }, {
-      scale: 1,
-      duration: 0.5,
-      ease: 'back.out(3)',
-      scrollTrigger: {
-        trigger: dot,
-        start: 'top 85%',
-        once: true
-      }
+  // Progress dot click handlers
+  progDots.forEach(function (dot, i) {
+    dot.addEventListener('click', function () {
+      if (!_tlScrollTrigger) return;
+      var targetProgress = (n > 1) ? i / (n - 1) : 0;
+      var stStart = _tlScrollTrigger.start;
+      var stEnd = _tlScrollTrigger.end;
+      var scrollTarget = stStart + targetProgress * (stEnd - stStart);
+      gsap.to(window, { scrollTo: scrollTarget, duration: 0.8, ease: 'power2.inOut' });
     });
   });
+}
+
+function updateSlideContent(slides, progress, n) {
+  var divisions = n - 1 || 1;
+  for (var i = 0; i < n; i++) {
+    var segStart = i / divisions;
+    var segEnd = (i + 1) / divisions;
+    if (i === n - 1) segEnd = 1.01;
+    var segLen = segEnd - segStart;
+
+    var fadeInEnd    = segStart + segLen * 0.15;
+    var holdEnd      = segStart + segLen * 0.85;
+
+    if (progress >= segStart && progress < fadeInEnd) {
+      // Entering
+      var t = (progress - segStart) / (fadeInEnd - segStart);
+      t = t * t * (3 - 2 * t); // smoothstep
+      showSlideContent(slides[i], t);
+    } else if (progress >= fadeInEnd && progress < holdEnd) {
+      // Holding
+      showSlideContent(slides[i], 1);
+    } else if (progress >= holdEnd && progress < segEnd) {
+      // Exiting
+      var t2 = (progress - holdEnd) / (segEnd - holdEnd);
+      t2 = t2 * t2 * (3 - 2 * t2);
+      showSlideContent(slides[i], 1 - t2);
+    } else {
+      // Hidden
+      hideSlideContent(slides[i]);
+    }
+  }
+}
+
+function showSlideContent(slide, t) {
+  var badge = slide.querySelector('.tl-slide__year-badge');
+  var title = slide.querySelector('.tl-slide__title');
+  var kp = slide.querySelector('.tl-slide__panel--korea');
+  var jp = slide.querySelector('.tl-slide__panel--japan');
+  var img = slide.querySelector('.tl-slide__image');
+  var seal = slide.querySelector('.tl-slide__seal');
+
+  setElState(badge, { opacity: t, y: 15 * (1 - t) });
+  setElState(title, { opacity: t, y: 10 * (1 - t) });
+  if (kp) setElState(kp, { opacity: t, x: -30 * (1 - t) });
+  if (jp) setElState(jp, { opacity: t, x: 30 * (1 - t) });
+  if (img) setElState(img, { opacity: t, y: 15 * (1 - t) });
+  if (seal) setElState(seal, { opacity: 0.12 * t });
+}
+
+function hideSlideContent(slide) {
+  var els = slide.querySelectorAll('.tl-slide__year-badge, .tl-slide__title, .tl-slide__panel, .tl-slide__image, .tl-slide__seal');
+  for (var i = 0; i < els.length; i++) {
+    els[i].style.opacity = '0';
+  }
+}
+
+function setElState(el, props) {
+  if (!el) return;
+  if (props.opacity !== undefined) el.style.opacity = props.opacity;
+  var transforms = [];
+  if (props.x !== undefined) transforms.push('translateX(' + props.x + 'px)');
+  if (props.y !== undefined) transforms.push('translateY(' + props.y + 'px)');
+  if (props.scale !== undefined) transforms.push('scale(' + props.scale + ')');
+  if (transforms.length) el.style.transform = transforms.join(' ');
 }
 
 /* ========================================
@@ -577,13 +715,26 @@ function animateLawPrinciples() {
    ======================================== */
 
 function initConclusionAnimations() {
-  // Pinned section with sequential text reveal
-  const conclusionTl = gsap.timeline({
+  var section = document.querySelector('.conclusion-section');
+  if (!section) return;
+
+  // Create sticky wrapper (avoids broken GSAP pin-spacers)
+  var wrapper = document.createElement('div');
+  wrapper.className = 'conclusion-sticky-wrapper';
+  wrapper.style.height = '250vh'; // 100vh section + 150vh scroll distance
+  wrapper.style.position = 'relative';
+  section.parentNode.insertBefore(wrapper, section);
+  wrapper.appendChild(section);
+
+  section.style.position = 'sticky';
+  section.style.top = '0';
+
+  // Sequential text reveal
+  var conclusionTl = gsap.timeline({
     scrollTrigger: {
-      trigger: '.conclusion-section',
+      trigger: wrapper,
       start: 'top top',
-      end: '+=150%',
-      pin: true,
+      end: 'bottom bottom',
       scrub: 1
     }
   });

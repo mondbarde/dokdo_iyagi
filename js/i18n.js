@@ -56,56 +56,297 @@ const translations = {
     },
     timeline: {
       title: '역사 연대기',
+      legendKorea: '한국 측',
+      legendJapan: '일본 측',
+      legendBoth: '양측·국제',
+      labelKorea: '한국 측 시각',
+      labelJapan: '일본 측 시각',
       events: [
         {
-          date: '512년',
+          date: '512년', year: 512, side: 'korea', era: 'ancient',
           title: '우산국 복속',
-          text: '신라 지증왕 13년, 이사부가 우산국(울릉도·우산도 포함)을 복속시킴. 삼국사기에 기록.'
+          koreaView: {
+            title: '독도 영유권의 역사적 출발점',
+            text: '신라 지증왕 13년, 이사부가 우산국(울릉도·우산도 포함)을 복속시킴. 삼국사기에 기록. 우산국에 독도가 포함되어 한국 영유권의 역사적 기원이 됨.'
+          },
+          japanView: {
+            title: '우산국의 범위에 대한 의문',
+            text: '우산국이 울릉도만을 지칭하는지, 독도까지 포함하는지 역사적으로 불분명. 6세기 기록만으로 독도 영유권을 주장하기 어려움.'
+          },
+          image: null
         },
         {
-          date: '1454년',
+          date: '1145년', year: 1145, side: 'korea', era: 'ancient',
+          title: '삼국사기 편찬',
+          koreaView: {
+            title: '공식 역사서의 기록',
+            text: '김부식이 편찬한 삼국사기에 512년 우산국 복속 사실이 공식 기록됨. 한국이 독도 영유권의 역사적 출발점으로 제시하는 핵심 문헌.'
+          },
+          japanView: {
+            title: '독도와의 연관성 부족',
+            text: '삼국사기의 우산국 관련 기록에 독도(다케시마)에 대한 구체적 언급이 없으며, 울릉도 복속 기록이 독도 영유권의 근거가 되기 어려움.'
+          },
+          image: { url: 'https://upload.wikimedia.org/wikipedia/commons/d/de/Samguk.JPG', alt: '삼국사기', caption: '삼국사기 원본', credit: 'Wikimedia Commons, Public Domain' }
+        },
+        {
+          date: '1454년', year: 1454, side: 'korea', era: 'ancient',
           title: '세종실록지리지',
-          text: '"우산과 무릉 두 섬이 현의 동쪽 바다에 있다. 날씨가 맑으면 서로 바라볼 수 있다." 우산도를 독도로 해석하는 것이 한국 측 입장.'
+          koreaView: {
+            title: '두 섬의 존재 확인',
+            text: '"우산과 무릉 두 섬이 현의 동쪽 바다에 있다. 날씨가 맑으면 서로 바라볼 수 있다." 우산도가 독도를 가리키는 명백한 기록.'
+          },
+          japanView: {
+            title: '지리적 기술의 불일치',
+            text: '"맑은 날 서로 보인다"는 기술이 울릉도에서 독도까지의 실제 거리(약 87km)와 가시성 조건에 맞지 않음. 우산도가 울릉도 부속 섬일 가능성.'
+          },
+          image: { url: 'https://upload.wikimedia.org/wikipedia/commons/6/63/Veritable_Records_of_Sejong_Cover.jpg', alt: '세종실록', caption: '세종실록 표지', credit: 'Wikimedia Commons, Public Domain' }
         },
         {
-          date: '1693~1696년',
-          title: '안용복 사건',
-          text: '조선 어부 안용복이 일본에 건너가 울릉도·독도의 조선 영유권을 주장. 이후 도쿠가와 막부가 일본 어민의 울릉도 도해를 금지(1696년).'
+          date: '1531년', year: 1531, side: 'korea', era: 'ancient',
+          title: '신증동국여지승람',
+          koreaView: {
+            title: '관찬 지리서의 근거',
+            text: '조선의 관찬 지리서로 우산도와 울릉도를 지도에 함께 표시. 조선이 독도의 존재를 인지하고 자국 영토로 관리했음을 보여주는 고문헌 근거.'
+          },
+          japanView: {
+            title: '지도상 위치의 오류',
+            text: '팔도총도에서 우산도가 울릉도의 서쪽(한반도 쪽)에 그려져 있어, 동남쪽에 위치한 독도와 일치하지 않음. 우산도가 독도인지 의문.'
+          },
+          image: { url: 'https://upload.wikimedia.org/wikipedia/commons/a/a1/Ulleungdo_and_Usando.jpg', alt: '팔도총도', caption: '팔도총도 - 울릉도와 우산도 (1530)', credit: 'Wikimedia Commons, Public Domain' }
         },
         {
-          date: '1877년',
+          date: '1618년', year: 1618, side: 'japan', era: 'edo',
+          title: '오야·무라카와 도해면허',
+          koreaView: {
+            title: '외국 영토 인식의 증거',
+            text: '"도해면허"는 외국 영토로의 항해에 발급하는 것으로, 막부가 울릉도를 일본 영토가 아닌 외국으로 인식했음을 오히려 증명.'
+          },
+          japanView: {
+            title: '17세기 영유 활동의 근거',
+            text: '에도 막부가 오야·무라카와 가문에 도해면허를 발급, 울릉도(다케시마) 및 마쓰시마(독도)를 경유지이자 어업 근거지로 활용. 17세기부터의 실효적 이용.'
+          },
+          image: null
+        },
+        {
+          date: '1667년', year: 1667, side: 'japan', era: 'edo',
+          title: '은주시청합기',
+          koreaView: {
+            title: '일본 영토 외 확인',
+            text: '"일본의 서북 한계는 이 주(오키도)를 한도로 한다"는 기술은 울릉도와 독도가 일본 영토 밖에 있음을 일본인 스스로 확인한 것.'
+          },
+          japanView: {
+            title: '독도 인지의 증거',
+            text: '은주시청합기에 마쓰시마(독도)와 다케시마(울릉도)에 대한 상세한 기술이 있어, 17세기 일본이 독도의 존재와 위치를 정확히 인지하고 있었음을 증명.'
+          },
+          image: { url: 'https://upload.wikimedia.org/wikipedia/commons/8/8a/Eunju2.jpg', alt: '은주시청합기 지도', caption: '은주시청합기 수록 지도 (1667)', credit: 'Wikimedia Commons, CC BY-SA 4.0' }
+        },
+        {
+          date: '1693년', year: 1693, side: 'both', era: 'edo',
+          title: '안용복 도일 & 울릉도쟁계',
+          koreaView: {
+            title: '영유권의 외교적 확인',
+            text: '조선 어부 안용복이 일본에 건너가 울릉도·독도의 조선 영유권을 주장하고, 일본 측으로부터 확인을 받음. 조일 외교 분쟁의 계기.'
+          },
+          japanView: {
+            title: '안용복 진술의 신빙성 문제',
+            text: '안용복의 도일 경위와 일본 측과의 교섭 내용은 과장이 많으며, 조선 측 기록과 일본 측 기록이 상충. 공식 외교 문서로서의 가치가 낮음.'
+          },
+          image: { url: 'https://upload.wikimedia.org/wikipedia/commons/f/fc/Old_Map_of_Liancourt_Rocks.jpg', alt: '17세기 울릉도·독도 항로도', caption: '오키 제도에서 울릉도·독도 항로를 보여주는 17세기 일본 지도', credit: 'Wikimedia Commons, Public Domain' }
+        },
+        {
+          date: '1696년', year: 1696, side: 'both', era: 'edo',
+          title: '울릉도 도해금지령',
+          koreaView: {
+            title: '조선 영유권 인정의 결정적 증거',
+            text: '도쿠가와 막부가 일본 어민의 울릉도 도해를 공식 금지. 일본 정부가 울릉도·독도의 조선 영유권을 인정한 결정적 증거.'
+          },
+          japanView: {
+            title: '울릉도에 한정된 금지',
+            text: '도해금지령은 다케시마(울릉도)에 대한 것이며, 마쓰시마(독도)에 대한 도해는 금지하지 않음. 독도에 대한 일본의 영유 의사는 유지됨.'
+          },
+          image: null
+        },
+        {
+          date: '1770년', year: 1770, side: 'korea', era: 'edo',
+          title: '동국문헌비고',
+          koreaView: {
+            title: '우산도=독도의 결정적 기록',
+            text: '"우산은 즉 왜인이 말하는 마쓰시마(松島)이다"라고 명시. 우산도가 독도임을 확인하는 가장 직접적인 기록.'
+          },
+          japanView: {
+            title: '후대 주석의 정확성 의문',
+            text: '동국문헌비고의 해당 기술은 편찬자의 주석이며, 원래 자료에 근거한 것인지 불분명. 후대의 해석이 역사적 사실을 입증하기 어려움.'
+          },
+          image: null
+        },
+        {
+          date: '1877년', year: 1877, side: 'both', era: 'imperial',
           title: '태정관지령',
-          text: '일본 최고 국가기관 태정관이 "울릉도와 그 외 1도(독도)는 일본과 관계없다"고 결정. 한국 측이 가장 강력한 근거로 제시하는 문서.'
+          koreaView: {
+            title: '일본 최고기관의 영토 외 확인',
+            text: '일본 최고 국가기관 태정관이 "울릉도와 그 외 1도는 일본과 관계없다"고 공식 결정. 일본 스스로 독도의 비일본 영토성을 확인한 가장 강력한 근거.'
+          },
+          japanView: {
+            title: '"외 1도"의 해석 문제',
+            text: '태정관 문서의 "그 외 1도"가 현재의 독도(다케시마)를 지칭하는지, 당시 지명 혼란(다케시마/마쓰시마의 혼용) 속에서 다른 섬일 가능성도 있음.'
+          },
+          image: null
         },
         {
-          date: '1900년',
+          date: '1900년', year: 1900, side: 'korea', era: 'imperial',
           title: '대한제국 칙령 제41호',
-          text: '울도군을 설치하고 관할 구역에 "석도(石島)"를 포함. 한국 측은 석도를 독도로 해석.'
+          koreaView: {
+            title: '1905년 이전의 공식 관할',
+            text: '울도군을 설치하고 관할에 "석도(石島)"를 포함. 석도는 독도의 당시 명칭이며, 일본의 1905년 편입 이전에 한국이 독도를 공식적으로 관할한 증거.'
+          },
+          japanView: {
+            title: '"석도=독도" 근거 불충분',
+            text: '"석도"가 독도를 지칭한다는 직접적 증거가 부족. 석도(石島)와 독도(獨島)의 발음·표기상 연관성이 불분명하며, 당시 울릉도 주민이 독도를 실제로 관할했다는 기록도 없음.'
+          },
+          image: { url: 'https://upload.wikimedia.org/wikipedia/commons/3/3f/Royal_Decree_No.41.jpg', alt: '대한제국 칙령 제41호', caption: '대한제국 칙령 제41호 원본 (1900)', credit: 'Wikimedia Commons, Public Domain' }
         },
         {
-          date: '1905년',
+          date: '1905년', year: 1905, side: 'japan', era: 'imperial',
           title: '시마네현 편입',
-          text: '일본 각의 결정으로 "다케시마"를 시마네현에 편입. 일본은 무주지 선점이라 주장, 한국은 한일 강제병합의 일환으로 봄.'
+          koreaView: {
+            title: '한반도 침탈의 일환',
+            text: '을사조약(1905.11) 직전인 1905년 1월에 이루어진 편입은 한반도 침탈 과정의 일환. 독도는 무주지가 아니라 이미 한국의 영토였으므로 불법 강탈.'
+          },
+          japanView: {
+            title: '국제법상 합법적 편입',
+            text: '일본 각의 결정으로 무주지(terra nullius)인 다케시마를 국제법 원칙에 따라 합법적으로 시마네현에 편입. 한반도 병합(1910)과는 별개의 독립적 조치.'
+          },
+          image: null
         },
         {
-          date: '1945년',
+          date: '1906년', year: 1906, side: 'korea', era: 'imperial',
+          title: '심흥택 보고서',
+          koreaView: {
+            title: '즉각적 항의와 독도 인식',
+            text: '울도군수 심흥택이 일본의 독도 편입을 알고 즉각 중앙 정부에 보고. 대한제국이 항의했으나 을사조약으로 외교권이 박탈된 상태.'
+          },
+          japanView: {
+            title: '실효적 대응 부재',
+            text: '대한제국의 항의는 이미 외교권을 상실한 상태에서의 형식적 반응이며, 편입에 대한 구체적인 법적 이의 제기나 국제적 항의는 이루어지지 않음.'
+          },
+          image: null
+        },
+        {
+          date: '1945년', year: 1945, side: 'both', era: 'modern',
+          title: '일본 패전',
+          koreaView: {
+            title: '식민지 영토의 반환',
+            text: '일본의 무조건 항복과 포츠담 선언 수락. 카이로 선언(1943)에서 "폭력과 탐욕에 의해 탈취한 모든 지역"의 반환을 규정, 독도도 이에 해당.'
+          },
+          japanView: {
+            title: '전후 영토 처리의 시작',
+            text: '포츠담 선언에 따라 일본의 주권은 본토 4도와 연합국이 결정하는 도서로 한정. 다케시마의 최종 귀속은 강화조약에서 결정될 사안.'
+          },
+          image: null
+        },
+        {
+          date: '1946년', year: 1946, side: 'both', era: 'modern',
           title: 'SCAPIN 677',
-          text: '일본 패전 후 연합군 사령부가 독도를 일본의 행정권에서 명시적으로 제외. 단, "영토 최종 결정이 아님"이라는 단서 포함.'
+          koreaView: {
+            title: '독도의 일본 행정권 제외',
+            text: '연합군 최고사령부가 독도를 일본의 행정권에서 명시적으로 제외. 전후 처리에서 독도가 한국 영토로 인정된 증거.'
+          },
+          japanView: {
+            title: '잠정 행정조치에 불과',
+            text: 'SCAPIN 677은 "영토의 최종 결정이 아님"이라는 단서를 명시. 점령기의 잠정적 행정조치이며, 영토 주권의 최종 결정은 강화조약에 위임.'
+          },
+          image: { url: 'https://upload.wikimedia.org/wikipedia/commons/0/05/SCAPIN_677_lq.jpg', alt: 'SCAPIN 677 행정구역 지도', caption: 'SCAPIN 677에 따른 일본 행정구역 지도 (1946)', credit: 'Wikimedia Commons, Public Domain' }
         },
         {
-          date: '1951년',
-          title: '샌프란시스코 강화조약',
-          text: '일본이 포기할 영토에 제주도·거문도·울릉도를 명시했으나 독도는 언급하지 않음. 양측 모두 자국에 유리하게 해석.'
+          date: '1951년', year: 1951, side: 'both', era: 'modern',
+          title: 'SF 강화조약 & 러스크 서한',
+          koreaView: {
+            title: '독도 미언급은 누락',
+            text: '샌프란시스코 강화조약에서 독도가 포기 영토에 포함되지 않은 것은 단순 누락. SCAPIN 677로 이미 독도가 한국 영토임이 확인되었으므로 별도 명시 불필요.'
+          },
+          japanView: {
+            title: '포기 대상 제외 = 일본 영토',
+            text: '조약 제2조에서 포기 영토로 제주도·거문도·울릉도를 명시했으나 독도는 제외. 러스크 서한에서 미국도 "독도는 한국 영토로 취급된 적 없다"고 확인.'
+          },
+          image: { url: 'https://upload.wikimedia.org/wikipedia/commons/0/02/Treaty_of_peace_with_japan.jpg', alt: '샌프란시스코 강화조약 서명', caption: '딘 애치슨 미 국무장관의 강화조약 서명 (1951)', credit: 'Wikimedia Commons, Public Domain' }
         },
         {
-          date: '1952년',
+          date: '1952년', year: 1952, side: 'korea', era: 'modern',
           title: '이승만 라인 선포',
-          text: '대한민국이 "평화선"을 선포하여 독도를 한국 측 수역에 포함. 이후 한국이 독도에 대한 실효적 지배를 시작.'
+          koreaView: {
+            title: '주권적 권리의 행사',
+            text: '대한민국이 "평화선"을 선포하여 독도를 한국 측 수역에 포함. 국제법상 인접 해양에 대한 주권적 권리 행사이며, 독도 실효적 지배의 본격적 시작.'
+          },
+          japanView: {
+            title: '국제법 위반의 일방적 선언',
+            text: '이승만 라인은 공해상의 일방적 관할권 주장으로 국제법에 위배. 독도에 대한 한국의 불법 점거가 시작된 기점.'
+          },
+          image: { url: 'https://upload.wikimedia.org/wikipedia/commons/b/b5/Syngman_Rhee_Line_map.jpg', alt: '이승만 라인 지도', caption: '평화선(이승만 라인) 공식 지도 (1952)', credit: 'Wikimedia Commons, Public Domain' }
         },
         {
-          date: '1954년~현재',
-          title: 'ICJ 제소 제안과 지속적 분쟁',
-          text: '일본이 국제사법재판소(ICJ) 회부를 세 차례(1954, 1962, 2012) 제안했으나 한국은 모두 거부. 한국은 독도에 경비대를 주둔시키며 실효적 지배를 지속 중.'
+          date: '1953년', year: 1953, side: 'korea', era: 'modern',
+          title: '독도의용수비대',
+          koreaView: {
+            title: '독도 수호의 상징',
+            text: '민간인 33명으로 구성된 의용수비대가 독도에 주둔. 1956년 경찰에 임무를 인계할 때까지 독도를 수비. 국민적 독도 수호 의지의 상징.'
+          },
+          japanView: {
+            title: '무력 점거의 증거',
+            text: '한국 민간인의 무장 주둔은 평화적 영토 관리가 아닌 무력에 의한 점거. 일본 어민과 해상보안청 순시선에 대한 발포 사건도 발생.'
+          },
+          image: null
+        },
+        {
+          date: '1954년', year: 1954, side: 'japan', era: 'modern',
+          title: '1차 ICJ 제소 제안',
+          koreaView: {
+            title: '분쟁 자체가 존재하지 않음',
+            text: '독도는 분쟁 대상이 아닌 한국 고유의 영토. ICJ 회부는 독도를 분쟁 지역으로 격상시키려는 일본의 전략이므로 거부.'
+          },
+          japanView: {
+            title: '국제법적 평화적 해결',
+            text: '일본은 독도 문제를 국제사법재판소(ICJ)에 회부하여 국제법에 따른 평화적 해결을 추구. 한국의 거부는 법적 근거에 대한 자신감 부족을 시사.'
+          },
+          image: null
+        },
+        {
+          date: '1965년', year: 1965, side: 'both', era: 'modern',
+          title: '한일기본조약',
+          koreaView: {
+            title: '독도는 협상 대상이 아님',
+            text: '한일 국교 정상화 과정에서 독도 문제는 의제로 다루어지지 않음. 독도는 한국의 고유 영토이므로 협상 대상 자체가 될 수 없다는 입장.'
+          },
+          japanView: {
+            title: '미해결 상태로 유보',
+            text: '국교 정상화를 위해 독도 문제를 미해결 상태로 남겨두기로 합의. "분쟁은 외교로 해결"이라는 포괄 조항에 포함.'
+          },
+          image: null
+        },
+        {
+          date: '2005년', year: 2005, side: 'japan', era: 'contemporary',
+          title: '다케시마의 날 제정',
+          koreaView: {
+            title: '역사 왜곡과 도발',
+            text: '시마네현의 "다케시마의 날" 제정은 일본의 독도 침탈 역사를 미화하는 도발적 행위. 한국 정부와 국민이 강력히 반발하며 외교 갈등 심화.'
+          },
+          japanView: {
+            title: '영유권 주장의 표현',
+            text: '1905년 각의 결정에 의한 시마네현 편입 100주년을 기념하여 2월 22일을 "다케시마의 날"로 제정. 일본의 정당한 영유권 주장의 평화적 표현.'
+          },
+          image: null
+        },
+        {
+          date: '2012년', year: 2012, side: 'both', era: 'contemporary',
+          title: '이명박 독도 방문 & 3차 ICJ 제안',
+          koreaView: {
+            title: '대통령의 주권 확인',
+            text: '대한민국 대통령으로서 최초로 독도를 방문. 독도에 대한 한국의 확고한 영토 주권을 국내외에 선언한 역사적 행보.'
+          },
+          japanView: {
+            title: 'ICJ를 통한 해결 재촉구',
+            text: '한국 대통령의 독도 방문을 도발로 규정. 일본은 3차 ICJ 제소를 제안하여 국제법적 해결을 다시 촉구했으나 한국이 거부. 한일 관계 크게 경색.'
+          },
+          image: null
         }
       ]
     },
@@ -286,56 +527,297 @@ const translations = {
     },
     timeline: {
       title: 'Historical Timeline',
+      legendKorea: 'Korean Side',
+      legendJapan: 'Japanese Side',
+      legendBoth: 'Both / International',
+      labelKorea: 'Korean Perspective',
+      labelJapan: 'Japanese Perspective',
       events: [
         {
-          date: '512 AD',
+          date: '512 AD', year: 512, side: 'korea', era: 'ancient',
           title: 'Subjugation of Usan-guk',
-          text: 'Under King Jijeung of Silla, General Isabu subjugated Usan-guk (including Ulleungdo and Usando). Recorded in the Samguk Sagi.'
+          koreaView: {
+            title: 'Historical origin of sovereignty',
+            text: 'Under King Jijeung of Silla, General Isabu subjugated Usan-guk (including Ulleungdo and Usando). Recorded in the Samguk Sagi. Dokdo was part of Usan-guk, marking the start of Korean sovereignty.'
+          },
+          japanView: {
+            title: 'Scope of Usan-guk unclear',
+            text: 'Whether Usan-guk referred only to Ulleungdo or also included Dokdo is historically uncertain. A 6th-century record alone is insufficient to claim sovereignty over Dokdo.'
+          },
+          image: null
         },
         {
-          date: '1454',
+          date: '1145', year: 1145, side: 'korea', era: 'ancient',
+          title: 'Samguk Sagi Compilation',
+          koreaView: {
+            title: 'Official historical record',
+            text: 'The Samguk Sagi, compiled by Kim Busik, officially records the subjugation of Usan-guk in 512 AD. A key document Korea presents as the historical basis of its Dokdo sovereignty.'
+          },
+          japanView: {
+            title: 'No direct link to Dokdo',
+            text: 'The Samguk Sagi\'s Usan-guk records contain no specific mention of Dokdo (Takeshima). Records of Ulleungdo\'s subjugation cannot serve as grounds for Dokdo sovereignty.'
+          },
+          image: { url: 'https://upload.wikimedia.org/wikipedia/commons/d/de/Samguk.JPG', alt: 'Samguk Sagi', caption: 'Original Samguk Sagi manuscript', credit: 'Wikimedia Commons, Public Domain' }
+        },
+        {
+          date: '1454', year: 1454, side: 'korea', era: 'ancient',
           title: 'Sejong Sillok Jiriji',
-          text: '"The two islands of Usan and Mureung are in the sea east of the county. On clear days, they can be seen from each other." Korea interprets Usando as referring to Dokdo.'
+          koreaView: {
+            title: 'Confirmation of two islands',
+            text: '"The two islands of Usan and Mureung are in the sea east of the county. On clear days, they can be seen from each other." Clear evidence that Usando (Dokdo) was recognized as Korean territory.'
+          },
+          japanView: {
+            title: 'Geographic description mismatch',
+            text: 'The claim that the islands "can be seen from each other on clear days" is inconsistent with the actual distance between Ulleungdo and Dokdo (~87km). Usando may refer to a nearby islet of Ulleungdo.'
+          },
+          image: { url: 'https://upload.wikimedia.org/wikipedia/commons/6/63/Veritable_Records_of_Sejong_Cover.jpg', alt: 'Sejong Sillok', caption: 'Cover of the Veritable Records of King Sejong', credit: 'Wikimedia Commons, Public Domain' }
         },
         {
-          date: '1693–1696',
-          title: 'An Yong-bok Incident',
-          text: 'Korean fisherman An Yong-bok traveled to Japan to assert Joseon sovereignty over Ulleungdo and Dokdo. The Tokugawa Shogunate subsequently prohibited Japanese passage to Ulleungdo (1696).'
+          date: '1531', year: 1531, side: 'korea', era: 'ancient',
+          title: 'Sinjeung Dongguk Yeoji Seungnam',
+          koreaView: {
+            title: 'Official geographic atlas',
+            text: 'An official Joseon geographic encyclopedia that maps both Usando and Ulleungdo, demonstrating Joseon\'s awareness and administrative control of Dokdo.'
+          },
+          japanView: {
+            title: 'Map placement error',
+            text: 'In the Paldo Chongdo map, Usando is drawn west of Ulleungdo (toward the Korean peninsula), inconsistent with Dokdo\'s actual position to the southeast. The identification of Usando as Dokdo is questionable.'
+          },
+          image: { url: 'https://upload.wikimedia.org/wikipedia/commons/a/a1/Ulleungdo_and_Usando.jpg', alt: 'Paldo Chongdo map', caption: 'Map of the Eight Provinces showing Ulleungdo and Usando (1530)', credit: 'Wikimedia Commons, Public Domain' }
         },
         {
-          date: '1877',
+          date: '1618', year: 1618, side: 'japan', era: 'edo',
+          title: 'Oya-Murakawa Passage License',
+          koreaView: {
+            title: 'Evidence of foreign territory recognition',
+            text: 'A "passage license" (tokai menkyo) was issued for travel to foreign territories. Its very existence proves the Shogunate recognized Ulleungdo as foreign (non-Japanese) territory.'
+          },
+          japanView: {
+            title: '17th-century territorial activity',
+            text: 'The Edo Shogunate granted the Oya and Murakawa families licenses to sail to Ulleungdo (Takeshima) and Matsushima (Dokdo), using them as fishing bases. Evidence of effective utilization since the 17th century.'
+          },
+          image: null
+        },
+        {
+          date: '1667', year: 1667, side: 'japan', era: 'edo',
+          title: 'Onshu Shicho Goki',
+          koreaView: {
+            title: 'Japan\'s own boundary admission',
+            text: 'The statement "the northwest boundary of Japan ends at this province (Oki Islands)" confirms that Ulleungdo and Dokdo lay outside Japanese territory — acknowledged by a Japanese author.'
+          },
+          japanView: {
+            title: 'Evidence of Dokdo awareness',
+            text: 'The Onshu Shicho Goki contains detailed descriptions of Matsushima (Dokdo) and Takeshima (Ulleungdo), proving that Japan accurately knew Dokdo\'s existence and location in the 17th century.'
+          },
+          image: { url: 'https://upload.wikimedia.org/wikipedia/commons/8/8a/Eunju2.jpg', alt: 'Onshu Shicho Goki map', caption: 'Map from the Onshu Shicho Goki (1667)', credit: 'Wikimedia Commons, CC BY-SA 4.0' }
+        },
+        {
+          date: '1693', year: 1693, side: 'both', era: 'edo',
+          title: 'An Yong-bok\'s Visit & Ulleungdo Dispute',
+          koreaView: {
+            title: 'Diplomatic confirmation of sovereignty',
+            text: 'Korean fisherman An Yong-bok traveled to Japan asserting Joseon sovereignty over Ulleungdo and Dokdo, receiving acknowledgment from Japanese officials. Triggered the Ulleungdo Dispute.'
+          },
+          japanView: {
+            title: 'Unreliable testimony',
+            text: 'An Yong-bok\'s accounts of his journey and Japanese negotiations are exaggerated and inconsistent with Japanese records. His testimony lacks credibility as official diplomatic documentation.'
+          },
+          image: { url: 'https://upload.wikimedia.org/wikipedia/commons/f/fc/Old_Map_of_Liancourt_Rocks.jpg', alt: '17th century route map', caption: '17th century Japanese map showing the route from Oki Islands to Ulleungdo and Dokdo', credit: 'Wikimedia Commons, Public Domain' }
+        },
+        {
+          date: '1696', year: 1696, side: 'both', era: 'edo',
+          title: 'Ulleungdo Passage Ban',
+          koreaView: {
+            title: 'Japan\'s recognition of Korean sovereignty',
+            text: 'The Tokugawa Shogunate officially banned Japanese fishermen from traveling to Ulleungdo. Decisive evidence that Japan recognized Joseon\'s sovereignty over both Ulleungdo and Dokdo.'
+          },
+          japanView: {
+            title: 'Ban limited to Ulleungdo only',
+            text: 'The passage ban applied to Takeshima (Ulleungdo), not Matsushima (Dokdo). Japan\'s claim to Dokdo was maintained, as no prohibition was placed on travel to the islets.'
+          },
+          image: null
+        },
+        {
+          date: '1770', year: 1770, side: 'korea', era: 'edo',
+          title: 'Dongguk Munheon Bigo',
+          koreaView: {
+            title: 'Definitive identification: Usando = Dokdo',
+            text: '"Usan is what the Japanese call Matsushima (松島)." The most direct historical record confirming that Usando refers to Dokdo.'
+          },
+          japanView: {
+            title: 'Questionable later annotation',
+            text: 'This statement is a compiler\'s annotation, not from original source material. Whether this later interpretation accurately reflects historical fact is debatable.'
+          },
+          image: null
+        },
+        {
+          date: '1877', year: 1877, side: 'both', era: 'imperial',
           title: 'Dajokan Order',
-          text: 'Japan\'s highest governmental body, the Dajokan, determined that "Ulleungdo and one other island (Dokdo) are not related to Japan." Korea cites this as the strongest evidence from Japan itself.'
+          koreaView: {
+            title: 'Japan\'s own government confirms exclusion',
+            text: 'Japan\'s highest governmental body officially determined that "Ulleungdo and one other island are not related to Japan." The strongest evidence, from Japan\'s own records, confirming Dokdo is not Japanese territory.'
+          },
+          japanView: {
+            title: 'Identity of "one other island" disputed',
+            text: 'Whether "one other island" in the Dajokan document refers to present-day Dokdo (Takeshima) is uncertain. Name confusion between Takeshima and Matsushima at the time may mean a different island was intended.'
+          },
+          image: null
         },
         {
-          date: '1900',
+          date: '1900', year: 1900, side: 'korea', era: 'imperial',
           title: 'Korean Imperial Edict No. 41',
-          text: 'The Korean Empire established Uldo County with jurisdiction over "Seokdo (石島)." Korea interprets Seokdo as Dokdo.'
+          koreaView: {
+            title: 'Official administration before 1905',
+            text: 'The Korean Empire established Uldo County with jurisdiction including "Seokdo (石島)." Seokdo is Dokdo\'s name at the time, proving Korean administration before Japan\'s 1905 incorporation.'
+          },
+          japanView: {
+            title: 'Insufficient evidence for "Seokdo = Dokdo"',
+            text: 'There is no direct evidence that "Seokdo" refers to Dokdo. The phonetic and written connection between Seokdo (石島) and Dokdo (獨島) is unclear, and no records show Uldo County actually administered Dokdo.'
+          },
+          image: { url: 'https://upload.wikimedia.org/wikipedia/commons/3/3f/Royal_Decree_No.41.jpg', alt: 'Korean Imperial Edict No. 41', caption: 'Original Korean Imperial Edict No. 41 (1900)', credit: 'Wikimedia Commons, Public Domain' }
         },
         {
-          date: '1905',
+          date: '1905', year: 1905, side: 'japan', era: 'imperial',
           title: 'Shimane Prefecture Incorporation',
-          text: 'Japan incorporated "Takeshima" into Shimane Prefecture by Cabinet decision. Japan claims terra nullius; Korea views it as part of imperial aggression.'
+          koreaView: {
+            title: 'Part of imperial aggression',
+            text: 'The incorporation in January 1905 — just months before the Eulsa Treaty stripped Korea\'s diplomatic rights — was part of Japan\'s imperial aggression. Dokdo was not terra nullius but already Korean territory; this was illegal seizure.'
+          },
+          japanView: {
+            title: 'Legitimate incorporation under international law',
+            text: 'Japan incorporated terra nullius Takeshima into Shimane Prefecture by Cabinet decision, following international law principles. This was independent of and separate from the 1910 annexation of Korea.'
+          },
+          image: null
         },
         {
-          date: '1945',
+          date: '1906', year: 1906, side: 'korea', era: 'imperial',
+          title: 'Sim Heung-taek Report',
+          koreaView: {
+            title: 'Immediate protest and territorial awareness',
+            text: 'Uldo County magistrate Sim Heung-taek discovered Japan\'s incorporation and immediately reported to the central government. The Korean Empire protested, but had already lost diplomatic rights under the Eulsa Treaty.'
+          },
+          japanView: {
+            title: 'No effective response',
+            text: 'The Korean Empire\'s protest was a formality from a state that had already lost diplomatic rights. No concrete legal challenge or international objection was raised against the incorporation.'
+          },
+          image: null
+        },
+        {
+          date: '1945', year: 1945, side: 'both', era: 'modern',
+          title: 'Japan\'s Surrender',
+          koreaView: {
+            title: 'Return of colonial territories',
+            text: 'Japan\'s unconditional surrender and acceptance of the Potsdam Declaration. The Cairo Declaration (1943) stipulated the return of "all territories taken by violence and greed" — which includes Dokdo.'
+          },
+          japanView: {
+            title: 'Start of post-war territorial settlement',
+            text: 'Under the Potsdam Declaration, Japanese sovereignty was limited to the four main islands and such islands as the Allies determined. Takeshima\'s final disposition was to be decided by the peace treaty.'
+          },
+          image: null
+        },
+        {
+          date: '1946', year: 1946, side: 'both', era: 'modern',
           title: 'SCAPIN 677',
-          text: 'After Japan\'s surrender, the Allied occupation explicitly excluded Dokdo from Japanese administrative authority. However, it included a caveat that this was "not a final territorial determination."'
+          koreaView: {
+            title: 'Dokdo excluded from Japan',
+            text: 'The Allied Supreme Command explicitly excluded Dokdo from Japanese administrative authority. Evidence that the post-war settlement recognized Dokdo as Korean territory.'
+          },
+          japanView: {
+            title: 'Merely a provisional measure',
+            text: 'SCAPIN 677 explicitly stated it was "not a final determination of sovereignty." It was a temporary administrative measure during occupation; final sovereignty was deferred to the peace treaty.'
+          },
+          image: { url: 'https://upload.wikimedia.org/wikipedia/commons/0/05/SCAPIN_677_lq.jpg', alt: 'SCAPIN 677 administrative map', caption: 'SCAP Administrative Areas map under SCAPIN 677 (1946)', credit: 'Wikimedia Commons, Public Domain' }
         },
         {
-          date: '1951',
-          title: 'San Francisco Peace Treaty',
-          text: 'The treaty specified Jeju, Geomundo, and Ulleungdo as territories Japan must renounce, but did not mention Dokdo. Both sides interpret this omission in their favor.'
+          date: '1951', year: 1951, side: 'both', era: 'modern',
+          title: 'SF Peace Treaty & Rusk Documents',
+          koreaView: {
+            title: 'Omission was not exclusion',
+            text: 'Dokdo\'s absence from the list of renounced territories was a simple omission. SCAPIN 677 had already confirmed Dokdo as Korean territory, making separate mention unnecessary.'
+          },
+          japanView: {
+            title: 'Not renounced = Japanese territory',
+            text: 'Article 2 specifically listed territories Japan renounced (Jeju, Geomundo, Ulleungdo) but excluded Dokdo. The Rusk Documents confirm: the U.S. stated "Dokdo was never treated as part of Korea."'
+          },
+          image: { url: 'https://upload.wikimedia.org/wikipedia/commons/0/02/Treaty_of_peace_with_japan.jpg', alt: 'San Francisco Peace Treaty signing', caption: 'Secretary of State Dean Acheson signing the Peace Treaty (1951)', credit: 'Wikimedia Commons, Public Domain' }
         },
         {
-          date: '1952',
+          date: '1952', year: 1952, side: 'korea', era: 'modern',
           title: 'Syngman Rhee Line',
-          text: 'South Korea declared the "Peace Line," placing Dokdo within Korean waters. Korea has maintained effective control of Dokdo since then.'
+          koreaView: {
+            title: 'Exercise of sovereign rights',
+            text: 'South Korea declared the "Peace Line," placing Dokdo within Korean waters. A legitimate exercise of sovereign rights over adjacent maritime areas; the beginning of effective control over Dokdo.'
+          },
+          japanView: {
+            title: 'Unilateral violation of international law',
+            text: 'The Syngman Rhee Line was a unilateral claim of jurisdiction over international waters, violating international law. It marked the beginning of Korea\'s illegal occupation of Takeshima.'
+          },
+          image: { url: 'https://upload.wikimedia.org/wikipedia/commons/b/b5/Syngman_Rhee_Line_map.jpg', alt: 'Syngman Rhee Line map', caption: 'Official Syngman Rhee Line (Peace Line) map (1952)', credit: 'Wikimedia Commons, Public Domain' }
         },
         {
-          date: '1954–Present',
-          title: 'ICJ Proposals & Ongoing Dispute',
-          text: 'Japan has proposed ICJ referral three times (1954, 1962, 2012); Korea has rejected each proposal. Korea maintains a coast guard garrison on Dokdo with continuous administration.'
+          date: '1953', year: 1953, side: 'korea', era: 'modern',
+          title: 'Dokdo Volunteer Guards',
+          koreaView: {
+            title: 'Symbol of Dokdo protection',
+            text: 'A civilian defense corps of 33 members stationed on Dokdo, guarding the islands until handing over to the Korean National Police in 1956. A symbol of the Korean people\'s commitment to protecting Dokdo.'
+          },
+          japanView: {
+            title: 'Evidence of forceful occupation',
+            text: 'The armed stationing of Korean civilians was not peaceful territorial management but forceful occupation. Firing incidents against Japanese fishermen and maritime patrol vessels occurred.'
+          },
+          image: null
+        },
+        {
+          date: '1954', year: 1954, side: 'japan', era: 'modern',
+          title: '1st ICJ Referral Proposal',
+          koreaView: {
+            title: 'No dispute exists to adjudicate',
+            text: 'Dokdo is inherently Korean territory, not a subject of dispute. An ICJ referral is a Japanese strategy to elevate Dokdo to "disputed territory" status; Korea rightfully rejected it.'
+          },
+          japanView: {
+            title: 'Seeking peaceful legal resolution',
+            text: 'Japan proposed referring the dispute to the International Court of Justice for peaceful resolution under international law. Korea\'s rejection suggests a lack of confidence in its legal position.'
+          },
+          image: null
+        },
+        {
+          date: '1965', year: 1965, side: 'both', era: 'modern',
+          title: 'Treaty on Basic Relations',
+          koreaView: {
+            title: 'Dokdo was not a negotiation item',
+            text: 'During Korea-Japan normalization, the Dokdo issue was not placed on the agenda. As inherent Korean territory, Dokdo cannot be a subject of negotiation.'
+          },
+          japanView: {
+            title: 'Left unresolved by agreement',
+            text: 'To achieve diplomatic normalization, both sides agreed to leave the Dokdo issue unresolved. It falls under the general clause that "disputes shall be settled through diplomacy."'
+          },
+          image: null
+        },
+        {
+          date: '2005', year: 2005, side: 'japan', era: 'contemporary',
+          title: 'Takeshima Day Established',
+          koreaView: {
+            title: 'Provocative historical distortion',
+            text: 'Shimane Prefecture\'s "Takeshima Day" glorifies Japan\'s seizure of Dokdo. The Korean government and public strongly protested, deepening diplomatic tensions.'
+          },
+          japanView: {
+            title: 'Peaceful expression of territorial claim',
+            text: 'February 22 was designated "Takeshima Day" to commemorate the 100th anniversary of the 1905 Cabinet decision incorporating Takeshima into Shimane Prefecture. A peaceful expression of Japan\'s legitimate sovereignty claim.'
+          },
+          image: null
+        },
+        {
+          date: '2012', year: 2012, side: 'both', era: 'contemporary',
+          title: 'Presidential Visit & 3rd ICJ Proposal',
+          koreaView: {
+            title: 'Presidential affirmation of sovereignty',
+            text: 'President Lee Myung-bak became the first Korean president to visit Dokdo, declaring Korea\'s firm territorial sovereignty to the domestic and international community.'
+          },
+          japanView: {
+            title: 'Renewed call for ICJ resolution',
+            text: 'Japan characterized the presidential visit as a provocation and proposed a third ICJ referral seeking international legal resolution. Korea again rejected. Korea-Japan relations deteriorated significantly.'
+          },
+          image: null
         }
       ]
     },
@@ -515,20 +997,84 @@ function setLanguage(lang) {
 /* --- Dynamic Content Renderers --- */
 
 function renderTimeline(lang) {
-  const events = translations[lang].timeline.events;
-  const container = document.getElementById('timeline-events');
-  if (!container) return;
+  var data = translations[lang].timeline;
+  var events = data.events;
+  var trackContainer = document.getElementById('tl-track');
+  var dotsContainer = document.getElementById('tl-progress-dots');
+  if (!trackContainer) return;
 
-  container.innerHTML = events.map((evt, i) => `
-    <div class="timeline__event timeline__event--${i % 2 === 0 ? 'left' : 'right'}">
-      <div class="timeline__dot"></div>
-      <div class="timeline__card">
-        <div class="timeline__date">${evt.date}</div>
-        <h3 class="timeline__card-title">${evt.title}</h3>
-        <p class="timeline__card-text">${evt.text}</p>
-      </div>
-    </div>
-  `).join('');
+  trackContainer.innerHTML = events.map(function(evt, i) {
+    var side = evt.side || 'korea';
+    var era = evt.era || 'ancient';
+    var hasBoth = evt.koreaView && evt.japanView;
+    var perspClass = hasBoth ? '' : ' tl-slide__perspectives--single';
+
+    var koreaHtml = '';
+    if (evt.koreaView) {
+      koreaHtml = '<div class="tl-slide__panel tl-slide__panel--korea">'
+        + '<div class="tl-slide__panel-header">'
+        + '<span class="tl-slide__panel-dot tl-slide__panel-dot--korea"></span>'
+        + '<span class="tl-slide__panel-label">' + data.labelKorea + '</span>'
+        + '</div>'
+        + '<h4 class="tl-slide__panel-title">' + evt.koreaView.title + '</h4>'
+        + '<p class="tl-slide__panel-text">' + evt.koreaView.text + '</p>'
+        + '</div>';
+    }
+
+    var japanHtml = '';
+    if (evt.japanView) {
+      japanHtml = '<div class="tl-slide__panel tl-slide__panel--japan">'
+        + '<div class="tl-slide__panel-header">'
+        + '<span class="tl-slide__panel-dot tl-slide__panel-dot--japan"></span>'
+        + '<span class="tl-slide__panel-label">' + data.labelJapan + '</span>'
+        + '</div>'
+        + '<h4 class="tl-slide__panel-title">' + evt.japanView.title + '</h4>'
+        + '<p class="tl-slide__panel-text">' + evt.japanView.text + '</p>'
+        + '</div>';
+    }
+
+    var imageHtml = '';
+    if (evt.image && evt.image.url) {
+      imageHtml = '<div class="tl-slide__image">'
+        + '<img src="' + evt.image.url + '" alt="' + (evt.image.alt || '') + '" loading="lazy" />'
+        + '<span class="tl-slide__image-caption">' + (evt.image.caption || '') + '</span>'
+        + '</div>';
+    } else {
+      imageHtml = '<div class="tl-slide__image tl-slide__image--fallback">'
+        + '<div class="tl-slide__image-deco">'
+        + '<span class="tl-slide__image-deco-year">' + (evt.year || '') + '</span>'
+        + '</div></div>';
+    }
+
+    return '<div class="tl-slide tl-slide--' + side + '" data-tl-idx="' + i + '" data-era="' + era + '">'
+      + '<div class="tl-slide__year-badge">'
+      + '<span class="tl-slide__year">' + (evt.year || '') + '</span>'
+      + '<span class="tl-slide__date">' + evt.date + '</span>'
+      + '</div>'
+      + '<h3 class="tl-slide__title">' + evt.title + '</h3>'
+      + '<div class="tl-slide__perspectives' + perspClass + '">'
+      + koreaHtml + japanHtml
+      + '</div>'
+      + imageHtml
+      + '<div class="tl-slide__seal"></div>'
+      + '</div>';
+  }).join('');
+
+  // Render progress dots
+  if (dotsContainer) {
+    dotsContainer.innerHTML = events.map(function(evt, i) {
+      return '<div class="tl__progress-dot tl__progress-dot--' + (evt.side || 'korea')
+        + '" data-tl-dot="' + i + '" data-year="' + evt.date + '"></div>';
+    }).join('');
+  }
+
+  // Update legend labels
+  var legendKorea = document.querySelector('.tl__legend-text--korea');
+  var legendJapan = document.querySelector('.tl__legend-text--japan');
+  var legendBoth = document.querySelector('.tl__legend-text--both');
+  if (legendKorea) legendKorea.textContent = data.legendKorea;
+  if (legendJapan) legendJapan.textContent = data.legendJapan;
+  if (legendBoth) legendBoth.textContent = data.legendBoth;
 }
 
 function renderClaims(section, lang) {

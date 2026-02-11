@@ -274,13 +274,22 @@ import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
     }
   }
 
-  // --- ScrollTrigger integration (pin entire section) ---
+  // --- ScrollTrigger integration (sticky wrapper — avoids broken pin-spacers) ---
   if (gsap && ScrollTrigger) {
+    var wrapper = document.createElement('div');
+    wrapper.className = 'geo-sticky-wrapper';
+    wrapper.style.height = '700vh'; // 100vh section + 600vh scroll distance
+    wrapper.style.position = 'relative';
+    section.parentNode.insertBefore(wrapper, section);
+    wrapper.appendChild(section);
+
+    section.style.position = 'sticky';
+    section.style.top = '0';
+
     ScrollTrigger.create({
-      trigger: section,
+      trigger: wrapper,
       start: 'top top',
-      end: '+=600%',
-      pin: true,
+      end: 'bottom bottom',
       scrub: 0.5,
       onUpdate: function (self) {
         var p = self.progress;
