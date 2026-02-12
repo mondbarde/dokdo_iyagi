@@ -1658,8 +1658,70 @@ const translations = {
       line2: '両国の主張を客観的に理解することは、平和的解決に向けた第一歩です。',
       line3: '歴史的事実に基づく対話と相互尊重のみが、北東アジアの持続可能な平和を築くことができます。',
       sourcesTitle: '参考資料',
-      source5: '太政官指令（1877年）',
-      source6: '大韓帝国勅令第41号（1900年）'
+      sourceCategories: [
+        {
+          heading: '政府公式資料',
+          items: [
+            { text: '大韓民国外交部 — 独島', url: 'https://dokdo.mofa.go.kr' },
+            { text: '日本国外務省 — 竹島', url: 'https://www.mofa.go.jp/a_o/na/takeshima/' },
+            { text: '独島総合情報システム（東北アジア歴史財団）', url: 'https://www.dokdo.go.kr' },
+            { text: '韓国国家記録院 — 独島関連記録', url: 'https://www.archives.go.kr' }
+          ]
+        },
+        {
+          heading: '歴史文献（韓国側）',
+          items: [
+            { text: '三国史記（1145年）— 異斯夫の于山国服属記録（512年）' },
+            { text: '世宗実録地理志（1454年）— 于山島・武陵島の記述' },
+            { text: '新増東国輿地勝覧（1531年）— 蔚珍県付属島嶼' },
+            { text: '粛宗実録（1693–1696年）— 安龍福事件と鬱陵島争界' },
+            { text: '大韓帝国勅令第41号（1900年）— 鬱島郡管轄に石島（独島）を明記' }
+          ]
+        },
+        {
+          heading: '歴史文献（日本側）',
+          items: [
+            { text: '隠州視聴合記（1667年）— 「日本の西北の限りはこの州（隠岐）をもって限りとす」' },
+            { text: '鳥取藩回答書（1695年）— 「竹島（鬱陵島）・松島（独島）は鳥取藩に属さず」' },
+            { text: '太政官指令（1877年）— 「竹島外一島（独島）は本邦に関係なし」' },
+            { text: '島根県告示第40号（1905年）— 竹島編入' },
+            { text: '中井養三郎 編入願書（1904年）' }
+          ]
+        },
+        {
+          heading: '国際条約・文書',
+          items: [
+            { text: 'SCAPIN 677（1946年）— 連合国最高司令部、独島を日本の統治範囲から除外' },
+            { text: 'SCAPIN 1033（1946年）— マッカーサーライン設定、独島周辺の日本漁業制限' },
+            { text: 'サンフランシスコ講和条約（1951年）— 草案変遷：1947年（韓国返還）→ 1949年（日本残留）→ 最終版（両方から不記載）' },
+            { text: 'ラスク書簡（1951年）— 米国国務次官補の非公開書簡' },
+            { text: 'ヴァン・フリート報告書（1954年）' },
+            { text: 'ICJ領土紛争判例：パルマス島（1928年）、東部グリーンランド（1933年）、ペドラ・ブランカ（2008年）' }
+          ]
+        },
+        {
+          heading: '研究・学術資料',
+          items: [
+            { text: '東北アジア歴史財団「独島研究」学術誌', url: 'https://www.nahf.or.kr' },
+            { text: '韓国海洋水産開発院（KMI）独島研究センター' },
+            { text: '独島財団（慶尚北道）', url: 'https://www.dokdofoundation.or.kr' },
+            { text: '池内敏『竹島問題とは何か』（名古屋大学出版会、2012年）' },
+            { text: '朴炳渉「太政官指令と竹島」『北東アジア文化研究』' },
+            { text: 'Sean Fern, "Tokdo or Takeshima?", Stanford Journal of East Asian Affairs, Vol. 5, No. 1 (2005)' },
+            { text: 'Teruo Kobayashi, "The Korea-Japan Border Dispute," Korea Observer, Vol. 36, No. 3 (2005)' }
+          ]
+        },
+        {
+          heading: '地図・視覚資料',
+          items: [
+            { text: '磯竹島略圖 — 太政官指令附属地図（1877年）' },
+            { text: '林子平『三国接壌之図』（1785年）— 鬱陵島・独島を朝鮮領として着色' },
+            { text: '日本陸軍省地図（1936年）— 独島を日本領域外に表記' },
+            { text: '大東輿地図（金正浩、1861年）' },
+            { text: 'ウィキメディア・コモンズ — 独島/竹島関連パブリックドメイン画像' }
+          ]
+        }
+      ]
     },
     footer: {
       text: 'このウェブサイトは教育目的で制作されたものであり、両国の視点を客観的に伝えることを目指しています。争点別比較分析および国際法的評価はAI（Claude Opus 4.6）によって作成されました。'
@@ -1707,6 +1769,7 @@ function setLanguage(lang) {
   renderTimeline(lang);
   renderClaimsSection(lang);
   renderLawSection(lang);
+  renderSources(lang);
   // Refresh GSAP ScrollTrigger
   if (typeof ScrollTrigger !== 'undefined') {
     setTimeout(() => ScrollTrigger.refresh(), 100);
@@ -1977,31 +2040,53 @@ function renderLawSection(lang) {
   }
 }
 
+function renderSources(lang) {
+  var c = translations[lang].conclusion;
+  var container = document.getElementById('conclusion-sources');
+  if (!container || !c.sourceCategories) return;
+
+  var html = '<h3>' + c.sourcesTitle + '</h3>';
+  c.sourceCategories.forEach(function (cat) {
+    html += '<h4 class="conclusion__sources-heading">' + cat.heading + '</h4><ul>';
+    cat.items.forEach(function (item) {
+      if (item.url) {
+        html += '<li><a href="' + item.url + '" target="_blank" rel="noopener">' + item.text + '</a></li>';
+      } else {
+        html += '<li>' + item.text + '</li>';
+      }
+    });
+    html += '</ul>';
+  });
+  container.innerHTML = html;
+}
+
 /* --- Initialize --- */
 function initI18n() {
   // Set up language toggle
-  const langToggle = document.getElementById('lang-toggle');
-  if (langToggle) {
-    langToggle.addEventListener('click', () => {
-      var langs = ['ko', 'en', 'ja'];
-      var idx = langs.indexOf(currentLang);
-      const newLang = langs[(idx + 1) % langs.length];
-
-      // Brief crossfade transition
-      const overlay = document.createElement('div');
-      overlay.className = 'lang-transition';
-      document.body.appendChild(overlay);
-
-      requestAnimationFrame(() => {
-        overlay.classList.add('lang-transition--active');
-        setTimeout(() => {
-          setLanguage(newLang);
-          overlay.classList.remove('lang-transition--active');
-          setTimeout(() => overlay.remove(), 200);
-        }, 150);
-      });
+  function switchToLang(newLang) {
+    if (newLang === currentLang) return;
+    const overlay = document.createElement('div');
+    overlay.className = 'lang-transition';
+    document.body.appendChild(overlay);
+    requestAnimationFrame(() => {
+      overlay.classList.add('lang-transition--active');
+      setTimeout(() => {
+        setLanguage(newLang);
+        overlay.classList.remove('lang-transition--active');
+        setTimeout(() => overlay.remove(), 200);
+      }, 150);
     });
   }
+
+  document.querySelectorAll('.lang-toggle__option').forEach(function (opt) {
+    opt.style.cursor = 'pointer';
+    opt.addEventListener('click', function (e) {
+      e.stopPropagation();
+      if (opt.classList.contains('lang-toggle__option--ko')) switchToLang('ko');
+      else if (opt.classList.contains('lang-toggle__option--en')) switchToLang('en');
+      else if (opt.classList.contains('lang-toggle__option--ja')) switchToLang('ja');
+    });
+  });
 
   // Initial render
   setLanguage(currentLang);

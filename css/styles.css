@@ -302,6 +302,13 @@ body.lang-ja .hero__title {
 
 .lang-toggle__option {
   transition: color 0.3s;
+  cursor: pointer;
+  padding: 2px 4px;
+  border-radius: 3px;
+}
+
+.lang-toggle__option:hover {
+  color: rgba(0, 0, 0, 0.7);
 }
 
 .lang-toggle__option.active {
@@ -485,10 +492,21 @@ body.lang-ja .hero__title {
   padding: 0.6rem 1.8rem;
   border-radius: 6px;
   white-space: nowrap;
+  max-width: 90vw;
+  box-sizing: border-box;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease;
   letter-spacing: 0.08em;
+}
+@media (max-width: 768px) {
+  .hero__map-caption {
+    font-size: 1rem;
+    white-space: normal;
+    text-align: center;
+    padding: 0.5rem 1rem;
+    line-height: 1.5;
+  }
 }
 
 /* Hero: satellite zoom-out video layer — fixed, initially hidden */
@@ -1716,6 +1734,28 @@ body.lang-ja .hero__title {
   left: 0;
   color: var(--color-gold);
   font-size: 0.7rem;
+}
+
+.conclusion__sources-heading {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-ink-medium);
+  margin-top: var(--space-sm);
+  margin-bottom: 4px;
+  padding-bottom: 3px;
+  border-bottom: 1px solid var(--color-worn);
+}
+
+.conclusion__sources ul {
+  margin-bottom: var(--space-xs);
+}
+
+.conclusion__sources a {
+  color: var(--color-ink-light);
+  border-bottom: 1px dotted var(--color-worn);
+}
+.conclusion__sources a:hover {
+  color: var(--color-gold);
 }
 
 /* --- Footer --- */

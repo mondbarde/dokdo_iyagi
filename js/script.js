@@ -140,41 +140,77 @@ function initHeroAnimations(reducedMotion) {
   var satellite = document.getElementById('hero-satellite');
   var video = document.getElementById('hero-satellite-video');
 
-  // Prepare video for scroll-scrubbing: pause it and wait for metadata
+  // Prepare video for scroll-scrubbing
   var videoReady = false;
-  var videoDuration = 5; // fallback duration (seconds)
+  var videoDuration = 5; // fallback
+  var videoActivated = false; // decoder activated flag
+  var pendingSeekTime = -1; // latest requested currentTime (always applied)
+
   if (video) {
     video.pause();
-    var onReady = function () {
-      videoReady = true;
-      if (video.duration && isFinite(video.duration)) {
+
+    function checkVideoReady() {
+      if (videoReady) return true;
+      if (video.readyState >= 2 && video.duration && isFinite(video.duration)) {
         videoDuration = video.duration;
+        videoReady = true;
+        // Apply any pending seek that was requested before video became ready
+        if (pendingSeekTime >= 0) {
+          video.currentTime = pendingSeekTime;
+        }
+        return true;
       }
-      // Set to first frame
-      video.currentTime = 0;
-    };
-    if (video.readyState >= 1) {
-      onReady();
-    } else {
-      video.addEventListener('loadedmetadata', onReady);
+      return false;
     }
 
-    // Mobile: force video loading (browsers may ignore preload="auto")
+    // Listen for multiple events to catch all loading states
+    video.addEventListener('loadeddata', checkVideoReady);
+    video.addEventListener('canplay', checkVideoReady);
+    video.addEventListener('canplaythrough', checkVideoReady);
+
+    // Force load first, then check (handles cached video)
     video.load();
 
-    // iOS Safari: briefly play+pause on first interaction to activate decoder
-    var activateVideo = function () {
-      if (video.readyState < 1) {
-        video.play().then(function () {
+    // Poll for readiness — events can be missed if video is cached
+    var readyPollCount = 0;
+    var readyPoll = setInterval(function () {
+      readyPollCount++;
+      if (checkVideoReady() || readyPollCount > 50) {
+        clearInterval(readyPoll);
+      }
+    }, 100);
+
+    // Activate decoder on first user interaction (iOS Safari requirement)
+    function activateDecoder() {
+      if (videoActivated) return;
+      videoActivated = true;
+      var p = video.play();
+      if (p && p.then) {
+        p.then(function () {
           video.pause();
           video.currentTime = 0;
-        }).catch(function () {});
+          checkVideoReady();
+        }).catch(function () {
+          videoActivated = false;
+        });
       }
-      document.removeEventListener('touchstart', activateVideo);
-      document.removeEventListener('scroll', activateVideo);
+      document.removeEventListener('touchstart', activateDecoder);
+      document.removeEventListener('click', activateDecoder);
+    }
+    document.addEventListener('touchstart', activateDecoder, { passive: true });
+    document.addEventListener('click', activateDecoder, { passive: true });
+
+    // Also try activating on first scroll (non-touch devices)
+    var scrollActivate = function () {
+      if (!videoReady) {
+        checkVideoReady();
+        if (!videoReady && !videoActivated) {
+          activateDecoder();
+        }
+      }
+      document.removeEventListener('scroll', scrollActivate);
     };
-    document.addEventListener('touchstart', activateVideo, { passive: true });
-    document.addEventListener('scroll', activateVideo, { passive: true });
+    document.addEventListener('scroll', scrollActivate, { passive: true });
   }
 
   // Distance overlay elements
@@ -247,9 +283,14 @@ function initHeroAnimations(reducedMotion) {
 
         // Phase 3 (30-80%): Satellite zoom out via video scrub
         // Phase 4 (80-100%): Hold on zoomed-out map before next section
-        if (p > 0.30 && video && videoReady) {
+        if (p > 0.30 && video) {
+          if (!videoReady) checkVideoReady();
           var zoomP = Math.min((p - 0.30) / 0.50, 1);
-          video.currentTime = zoomP * videoDuration;
+          var targetTime = zoomP * videoDuration;
+          pendingSeekTime = targetTime;
+          if (videoReady) {
+            video.currentTime = targetTime;
+          }
 
           var zEff = ZOOM_VIDEO_START - ZOOM_VIDEO_RANGE * zoomP;
           var worldSize = 256 * Math.pow(2, zEff);
