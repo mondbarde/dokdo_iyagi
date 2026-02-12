@@ -1708,7 +1708,7 @@ body.lang-ja .hero__title {
 
 .conclusion__sources {
   max-width: 800px;
-  margin: 0 auto;
+  margin: clamp(3rem, 6vh, 5rem) auto;
   text-align: left;
   padding: var(--space-lg) var(--space-md);
   background: var(--color-parchment);
