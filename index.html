@@ -19,7 +19,7 @@
     rel="stylesheet">
 
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="css/styles.css?v=38">
+  <link rel="stylesheet" href="css/styles.css?v=39">
 
   <!-- Three.js import map -->
   <script type="importmap">
@@ -234,32 +234,13 @@
     </svg>
   </div>
 
-  <!-- Section 4: Korean Claims -->
-  <section id="korea" class="section korea-section">
+  <!-- Section 4: Claims Comparison by Issue -->
+  <section id="claims" class="section claims-section">
     <div class="section__inner">
-      <h2 class="section-title" data-i18n="korea.title">한국의 입장</h2>
-      <div class="title-underline title-underline--teal"></div>
-      <p class="section-subtitle" data-i18n="korea.subtitle">대한민국 정부가 주장하는 독도 영유권의 근거</p>
-      <div class="claim-cards" id="korea-claims">
-        <!-- Dynamically rendered from i18n.js -->
-      </div>
-    </div>
-  </section>
-
-  <!-- Wave Divider -->
-  <div class="wave-divider wave-divider--4">
-    <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
-      <path d="M0,40 C360,80 720,0 1080,40 C1260,60 1380,20 1440,40 L1440,80 L0,80 Z" />
-    </svg>
-  </div>
-
-  <!-- Section 5: Japanese Claims -->
-  <section id="japan" class="section japan-section">
-    <div class="section__inner">
-      <h2 class="section-title" data-i18n="japan.title">일본의 입장</h2>
-      <div class="title-underline title-underline--coral"></div>
-      <p class="section-subtitle" data-i18n="japan.subtitle">일본 정부가 주장하는 다케시마 영유권의 근거</p>
-      <div class="claim-cards" id="japan-claims">
+      <h2 class="section-title" data-i18n="claims.title">쟁점별 비교</h2>
+      <div class="title-underline"></div>
+      <p class="section-subtitle" data-i18n="claims.subtitle">독도/다케시마 영유권 분쟁의 핵심 쟁점과 양국의 입장</p>
+      <div id="claims-container">
         <!-- Dynamically rendered from i18n.js -->
       </div>
     </div>
@@ -288,14 +269,13 @@
       </div>
       <h2 class="section-title" data-i18n="law.title">국제법적 관점</h2>
       <div class="title-underline title-underline--gold"></div>
-
-      <div class="comparison-table-wrapper">
-        <table class="comparison-table" id="comparison-table">
-          <!-- Dynamically rendered from i18n.js -->
-        </table>
-      </div>
+      <p class="section-subtitle" data-i18n="law.subtitle">독도/다케시마 분쟁에 적용되는 국제법 원칙과 종합 평가</p>
 
       <div class="law__principles" id="law-principles">
+        <!-- Dynamically rendered from i18n.js -->
+      </div>
+
+      <div class="law__summary" id="law-summary">
         <!-- Dynamically rendered from i18n.js -->
       </div>
     </div>
@@ -346,8 +326,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
 
   <!-- App Scripts -->
-  <script src="js/i18n.js?v=19"></script>
-  <script src="js/script.js?v=35"></script>
+  <script src="js/i18n.js?v=20"></script>
+  <script src="js/script.js?v=36"></script>
   <script type="module" src="js/dokdo3d.js?v=3"></script>
 </body>
 

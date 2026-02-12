@@ -171,11 +171,11 @@ body.lang-ja .hero__title {
 .nav__logo {
   font-weight: 700;
   font-size: 1.1rem;
-  color: var(--color-ink);
+  color: rgba(0, 0, 0, 0.85);
   border-bottom: none;
 }
 .nav__logo:hover {
-  color: var(--color-ink);
+  color: rgba(0, 0, 0, 0.85);
   border-bottom: none;
 }
 
@@ -184,20 +184,20 @@ body.lang-ja .hero__title {
   display: flex;
   align-items: center;
   gap: 8px;
-  background: rgba(196, 184, 152, 0.25);
-  border: 1px solid var(--color-worn);
+  background: rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 20px;
   padding: 4px 14px;
   cursor: pointer;
   font-family: var(--font-body);
   font-size: 0.8rem;
-  color: var(--color-ink-light);
+  color: rgba(0, 0, 0, 0.5);
   transition: all 0.3s;
 }
 
 .lang-toggle:hover {
-  background: rgba(196, 184, 152, 0.4);
-  border-color: var(--color-ink-ghost);
+  background: rgba(0, 0, 0, 0.15);
+  border-color: rgba(0, 0, 0, 0.25);
 }
 
 .lang-toggle__option {
@@ -205,14 +205,14 @@ body.lang-ja .hero__title {
 }
 
 .lang-toggle__option.active {
-  color: var(--color-ink);
+  color: rgba(0, 0, 0, 0.85);
   font-weight: 700;
 }
 
 .lang-toggle__slider {
   width: 1px;
   height: 14px;
-  background: var(--color-ink-ghost);
+  background: rgba(0, 0, 0, 0.2);
 }
 
 /* --- Sections --- */
@@ -1176,91 +1176,187 @@ body.lang-ja .hero__title {
   opacity: 1;
 }
 
-/* --- Claims Sections --- */
-.korea-section {
+/* --- Claims Section (Issue-Based Comparison) --- */
+.claims-section {
   background: linear-gradient(180deg, var(--color-parchment-alt) 0%, var(--color-parchment) 100%);
 }
 
-.japan-section {
-  background: linear-gradient(180deg, var(--color-parchment) 0%, var(--color-parchment-alt) 100%);
+#claims-container {
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
-.claim-cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-md);
-}
-
-.claim-card {
+.claims-issue {
   background: var(--color-parchment);
   border: 1px solid var(--color-worn);
-  border-radius: 4px;
-  padding: var(--space-md);
-  position: relative;
+  border-radius: 6px;
   overflow: hidden;
-  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s, box-shadow 0.3s;
+  margin-bottom: var(--space-lg);
+  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.06);
 }
 
-.claim-card::before {
+.claims-issue__header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-md) var(--space-md);
+  background: linear-gradient(135deg, rgba(139, 105, 20, 0.08) 0%, rgba(139, 105, 20, 0.03) 100%);
+  border-bottom: 1px solid var(--color-worn);
+}
+
+.claims-issue__number {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--color-gold);
+  opacity: 0.35;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.claims-issue__topic {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-ink);
+  margin: 0;
+}
+
+.claims-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.claims-col {
+  padding: var(--space-md);
+  position: relative;
+}
+
+.claims-col--korea {
+  border-right: 1px solid var(--color-worn);
+}
+
+.claims-col::before {
   content: '';
   position: absolute;
   left: 0;
-  top: 0;
-  bottom: 0;
-  width: 4px;
+  top: var(--space-md);
+  bottom: var(--space-md);
+  width: 3px;
+  border-radius: 2px;
 }
 
-.korea-section .claim-card::before {
+.claims-col--korea::before {
   background: var(--color-korea);
 }
 
-.japan-section .claim-card::before {
+.claims-col--japan::before {
   background: var(--color-japan);
 }
 
-.claim-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.1);
-}
-
-.korea-section .claim-card:hover {
-  box-shadow: 4px 4px 16px rgba(42, 107, 90, 0.12);
-}
-
-.japan-section .claim-card:hover {
-  box-shadow: 4px 4px 16px rgba(155, 58, 48, 0.12);
-}
-
-.claim-card__number {
-  font-family: var(--font-display);
-  font-size: 2.5rem;
-  font-weight: 900;
-  line-height: 1;
+.claims-col__label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
   margin-bottom: var(--space-xs);
+  padding-left: var(--space-sm);
 }
 
-.korea-section .claim-card__number {
+.claims-col--korea .claims-col__label {
   color: var(--color-korea);
-  opacity: 0.2;
 }
 
-.japan-section .claim-card__number {
+.claims-col--japan .claims-col__label {
   color: var(--color-japan);
-  opacity: 0.2;
 }
 
-.claim-card__title {
-  font-size: 1.05rem;
+.claims-col__title {
+  font-size: 1rem;
   font-weight: 700;
   color: var(--color-ink);
+  margin: 0 0 var(--space-xs) 0;
+  padding-left: var(--space-sm);
+}
+
+.claims-col__text {
+  font-size: 0.88rem;
+  color: var(--color-ink-light);
+  line-height: 1.75;
+  padding-left: var(--space-sm);
+}
+
+.claims-analysis {
+  padding: var(--space-md);
+  background: linear-gradient(135deg, rgba(139, 105, 20, 0.06) 0%, rgba(139, 105, 20, 0.02) 100%);
+  border-top: 1px solid var(--color-worn);
+}
+
+.claims-analysis__label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-gold);
   margin-bottom: var(--space-xs);
 }
 
-.claim-card__text {
-  font-size: 0.9rem;
+.claims-analysis__icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.claims-meter {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-sm);
+}
+
+.claims-meter__label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.claims-meter__label--korea {
+  color: var(--color-korea);
+}
+
+.claims-meter__label--japan {
+  color: var(--color-japan);
+}
+
+.claims-meter__bar {
+  flex: 1;
+  display: flex;
+  height: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--color-worn);
+}
+
+.claims-meter__fill--korea {
+  background: var(--color-korea);
+  border-radius: 4px 0 0 4px;
+  transition: width 0.6s ease;
+}
+
+.claims-meter__fill--japan {
+  background: var(--color-japan);
+  border-radius: 0 4px 4px 0;
+  transition: width 0.6s ease;
+}
+
+.claims-analysis__text {
+  font-size: 0.88rem;
   color: var(--color-ink-light);
-  line-height: 1.7;
+  line-height: 1.75;
+  font-style: italic;
 }
 
 /* --- International Law Section --- */
@@ -1280,69 +1376,103 @@ body.lang-ja .hero__title {
   height: 100%;
 }
 
-.comparison-table-wrapper {
-  overflow-x: auto;
-  margin-bottom: var(--space-lg);
-}
-
-.comparison-table {
-  width: 100%;
-  border-collapse: collapse;
-  text-align: left;
-  font-size: 0.9rem;
-}
-
-.comparison-table thead th {
-  padding: var(--space-sm) var(--space-md);
-  font-weight: 700;
-  color: var(--color-gold);
-  border-bottom: 2px solid var(--color-gold);
-  white-space: nowrap;
-}
-
-.comparison-table tbody td {
-  padding: var(--space-sm) var(--space-md);
-  background: var(--color-parchment);
-  color: var(--color-ink-medium);
-  vertical-align: top;
-  border-bottom: 1px solid var(--color-aged);
-}
-
-.comparison-table tbody tr:last-child td {
-  border-bottom: none;
-}
-
-.comparison-table td:nth-child(2) {
-  border-left: 3px solid var(--color-korea);
-}
-
-.comparison-table td:nth-child(3) {
-  border-left: 3px solid var(--color-japan);
-}
-
 .law__principles {
   text-align: left;
   margin-top: var(--space-lg);
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .law__principle {
   margin-bottom: var(--space-md);
-  padding: var(--space-sm) var(--space-md);
+  padding: var(--space-md);
   border-left: 3px solid var(--color-gold);
   background: var(--color-parchment);
   border-radius: 0 4px 4px 0;
+  border: 1px solid var(--color-worn);
+  border-left: 3px solid var(--color-gold);
+}
+
+.law__principle-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-xs);
 }
 
 .law__principle-title {
   font-weight: 700;
   color: var(--color-gold);
-  margin-bottom: 4px;
+}
+
+.law__indicator {
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 10px;
+  flex-shrink: 0;
+  letter-spacing: 0.05em;
+}
+
+.law__indicator--korea {
+  background: rgba(42, 107, 90, 0.12);
+  color: var(--color-korea);
+}
+
+.law__indicator--japan {
+  background: rgba(155, 58, 48, 0.12);
+  color: var(--color-japan);
+}
+
+.law__indicator--neutral {
+  background: rgba(139, 105, 20, 0.12);
+  color: var(--color-gold);
 }
 
 .law__principle-text {
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   color: var(--color-ink-light);
   line-height: 1.7;
+  margin-bottom: var(--space-xs);
+}
+
+.law__principle-assessment {
+  font-size: 0.88rem;
+  color: var(--color-ink);
+  line-height: 1.7;
+  font-style: italic;
+  padding-top: var(--space-xs);
+  border-top: 1px dashed var(--color-worn);
+}
+
+.law__summary {
+  margin-top: var(--space-lg);
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.law__summary-box {
+  background: linear-gradient(135deg, rgba(139, 105, 20, 0.08) 0%, rgba(139, 105, 20, 0.03) 100%);
+  border: 1px solid var(--color-gold);
+  border-radius: 6px;
+  padding: var(--space-md) var(--space-lg);
+  text-align: left;
+}
+
+.law__summary-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-gold);
+  margin-bottom: var(--space-sm);
+}
+
+.law__summary-text {
+  font-size: 0.92rem;
+  color: var(--color-ink);
+  line-height: 1.8;
 }
 
 /* --- Conclusion Section --- */
@@ -1438,8 +1568,8 @@ body.lang-ja .hero__title {
 
 /* --- Responsive --- */
 @media (max-width: 1024px) {
-  .claim-cards {
-    grid-template-columns: 1fr 1fr;
+  .claims-issue__topic {
+    font-size: 1.05rem;
   }
 }
 
@@ -1523,17 +1653,17 @@ body.lang-ja .hero__title {
     font-size: clamp(5rem, 20vw, 10rem);
   }
 
-  .claim-cards {
+  .claims-columns {
     grid-template-columns: 1fr;
   }
 
-  .comparison-table {
-    font-size: 0.8rem;
+  .claims-col--korea {
+    border-right: none;
+    border-bottom: 1px solid var(--color-worn);
   }
 
-  .comparison-table thead th,
-  .comparison-table tbody td {
-    padding: var(--space-xs) var(--space-sm);
+  .law__summary-box {
+    padding: var(--space-md);
   }
 
   .hero__title {

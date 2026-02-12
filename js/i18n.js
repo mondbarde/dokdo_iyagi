@@ -388,116 +388,119 @@ const translations = {
         }
       ]
     },
-    korea: {
-      title: '한국의 입장',
-      subtitle: '대한민국 정부가 주장하는 독도 영유권의 근거',
-      claims: [
+    claims: {
+      title: '쟁점별 비교',
+      subtitle: '독도/다케시마 영유권 분쟁의 핵심 쟁점과 양국의 입장',
+      koreaLabel: '한국의 입장',
+      japanLabel: '일본의 입장',
+      analysisLabel: '객관적 평가',
+      issues: [
         {
-          title: '역사적 선점',
-          text: '512년 신라의 우산국 복속 이래, 조선시대 관찬 기록(세종실록지리지, 동국여지승람 등)에 우산도가 지속적으로 등장합니다. 이는 한국이 일본보다 수 세기 앞서 독도를 인지하고 영유해왔음을 보여줍니다.'
+          topic: '역사적 영유권의 근거',
+          korea: {
+            title: '역사적 선점 (512년~)',
+            text: '512년 신라의 우산국 복속 이래, 조선시대 관찬 기록(세종실록지리지, 동국여지승람 등)에 우산도가 지속적으로 등장합니다. 이는 한국이 일본보다 수 세기 앞서 독도를 인지하고 영유해왔음을 보여줍니다.'
+          },
+          japan: {
+            title: '무주지 선점 (1905년)',
+            text: '일본 정부는 다케시마(독도)가 1905년 각의 결정 당시 어느 나라에도 속하지 않은 무주지(terra nullius)였으며, 국제법의 원칙에 따라 합법적으로 영토에 편입한 것이라고 주장합니다.'
+          },
+          koreaWeight: 60,
+          analysis: '한국의 고문헌 기록이 시기적으로 앞서며, 다수의 관찬 사료가 이를 뒷받침한다는 점에서 한국 측 주장이 다소 우위에 있습니다. 다만, "우산도"가 오늘날의 독도와 동일한 섬인지에 대한 해석 논쟁이 한국 측 주장의 결정적 약점입니다. 일본의 무주지 주장은 1905년 이전의 양국 역사적 기록과 활동을 충분히 설명하지 못한다는 한계가 있습니다.'
         },
         {
-          title: '안용복의 외교 활동 (1693~1696)',
-          text: '조선 어부 안용복은 일본에 건너가 울릉도와 독도가 조선의 영토임을 주장했고, 이후 도쿠가와 막부는 일본 어민의 울릉도 도해를 금지하는 조치를 취했습니다. 이는 당시 일본 정부도 이 섬들의 조선 영유권을 인정한 것이라고 한국은 주장합니다.'
+          topic: '17세기 영유권 활동',
+          korea: {
+            title: '안용복의 외교 활동 (1693~1696)',
+            text: '조선 어부 안용복은 일본에 건너가 울릉도와 독도가 조선의 영토임을 주장했고, 이후 도쿠가와 막부는 일본 어민의 울릉도 도해를 금지하는 조치를 취했습니다. 이는 당시 일본 정부도 이 섬들의 조선 영유권을 인정한 것이라고 한국은 주장합니다.'
+          },
+          japan: {
+            title: '17세기 어업 활동',
+            text: '에도시대 오야(大谷)가문과 무라카와(村川)가문이 막부의 허가를 받아 울릉도로 향하는 도중 다케시마를 중간 기항지이자 어업 근거지로 이용했다고 주장합니다. 이는 일본이 17세기부터 다케시마를 실질적으로 활용했음을 보여준다고 합니다.'
+          },
+          koreaWeight: 65,
+          analysis: '양국 모두 17세기 활동의 증거를 제시하고 있으나, 1696년 도쿠가와 막부가 자국민의 울릉도 도해를 공식적으로 금지했다는 사실은 한국 측에 유리한 근거입니다. 이 금지령은 일본 정부 자체의 공식 행위로서, 해당 수역에 대한 조선의 관할을 사실상 인정한 것으로 해석될 여지가 큽니다. 다만, 이 금지령이 독도까지 명시적으로 포함하는지는 여전히 논쟁의 대상입니다.'
         },
         {
-          title: '태정관지령 (1877)',
-          text: '일본의 최고 국가기관이었던 태정관이 "울릉도와 그 외 1도는 일본과 관계없다"고 공식 결정했습니다. 한국 측은 "그 외 1도"가 독도를 지칭한다고 주장하며, 이는 일본 스스로가 독도의 비일본 영토성을 확인한 것이라고 봅니다.'
+          topic: '19세기 말~20세기 초 공식 조치',
+          korea: {
+            title: '태정관지령 (1877) · 칙령 제41호 (1900)',
+            text: '일본의 최고 국가기관이었던 태정관이 1877년 "울릉도와 그 외 1도는 일본과 관계없다"고 공식 결정했습니다. 또한 1900년 대한제국이 울도군을 설치하면서 관할에 "석도(石島)"를 포함시켰으며, 한국 측은 석도가 독도의 당시 명칭이라고 주장합니다. 이는 일본의 1905년 편입 이전에 한국이 이미 독도를 공식적으로 관할하고 있었음을 보여준다고 합니다.'
+          },
+          japan: {
+            title: '1905년 각의 결정 · 행정적 조치',
+            text: '1905년 각의 결정으로 다케시마를 시마네현에 편입한 후, 정식 등록, 강치(바다사자) 포획 허가 발급, 측량 실시 등의 행정적 관할 행위를 수행했습니다. 일본은 이 편입이 국제법상 합법적 절차를 따른 것이라고 주장합니다.'
+          },
+          koreaWeight: 70,
+          analysis: '이 쟁점에서는 한국 측 주장이 상당히 우위에 있습니다. 1877년 태정관지령은 일본의 최고 국가기관이 스스로 "일본과 관계없다"고 공식 결정한 문서로서, 상대국의 문서가 아닌 자국 정부의 문서라는 점에서 증거력이 매우 높습니다. 또한 일본의 1905년 편입은 러일전쟁 중 한국의 외교권이 사실상 박탈되어가는 시기에 이루어졌다는 역사적 맥락이 그 합법성에 의문을 제기합니다. 다만, 칙령 41호의 "석도"가 독도와 동일한지는 여전히 학술적 논쟁의 대상입니다.'
         },
         {
-          title: '대한제국 칙령 제41호 (1900)',
-          text: '대한제국이 울도군을 설치하면서 관할에 "석도(石島)"를 포함시켰습니다. 한국 측은 석도가 독도의 당시 명칭이라고 주장하며, 이는 일본의 1905년 편입 이전에 한국이 이미 독도를 공식적으로 관할하고 있었음을 보여준다고 합니다.'
+          topic: '전후 국제 문서와 조약',
+          korea: {
+            title: 'SCAPIN 677 (1946)',
+            text: '제2차 세계대전 종전 후 연합군 최고사령부가 발한 SCAPIN 677은 독도를 일본의 행정권에서 명시적으로 제외했습니다. 한국은 이를 전후 처리에서 독도가 한국 영토로 인정되었음을 보여주는 증거로 제시합니다.'
+          },
+          japan: {
+            title: 'SF 강화조약 (1951) · 러스크 서한',
+            text: '샌프란시스코 강화조약 제2조에서 일본이 포기할 영토로 제주도·거문도·울릉도를 명시했지만, 다케시마는 포기 대상에 포함되지 않았습니다. 또한 미국 국무부 차관보 딘 러스크가 한국 대사에게 보낸 서한에서 "독도는 한국의 영토로 취급된 적이 없다"고 밝혔으며, 일본은 이를 연합국의 공식 입장으로 중시합니다.'
+          },
+          koreaWeight: 45,
+          analysis: '이 쟁점에서는 일본 측 주장이 다소 우위에 있습니다. 샌프란시스코 강화조약에서 독도가 일본의 포기 대상에 명시되지 않은 점과, 러스크 서한이 명시적으로 일본의 입장을 지지하고 있다는 점은 조약 해석상 일본에 유리합니다. 다만, SCAPIN 677이 독도를 일본 행정권에서 제외한 것은 한국에 유리한 근거이며, 러스크 서한은 미국 한 나라의 비공개 의견에 불과하다는 반론도 있습니다. 궁극적으로 어떤 문서도 독도의 최종 지위를 명시적으로 확정하지 않았습니다.'
         },
         {
-          title: '실효적 지배 (1952~현재)',
-          text: '대한민국은 1952년 이래 독도에 경비대를 주둔시키고, 등대·접안시설 등을 건설하며, 민간인 거주를 허용하는 등 지속적이고 평화적인 실효적 지배를 행사하고 있습니다.'
-        },
-        {
-          title: 'SCAPIN 677 (1946)',
-          text: '제2차 세계대전 종전 후 연합군 최고사령부가 발한 SCAPIN 677은 독도를 일본의 행정권에서 명시적으로 제외했습니다. 한국은 이를 전후 처리에서 독도가 한국 영토로 인정되었음을 보여주는 증거로 제시합니다.'
-        }
-      ]
-    },
-    japan: {
-      title: '일본의 입장',
-      subtitle: '일본 정부가 주장하는 다케시마 영유권의 근거',
-      claims: [
-        {
-          title: '무주지 선점 (1905)',
-          text: '일본 정부는 다케시마(독도)가 1905년 각의 결정 당시 어느 나라에도 속하지 않은 무주지(terra nullius)였으며, 국제법의 원칙에 따라 합법적으로 영토에 편입한 것이라고 주장합니다.'
-        },
-        {
-          title: '17세기 어업 활동',
-          text: '에도시대 오야(大谷)가문과 무라카와(村川)가문이 막부의 허가를 받아 울릉도로 향하는 도중 다케시마를 중간 기항지이자 어업 근거지로 이용했다고 주장합니다. 이는 일본이 17세기부터 다케시마를 실질적으로 활용했음을 보여준다고 합니다.'
-        },
-        {
-          title: '샌프란시스코 강화조약 (1951)',
-          text: '조약 제2조에서 일본이 포기할 영토로 제주도·거문도·울릉도를 명시했지만, 다케시마는 포기 대상에 포함되지 않았습니다. 일본은 이를 연합국이 다케시마를 일본 영토로 인정한 것으로 해석합니다.'
-        },
-        {
-          title: '러스크 서한 (1951)',
-          text: '미국 국무부 차관보 딘 러스크가 한국 대사에게 보낸 서한에서 "독도는 한국의 영토로 취급된 적이 없으며 1905년경부터 시마네현 관할하에 있었다"고 밝혔습니다. 일본은 이를 미국의 공식 입장으로 중시합니다.'
-        },
-        {
-          title: 'ICJ 회부 제안',
-          text: '일본은 이 분쟁을 국제사법재판소(ICJ)에 세 차례(1954, 1962, 2012) 회부하자고 제안했으나 한국이 모두 거부했습니다. 일본은 국제법적 해결을 추구한다는 입장이며, 한국의 거부를 법적 자신감의 부재로 해석합니다.'
-        },
-        {
-          title: '행정적 조치',
-          text: '1905년 편입 이후 시마네현이 다케시마를 정식 등록하고, 강치(바다사자) 포획 허가를 발급하며, 측량을 실시하는 등의 행정적 관할 행위를 수행했다고 주장합니다.'
+          topic: '현대 실효적 지배와 국제 재판',
+          korea: {
+            title: '실효적 지배 (1952~현재)',
+            text: '대한민국은 1952년 이래 독도에 경비대를 주둔시키고, 등대·접안시설 등을 건설하며, 민간인 거주를 허용하는 등 지속적이고 평화적인 실효적 지배를 행사하고 있습니다. 한국은 독도가 분쟁 자체가 존재하지 않는 고유의 영토라는 입장입니다.'
+          },
+          japan: {
+            title: 'ICJ 회부 제안',
+            text: '일본은 이 분쟁을 국제사법재판소(ICJ)에 세 차례(1954, 1962, 2012) 회부하자고 제안했으나 한국이 모두 거부했습니다. 일본은 국제법적 해결을 추구한다는 입장이며, 한국의 거부를 법적 자신감의 부재로 해석합니다.'
+          },
+          koreaWeight: 75,
+          analysis: '이 쟁점에서는 한국 측이 명확히 우위에 있습니다. 70년 이상의 실효적 지배는 국제법에서 영토 주권을 입증하는 가장 강력한 근거 중 하나이며, 한국은 경비대 주둔, 시설 건설, 주민 거주 등 실질적인 주권 행사의 모든 요건을 갖추고 있습니다. 일본의 ICJ 회부 제안은 분쟁 해결 의지를 보여주나, ICJ 관할권은 양국의 합의가 필요하므로 한국의 거부 자체는 국제법상 정당한 권리입니다. 한편, 일본 역시 자국이 당사자인 다른 영토 분쟁—센카쿠/댜오위다오(중국)와 쿠릴 열도/북방영토(러시아)—에서는 상대국의 ICJ 회부 제안을 거부하고 있어, ICJ 회부를 둘러싼 일본의 입장에는 일관성 문제가 존재합니다. 다만, 일본의 지속적인 항의로 인해 묵인(acquiescence)이 완전히 성립했다고 단정하기는 어렵습니다.'
         }
       ]
     },
     law: {
       title: '국제법적 관점',
-      table: {
-        headers: ['쟁점', '한국의 입장', '일본의 입장'],
-        rows: [
-          [
-            '역사적 권원',
-            '512년 이래 지속적으로 독도를 인지·관할해왔으며, 다수의 고문헌과 고지도가 이를 뒷받침',
-            '한국의 고문헌에 등장하는 "우산도"가 독도를 지칭하는지 불분명하며, 역사적 권원은 입증되지 않음'
-          ],
-          [
-            '1905년 편입의 합법성',
-            '일본의 한반도 침탈 과정의 일부이며, 무주지 선점이 아닌 이미 한국 영토였던 독도의 불법 강탈',
-            '무주지를 국제법 원칙에 따라 합법적으로 편입한 것이며, 한반도 병합(1910)과는 별개의 조치'
-          ],
-          [
-            'SF 강화조약 해석',
-            '독도가 포기 대상에서 빠진 것은 단순한 누락이며, SCAPIN 677 등을 통해 독도가 한국 영토임이 이미 확인됨',
-            '독도가 일본 포기 영토에서 제외된 것은 독도가 일본 영토라는 연합국의 인식을 반영'
-          ],
-          [
-            '실효적 지배',
-            '1952년 이래 70년 이상 평화적·지속적으로 실효적 지배를 행사 중',
-            '한국의 점유는 1952년 이승만 라인에 의한 불법 점거이며, 일본의 지속적인 항의가 있으므로 묵인(acquiescence)이 성립하지 않음'
-          ],
-          [
-            '국제재판',
-            '독도는 분쟁 자체가 존재하지 않는 한국 고유의 영토이므로 ICJ 회부 필요가 없음',
-            '국제법에 의한 평화적 해결을 추구하며, 한국의 ICJ 거부는 법적 근거의 취약성을 시사'
-          ]
-        ]
-      },
+      subtitle: '독도/다케시마 분쟁에 적용되는 국제법 원칙과 종합 평가',
       principles: [
         {
           title: '실효적 지배 (Effective Occupation)',
-          text: '국제법에서 영토 주권을 입증하는 핵심 기준 중 하나입니다. 한국은 70년 이상 독도에 대한 실효적 지배를 행사하고 있으나, 일본은 이를 불법 점거로 규정하며 지속적으로 항의하고 있습니다.'
+          text: '영토 주권을 입증하는 국제법상 가장 강력한 기준 중 하나입니다. 실효적 지배가 인정되려면 국가 기능의 지속적이고 평화적인 행사가 필요합니다.',
+          assessment: '한국은 1952년 이래 경비대 주둔, 등대·접안시설 건설, 민간인 거주 허용 등 실효적 지배의 모든 요건을 충족하고 있습니다. 다만, 일본의 지속적인 항의가 있어 묵인(acquiescence)의 완전한 성립 여부는 법적으로 논쟁 중입니다.',
+          favorKorea: true
         },
         {
           title: '결정적 기일 (Critical Date)',
-          text: '영토 분쟁에서 어느 시점의 상황을 기준으로 판단할 것인가의 문제입니다. 1905년, 1945년, 1952년 중 어느 시점을 결정적 기일로 보느냐에 따라 양측에 유불리가 달라집니다.'
+          text: '영토 분쟁에서 어느 시점의 상황을 기준으로 판단할 것인가의 문제입니다. 결정적 기일 이후의 행위는 원칙적으로 법적 효력이 제한됩니다.',
+          assessment: '1905년을 기준으로 하면 일본에 유리하고, 1945년(종전) 또는 1952년(한국 실효적 지배 개시)을 기준으로 하면 한국에 유리합니다. 일본의 1905년 편입이 식민지 침탈 과정에서 이루어졌다는 점은 결정적 기일 설정에 중요한 고려 요소입니다.',
+          favorKorea: null
         },
         {
           title: '무주지 선점 (Terra Nullius)',
-          text: '일본은 1905년 독도가 무주지였다고 주장하지만, 한국은 이미 역사적으로 영유권을 행사하고 있었으므로 무주지가 아니었다고 반박합니다.'
+          text: '어떤 국가에도 속하지 않는 무주지를 국제법 절차에 따라 편입할 수 있다는 원칙입니다. 선점이 유효하려면 해당 영토가 실제로 무주지였음이 입증되어야 합니다.',
+          assessment: '일본은 1905년 독도가 무주지였다고 주장하지만, 한국의 역사적 기록(512년 이후)과 태정관지령(1877년) 등 일본 자체 문서가 이에 반하는 증거를 제공합니다. 무주지 주장의 입증 책임은 일본에 있으며, 현존 사료에 비추어 이 입증은 상당히 어렵습니다.',
+          favorKorea: true
         },
         {
-          title: '조약 해석',
-          text: '1951년 샌프란시스코 강화조약에서 독도가 명시되지 않은 것은 양측 모두에게 해석의 여지를 남기며, 이 모호성이 분쟁의 핵심 원인 중 하나입니다.'
+          title: '조약 해석 (Treaty Interpretation)',
+          text: '1951년 샌프란시스코 강화조약은 일본의 전후 영토를 확정한 핵심 조약이나, 독도의 귀속을 명시적으로 언급하지 않아 양측 모두에게 해석의 여지를 남겼습니다.',
+          assessment: '조약 문면상 독도가 일본 포기 대상에 포함되지 않은 점은 일본에 유리하나, 이는 수천 개 도서의 명시적 열거가 불가능했다는 맥락에서 이해해야 합니다. SCAPIN 677(1946)이 독도를 일본에서 제외한 점은 한국에 유리하지만, "최종 결정이 아니다"라는 단서가 있습니다.',
+          favorKorea: false
+        },
+        {
+          title: '시제법 (Intertemporal Law)',
+          text: '영토 취득의 합법성은 해당 행위가 이루어진 시점의 국제법에 따라 판단해야 한다는 원칙입니다. 이는 역사적 사건을 현대 기준으로 소급 평가하는 것을 제한합니다.',
+          assessment: '1905년 당시의 국제법은 식민지 확장을 일반적으로 용인했으나, 현대 국제법은 무력이나 강압에 의한 영토 취득을 금지합니다. 일본의 1905년 편입이 러일전쟁과 한국의 외교권 박탈이라는 강압적 상황에서 이루어졌다는 점은 시제법 적용에서도 문제를 제기합니다.',
+          favorKorea: true
         }
-      ]
+      ],
+      summary: {
+        title: '종합 평가',
+        text: '국제법적 관점에서 독도/다케시마 분쟁을 종합적으로 분석하면, 한국 측이 전반적으로 더 강한 법적 근거를 보유하고 있는 것으로 평가됩니다. 특히 70년 이상의 실효적 지배, 태정관지령 등 일본 자체 문서에 의한 비일본 영토 확인, 그리고 1905년 편입의 역사적 맥락이 한국에 유리한 핵심 근거입니다. 반면, 샌프란시스코 강화조약의 문면 해석과 러스크 서한은 일본에 유리한 근거입니다. 다만, 이 분쟁이 실제로 ICJ에서 다루어진 적이 없으므로, 최종적인 법적 판단은 내려진 바 없습니다. 영토 분쟁의 평화적 해결을 위해서는 양국이 역사적 사실과 국제법 원칙에 기반한 진지한 대화를 이어가야 합니다.'
+      }
     },
     conclusion: {
       line1: '독도를 둘러싼 한일 간의 영유권 분쟁은 단순한 영토 문제를 넘어, 역사 인식과 국제법 해석의 복합적 갈등입니다.',
@@ -897,116 +900,119 @@ const translations = {
         }
       ]
     },
-    korea: {
-      title: 'Korea\'s Position',
-      subtitle: 'The basis for the Republic of Korea\'s sovereignty claim over Liancourt Rocks',
-      claims: [
+    claims: {
+      title: 'Issue-by-Issue Comparison',
+      subtitle: 'Key issues in the Liancourt Rocks / Takeshima sovereignty dispute and both countries\' positions',
+      koreaLabel: 'Korea\'s Position',
+      japanLabel: 'Japan\'s Position',
+      analysisLabel: 'Objective Assessment',
+      issues: [
         {
-          title: 'Historical Precedence',
-          text: 'Since the subjugation of Usan-guk in 512 AD, Usando has appeared continuously in official Joseon-era records (Sejong Sillok Jiriji, Dongguk Yeoji Seungnam, etc.). Korea argues this demonstrates sovereignty predating Japan\'s claim by centuries.'
+          topic: 'Historical Basis for Sovereignty',
+          korea: {
+            title: 'Historical Precedence (512 AD–)',
+            text: 'Since the subjugation of Usan-guk in 512 AD, Usando has appeared continuously in official Joseon-era records (Sejong Sillok Jiriji, Dongguk Yeoji Seungnam, etc.). Korea argues this demonstrates sovereignty predating Japan\'s claim by centuries.'
+          },
+          japan: {
+            title: 'Terra Nullius (1905)',
+            text: 'The Japanese government maintains that Takeshima (Liancourt Rocks) was terra nullius — belonging to no state — at the time of its 1905 Cabinet decision, and that its incorporation was a legitimate exercise of sovereignty under international law.'
+          },
+          koreaWeight: 60,
+          analysis: 'Korea\'s historical records predate Japanese claims and are supported by multiple official sources, giving the Korean position a moderate advantage on this issue. However, the interpretive debate over whether "Usando" refers to present-day Liancourt Rocks remains a critical weakness in Korea\'s argument. Japan\'s terra nullius claim has the limitation of inadequately accounting for both countries\' historical records and activities prior to 1905.'
         },
         {
-          title: 'An Yong-bok\'s Diplomacy (1693–1696)',
-          text: 'Korean fisherman An Yong-bok traveled to Japan and asserted Joseon sovereignty over Ulleungdo and Liancourt Rocks. The Tokugawa Shogunate subsequently banned Japanese fishermen from traveling to Ulleungdo. Korea argues this constitutes Japanese acknowledgment of Korean sovereignty.'
+          topic: '17th Century Sovereignty Activities',
+          korea: {
+            title: 'An Yong-bok\'s Diplomacy (1693–1696)',
+            text: 'Korean fisherman An Yong-bok traveled to Japan and asserted Joseon sovereignty over Ulleungdo and Liancourt Rocks. The Tokugawa Shogunate subsequently banned Japanese fishermen from traveling to Ulleungdo. Korea argues this constitutes Japanese acknowledgment of Korean sovereignty.'
+          },
+          japan: {
+            title: '17th Century Fishing Activity',
+            text: 'During the Edo period, the Oya and Murakawa families operated with shogunate licenses and used Takeshima as a waypoint and fishing base en route to Ulleungdo. Japan argues this demonstrates practical utilization since the 17th century.'
+          },
+          koreaWeight: 65,
+          analysis: 'Both countries present evidence of 17th-century activities, but the Tokugawa Shogunate\'s official 1696 ban on its own subjects\' voyages to Ulleungdo favors the Korean position. As an official act by Japan\'s own government, it can be interpreted as de facto recognition of Joseon\'s jurisdiction over the area. However, whether this ban explicitly encompassed Liancourt Rocks remains a subject of debate.'
         },
         {
-          title: 'Dajokan Order (1877)',
-          text: 'Japan\'s highest governmental body officially determined that "Ulleungdo and one other island are not related to Japan." Korea argues "the other island" refers to Liancourt Rocks, meaning Japan itself confirmed Liancourt Rocks was not Japanese territory.'
+          topic: 'Late 19th–Early 20th Century Official Actions',
+          korea: {
+            title: 'Dajokan Order (1877) & Imperial Edict No. 41 (1900)',
+            text: 'Japan\'s highest governmental body officially determined in 1877 that "Ulleungdo and one other island are not related to Japan." Additionally, the Korean Empire in 1900 established Uldo County with jurisdiction including "Seokdo (石島)." Korea argues Seokdo refers to Liancourt Rocks, proving Korean administration before Japan\'s 1905 incorporation.'
+          },
+          japan: {
+            title: '1905 Cabinet Decision & Administrative Actions',
+            text: 'Following the 1905 Cabinet decision incorporating Takeshima into Shimane Prefecture, Japan formally registered the islands, issued sea lion hunting licenses, and conducted surveys — demonstrating administrative governance under legitimate international legal procedures.'
+          },
+          koreaWeight: 70,
+          analysis: 'The Korean position holds a considerable advantage on this issue. The 1877 Dajokan Order — in which Japan\'s own highest governing body officially determined the islands were "not related to Japan" — carries exceptional evidentiary weight precisely because it is a self-incriminating document from the opposing party\'s government. Furthermore, Japan\'s 1905 incorporation occurred during the Russo-Japanese War, when Korea\'s diplomatic sovereignty was being progressively stripped, raising questions about the legitimacy of the process. However, whether "Seokdo" in the 1900 Edict is identical to Liancourt Rocks remains a matter of scholarly debate.'
         },
         {
-          title: 'Imperial Edict No. 41 (1900)',
-          text: 'The Korean Empire established Uldo County with jurisdiction including "Seokdo (石島)." Korea argues Seokdo refers to Liancourt Rocks, proving Korean administration of the islands before Japan\'s 1905 incorporation.'
+          topic: 'Post-War International Documents and Treaties',
+          korea: {
+            title: 'SCAPIN 677 (1946)',
+            text: 'The post-WWII Allied directive SCAPIN 677 explicitly excluded Liancourt Rocks from Japanese administrative authority. Korea presents this as evidence that the islands were recognized as Korean territory in the post-war settlement.'
+          },
+          japan: {
+            title: 'SF Peace Treaty (1951) & Rusk Documents',
+            text: 'Article 2 of the San Francisco Peace Treaty specified Jeju, Geomundo, and Ulleungdo as territories Japan must renounce, but Takeshima was not included. Additionally, U.S. Assistant Secretary of State Dean Rusk\'s letter to the Korean ambassador stated that "Liancourt Rocks was never treated as part of Korea." Japan considers these significant expressions of Allied recognition.'
+          },
+          koreaWeight: 45,
+          analysis: 'The Japanese position holds a moderate advantage on this issue. The San Francisco Peace Treaty\'s omission of Liancourt Rocks from territories Japan must renounce, combined with the Rusk letter\'s explicit support for Japan\'s position, favor Japan\'s treaty interpretation. However, SCAPIN 677\'s exclusion of the islands from Japanese authority supports Korea, and the Rusk letter represents only the confidential view of a single country rather than a multilateral consensus. Ultimately, no post-war document explicitly settled the final status of the islands.'
         },
         {
-          title: 'Effective Control (1952–Present)',
-          text: 'South Korea has maintained a coast guard garrison on Liancourt Rocks since 1952, constructed a lighthouse and dock facilities, and permitted civilian residence — exercising continuous, peaceful effective control for over 70 years.'
-        },
-        {
-          title: 'SCAPIN 677 (1946)',
-          text: 'The post-WWII Allied directive SCAPIN 677 explicitly excluded Liancourt Rocks from Japanese administrative authority. Korea presents this as evidence that Liancourt Rocks was recognized as Korean territory in the post-war settlement.'
-        }
-      ]
-    },
-    japan: {
-      title: 'Japan\'s Position',
-      subtitle: 'The basis for Japan\'s sovereignty claim over Takeshima',
-      claims: [
-        {
-          title: 'Terra Nullius (1905)',
-          text: 'The Japanese government maintains that Takeshima (Liancourt Rocks) was terra nullius — belonging to no state — at the time of its 1905 Cabinet decision, and that its incorporation was a legitimate exercise of sovereignty under international law.'
-        },
-        {
-          title: '17th Century Fishing Activity',
-          text: 'During the Edo period, the Oya and Murakawa families operated with shogunate licenses and used Takeshima as a waypoint and fishing base en route to Ulleungdo. Japan argues this demonstrates practical utilization since the 17th century.'
-        },
-        {
-          title: 'San Francisco Peace Treaty (1951)',
-          text: 'Article 2 specified Jeju, Geomundo, and Ulleungdo as territories Japan must renounce, but Takeshima was not included among them. Japan interprets this as Allied recognition that Takeshima is Japanese territory.'
-        },
-        {
-          title: 'Rusk Documents (1951)',
-          text: 'U.S. Assistant Secretary of State Dean Rusk\'s letter to the Korean ambassador stated that "Liancourt Rocks was never treated as part of Korea" and had been under Shimane Prefecture\'s jurisdiction since approximately 1905. Japan considers this a significant expression of the U.S. position.'
-        },
-        {
-          title: 'ICJ Referral Proposals',
-          text: 'Japan has proposed referring the dispute to the International Court of Justice three times (1954, 1962, 2012), all rejected by Korea. Japan advocates for peaceful resolution through international law and interprets Korea\'s refusal as suggesting a lack of legal confidence.'
-        },
-        {
-          title: 'Administrative Actions',
-          text: 'Following the 1905 incorporation, Shimane Prefecture formally registered Takeshima, issued sea lion hunting licenses, and conducted surveys — demonstrating administrative governance of the islands.'
+          topic: 'Modern Effective Control and International Adjudication',
+          korea: {
+            title: 'Effective Control (1952–Present)',
+            text: 'South Korea has maintained a coast guard garrison on Liancourt Rocks since 1952, constructed a lighthouse and dock facilities, and permitted civilian residence — exercising continuous, peaceful effective control for over 70 years. Korea maintains that Liancourt Rocks is an integral part of its territory with no dispute to resolve.'
+          },
+          japan: {
+            title: 'ICJ Referral Proposals',
+            text: 'Japan has proposed referring the dispute to the International Court of Justice three times (1954, 1962, 2012), all rejected by Korea. Japan advocates for peaceful resolution through international law and interprets Korea\'s refusal as suggesting a lack of legal confidence.'
+          },
+          koreaWeight: 75,
+          analysis: 'The Korean position holds a clear advantage on this issue. Over 70 years of effective control is one of the strongest grounds for territorial sovereignty under international law, and Korea meets all substantive requirements — garrison presence, infrastructure construction, and civilian residence. Japan\'s ICJ referral proposals demonstrate a desire for resolution, but ICJ jurisdiction requires mutual consent, making Korea\'s refusal a legitimate exercise of its legal rights. Notably, Japan itself has refused ICJ referral proposals from other countries regarding its own territorial disputes — the Senkaku/Diaoyu Islands (China) and the Kuril Islands/Northern Territories (Russia) — raising questions about the consistency of Japan\'s position on international adjudication. However, Japan\'s continuous protests complicate the question of whether full acquiescence has been established.'
         }
       ]
     },
     law: {
       title: 'International Law Perspectives',
-      table: {
-        headers: ['Issue', 'Korean Position', 'Japanese Position'],
-        rows: [
-          [
-            'Historical Title',
-            'Korea has continuously recognized and governed Liancourt Rocks since 512 AD, supported by numerous historical texts and maps',
-            'Whether "Usando" in Korean records refers to Liancourt Rocks is unclear; historical title has not been proven'
-          ],
-          [
-            'Legality of 1905 Incorporation',
-            'Part of Japan\'s imperial aggression against Korea — not terra nullius, but illegal seizure of existing Korean territory',
-            'Legitimate incorporation of terra nullius under international law, separate from the 1910 annexation of Korea'
-          ],
-          [
-            'SF Peace Treaty Interpretation',
-            'Liancourt Rocks\'s omission from renounced territories was a simple oversight; SCAPIN 677 had already confirmed Liancourt Rocks as Korean territory',
-            'Liancourt Rocks\'s exclusion from renounced territories reflects Allied recognition of Japanese sovereignty'
-          ],
-          [
-            'Effective Control',
-            'Over 70 years of peaceful, continuous effective control since 1952',
-            'Korea\'s occupation since 1952 is an illegal seizure via the Rhee Line; Japan\'s persistent protests prevent acquiescence'
-          ],
-          [
-            'International Adjudication',
-            'Liancourt Rocks is inherently Korean territory with no dispute; ICJ referral is unnecessary',
-            'Japan seeks peaceful resolution through international law; Korea\'s ICJ refusal suggests weak legal standing'
-          ]
-        ]
-      },
+      subtitle: 'International law principles applicable to the Liancourt Rocks / Takeshima dispute and comprehensive assessment',
       principles: [
         {
           title: 'Effective Occupation',
-          text: 'One of the key criteria for proving territorial sovereignty under international law. Korea has exercised effective control over Liancourt Rocks for over 70 years, while Japan characterizes this as illegal occupation and has continuously protested.'
+          text: 'One of the most powerful criteria for proving territorial sovereignty under international law. For effective control to be recognized, continuous and peaceful exercise of state functions is required.',
+          assessment: 'Korea has fulfilled all requirements for effective control since 1952: garrison presence, lighthouse and dock construction, and civilian residence. However, Japan\'s continuous protests mean the question of whether full acquiescence has been established remains legally contested.',
+          favorKorea: true
         },
         {
           title: 'Critical Date',
-          text: 'The question of which point in time should serve as the basis for judgment in a territorial dispute. Whether the critical date is set at 1905, 1945, or 1952 significantly affects the advantages and disadvantages for each side.'
+          text: 'The question of which point in time should serve as the baseline for judgment in a territorial dispute. Actions taken after the critical date are, in principle, of limited legal effect.',
+          assessment: 'If 1905 is taken as the critical date, Japan is favored; if 1945 (end of WWII) or 1952 (start of Korean effective control) is used, Korea is favored. The fact that Japan\'s 1905 incorporation occurred amid the colonial subjugation of Korea is an important consideration in determining the critical date.',
+          favorKorea: null
         },
         {
           title: 'Terra Nullius',
-          text: 'Japan claims Liancourt Rocks was terra nullius (belonging to no state) in 1905, while Korea counters that it had already been exercising sovereignty, meaning the territory was not unclaimed.'
+          text: 'The principle that territory belonging to no state may be incorporated through proper international legal procedures. For such a claim to be valid, it must be proven that the territory was genuinely unclaimed.',
+          assessment: 'Japan claims Liancourt Rocks was terra nullius in 1905, but Korean historical records (from 512 AD onward) and Japan\'s own Dajokan Order (1877) provide contrary evidence. The burden of proof for the terra nullius claim rests with Japan, and given the existing historical record, this proof is considerably difficult to establish.',
+          favorKorea: true
         },
         {
           title: 'Treaty Interpretation',
-          text: 'The fact that Liancourt Rocks was not explicitly mentioned in the 1951 San Francisco Peace Treaty leaves room for interpretation by both sides, and this ambiguity is one of the core causes of the dispute.'
+          text: 'The 1951 San Francisco Peace Treaty is the key treaty defining Japan\'s post-war territory, but it did not explicitly address Liancourt Rocks\' status, leaving room for interpretation by both sides.',
+          assessment: 'The treaty text\'s omission of Liancourt Rocks from territories Japan must renounce favors Japan. However, this must be understood in the context of the impossibility of explicitly listing thousands of islands. SCAPIN 677 (1946) excluding the islands from Japan favors Korea, though it includes the caveat "this is not a final determination."',
+          favorKorea: false
+        },
+        {
+          title: 'Intertemporal Law',
+          text: 'The principle that the legality of territorial acquisition must be judged according to the international law in force at the time the act took place. This limits retroactive evaluation of historical events by modern standards.',
+          assessment: 'While international law in 1905 generally tolerated colonial expansion, modern international law prohibits territorial acquisition through force or coercion. The fact that Japan\'s 1905 incorporation occurred during the Russo-Japanese War and amid the progressive stripping of Korea\'s diplomatic sovereignty raises questions even under intertemporal law analysis.',
+          favorKorea: true
         }
-      ]
+      ],
+      summary: {
+        title: 'Comprehensive Assessment',
+        text: 'Analyzing the Liancourt Rocks / Takeshima dispute comprehensively from an international law perspective, Korea is assessed to hold stronger overall legal grounds. Particularly, over 70 years of effective control, the confirmation of non-Japanese territory through Japan\'s own documents such as the Dajokan Order, and the historical context of the 1905 incorporation are key factors favoring Korea. Conversely, the textual interpretation of the San Francisco Peace Treaty and the Rusk documents favor Japan. However, since this dispute has never been adjudicated by the ICJ, no final legal judgment has been rendered. For a peaceful resolution, both countries must continue earnest dialogue grounded in historical facts and international legal principles.'
+      }
     },
     conclusion: {
       line1: 'The sovereignty dispute between Korea and Japan over Liancourt Rocks transcends a simple territorial issue — it is a complex conflict involving historical awareness and the interpretation of international law.',
@@ -1406,116 +1412,119 @@ const translations = {
         }
       ]
     },
-    korea: {
-      title: '韓国の立場',
-      subtitle: '大韓民国政府が主張する竹島領有権の根拠',
-      claims: [
+    claims: {
+      title: '争点別比較',
+      subtitle: '竹島領有権紛争の核心的争点と両国の立場',
+      koreaLabel: '韓国の立場',
+      japanLabel: '日本の立場',
+      analysisLabel: '客観的評価',
+      issues: [
         {
-          title: '歴史的先占',
-          text: '512年の新羅による于山国服属以来、朝鮮時代の官撰記録（世宗実録地理志、東国輿地勝覧等）に于山島が継続的に登場します。これは韓国が日本より数世紀先んじて竹島を認知・領有してきたことを示しています。'
+          topic: '歴史的領有権の根拠',
+          korea: {
+            title: '歴史的先占（512年〜）',
+            text: '512年の新羅による于山国服属以来、朝鮮時代の官撰記録（世宗実録地理志、東国輿地勝覧等）に于山島が継続的に登場します。これは韓国が日本より数世紀先んじて竹島を認知・領有してきたことを示しています。'
+          },
+          japan: {
+            title: '無主地の先占（1905年）',
+            text: '日本政府は、竹島が1905年の閣議決定当時どの国にも属さない無主地（terra nullius）であり、国際法の原則に従い合法的に領土に編入したものであると主張しています。'
+          },
+          koreaWeight: 60,
+          analysis: '韓国の古文献記録は時期的に先行しており、複数の官撰史料がこれを裏付けている点で、韓国側の主張がやや優位にあります。ただし、「于山島」が現在の竹島と同一の島であるかについての解釈論争が韓国側主張の決定的な弱点です。一方、日本の無主地主張は、1905年以前の両国の歴史的記録と活動を十分に説明できないという限界があります。'
         },
         {
-          title: '安龍福の外交活動（1693〜1696年）',
-          text: '朝鮮の漁師・安龍福は日本に渡り、鬱陵島と竹島が朝鮮の領土であることを主張しました。その後、徳川幕府は日本漁民の鬱陵島渡海を禁止する措置を取りました。これは当時の日本政府もこれらの島の朝鮮領有権を認めたものだと韓国は主張しています。'
+          topic: '17世紀の領有権活動',
+          korea: {
+            title: '安龍福の外交活動（1693〜1696年）',
+            text: '朝鮮の漁師・安龍福は日本に渡り、鬱陵島と竹島が朝鮮の領土であることを主張しました。その後、徳川幕府は日本漁民の鬱陵島渡海を禁止する措置を取りました。これは当時の日本政府もこれらの島の朝鮮領有権を認めたものだと韓国は主張しています。'
+          },
+          japan: {
+            title: '17世紀の漁業活動',
+            text: '江戸時代、大谷家と村川家が幕府の許可を得て鬱陵島へ向かう途中、竹島を中間寄港地かつ漁業根拠地として利用していたと主張しています。これは日本が17世紀から竹島を実質的に活用していたことを示すとしています。'
+          },
+          koreaWeight: 65,
+          analysis: '両国とも17世紀の活動証拠を提示していますが、1696年に徳川幕府が自国民の鬱陵島渡海を公式に禁止したという事実は韓国側に有利な根拠です。この禁止令は日本政府自体の公式行為として、当該水域に対する朝鮮の管轄を事実上認めたものと解釈される余地が大きいです。ただし、この禁止令が竹島まで明示的に含むかどうかは依然として議論の対象です。'
         },
         {
-          title: '太政官指令（1877年）',
-          text: '日本の最高国家機関であった太政官が「鬱陵島とその外一島は日本と関係なし」と公式決定しました。韓国側は「その外一島」が竹島を指すと主張し、日本自らが竹島の非日本領土性を確認したものだと見ています。'
+          topic: '19世紀末〜20世紀初頭の公式措置',
+          korea: {
+            title: '太政官指令（1877年）・勅令第41号（1900年）',
+            text: '日本の最高国家機関であった太政官が1877年に「鬱陵島とその外一島は日本と関係なし」と公式決定しました。また、1900年に大韓帝国が鬱島郡を設置し管轄に「石島」を含めました。韓国側は石島が竹島の当時の名称であると主張し、日本の1905年編入以前に韓国が既に竹島を公式に管轄していたことを示すとしています。'
+          },
+          japan: {
+            title: '1905年閣議決定・行政的措置',
+            text: '1905年の閣議決定により竹島を島根県に編入した後、正式登録、アシカ捕獲許可の発給、測量の実施などの行政的管轄行為を行いました。日本はこの編入が国際法上の合法的手続きに従ったものであると主張しています。'
+          },
+          koreaWeight: 70,
+          analysis: 'この争点では韓国側の主張がかなり優位にあります。1877年の太政官指令は、日本の最高国家機関自らが「日本と関係なし」と公式決定した文書であり、相手国の文書ではなく自国政府の文書であるという点で証拠力が極めて高いです。また、日本の1905年編入は日露戦争中に韓国の外交権が事実上剥奪されていく時期に行われたという歴史的文脈がその合法性に疑問を投げかけています。ただし、勅令第41号の「石島」が竹島と同一であるかは依然として学術的論争の対象です。'
         },
         {
-          title: '大韓帝国勅令第41号（1900年）',
-          text: '大韓帝国が鬱島郡を設置し、管轄に「石島」を含めました。韓国側は石島が竹島の当時の名称であると主張し、日本の1905年編入以前に韓国が既に竹島を公式に管轄していたことを示すとしています。'
+          topic: '戦後の国際文書と条約',
+          korea: {
+            title: 'SCAPIN 677（1946年）',
+            text: '第二次世界大戦終結後、連合国最高司令部が発したSCAPIN 677は竹島を日本の行政権から明示的に除外しました。韓国はこれを戦後処理において竹島が韓国領土として認定された証拠として提示しています。'
+          },
+          japan: {
+            title: 'SF講和条約（1951年）・ラスク書簡',
+            text: 'サンフランシスコ講和条約第2条で日本が放棄する領土として済州島・巨文島・鬱陵島を明記しましたが、竹島は放棄対象に含まれませんでした。また、米国国務次官補ディーン・ラスクが韓国大使に送った書簡で「竹島は韓国の領土として扱われたことはない」と述べており、日本はこれらを連合国の公式認識として重視しています。'
+          },
+          koreaWeight: 45,
+          analysis: 'この争点では日本側の主張がやや優位にあります。サンフランシスコ講和条約で竹島が日本の放棄対象に明記されなかった点と、ラスク書簡が明示的に日本の立場を支持している点は、条約解釈上日本に有利です。ただし、SCAPIN 677が竹島を日本の行政権から除外したことは韓国に有利な根拠であり、ラスク書簡はアメリカ一国の非公開意見に過ぎないという反論もあります。究極的にはいずれの文書も竹島の最終的地位を明示的に確定していません。'
         },
         {
-          title: '実効的支配（1952年〜現在）',
-          text: '大韓民国は1952年以来、竹島に警備隊を駐留させ、灯台・接岸施設等を建設し、民間人の居住を許可するなど、持続的かつ平和的な実効的支配を行使しています。'
-        },
-        {
-          title: 'SCAPIN 677（1946年）',
-          text: '第二次世界大戦終結後、連合国最高司令部が発したSCAPIN 677は竹島を日本の行政権から明示的に除外しました。韓国はこれを戦後処理において竹島が韓国領土として認定された証拠として提示しています。'
-        }
-      ]
-    },
-    japan: {
-      title: '日本の立場',
-      subtitle: '日本政府が主張する竹島領有権の根拠',
-      claims: [
-        {
-          title: '無主地の先占（1905年）',
-          text: '日本政府は、竹島が1905年の閣議決定当時どの国にも属さない無主地（terra nullius）であり、国際法の原則に従い合法的に領土に編入したものであると主張しています。'
-        },
-        {
-          title: '17世紀の漁業活動',
-          text: '江戸時代、大谷家と村川家が幕府の許可を得て鬱陵島へ向かう途中、竹島を中間寄港地かつ漁業根拠地として利用していたと主張しています。これは日本が17世紀から竹島を実質的に活用していたことを示すとしています。'
-        },
-        {
-          title: 'サンフランシスコ講和条約（1951年）',
-          text: '条約第2条で日本が放棄する領土として済州島・巨文島・鬱陵島を明記しましたが、竹島は放棄対象に含まれませんでした。日本はこれを連合国が竹島を日本領土として認めたものと解釈しています。'
-        },
-        {
-          title: 'ラスク書簡（1951年）',
-          text: '米国国務次官補ディーン・ラスクが韓国大使に送った書簡で、「竹島は韓国の領土として扱われたことはなく、1905年頃から島根県の管轄下にあった」と述べました。日本はこれを米国の公式見解として重視しています。'
-        },
-        {
-          title: 'ICJ付託提案',
-          text: '日本はこの紛争を国際司法裁判所（ICJ）に3回（1954年、1962年、2012年）付託することを提案しましたが、韓国は全て拒否しました。日本は国際法による平和的解決を追求する立場であり、韓国の拒否を法的自信の欠如と解釈しています。'
-        },
-        {
-          title: '行政的措置',
-          text: '1905年の編入以降、島根県が竹島を正式に登録し、アシカ捕獲許可を発給し、測量を実施するなどの行政的管轄行為を行ったと主張しています。'
+          topic: '現代の実効的支配と国際裁判',
+          korea: {
+            title: '実効的支配（1952年〜現在）',
+            text: '大韓民国は1952年以来、竹島に警備隊を駐留させ、灯台・接岸施設等を建設し、民間人の居住を許可するなど、持続的かつ平和的な実効的支配を行使しています。韓国は竹島が紛争自体が存在しない固有の領土であるという立場です。'
+          },
+          japan: {
+            title: 'ICJ付託提案',
+            text: '日本はこの紛争を国際司法裁判所（ICJ）に3回（1954年、1962年、2012年）付託することを提案しましたが、韓国は全て拒否しました。日本は国際法による平和的解決を追求する立場であり、韓国の拒否を法的自信の欠如と解釈しています。'
+          },
+          koreaWeight: 75,
+          analysis: 'この争点では韓国側が明確に優位にあります。70年以上の実効的支配は国際法上の領土主権を立証する最も強力な根拠の一つであり、韓国は警備隊の駐留、施設の建設、住民の居住など実質的な主権行使の全ての要件を備えています。日本のICJ付託提案は紛争解決の意思を示すものですが、ICJの管轄権は両国の合意を必要とするため、韓国の拒否自体は国際法上正当な権利です。なお、日本自身も他の領土紛争——尖閣諸島/釣魚島（中国）およびクリル諸島/北方領土（ロシア）——では相手国のICJ付託提案を拒否しており、国際裁判をめぐる日本の立場には一貫性の問題が存在します。ただし、日本の継続的な抗議により、黙認（acquiescence）が完全に成立したと断定することは困難です。'
         }
       ]
     },
     law: {
       title: '国際法的観点',
-      table: {
-        headers: ['争点', '韓国の立場', '日本の立場'],
-        rows: [
-          [
-            '歴史的権原',
-            '512年以来継続的に竹島を認知・管轄しており、多数の古文献・古地図がこれを裏付けている',
-            '韓国の古文献に登場する「于山島」が竹島を指すか不明確であり、歴史的権原は立証されていない'
-          ],
-          [
-            '1905年編入の合法性',
-            '日本の韓半島侵奪過程の一部であり、無主地先占ではなく既に韓国領土であった竹島の違法な強奪',
-            '無主地を国際法の原則に従い合法的に編入したものであり、朝鮮半島の併合（1910年）とは別個の措置'
-          ],
-          [
-            'SF講和条約の解釈',
-            '竹島が放棄対象から外れたのは単純な脱漏であり、SCAPIN 677等を通じて竹島が韓国領土であることは既に確認されていた',
-            '竹島が日本の放棄領土から除外されたことは、竹島が日本領土であるという連合国の認識を反映している'
-          ],
-          [
-            '実効的支配',
-            '1952年以来70年以上にわたり平和的・持続的に実効的支配を行使中',
-            '韓国の占有は1952年の李承晩ラインによる不法占拠であり、日本の継続的な抗議があるため黙認（acquiescence）は成立しない'
-          ],
-          [
-            '国際裁判',
-            '竹島は紛争自体が存在しない韓国固有の領土であるためICJ付託は不要',
-            '国際法による平和的解決を追求しており、韓国のICJ拒否は法的根拠の脆弱性を示唆している'
-          ]
-        ]
-      },
+      subtitle: '竹島紛争に適用される国際法原則と総合評価',
       principles: [
         {
           title: '実効的支配（Effective Occupation）',
-          text: '国際法において領土主権を立証する核心的基準の一つです。韓国は70年以上にわたり竹島に対する実効的支配を行使していますが、日本はこれを不法占拠と規定し継続的に抗議しています。'
+          text: '国際法上、領土主権を立証する最も強力な基準の一つです。実効的支配が認められるには、国家機能の持続的かつ平和的な行使が必要です。',
+          assessment: '韓国は1952年以来、警備隊の駐留、灯台・接岸施設の建設、民間人の居住許可など、実効的支配の全ての要件を満たしています。ただし、日本の継続的な抗議により、黙認（acquiescence）の完全な成立については法的に論争中です。',
+          favorKorea: true
         },
         {
           title: '決定的期日（Critical Date）',
-          text: '領土紛争においてどの時点の状況を基準に判断するかという問題です。1905年、1945年、1952年のいずれの時点を決定的期日とするかにより、両国への有利不利が変わります。'
+          text: '領土紛争においてどの時点の状況を判断基準とするかという問題です。決定的期日以降の行為は原則として法的効力が制限されます。',
+          assessment: '1905年を基準とすれば日本に有利であり、1945年（終戦）または1952年（韓国の実効的支配開始）を基準とすれば韓国に有利です。日本の1905年編入が韓国の植民地化過程で行われたという事実は、決定的期日の設定において重要な考慮要素です。',
+          favorKorea: null
         },
         {
           title: '無主地先占（Terra Nullius）',
-          text: '日本は1905年に竹島が無主地であったと主張していますが、韓国は既に歴史的に領有権を行使していたため無主地ではなかったと反論しています。'
+          text: 'いずれの国にも属さない無主地を国際法の手続きに従い編入できるという原則です。先占が有効であるためには、当該領土が実際に無主地であったことが立証されなければなりません。',
+          assessment: '日本は1905年に竹島が無主地であったと主張していますが、韓国の歴史的記録（512年以降）および日本自体の太政官指令（1877年）がこれに反する証拠を提供しています。無主地主張の立証責任は日本にあり、現存する史料に照らしてこの立証はかなり困難です。',
+          favorKorea: true
         },
         {
-          title: '条約解釈',
-          text: '1951年のサンフランシスコ講和条約で竹島が明記されなかったことは両国いずれにとっても解釈の余地を残しており、この曖昧さが紛争の核心的原因の一つです。'
+          title: '条約解釈（Treaty Interpretation）',
+          text: '1951年のサンフランシスコ講和条約は日本の戦後領土を確定した核心条約ですが、竹島の帰属を明示的に言及しておらず、両国いずれにも解釈の余地を残しています。',
+          assessment: '条約の文面上、竹島が日本の放棄対象に含まれていない点は日本に有利ですが、これは数千の島嶼を明示的に列挙することが不可能であったという文脈で理解すべきです。SCAPIN 677（1946年）が竹島を日本から除外した点は韓国に有利ですが、「最終決定ではない」という但し書きがあります。',
+          favorKorea: false
+        },
+        {
+          title: '時際法（Intertemporal Law）',
+          text: '領土取得の合法性は、当該行為が行われた時点の国際法に従って判断すべきという原則です。歴史的事件を現代の基準で遡及的に評価することを制限します。',
+          assessment: '1905年当時の国際法は植民地拡張を一般的に容認していましたが、現代国際法は武力や強制による領土取得を禁止しています。日本の1905年編入が日露戦争中に韓国の外交権剥奪という強制的状況下で行われたという点は、時際法の適用においても問題を提起します。',
+          favorKorea: true
         }
-      ]
+      ],
+      summary: {
+        title: '総合評価',
+        text: '国際法的観点から竹島紛争を総合的に分析すると、韓国側が全般的により強い法的根拠を保有していると評価されます。特に70年以上の実効的支配、太政官指令など日本自体の文書による非日本領土確認、そして1905年編入の歴史的文脈が韓国に有利な核心的根拠です。一方、サンフランシスコ講和条約の文面解釈とラスク書簡は日本に有利な根拠です。ただし、この紛争が実際にICJで扱われたことがないため、最終的な法的判断は下されていません。領土紛争の平和的解決のためには、両国が歴史的事実と国際法原則に基づいた真摯な対話を続けていく必要があります。'
+      }
     },
     conclusion: {
       line1: '竹島をめぐる日韓間の領有権紛争は、単なる領土問題を超えた、歴史認識と国際法解釈の複合的な対立です。',
@@ -1569,10 +1578,8 @@ function setLanguage(lang) {
 
   // Re-render dynamic content
   renderTimeline(lang);
-  renderClaims('korea', lang);
-  renderClaims('japan', lang);
-  renderComparisonTable(lang);
-  renderLawPrinciples(lang);
+  renderClaimsSection(lang);
+  renderLawSection(lang);
   // Refresh GSAP ScrollTrigger
   if (typeof ScrollTrigger !== 'undefined') {
     setTimeout(() => ScrollTrigger.refresh(), 100);
@@ -1698,44 +1705,82 @@ function renderTimeline(lang) {
   if (legendBoth) legendBoth.textContent = data.legendBoth;
 }
 
-function renderClaims(section, lang) {
-  const claims = translations[lang][section].claims;
-  const container = document.getElementById(`${section}-claims`);
-  if (!container) return;
+function renderClaimsSection(lang) {
+  const data = translations[lang].claims;
+  const container = document.getElementById('claims-container');
+  if (!container || !data) return;
 
-  container.innerHTML = claims.map((claim, i) => `
-    <div class="claim-card">
-      <div class="claim-card__number">${String(i + 1).padStart(2, '0')}</div>
-      <h3 class="claim-card__title">${claim.title}</h3>
-      <p class="claim-card__text">${claim.text}</p>
+  container.innerHTML = data.issues.map((issue, i) => `
+    <div class="claims-issue">
+      <div class="claims-issue__header">
+        <span class="claims-issue__number">${String(i + 1).padStart(2, '0')}</span>
+        <h3 class="claims-issue__topic">${issue.topic}</h3>
+      </div>
+      <div class="claims-columns">
+        <div class="claims-col claims-col--korea">
+          <div class="claims-col__label">${data.koreaLabel}</div>
+          <h4 class="claims-col__title">${issue.korea.title}</h4>
+          <p class="claims-col__text">${issue.korea.text}</p>
+        </div>
+        <div class="claims-col claims-col--japan">
+          <div class="claims-col__label">${data.japanLabel}</div>
+          <h4 class="claims-col__title">${issue.japan.title}</h4>
+          <p class="claims-col__text">${issue.japan.text}</p>
+        </div>
+      </div>
+      <div class="claims-analysis">
+        <div class="claims-analysis__label">
+          <svg class="claims-analysis__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M4 7l4 8H0L4 7zm16 0l4 8h-8l4-8zM2 3h20"/></svg>
+          ${data.analysisLabel}
+        </div>
+        <div class="claims-meter">
+          <span class="claims-meter__label claims-meter__label--korea">${data.koreaLabel} ${issue.koreaWeight}%</span>
+          <div class="claims-meter__bar">
+            <div class="claims-meter__fill claims-meter__fill--korea" style="width:${issue.koreaWeight}%"></div>
+            <div class="claims-meter__fill claims-meter__fill--japan" style="width:${100 - issue.koreaWeight}%"></div>
+          </div>
+          <span class="claims-meter__label claims-meter__label--japan">${100 - issue.koreaWeight}% ${data.japanLabel}</span>
+        </div>
+        <p class="claims-analysis__text">${issue.analysis}</p>
+      </div>
     </div>
   `).join('');
 }
 
-function renderComparisonTable(lang) {
-  const table = translations[lang].law.table;
-  const container = document.getElementById('comparison-table');
-  if (!container) return;
+function renderLawSection(lang) {
+  const law = translations[lang].law;
 
-  const headerHtml = `<thead><tr>${table.headers.map(h => `<th>${h}</th>`).join('')}</tr></thead>`;
-  const bodyHtml = `<tbody>${table.rows.map(row =>
-    `<tr>${row.map(cell => `<td>${cell}</td>`).join('')}</tr>`
-  ).join('')}</tbody>`;
+  // Render principles
+  const principlesContainer = document.getElementById('law-principles');
+  if (principlesContainer) {
+    principlesContainer.innerHTML = law.principles.map(p => {
+      const indicatorClass = p.favorKorea === true ? 'law__indicator--korea'
+        : p.favorKorea === false ? 'law__indicator--japan'
+        : 'law__indicator--neutral';
+      const indicatorLabel = p.favorKorea === true ? '&#9664; K'
+        : p.favorKorea === false ? 'J &#9654;'
+        : '&#9670;';
+      return `
+      <div class="law__principle fade-up">
+        <div class="law__principle-header">
+          <div class="law__principle-title">${p.title}</div>
+          <span class="law__indicator ${indicatorClass}">${indicatorLabel}</span>
+        </div>
+        <p class="law__principle-text">${p.text}</p>
+        <p class="law__principle-assessment">${p.assessment}</p>
+      </div>`;
+    }).join('');
+  }
 
-  container.innerHTML = headerHtml + bodyHtml;
-}
-
-function renderLawPrinciples(lang) {
-  const principles = translations[lang].law.principles;
-  const container = document.getElementById('law-principles');
-  if (!container) return;
-
-  container.innerHTML = principles.map(p => `
-    <div class="law__principle fade-up">
-      <div class="law__principle-title">${p.title}</div>
-      <p class="law__principle-text">${p.text}</p>
-    </div>
-  `).join('');
+  // Render summary
+  const summaryContainer = document.getElementById('law-summary');
+  if (summaryContainer && law.summary) {
+    summaryContainer.innerHTML = `
+      <div class="law__summary-box">
+        <h3 class="law__summary-title">${law.summary.title}</h3>
+        <p class="law__summary-text">${law.summary.text}</p>
+      </div>`;
+  }
 }
 
 /* --- Initialize --- */

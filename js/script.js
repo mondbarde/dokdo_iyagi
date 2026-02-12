@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (prefersReducedMotion) {
     // Make all non-pinned content visible without entrance animations
-    gsap.set('.fade-up, .claim-card, .law__principle, .fact-card, .fact-card--overlay', {
+    gsap.set('.fade-up, .claims-issue, .law__principle, .law__summary-box, .fact-card, .fact-card--overlay', {
       opacity: 1, y: 0, x: 0, scale: 1
     });
     ScrollTrigger.refresh();
@@ -55,8 +55,8 @@ function initNavBackground() {
   if (!nav) return;
 
   ScrollTrigger.create({
-    trigger: '#hero',
-    start: 'bottom top+=100',
+    trigger: '#timeline',
+    start: 'top top+=100',
     onEnter: () => nav.classList.add('nav--scrolled'),
     onLeaveBack: () => nav.classList.remove('nav--scrolled')
   });
@@ -690,32 +690,26 @@ function setElState(el, props) {
    ======================================== */
 
 function initClaimAnimations() {
-  observeAndAnimateClaims('korea');
-  observeAndAnimateClaims('japan');
-}
-
-function observeAndAnimateClaims(section) {
-  const container = document.getElementById(`${section}-claims`);
+  const container = document.getElementById('claims-container');
   if (!container) return;
 
   if (container.children.length > 0) {
-    animateClaimCards(section);
+    animateClaimIssues();
   }
 
   const observer = new MutationObserver(() => {
-    animateClaimCards(section);
+    animateClaimIssues();
   });
 
   observer.observe(container, { childList: true });
 }
 
-function animateClaimCards(section) {
-  const sectionEl = document.querySelector(`.${section}-section`);
-  const cards = sectionEl ? sectionEl.querySelectorAll('.claim-card') : [];
-  const direction = section === 'korea' ? -60 : 60;
+function animateClaimIssues() {
+  const sectionEl = document.querySelector('.claims-section');
+  if (!sectionEl) return;
 
   // Section title animation
-  const title = sectionEl ? sectionEl.querySelector('.section-title') : null;
+  const title = sectionEl.querySelector('.section-title');
   if (title) {
     gsap.fromTo(title,
       { y: 30, opacity: 0 },
@@ -733,7 +727,7 @@ function animateClaimCards(section) {
   }
 
   // Underline wipe
-  const underline = sectionEl ? sectionEl.querySelector('.title-underline') : null;
+  const underline = sectionEl.querySelector('.title-underline');
   if (underline) {
     gsap.fromTo(underline,
       { scaleX: 0 },
@@ -750,17 +744,18 @@ function animateClaimCards(section) {
     );
   }
 
-  // Cards stagger in
-  cards.forEach((card, i) => {
-    gsap.fromTo(card,
-      { x: direction, opacity: 0 },
+  // Issue blocks fade in
+  const issues = sectionEl.querySelectorAll('.claims-issue');
+  issues.forEach((issue, i) => {
+    gsap.fromTo(issue,
+      { y: 40, opacity: 0 },
       {
-        x: 0,
+        y: 0,
         opacity: 1,
         duration: 0.8,
         delay: i * 0.1,
         scrollTrigger: {
-          trigger: card,
+          trigger: issue,
           start: 'top 85%',
           once: true
         }
@@ -802,51 +797,20 @@ function initLawAnimations() {
     });
   }
 
-  // Observe table for language changes
-  const table = document.getElementById('comparison-table');
-  if (table) {
-    const observer = new MutationObserver(() => {
-      animateTableRows();
-    });
-    observer.observe(table, { childList: true, subtree: true });
-
-    if (table.rows.length > 0) {
-      animateTableRows();
-    }
-  }
-
-  // Observe principles
+  // Observe principles for language changes
   const principles = document.getElementById('law-principles');
   if (principles) {
     const observer = new MutationObserver(() => {
       animateLawPrinciples();
+      animateLawSummary();
     });
     observer.observe(principles, { childList: true });
 
     if (principles.children.length > 0) {
       animateLawPrinciples();
+      animateLawSummary();
     }
   }
-}
-
-function animateTableRows() {
-  const rows = document.querySelectorAll('.comparison-table tbody tr');
-  rows.forEach((row, i) => {
-    gsap.fromTo(row,
-      { opacity: 0, y: 20 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.6,
-        delay: i * 0.1,
-        scrollTrigger: {
-          trigger: row,
-          start: 'top 85%',
-          once: true
-        }
-      }
-    );
-  });
 }
 
 function animateLawPrinciples() {
@@ -867,6 +831,25 @@ function animateLawPrinciples() {
       }
     );
   });
+}
+
+function animateLawSummary() {
+  const summary = document.querySelector('.law__summary-box');
+  if (summary) {
+    gsap.fromTo(summary,
+      { y: 30, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 1,
+        scrollTrigger: {
+          trigger: summary,
+          start: 'top 85%',
+          once: true
+        }
+      }
+    );
+  }
 }
 
 /* ========================================
