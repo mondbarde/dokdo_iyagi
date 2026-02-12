@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (prefersReducedMotion) {
     // Make all non-pinned content visible without entrance animations
-    gsap.set('.fade-up, .claims-issue, .claims-issue__header, .claims-col, .claims-analysis, .law__principle, .law__indicator, .law__summary-box, .fact-card, .fact-card--overlay', {
+    gsap.set('.fade-up, .claims-issue, .claims-issue__header, .claims-col, .claims-analysis, .law__principle, .law__indicator, .law__summary-box, .fact-card, .fact-card--overlay, .geo-tl-transition', {
       opacity: 1, y: 0, x: 0, scale: 1
     });
     ScrollTrigger.refresh();
@@ -69,6 +69,7 @@ function initNavBackground() {
 function initHeroAnimations(reducedMotion) {
   var mapImg = document.querySelector('.hero__map-img img');
   var mapContainer = document.querySelector('.hero__map-img');
+  var mapCaption = document.querySelector('.hero__map-caption');
   var heroBg = document.querySelector('.hero__bg');
   var heroParticles = document.querySelector('.hero__particles');
   var satellite = document.getElementById('hero-satellite');
@@ -260,6 +261,19 @@ function initHeroAnimations(reducedMotion) {
         mapImg.style.filter = 'blur(' + blur + 'px)';
         mapImg.style.opacity = String(oldOpacity);
         mapImg.style.transform = 'scale(' + scale + ')';
+
+        // Map caption: fade in at 8-14%, fade out at 15-22%
+        if (mapCaption) {
+          var capOp = 0;
+          if (p >= 0.08 && p < 0.14) {
+            capOp = (p - 0.08) / 0.06;
+          } else if (p >= 0.14 && p < 0.15) {
+            capOp = 1;
+          } else if (p >= 0.15 && p < 0.22) {
+            capOp = 1 - (p - 0.15) / 0.07;
+          }
+          mapCaption.style.opacity = String(Math.max(0, Math.min(1, capOp)));
+        }
       },
       onLeave: function () {
         fixedLayers.forEach(function (el) { el.style.visibility = 'hidden'; });

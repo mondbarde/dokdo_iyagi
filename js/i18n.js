@@ -9,7 +9,8 @@ const translations = {
     hero: {
       title: '독도',
       subtitle: '대한민국 동해의 아름다운 섬, 그 역사를 따라가다',
-      scroll: '스크롤하여 탐험하기'
+      scroll: '스크롤하여 탐험하기',
+      mapCaption: '磯竹島略圖 — 태정관 지령 부속 지도 (1877)'
     },
     geo: {
       title: '지리적 개요',
@@ -288,12 +289,12 @@ const translations = {
           date: '1951년', year: 1951, side: 'both', era: 'modern',
           title: 'SF 강화조약 & 러스크 서한',
           koreaView: {
-            title: '독도 미언급은 누락',
-            text: '샌프란시스코 강화조약에서 독도가 포기 영토에 포함되지 않은 것은 단순 누락. SCAPIN 677로 이미 독도가 한국 영토임이 확인되었으므로 별도 명시 불필요.'
+            title: '초안부터 뒤바뀐 독도의 지위',
+            text: '1947년 초안에는 독도가 일본 반환 도서에 포함되었고 영국 초안(1951.4)도 한국 영토로 명시. 그러나 주일 미국 정치고문 시볼드의 로비로 1949년 초안에서 일본령으로 뒤집힌 뒤, 최종 조약에서는 양쪽 목록 모두에서 삭제. 이는 연합국 합의가 아닌 미일 막후 공작의 결과.'
           },
           japanView: {
             title: '포기 대상 제외 = 일본 영토',
-            text: '조약 제2조에서 포기 영토로 제주도·거문도·울릉도를 명시했으나 독도는 제외. 러스크 서한에서 미국도 "독도는 한국 영토로 취급된 적 없다"고 확인.'
+            text: '조약 초안 과정에서 시볼드의 권고에 따라 독도가 일본령 잔류 도서로 분류(1949년 초안)된 바 있으며, 러스크 서한(1951.8)에서도 미국은 "독도는 한국 영토로 취급된 적 없다"고 확인. 최종 조약에서 포기 대상에 불포함된 것은 의도적 결정.'
           },
           image: { url: 'https://upload.wikimedia.org/wikipedia/commons/0/02/Treaty_of_peace_with_japan.jpg', alt: '샌프란시스코 강화조약 서명', caption: '딘 애치슨 미 국무장관의 강화조약 서명 (1951)', credit: 'Wikimedia Commons, Public Domain' }
         },
@@ -393,7 +394,7 @@ const translations = {
       subtitle: '독도/다케시마 영유권 분쟁의 핵심 쟁점과 양국의 입장',
       koreaLabel: '한국의 입장',
       japanLabel: '일본의 입장',
-      analysisLabel: '객관적 평가',
+      analysisLabel: 'AI 분석 (Claude Opus 4.6)',
       issues: [
         {
           topic: '역사적 영유권의 근거',
@@ -437,15 +438,15 @@ const translations = {
         {
           topic: '전후 국제 문서와 조약',
           korea: {
-            title: 'SCAPIN 677 (1946)',
-            text: '제2차 세계대전 종전 후 연합군 최고사령부가 발한 SCAPIN 677은 독도를 일본의 행정권에서 명시적으로 제외했습니다. 한국은 이를 전후 처리에서 독도가 한국 영토로 인정되었음을 보여주는 증거로 제시합니다.'
+            title: 'SCAPIN 677 · 조약 초안의 변천',
+            text: 'SCAPIN 677(1946)은 독도를 일본 행정권에서 명시적으로 제외했습니다. 또한 강화조약 1947년 초안에서 독도는 일본이 반환해야 할 도서 목록에 포함되었고, 1951년 4월 영국 초안도 독도를 한국 영토로 명시했습니다. 그러나 주일 미국 정치고문 시볼드가 일본 측 로비를 받아 1949년 초안에서 독도를 일본 잔류 도서로 전환시켰고, 최종 조약에서는 양쪽 목록 모두에서 삭제되었습니다. 한국은 이 과정이 연합국의 합의가 아닌 미일 막후 공작의 결과라고 주장합니다.'
           },
           japan: {
             title: 'SF 강화조약 (1951) · 러스크 서한',
-            text: '샌프란시스코 강화조약 제2조에서 일본이 포기할 영토로 제주도·거문도·울릉도를 명시했지만, 다케시마는 포기 대상에 포함되지 않았습니다. 또한 미국 국무부 차관보 딘 러스크가 한국 대사에게 보낸 서한에서 "독도는 한국의 영토로 취급된 적이 없다"고 밝혔으며, 일본은 이를 연합국의 공식 입장으로 중시합니다.'
+            text: '샌프란시스코 강화조약 제2조에서 일본이 포기할 영토로 제주도·거문도·울릉도를 명시했지만, 독도는 포기 대상에 포함되지 않았습니다. 조약 초안 과정에서도 시볼드의 권고에 따라 1949년 초안에서 독도가 일본 잔류 도서로 분류된 바 있습니다. 또한 러스크 서한(1951.8)에서 미국은 "독도는 한국의 영토로 취급된 적이 없다"고 밝혔으며, 일본은 초안 변천 과정과 러스크 서한 모두가 독도의 일본 귀속을 뒷받침하는 의도적 결정이었다고 주장합니다.'
           },
           koreaWeight: 45,
-          analysis: '이 쟁점에서는 일본 측 주장이 다소 우위에 있습니다. 샌프란시스코 강화조약에서 독도가 일본의 포기 대상에 명시되지 않은 점과, 러스크 서한이 명시적으로 일본의 입장을 지지하고 있다는 점은 조약 해석상 일본에 유리합니다. 다만, SCAPIN 677이 독도를 일본 행정권에서 제외한 것은 한국에 유리한 근거이며, 러스크 서한은 미국 한 나라의 비공개 의견에 불과하다는 반론도 있습니다. 궁극적으로 어떤 문서도 독도의 최종 지위를 명시적으로 확정하지 않았습니다.'
+          analysis: '이 쟁점은 양측의 근거가 팽팽히 맞서며 일본 측이 다소 우위에 있습니다. 조약의 초안 변천 과정이 이 쟁점의 핵심입니다: 1947년 초안에서 독도는 한국 반환 도서에 포함되었으나, 시볼드의 개입으로 1949년 초안에서 일본령으로 전환되었고, 최종적으로는 양쪽 목록 모두에서 삭제되었습니다. 또한 영국 초안(1951.4)은 독도를 한국 영토로 명시한 반면, 미국의 러스크 서한(1951.8)은 일본의 입장을 지지하여 연합국 내부에서도 의견이 갈렸음을 보여줍니다. 러스크 서한이 조약 해석상 일본에 유리하지만, 이는 미국 한 나라의 비공개 의견이며 다자간 합의가 아닙니다. SCAPIN 677이 독도를 일본에서 제외한 점과 초기 초안들의 한국 귀속 의도는 한국에 유리한 근거입니다. 궁극적으로 최종 조약이 독도를 의도적으로 모호하게 남겨둔 것은, 연합국 내부의 합의 실패를 반영합니다.'
         },
         {
           topic: '현대 실효적 지배와 국제 재판',
@@ -464,7 +465,7 @@ const translations = {
     },
     law: {
       title: '국제법적 관점',
-      subtitle: '독도/다케시마 분쟁에 적용되는 국제법 원칙과 종합 평가',
+      subtitle: '독도/다케시마 분쟁에 적용되는 국제법 원칙과 AI 종합 평가',
       principles: [
         {
           title: '실효적 지배 (Effective Occupation)',
@@ -486,8 +487,8 @@ const translations = {
         },
         {
           title: '조약 해석 (Treaty Interpretation)',
-          text: '1951년 샌프란시스코 강화조약은 일본의 전후 영토를 확정한 핵심 조약이나, 독도의 귀속을 명시적으로 언급하지 않아 양측 모두에게 해석의 여지를 남겼습니다.',
-          assessment: '조약 문면상 독도가 일본 포기 대상에 포함되지 않은 점은 일본에 유리하나, 이는 수천 개 도서의 명시적 열거가 불가능했다는 맥락에서 이해해야 합니다. SCAPIN 677(1946)이 독도를 일본에서 제외한 점은 한국에 유리하지만, "최종 결정이 아니다"라는 단서가 있습니다.',
+          text: '1951년 샌프란시스코 강화조약은 일본의 전후 영토를 확정한 핵심 조약이나, 독도의 귀속을 명시적으로 언급하지 않았습니다. 조약 초안 과정에서 독도는 한국 반환 도서(1947년 초안) → 일본 잔류 도서(1949년 초안, 시볼드 로비) → 양쪽 모두에서 삭제(최종 조약)라는 격변을 겪었으며, 영국 초안과 미국 러스크 서한이 상반된 입장을 보여 연합국 내부의 의견 불일치가 드러납니다.',
+          assessment: '조약 문면상 독도가 일본 포기 대상에 포함되지 않은 점은 일본에 유리하나, 초안 변천 과정을 보면 이 결과가 연합국의 확고한 합의가 아닌 정치적 타협의 산물임을 알 수 있습니다. 1947년 초안의 한국 귀속 의도, 영국 초안(1951.4)의 한국 영토 명시, SCAPIN 677의 일본 제외는 한국에 유리한 근거이며, 시볼드의 개입과 러스크 서한은 일본에 유리한 근거입니다. 최종 조약의 의도적 모호성은 연합국 내 합의 실패를 반영합니다.',
           favorKorea: false
         },
         {
@@ -498,7 +499,7 @@ const translations = {
         }
       ],
       summary: {
-        title: '종합 평가',
+        title: 'AI 종합 평가 (Claude Opus 4.6)',
         text: '국제법적 관점에서 독도/다케시마 분쟁을 종합적으로 분석하면, 한국 측이 전반적으로 더 강한 법적 근거를 보유하고 있는 것으로 평가됩니다. 특히 70년 이상의 실효적 지배, 태정관지령 등 일본 자체 문서에 의한 비일본 영토 확인, 그리고 1905년 편입의 역사적 맥락이 한국에 유리한 핵심 근거입니다. 반면, 샌프란시스코 강화조약의 문면 해석과 러스크 서한은 일본에 유리한 근거입니다. 다만, 이 분쟁이 실제로 ICJ에서 다루어진 적이 없으므로, 최종적인 법적 판단은 내려진 바 없습니다. 영토 분쟁의 평화적 해결을 위해서는 양국이 역사적 사실과 국제법 원칙에 기반한 진지한 대화를 이어가야 합니다.'
       }
     },
@@ -511,7 +512,7 @@ const translations = {
       source6: '대한제국 칙령 제41호 (1900)'
     },
     footer: {
-      text: '이 웹사이트는 교육 목적으로 제작되었으며, 양측의 관점을 객관적으로 전달하고자 합니다.'
+      text: '이 웹사이트는 교육 목적으로 제작되었으며, 양측의 관점을 객관적으로 전달하고자 합니다. 쟁점별 비교 분석 및 국제법적 평가는 AI(Claude Opus 4.6)에 의해 작성되었습니다.'
     },
     dots: ['시작', '지리', '연대기', '한국', '일본', '국제법', '결론']
   },
@@ -521,7 +522,8 @@ const translations = {
     hero: {
       title: 'Liancourt Rocks',
       subtitle: 'The Disputed Islands of the East Sea — A Journey Through History',
-      scroll: 'Scroll to explore'
+      scroll: 'Scroll to explore',
+      mapCaption: '磯竹島略圖 — Attached Map to the Dajokan Order (1877)'
     },
     geo: {
       title: 'Geographic Overview',
@@ -800,12 +802,12 @@ const translations = {
           date: '1951', year: 1951, side: 'both', era: 'modern',
           title: 'SF Peace Treaty & Rusk Documents',
           koreaView: {
-            title: 'Omission was not exclusion',
-            text: 'Liancourt Rocks\'s absence from the list of renounced territories was a simple omission. SCAPIN 677 had already confirmed Liancourt Rocks as Korean territory, making separate mention unnecessary.'
+            title: 'A status reversed through drafts',
+            text: 'The 1947 draft included Liancourt Rocks in territories Japan must return, and the British draft (Apr. 1951) also listed it as Korean territory. However, lobbying by U.S. political advisor Sebald reversed this in the 1949 draft. The final treaty removed the islands from both lists — a result of behind-the-scenes US-Japan maneuvering, not Allied consensus.'
           },
           japanView: {
             title: 'Not renounced = Japanese territory',
-            text: 'Article 2 specifically listed territories Japan renounced (Jeju, Geomundo, Ulleungdo) but excluded Liancourt Rocks. The Rusk Documents confirm: the U.S. stated "Liancourt Rocks was never treated as part of Korea."'
+            text: 'During drafting, Sebald\'s recommendation led to Liancourt Rocks being classified under islands Japan would retain (1949 draft). The Rusk letter (Aug. 1951) confirmed the U.S. view that "Liancourt Rocks was never treated as part of Korea." Its omission from renounced territories in the final treaty was a deliberate decision.'
           },
           image: { url: 'https://upload.wikimedia.org/wikipedia/commons/0/02/Treaty_of_peace_with_japan.jpg', alt: 'San Francisco Peace Treaty signing', caption: 'Secretary of State Dean Acheson signing the Peace Treaty (1951)', credit: 'Wikimedia Commons, Public Domain' }
         },
@@ -905,7 +907,7 @@ const translations = {
       subtitle: 'Key issues in the Liancourt Rocks / Takeshima sovereignty dispute and both countries\' positions',
       koreaLabel: 'Korea\'s Position',
       japanLabel: 'Japan\'s Position',
-      analysisLabel: 'Objective Assessment',
+      analysisLabel: 'AI Analysis (Claude Opus 4.6)',
       issues: [
         {
           topic: 'Historical Basis for Sovereignty',
@@ -949,15 +951,15 @@ const translations = {
         {
           topic: 'Post-War International Documents and Treaties',
           korea: {
-            title: 'SCAPIN 677 (1946)',
-            text: 'The post-WWII Allied directive SCAPIN 677 explicitly excluded Liancourt Rocks from Japanese administrative authority. Korea presents this as evidence that the islands were recognized as Korean territory in the post-war settlement.'
+            title: 'SCAPIN 677 & Evolution of Treaty Drafts',
+            text: 'SCAPIN 677 (1946) explicitly excluded Liancourt Rocks from Japanese administrative authority. Furthermore, the 1947 treaty draft included the islands in the list of territories Japan must return, and the British draft (Apr. 1951) also designated them as Korean territory. However, U.S. political advisor William Sebald, influenced by Japanese lobbying, reversed this in the 1949 draft by reclassifying the islands under Japanese retention. The final treaty removed them from both lists entirely. Korea argues this process reflected US-Japan behind-the-scenes maneuvering rather than Allied consensus.'
           },
           japan: {
             title: 'SF Peace Treaty (1951) & Rusk Documents',
-            text: 'Article 2 of the San Francisco Peace Treaty specified Jeju, Geomundo, and Ulleungdo as territories Japan must renounce, but Takeshima was not included. Additionally, U.S. Assistant Secretary of State Dean Rusk\'s letter to the Korean ambassador stated that "Liancourt Rocks was never treated as part of Korea." Japan considers these significant expressions of Allied recognition.'
+            text: 'Article 2 of the San Francisco Peace Treaty specified Jeju, Geomundo, and Ulleungdo as territories Japan must renounce, but Liancourt Rocks was not included. During the drafting process, Sebald\'s recommendation led to the islands being classified under Japanese-retained territory in the 1949 draft. The Rusk letter (Aug. 1951) further confirmed the U.S. view that "Liancourt Rocks was never treated as part of Korea." Japan argues that both the drafting history and the Rusk letter demonstrate a deliberate decision affirming Japanese sovereignty.'
           },
           koreaWeight: 45,
-          analysis: 'The Japanese position holds a moderate advantage on this issue. The San Francisco Peace Treaty\'s omission of Liancourt Rocks from territories Japan must renounce, combined with the Rusk letter\'s explicit support for Japan\'s position, favor Japan\'s treaty interpretation. However, SCAPIN 677\'s exclusion of the islands from Japanese authority supports Korea, and the Rusk letter represents only the confidential view of a single country rather than a multilateral consensus. Ultimately, no post-war document explicitly settled the final status of the islands.'
+          analysis: 'This issue features closely matched arguments, with the Japanese position holding a moderate advantage. The evolution of the treaty drafts is central to this dispute: the 1947 draft included Liancourt Rocks in territories to return to Korea, but Sebald\'s intervention shifted the 1949 draft to classify the islands as Japanese, before the final treaty removed them from both lists entirely. The British draft (Apr. 1951) designated the islands as Korean territory, while the American Rusk letter (Aug. 1951) supported Japan — revealing disagreement even among the Allied Powers. While the Rusk letter favors Japan in treaty interpretation, it represents only a single country\'s confidential opinion rather than multilateral consensus. SCAPIN 677\'s exclusion of the islands from Japan and the early drafts\' pro-Korean intent support Korea\'s position. Ultimately, the final treaty\'s deliberate ambiguity on this point reflects a failure of consensus among the Allied Powers.'
         },
         {
           topic: 'Modern Effective Control and International Adjudication',
@@ -976,7 +978,7 @@ const translations = {
     },
     law: {
       title: 'International Law Perspectives',
-      subtitle: 'International law principles applicable to the Liancourt Rocks / Takeshima dispute and comprehensive assessment',
+      subtitle: 'International law principles applicable to the Liancourt Rocks / Takeshima dispute and AI-powered comprehensive assessment',
       principles: [
         {
           title: 'Effective Occupation',
@@ -998,8 +1000,8 @@ const translations = {
         },
         {
           title: 'Treaty Interpretation',
-          text: 'The 1951 San Francisco Peace Treaty is the key treaty defining Japan\'s post-war territory, but it did not explicitly address Liancourt Rocks\' status, leaving room for interpretation by both sides.',
-          assessment: 'The treaty text\'s omission of Liancourt Rocks from territories Japan must renounce favors Japan. However, this must be understood in the context of the impossibility of explicitly listing thousands of islands. SCAPIN 677 (1946) excluding the islands from Japan favors Korea, though it includes the caveat "this is not a final determination."',
+          text: 'The 1951 San Francisco Peace Treaty is the key treaty defining Japan\'s post-war territory, but it did not explicitly address Liancourt Rocks\' status. During drafting, the islands underwent dramatic shifts: included in territories to return to Korea (1947 draft) → reclassified as Japanese-retained (1949 draft, after Sebald\'s lobbying) → removed from both lists (final treaty). The British draft and the American Rusk letter took opposing positions, revealing disagreement within the Allied Powers themselves.',
+          assessment: 'The treaty text\'s omission of the islands from territories Japan must renounce favors Japan, but the drafting history reveals this outcome was a product of political compromise rather than firm Allied consensus. The 1947 draft\'s pro-Korean intent, the British draft\'s (Apr. 1951) explicit designation as Korean territory, and SCAPIN 677\'s exclusion from Japan all favor Korea, while Sebald\'s intervention and the Rusk letter favor Japan. The final treaty\'s deliberate ambiguity reflects a failure of consensus among the Allied Powers.',
           favorKorea: false
         },
         {
@@ -1010,7 +1012,7 @@ const translations = {
         }
       ],
       summary: {
-        title: 'Comprehensive Assessment',
+        title: 'AI Comprehensive Assessment (Claude Opus 4.6)',
         text: 'Analyzing the Liancourt Rocks / Takeshima dispute comprehensively from an international law perspective, Korea is assessed to hold stronger overall legal grounds. Particularly, over 70 years of effective control, the confirmation of non-Japanese territory through Japan\'s own documents such as the Dajokan Order, and the historical context of the 1905 incorporation are key factors favoring Korea. Conversely, the textual interpretation of the San Francisco Peace Treaty and the Rusk documents favor Japan. However, since this dispute has never been adjudicated by the ICJ, no final legal judgment has been rendered. For a peaceful resolution, both countries must continue earnest dialogue grounded in historical facts and international legal principles.'
       }
     },
@@ -1023,7 +1025,7 @@ const translations = {
       source6: 'Korean Imperial Edict No. 41 (1900)'
     },
     footer: {
-      text: 'This website was created for educational purposes and aims to present both perspectives objectively.'
+      text: 'This website was created for educational purposes and aims to present both perspectives objectively. The comparative issue analysis and international law assessments were generated by AI (Claude Opus 4.6).'
     },
     dots: ['Home', 'Geography', 'Timeline', 'Korea', 'Japan', 'Law', 'Conclusion']
   },
@@ -1033,7 +1035,8 @@ const translations = {
     hero: {
       title: '竹島',
       subtitle: '日本海に浮かぶ美しい島々 ― その歴史をたどる',
-      scroll: 'スクロールして探索'
+      scroll: 'スクロールして探索',
+      mapCaption: '磯竹島略圖 — 太政官指令 附属地図 (1877)'
     },
     geo: {
       title: '地理概要',
@@ -1312,12 +1315,12 @@ const translations = {
           date: '1951年', year: 1951, side: 'both', era: 'modern',
           title: 'SF講和条約とラスク書簡',
           koreaView: {
-            title: '竹島の不記載は脱漏',
-            text: 'サンフランシスコ講和条約で竹島が放棄領土に含まれなかったのは単なる脱漏。SCAPIN 677で既に竹島が韓国領土であることが確認されていたため、別途明記は不要であった。'
+            title: '草案段階から覆された竹島の地位',
+            text: '1947年草案では竹島は日本返還島嶼に含まれ、英国草案（1951.4）も韓国領土と明記。しかし駐日米国政治顧問シーボルドのロビーにより1949年草案で日本領に転換。最終条約では両方のリストから削除された。連合国の合意ではなく米日の舞台裏工作の結果。'
           },
           japanView: {
             title: '放棄対象からの除外＝日本領土',
-            text: '条約第2条で放棄領土として済州島・巨文島・鬱陵島を明記したが、竹島は除外された。ラスク書簡でも米国は「竹島は韓国の領土として扱われたことはない」と確認。'
+            text: '条約草案過程でシーボルドの勧告により竹島は日本残留島嶼に分類（1949年草案）。ラスク書簡（1951.8）でも米国は「竹島は韓国の領土として扱われたことはない」と確認。最終条約で放棄対象に含まれなかったのは意図的な決定。'
           },
           image: { url: 'https://upload.wikimedia.org/wikipedia/commons/0/02/Treaty_of_peace_with_japan.jpg', alt: 'サンフランシスコ講和条約署名', caption: 'ディーン・アチソン米国務長官の講和条約署名 (1951)', credit: 'Wikimedia Commons, Public Domain' }
         },
@@ -1417,7 +1420,7 @@ const translations = {
       subtitle: '竹島領有権紛争の核心的争点と両国の立場',
       koreaLabel: '韓国の立場',
       japanLabel: '日本の立場',
-      analysisLabel: '客観的評価',
+      analysisLabel: 'AI分析（Claude Opus 4.6）',
       issues: [
         {
           topic: '歴史的領有権の根拠',
@@ -1461,15 +1464,15 @@ const translations = {
         {
           topic: '戦後の国際文書と条約',
           korea: {
-            title: 'SCAPIN 677（1946年）',
-            text: '第二次世界大戦終結後、連合国最高司令部が発したSCAPIN 677は竹島を日本の行政権から明示的に除外しました。韓国はこれを戦後処理において竹島が韓国領土として認定された証拠として提示しています。'
+            title: 'SCAPIN 677・条約草案の変遷',
+            text: 'SCAPIN 677（1946年）は竹島を日本の行政権から明示的に除外しました。さらに講和条約の1947年草案では竹島は日本が返還すべき島嶼リストに含まれ、1951年4月の英国草案も韓国領土として明記していました。しかし駐日米国政治顧問シーボルドが日本側のロビーを受け、1949年草案で竹島を日本残留島嶼に転換させ、最終条約では両方のリストから削除されました。韓国はこの過程が連合国の合意ではなく米日の舞台裏工作の結果であると主張しています。'
           },
           japan: {
             title: 'SF講和条約（1951年）・ラスク書簡',
-            text: 'サンフランシスコ講和条約第2条で日本が放棄する領土として済州島・巨文島・鬱陵島を明記しましたが、竹島は放棄対象に含まれませんでした。また、米国国務次官補ディーン・ラスクが韓国大使に送った書簡で「竹島は韓国の領土として扱われたことはない」と述べており、日本はこれらを連合国の公式認識として重視しています。'
+            text: 'サンフランシスコ講和条約第2条で日本が放棄する領土として済州島・巨文島・鬱陵島を明記しましたが、竹島は放棄対象に含まれませんでした。条約草案過程においても、シーボルドの勧告により1949年草案で竹島は日本残留島嶼に分類されています。ラスク書簡（1951.8）でも米国は「竹島は韓国の領土として扱われたことはない」と述べており、日本は草案の変遷過程とラスク書簡の双方が竹島の日本帰属を裏付ける意図的決定であったと主張しています。'
           },
           koreaWeight: 45,
-          analysis: 'この争点では日本側の主張がやや優位にあります。サンフランシスコ講和条約で竹島が日本の放棄対象に明記されなかった点と、ラスク書簡が明示的に日本の立場を支持している点は、条約解釈上日本に有利です。ただし、SCAPIN 677が竹島を日本の行政権から除外したことは韓国に有利な根拠であり、ラスク書簡はアメリカ一国の非公開意見に過ぎないという反論もあります。究極的にはいずれの文書も竹島の最終的地位を明示的に確定していません。'
+          analysis: 'この争点では両側の根拠が拮抗しており、日本側がやや優位にあります。条約草案の変遷過程がこの争点の核心です：1947年草案では竹島は韓国返還島嶼に含まれていましたが、シーボルドの介入により1949年草案で日本領に転換され、最終的には両方のリストから削除されました。英国草案（1951.4）は竹島を韓国領土と明記した一方、米国のラスク書簡（1951.8）は日本の立場を支持しており、連合国内部でも意見が割れていたことを示しています。ラスク書簡は条約解釈上日本に有利ですが、あくまで一国の非公開意見であり多国間の合意ではありません。SCAPIN 677による竹島の日本除外と初期草案の韓国帰属意図は韓国に有利な根拠です。究極的に、最終条約が竹島を意図的に曖昧なまま残したことは、連合国内部の合意形成の失敗を反映しています。'
         },
         {
           topic: '現代の実効的支配と国際裁判',
@@ -1488,7 +1491,7 @@ const translations = {
     },
     law: {
       title: '国際法的観点',
-      subtitle: '竹島紛争に適用される国際法原則と総合評価',
+      subtitle: '竹島紛争に適用される国際法原則とAI総合評価',
       principles: [
         {
           title: '実効的支配（Effective Occupation）',
@@ -1510,8 +1513,8 @@ const translations = {
         },
         {
           title: '条約解釈（Treaty Interpretation）',
-          text: '1951年のサンフランシスコ講和条約は日本の戦後領土を確定した核心条約ですが、竹島の帰属を明示的に言及しておらず、両国いずれにも解釈の余地を残しています。',
-          assessment: '条約の文面上、竹島が日本の放棄対象に含まれていない点は日本に有利ですが、これは数千の島嶼を明示的に列挙することが不可能であったという文脈で理解すべきです。SCAPIN 677（1946年）が竹島を日本から除外した点は韓国に有利ですが、「最終決定ではない」という但し書きがあります。',
+          text: '1951年のサンフランシスコ講和条約は日本の戦後領土を確定した核心条約ですが、竹島の帰属を明示的に言及していません。条約草案過程で竹島は韓国返還島嶼（1947年草案）→日本残留島嶼（1949年草案、シーボルドのロビー）→両方のリストから削除（最終条約）という激変を経ており、英国草案と米国ラスク書簡が相反する立場を示し、連合国内部の意見不一致が露呈しています。',
+          assessment: '条約の文面上、竹島が日本の放棄対象に含まれていない点は日本に有利ですが、草案変遷過程を見るとこの結果が連合国の確固たる合意ではなく政治的妥協の産物であることが分かります。1947年草案の韓国帰属意図、英国草案（1951.4）の韓国領土明記、SCAPIN 677の日本除外は韓国に有利な根拠であり、シーボルドの介入とラスク書簡は日本に有利な根拠です。最終条約の意図的曖昧さは、連合国内の合意形成の失敗を反映しています。',
           favorKorea: false
         },
         {
@@ -1522,7 +1525,7 @@ const translations = {
         }
       ],
       summary: {
-        title: '総合評価',
+        title: 'AI総合評価（Claude Opus 4.6）',
         text: '国際法的観点から竹島紛争を総合的に分析すると、韓国側が全般的により強い法的根拠を保有していると評価されます。特に70年以上の実効的支配、太政官指令など日本自体の文書による非日本領土確認、そして1905年編入の歴史的文脈が韓国に有利な核心的根拠です。一方、サンフランシスコ講和条約の文面解釈とラスク書簡は日本に有利な根拠です。ただし、この紛争が実際にICJで扱われたことがないため、最終的な法的判断は下されていません。領土紛争の平和的解決のためには、両国が歴史的事実と国際法原則に基づいた真摯な対話を続けていく必要があります。'
       }
     },
@@ -1535,7 +1538,7 @@ const translations = {
       source6: '大韓帝国勅令第41号（1900年）'
     },
     footer: {
-      text: 'このウェブサイトは教育目的で制作されたものであり、両国の視点を客観的に伝えることを目指しています。'
+      text: 'このウェブサイトは教育目的で制作されたものであり、両国の視点を客観的に伝えることを目指しています。争点別比較分析および国際法的評価はAI（Claude Opus 4.6）によって作成されました。'
     },
     dots: ['ホーム', '地理', '年表', '韓国', '日本', '国際法', '結論']
   }
@@ -1584,6 +1587,60 @@ function setLanguage(lang) {
   if (typeof ScrollTrigger !== 'undefined') {
     setTimeout(() => ScrollTrigger.refresh(), 100);
   }
+}
+
+/* --- Era Name Helper --- */
+var _eraLabels = {
+  512:  { ko: '신라 지증왕 13년', ja: '新羅 智証王13年', en: 'Silla, Jijeungwang 13' },
+  1145: { ko: '고려 인종 23년',   ja: '高麗 仁宗23年',   en: 'Goryeo, Injong 23' },
+  1454: { ko: '조선 단종 2년',    ja: '朝鮮 端宗2年',    en: 'Joseon, Danjong 2' },
+  1531: { ko: '조선 중종 26년',   ja: '朝鮮 中宗26年',   en: 'Joseon, Jungjong 26' },
+  1618: { ko: '조선 광해군 10년', ja: '朝鮮 光海君10年', en: 'Joseon, Gwanghaegun 10' },
+  1667: { ko: '조선 현종 8년',    ja: '朝鮮 顕宗8年',    en: 'Joseon, Hyeonjong 8' },
+  1693: { ko: '조선 숙종 19년',   ja: '朝鮮 粛宗19年',   en: 'Joseon, Sukjong 19' },
+  1696: { ko: '조선 숙종 22년',   ja: '朝鮮 粛宗22年',   en: 'Joseon, Sukjong 22' },
+  1770: { ko: '조선 영조 46년',   ja: '朝鮮 英祖46年',   en: 'Joseon, Yeongjo 46' },
+  1877: { ko: '조선 고종 14년',   ja: '朝鮮 高宗14年',   en: 'Joseon, Gojong 14' },
+  1900: { ko: '광무 4년',         ja: '光武4年',         en: 'Gwangmu 4' },
+  1905: { ko: '광무 9년',         ja: '光武9年',         en: 'Gwangmu 9' },
+  1906: { ko: '광무 10년',        ja: '光武10年',        en: 'Gwangmu 10' }
+};
+var _jpEras = [
+  [2019, '令和', 'Reiwa', 2018],
+  [1989, '平成', 'Heisei', 1988],
+  [1926, '昭和', 'Shōwa', 1925],
+  [1912, '大正', 'Taishō', 1911],
+  [1868, '明治', 'Meiji', 1867],
+  [1764, '明和', 'Meiwa', 1763],
+  [1688, '元禄', 'Genroku', 1687],
+  [1661, '寛文', 'Kanbun', 1660],
+  [1615, '元和', 'Genna', 1614],
+  [1528, '享禄', 'Kyōroku', 1527],
+  [1452, '享徳', 'Kyōtoku', 1451],
+  [1145, '久安', 'Kyūan', 1144],
+  [507,  '継体', 'Keitai', 506]
+];
+function getEraLabel(year, lang) {
+  // Korean era
+  var kEntry = _eraLabels[year];
+  var kStr = kEntry ? kEntry[lang] || kEntry.ko : '';
+  // Japanese era
+  var jStr = '';
+  for (var i = 0; i < _jpEras.length; i++) {
+    if (year >= _jpEras[i][0]) {
+      var n = year - _jpEras[i][3];
+      if (lang === 'en') {
+        jStr = _jpEras[i][2] + ' ' + n;
+      } else {
+        jStr = _jpEras[i][1] + n + '年';
+      }
+      break;
+    }
+  }
+  if (kStr && jStr) return kStr + ' · ' + jStr;
+  if (jStr) return jStr;
+  if (kStr) return kStr;
+  return '';
 }
 
 /* --- Dynamic Content Renderers --- */
@@ -1677,7 +1734,7 @@ function renderTimeline(lang) {
     return '<div class="tl-slide tl-slide--' + side + '" data-tl-idx="' + i + '" data-era="' + era + '">'
       + '<div class="tl-slide__year-badge">'
       + '<span class="tl-slide__year">' + (evt.year || '') + '</span>'
-      + '<span class="tl-slide__date">' + evt.date + '</span>'
+      + (evt.year ? '<span class="tl-slide__era-label">' + getEraLabel(evt.year, lang) + '</span>' : '')
       + '</div>'
       + '<h3 class="tl-slide__title">' + evt.title + '</h3>'
       + '<div class="tl-slide__perspectives' + perspClass + '">'

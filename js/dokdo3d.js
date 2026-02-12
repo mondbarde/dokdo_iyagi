@@ -24,6 +24,7 @@ import * as BufferGeometryUtils from 'three/addons/utils/BufferGeometryUtils.js'
   // Overlay elements
   var overlayTitle = document.querySelector('.geo__overlay-title');
   var geoCards = document.querySelectorAll('[data-geo-card]');
+  var aerialOverlay = document.getElementById('geo-aerial-overlay');
   var NUM_CARDS = geoCards.length; // 8
   var isMobile = window.innerWidth <= 768;
 
@@ -204,9 +205,10 @@ import * as BufferGeometryUtils from 'three/addons/utils/BufferGeometryUtils.js'
 
     // Interpolate camera elevation based on current card
     if (modelLoaded && modelSize && camDistance > 0 && NUM_CARDS > 0) {
-      var cardIdx = Math.min(Math.floor(currentProgress * NUM_CARDS), NUM_CARDS - 1);
+      var camP = Math.min(currentProgress / CARD_END, 1);
+      var cardIdx = Math.min(Math.floor(camP * NUM_CARDS), NUM_CARDS - 1);
       var nextIdx = Math.min(cardIdx + 1, NUM_CARDS - 1);
-      var segLocal = (currentProgress * NUM_CARDS) - cardIdx;
+      var segLocal = (camP * NUM_CARDS) - cardIdx;
       segLocal = Math.max(0, Math.min(1, segLocal));
       segLocal = smoothstep(segLocal);
 
@@ -238,12 +240,17 @@ import * as BufferGeometryUtils from 'three/addons/utils/BufferGeometryUtils.js'
   renderFrame();
 
   // --- Card animations (overlay, alternating sides) ---
+  var CARD_END = 0.88; // cards use 0–88% of scroll; remaining 12% for aerial transition
+
   function updateCards(progress) {
     if (NUM_CARDS === 0) return;
 
+    // Remap progress so cards fit within 0–CARD_END
+    var cp = Math.min(progress / CARD_END, 1);
+
     // Fade section title out as first card enters
     if (overlayTitle) {
-      var titleFade = Math.max(0, 1 - progress * NUM_CARDS * 2);
+      var titleFade = Math.max(0, 1 - cp * NUM_CARDS * 2);
       overlayTitle.style.opacity = titleFade;
     }
 
@@ -259,17 +266,17 @@ import * as BufferGeometryUtils from 'three/addons/utils/BufferGeometryUtils.js'
       var yOffset = 20;
       var xOffset = 30;
 
-      if (progress >= segStart && progress < fadeInEnd) {
-        var t = (progress - segStart) / (fadeInEnd - segStart);
+      if (cp >= segStart && cp < fadeInEnd) {
+        var t = (cp - segStart) / (fadeInEnd - segStart);
         opacity = t;
         yOffset = 20 * (1 - t);
         xOffset = 30 * (1 - t);
-      } else if (progress >= fadeInEnd && progress < fadeOutStart) {
+      } else if (cp >= fadeInEnd && cp < fadeOutStart) {
         opacity = 1;
         yOffset = 0;
         xOffset = 0;
-      } else if (progress >= fadeOutStart && progress < segEnd) {
-        var t = (progress - fadeOutStart) / (segEnd - fadeOutStart);
+      } else if (cp >= fadeOutStart && cp < segEnd) {
+        var t = (cp - fadeOutStart) / (segEnd - fadeOutStart);
         opacity = 1 - t;
         yOffset = -20 * t;
         xOffset = -15 * t;
@@ -317,6 +324,25 @@ import * as BufferGeometryUtils from 'three/addons/utils/BufferGeometryUtils.js'
 
         // Card animations
         updateCards(p);
+
+        // Aerial photo overlay: fade in (0.90–0.95), then pan top→bottom (0.95–1.0)
+        if (aerialOverlay) {
+          var fadeStart = 0.90;
+          var fadeEnd = 0.95;
+          var aerialOp = 0;
+          var aerialPanY = 0;
+          if (p >= fadeStart && p < fadeEnd) {
+            var t = (p - fadeStart) / (fadeEnd - fadeStart);
+            aerialOp = t * t * (3 - 2 * t);
+          } else if (p >= fadeEnd) {
+            aerialOp = 1;
+            var t = (p - fadeEnd) / (1 - fadeEnd);
+            aerialPanY = t * t * (3 - 2 * t) * 100;
+          }
+          aerialOverlay.style.opacity = aerialOp;
+          var img = aerialOverlay.querySelector('.geo-tl-transition__img');
+          if (img) img.style.objectPosition = 'center ' + aerialPanY + '%';
+        }
       }
     });
   }
