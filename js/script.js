@@ -3,6 +3,13 @@
    GSAP Animations + Navigation
    =================================== */
 
+// Block horizontal scroll globally (trackpad + touch)
+document.addEventListener('wheel', function (e) {
+  if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
+    e.preventDefault();
+  }
+}, { passive: false });
+
 document.addEventListener('DOMContentLoaded', () => {
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -1108,6 +1115,10 @@ function initConclusionAnimations() {
   var section = document.querySelector('.conclusion-section');
   if (!section) return;
 
+  // Move sources out of the section before wrapping — they're too tall for
+  // the 100vh sticky section and should flow naturally below the wrapper.
+  var sources = section.querySelector('.conclusion__sources');
+
   // Create sticky wrapper (avoids broken GSAP pin-spacers)
   var wrapper = document.createElement('div');
   wrapper.className = 'conclusion-sticky-wrapper';
@@ -1116,10 +1127,15 @@ function initConclusionAnimations() {
   section.parentNode.insertBefore(wrapper, section);
   wrapper.appendChild(section);
 
+  // Place sources after the wrapper (before footer)
+  if (sources) {
+    wrapper.parentNode.insertBefore(sources, wrapper.nextSibling);
+  }
+
   section.style.position = 'sticky';
   section.style.top = '0';
 
-  // Sequential text reveal
+  // Sequential text reveal (sources excluded — always visible)
   var conclusionTl = gsap.timeline({
     scrollTrigger: {
       trigger: wrapper,
@@ -1132,8 +1148,7 @@ function initConclusionAnimations() {
   conclusionTl
     .from('.conclusion__line1', { y: 40, opacity: 0, duration: 1 })
     .from('.conclusion__line2', { y: 40, opacity: 0, duration: 1 }, '+=0.3')
-    .from('.conclusion__line3', { y: 40, opacity: 0, duration: 1 }, '+=0.3')
-    .from('.conclusion__sources', { y: 30, opacity: 0, duration: 1 }, '+=0.5');
+    .from('.conclusion__line3', { y: 40, opacity: 0, duration: 1 }, '+=0.3');
 }
 
 /* ========================================
