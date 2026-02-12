@@ -67,7 +67,6 @@ body {
   color: var(--color-ink-medium);
   background-color: var(--color-parchment);
   line-height: 1.8;
-  overflow-x: hidden;
   overscroll-behavior-x: none;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
