@@ -570,6 +570,9 @@ function setupHorizontalTimeline() {
   section.style.position = 'sticky';
   section.style.top = '0';
 
+  // Ensure track starts at position 0
+  track.style.transform = 'translateX(0px)';
+
   _tlScrollTrigger = ScrollTrigger.create({
     trigger: wrapper,
     start: 'top top',
@@ -580,6 +583,13 @@ function setupHorizontalTimeline() {
       duration: { min: 0.2, max: 0.5 },
       delay: 0.1,
       ease: 'power1.inOut'
+    },
+    onLeaveBack: function () {
+      // Reset track when scrolling back above the section
+      track.style.transform = 'translateX(0px)';
+      if (hasCover && !_tlReducedMotion) {
+        showSlideContent(slides[0], 1);
+      }
     },
     onUpdate: function (self) {
       var progress = self.progress;
