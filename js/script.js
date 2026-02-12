@@ -60,6 +60,71 @@ function initNavBackground() {
     onEnter: () => nav.classList.add('nav--scrolled'),
     onLeaveBack: () => nav.classList.remove('nav--scrolled')
   });
+
+  // --- Hamburger menu toggle ---
+  var hamburger = document.getElementById('nav-hamburger');
+  var navLinks = document.getElementById('nav-links');
+  if (hamburger && navLinks) {
+    hamburger.addEventListener('click', function () {
+      hamburger.classList.toggle('nav__hamburger--open');
+      navLinks.classList.toggle('nav__links--open');
+    });
+  }
+
+  // --- Helper: resolve scroll target for a section id ---
+  // Sticky-wrapped sections need to scroll to the wrapper top, not the section itself
+  function getSectionTop(id) {
+    var el = document.getElementById(id);
+    if (!el) return 0;
+    var wrapper = el.closest('.geo-sticky-wrapper, .tl-sticky-wrapper, .conclusion-sticky-wrapper');
+    var target = wrapper || el;
+    return target.getBoundingClientRect().top + window.pageYOffset;
+  }
+
+  // --- Nav link click: scroll to section start ---
+  if (navLinks) {
+    navLinks.querySelectorAll('.nav__link').forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        var id = link.getAttribute('href').replace('#', '');
+        // Close mobile menu
+        if (hamburger) hamburger.classList.remove('nav__hamburger--open');
+        navLinks.classList.remove('nav__links--open');
+        // Scroll to wrapper top
+        window.scrollTo({ top: getSectionTop(id), behavior: 'smooth' });
+      });
+    });
+  }
+
+  // --- Active link highlight on scroll ---
+  var sections = ['geography', 'timeline', 'claims', 'law', 'conclusion'];
+  var links = {};
+  sections.forEach(function (id) {
+    var a = navLinks ? navLinks.querySelector('a[href="#' + id + '"]') : null;
+    if (a) links[id] = a;
+  });
+
+  function setActiveLink(activeId) {
+    Object.keys(links).forEach(function (id) {
+      links[id].classList.toggle('nav__link--active', id === activeId);
+    });
+  }
+
+  sections.forEach(function (id) {
+    var el = document.getElementById(id);
+    var wrapper = el ? el.closest('.geo-sticky-wrapper, .tl-sticky-wrapper, .conclusion-sticky-wrapper') : null;
+    var trigger = wrapper || el;
+    if (!trigger) return;
+
+    ScrollTrigger.create({
+      trigger: trigger,
+      start: 'top 50%',
+      end: 'bottom 50%',
+      onToggle: function (self) {
+        if (self.isActive) setActiveLink(id);
+      }
+    });
+  });
 }
 
 /* ========================================
@@ -274,12 +339,23 @@ function initHeroAnimations(reducedMotion) {
           }
           mapCaption.style.opacity = String(Math.max(0, Math.min(1, capOp)));
         }
+
+        // Phase 5 (93-100%): Fade out all fixed layers for smooth transition to geo
+        if (p > 0.93) {
+          var exitP = (p - 0.93) / 0.07;
+          fixedLayers.forEach(function (el) {
+            el.style.opacity = String(Math.max(0, 1 - exitP));
+          });
+        } else if (p > 0.30) {
+          // Restore opacity for satellite (already visible) during phase 3-4
+          if (satellite) satellite.style.opacity = '1';
+        }
       },
       onLeave: function () {
-        fixedLayers.forEach(function (el) { el.style.visibility = 'hidden'; });
+        fixedLayers.forEach(function (el) { el.style.visibility = 'hidden'; el.style.opacity = '0'; });
       },
       onEnterBack: function () {
-        fixedLayers.forEach(function (el) { el.style.visibility = 'visible'; });
+        fixedLayers.forEach(function (el) { el.style.visibility = 'visible'; el.style.opacity = ''; });
       }
     });
   }

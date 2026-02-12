@@ -37,13 +37,27 @@
   <!-- Navigation -->
   <nav id="main-nav" class="nav">
     <a href="#hero" class="nav__logo" data-i18n="nav.title">독도 이야기</a>
-<button id="lang-toggle" class="lang-toggle" aria-label="언어 전환">
-      <span class="lang-toggle__option lang-toggle__option--ko active">한국어</span>
-      <span class="lang-toggle__slider"></span>
-      <span class="lang-toggle__option lang-toggle__option--en">EN</span>
-      <span class="lang-toggle__slider"></span>
-      <span class="lang-toggle__option lang-toggle__option--ja">日本語</span>
-    </button>
+
+    <ul class="nav__links" id="nav-links">
+      <li><a href="#geography" class="nav__link" data-i18n="nav.geo">지리</a></li>
+      <li><a href="#timeline" class="nav__link" data-i18n="nav.timeline">연대기</a></li>
+      <li><a href="#claims" class="nav__link" data-i18n="nav.claims">쟁점 비교</a></li>
+      <li><a href="#law" class="nav__link" data-i18n="nav.law">국제법</a></li>
+      <li><a href="#conclusion" class="nav__link" data-i18n="nav.conclusion">결론</a></li>
+    </ul>
+
+    <div class="nav__right">
+      <button id="lang-toggle" class="lang-toggle" aria-label="언어 전환">
+        <span class="lang-toggle__option lang-toggle__option--ko active">한국어</span>
+        <span class="lang-toggle__slider"></span>
+        <span class="lang-toggle__option lang-toggle__option--en">EN</span>
+        <span class="lang-toggle__slider"></span>
+        <span class="lang-toggle__option lang-toggle__option--ja">日本語</span>
+      </button>
+      <button id="nav-hamburger" class="nav__hamburger" aria-label="메뉴">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </nav>
 
   <!-- Section 1: Hero -->
@@ -114,13 +128,6 @@
       </div>
     </div>
   </section>
-
-  <!-- Wave Divider -->
-  <div class="wave-divider wave-divider--1">
-    <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
-      <path d="M0,40 C360,80 720,0 1080,40 C1260,60 1380,20 1440,40 L1440,80 L0,80 Z" />
-    </svg>
-  </div>
 
   <!-- Section 2: Geographic Overview (Immersive) -->
   <section id="geography" class="section geo-section">
@@ -298,18 +305,7 @@
         <p class="conclusion__line conclusion__line3" data-i18n="conclusion.line3">역사적 사실에 기반한 대화와 상호 존중만이 동북아시아의 지속 가능한
           평화를 만들어갈 수 있습니다.</p>
       </div>
-      <div class="conclusion__sources">
-        <h3 data-i18n="conclusion.sourcesTitle">참고 자료</h3>
-        <ul>
-          <li><a href="https://dokdo.mofa.go.kr" target="_blank" rel="noopener">대한민국 외교부 독도 (dokdo.mofa.go.kr)</a></li>
-          <li><a href="https://www.mofa.go.jp/a_o/na/takeshima/" target="_blank" rel="noopener">日本国外務省 竹島
-              (mofa.go.jp)</a></li>
-          <li>San Francisco Peace Treaty (1951)</li>
-          <li>SCAPIN 677 (1946)</li>
-          <li data-i18n="conclusion.source5">태정관지령 (太政官指令, 1877)</li>
-          <li data-i18n="conclusion.source6">대한제국 칙령 제41호 (1900)</li>
-        </ul>
-      </div>
+      <div class="conclusion__sources" id="conclusion-sources"></div>
     </div>
   </section>
 

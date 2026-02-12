@@ -5,7 +5,7 @@
 
 const translations = {
   ko: {
-    nav: { title: '독도 이야기' },
+    nav: { title: '독도 이야기', geo: '지리', timeline: '연대기', claims: '쟁점 비교', law: '국제법', conclusion: '결론' },
     hero: {
       title: '독도',
       subtitle: '대한민국 동해의 아름다운 섬, 그 역사를 따라가다',
@@ -508,8 +508,70 @@ const translations = {
       line2: '양국의 주장을 객관적으로 이해하는 것은 평화로운 해결을 향한 첫걸음입니다.',
       line3: '역사적 사실에 기반한 대화와 상호 존중만이 동북아시아의 지속 가능한 평화를 만들어갈 수 있습니다.',
       sourcesTitle: '참고 자료',
-      source5: '태정관지령 (太政官指令, 1877)',
-      source6: '대한제국 칙령 제41호 (1900)'
+      sourceCategories: [
+        {
+          heading: '정부 공식 자료',
+          items: [
+            { text: '대한민국 외교부 — 독도', url: 'https://dokdo.mofa.go.kr' },
+            { text: '日本国外務省 — 竹島', url: 'https://www.mofa.go.jp/a_o/na/takeshima/' },
+            { text: '독도종합정보시스템 (동북아역사재단)', url: 'https://www.dokdo.go.kr' },
+            { text: '국가기록원 독도 관련 기록물', url: 'https://www.archives.go.kr' }
+          ]
+        },
+        {
+          heading: '역사 문헌 (한국 측)',
+          items: [
+            { text: '삼국사기 (三國史記, 1145) — 이사부의 우산국 복속 기록 (512년)' },
+            { text: '세종실록지리지 (世宗實錄地理志, 1454) — 우산도·무릉도 기술' },
+            { text: '신증동국여지승람 (新增東國輿地勝覽, 1531) — 울진현 부속 도서' },
+            { text: '숙종실록 (1693–1696) — 안용복 사건 및 울릉도 쟁계' },
+            { text: '대한제국 칙령 제41호 (1900) — 울도군 관할 석도(독도) 명시' }
+          ]
+        },
+        {
+          heading: '역사 문헌 (일본 측)',
+          items: [
+            { text: '은주시청합기 (隠州視聴合記, 1667) — "일본의 서북 한계를 이 주(오키)로 한다"' },
+            { text: '돗토리번 답변서 (1695) — "다케시마(울릉도)·마쓰시마(독도)는 돗토리번에 속하지 않는다"' },
+            { text: '태정관지령 (太政官指令, 1877) — "다케시마 외 일도(독도)는 일본과 관계없다"' },
+            { text: '시마네현 고시 제40호 (1905) — 다케시마 편입' },
+            { text: '나카이 요자부로 편입 청원서 (1904)' }
+          ]
+        },
+        {
+          heading: '국제 조약 및 문서',
+          items: [
+            { text: 'SCAPIN 677 (1946) — 연합군 최고사령부, 독도를 일본 통치 범위에서 제외' },
+            { text: 'SCAPIN 1033 (1946) — 맥아더 라인 설정, 독도 주변 일본 어업 제한' },
+            { text: '샌프란시스코 강화조약 (1951) — 초안 변천: 1947년(한국 반환) → 1949년(일본 잔류) → 최종본(양쪽 모두 미기재)' },
+            { text: '러스크 서한 (Rusk Letter, 1951) — 미 국무차관보의 비공개 서한' },
+            { text: '밴 플리트 보고서 (Van Fleet Report, 1954)' },
+            { text: 'ICJ 영토 분쟁 판례: 팔마스 섬 (1928), 동부 그린란드 (1933), 페드라 브랑카 (2008)' }
+          ]
+        },
+        {
+          heading: '연구 자료 및 학술 문헌',
+          items: [
+            { text: '동북아역사재단, 「독도 연구」 학술지', url: 'https://www.nahf.or.kr' },
+            { text: '한국해양수산개발원(KMI) 독도 연구센터' },
+            { text: '독도재단 (경상북도)', url: 'https://www.dokdofoundation.or.kr' },
+            { text: '池内敏, 『竹島問題とは何か』 (名古屋大学出版会, 2012)' },
+            { text: '朴炳渉, 「太政官指令と竹島」, 『北東アジア文化研究』' },
+            { text: 'Sean Fern, "Tokdo or Takeshima?", Stanford Journal of East Asian Affairs, Vol. 5, No. 1 (2005)' },
+            { text: 'Teruo Kobayashi, "The Korea-Japan Border Dispute", Korea Observer, Vol. 36, No. 3 (2005)' }
+          ]
+        },
+        {
+          heading: '지도 및 시각 자료',
+          items: [
+            { text: '磯竹島略圖 — 태정관 지령 부속 지도 (1877)' },
+            { text: '하야시 시헤이, 삼국접양지도 (三國接壤之圖, 1785) — 울릉도·독도를 조선 영토로 채색' },
+            { text: '일본 육군성 지도 (1936) — 독도를 일본 영역 밖으로 표기' },
+            { text: '대동여지도 (大東輿地圖, 김정호, 1861)' },
+            { text: 'Wikimedia Commons — 독도/다케시마 관련 공개 이미지 컬렉션' }
+          ]
+        }
+      ]
     },
     footer: {
       text: '이 웹사이트는 교육 목적으로 제작되었으며, 양측의 관점을 객관적으로 전달하고자 합니다. 쟁점별 비교 분석 및 국제법적 평가는 AI(Claude Opus 4.6)에 의해 작성되었습니다.'
@@ -518,7 +580,7 @@ const translations = {
   },
 
   en: {
-    nav: { title: 'Liancourt Rocks' },
+    nav: { title: 'Liancourt Rocks', geo: 'Geography', timeline: 'Timeline', claims: 'Comparison', law: 'Int\'l Law', conclusion: 'Conclusion' },
     hero: {
       title: 'Liancourt Rocks',
       subtitle: 'The Disputed Islands of the East Sea — A Journey Through History',
@@ -1021,8 +1083,70 @@ const translations = {
       line2: 'Objectively understanding both nations\' claims is the first step toward a peaceful resolution.',
       line3: 'Only dialogue based on historical facts and mutual respect can build sustainable peace in Northeast Asia.',
       sourcesTitle: 'References',
-      source5: 'Dajokan Order (太政官指令, 1877)',
-      source6: 'Korean Imperial Edict No. 41 (1900)'
+      sourceCategories: [
+        {
+          heading: 'Official Government Sources',
+          items: [
+            { text: 'Republic of Korea, Ministry of Foreign Affairs — Dokdo', url: 'https://dokdo.mofa.go.kr' },
+            { text: 'Ministry of Foreign Affairs of Japan — Takeshima', url: 'https://www.mofa.go.jp/a_o/na/takeshima/' },
+            { text: 'Dokdo Comprehensive Information System (NAHF)', url: 'https://www.dokdo.go.kr' },
+            { text: 'National Archives of Korea — Dokdo Records', url: 'https://www.archives.go.kr' }
+          ]
+        },
+        {
+          heading: 'Historical Documents (Korean Side)',
+          items: [
+            { text: 'Samguk Sagi (三國史記, 1145) — Isabu\'s subjugation of Usan-guk (512 CE)' },
+            { text: 'Sejong Sillok Jiriji (世宗實錄地理志, 1454) — Description of Usando and Mureungdo' },
+            { text: 'Sinjeung Dongguk Yeoji Seungnam (新增東國輿地勝覽, 1531) — Islands attached to Uljin-hyeon' },
+            { text: 'Sukjong Sillok (1693–1696) — An Yong-bok Affair and Ulleungdo Dispute' },
+            { text: 'Korean Imperial Edict No. 41 (1900) — Designating Seokdo (Dokdo) under Uldo County' }
+          ]
+        },
+        {
+          heading: 'Historical Documents (Japanese Side)',
+          items: [
+            { text: 'Onshu Shicho Goki (隠州視聴合記, 1667) — "Japan\'s northwest limit is this province (Oki)"' },
+            { text: 'Tottori Domain Response (1695) — "Takeshima (Ulleungdo) and Matsushima (Dokdo) do not belong to Tottori"' },
+            { text: 'Dajokan Order (太政官指令, 1877) — "Takeshima and one other island (Dokdo) are unrelated to Japan"' },
+            { text: 'Shimane Prefecture Notice No. 40 (1905) — Incorporation of Takeshima' },
+            { text: 'Nakai Yozaburo Incorporation Petition (1904)' }
+          ]
+        },
+        {
+          heading: 'International Treaties & Documents',
+          items: [
+            { text: 'SCAPIN 677 (1946) — SCAP excluded Dokdo from Japanese administrative territory' },
+            { text: 'SCAPIN 1033 (1946) — MacArthur Line restricting Japanese fishing near Dokdo' },
+            { text: 'San Francisco Peace Treaty (1951) — Draft evolution: 1947 (return to Korea) → 1949 (retain by Japan) → Final (omitted from both lists)' },
+            { text: 'Rusk Letter (1951) — Confidential letter from US Assistant Secretary of State' },
+            { text: 'Van Fleet Report (1954)' },
+            { text: 'ICJ Territorial Dispute Cases: Island of Palmas (1928), Eastern Greenland (1933), Pedra Branca (2008)' }
+          ]
+        },
+        {
+          heading: 'Academic & Research Sources',
+          items: [
+            { text: 'Northeast Asian History Foundation (NAHF), Dokdo Research Journal', url: 'https://www.nahf.or.kr' },
+            { text: 'Korea Maritime Institute (KMI) — Dokdo Research Center' },
+            { text: 'Dokdo Foundation (Gyeongsangbuk-do)', url: 'https://www.dokdofoundation.or.kr' },
+            { text: 'Ikeuchi Satoshi, What Is the Takeshima Problem? (Nagoya University Press, 2012)' },
+            { text: 'Park Byeong-seop, "The Dajokan Order and Takeshima," Northeast Asian Cultural Studies' },
+            { text: 'Sean Fern, "Tokdo or Takeshima?", Stanford Journal of East Asian Affairs, Vol. 5, No. 1 (2005)' },
+            { text: 'Teruo Kobayashi, "The Korea-Japan Border Dispute," Korea Observer, Vol. 36, No. 3 (2005)' }
+          ]
+        },
+        {
+          heading: 'Maps & Visual Sources',
+          items: [
+            { text: '磯竹島略圖 — Map attached to the Dajokan Order (1877)' },
+            { text: 'Hayashi Shihei, Sangoku Tsuran Zusetsu (三國接壤之圖, 1785) — Ulleungdo and Dokdo colored as Korean territory' },
+            { text: 'Japanese Army Ministry Map (1936) — Dokdo marked outside Japanese territory' },
+            { text: 'Daedongyeojido (大東輿地圖, Kim Jeong-ho, 1861)' },
+            { text: 'Wikimedia Commons — Public domain images of Dokdo/Takeshima' }
+          ]
+        }
+      ]
     },
     footer: {
       text: 'This website was created for educational purposes and aims to present both perspectives objectively. The comparative issue analysis and international law assessments were generated by AI (Claude Opus 4.6).'
@@ -1031,7 +1155,7 @@ const translations = {
   },
 
   ja: {
-    nav: { title: '竹島物語' },
+    nav: { title: '竹島物語', geo: '地理', timeline: '年代記', claims: '争点比較', law: '国際法', conclusion: '結論' },
     hero: {
       title: '竹島',
       subtitle: '日本海に浮かぶ美しい島々 ― その歴史をたどる',
