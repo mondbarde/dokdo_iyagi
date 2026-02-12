@@ -3,13 +3,6 @@
    GSAP Animations + Navigation
    =================================== */
 
-// Block horizontal scroll globally (trackpad + touch)
-document.addEventListener('wheel', function (e) {
-  if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
-    e.preventDefault();
-  }
-}, { passive: false });
-
 document.addEventListener('DOMContentLoaded', () => {
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -514,7 +507,8 @@ function setupHorizontalTimeline() {
   var hasCover = slides[0] && slides[0].classList.contains('tl-slide--cover');
   var eventOffset = hasCover ? 1 : 0;
 
-  var totalTranslate = (n - 1) * window.innerWidth;
+  var slideWidth = section.offsetWidth || window.innerWidth;
+  var totalTranslate = (n - 1) * slideWidth;
 
   if (_tlReducedMotion) {
     // Reduced motion: show all slide content immediately, no fade animations
