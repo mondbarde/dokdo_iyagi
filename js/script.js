@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (prefersReducedMotion) {
     // Make all non-pinned content visible without entrance animations
-    gsap.set('.fade-up, .claims-issue, .law__principle, .law__summary-box, .fact-card, .fact-card--overlay', {
+    gsap.set('.fade-up, .claims-issue, .claims-issue__header, .claims-col, .claims-analysis, .law__principle, .law__indicator, .law__summary-box, .fact-card, .fact-card--overlay', {
       opacity: 1, y: 0, x: 0, scale: 1
     });
     ScrollTrigger.refresh();
@@ -689,6 +689,8 @@ function setElState(el, props) {
    Claims Section Animations
    ======================================== */
 
+var _claimsScrubTriggers = [];
+
 function initClaimAnimations() {
   const container = document.getElementById('claims-container');
   if (!container) return;
@@ -708,20 +710,20 @@ function animateClaimIssues() {
   const sectionEl = document.querySelector('.claims-section');
   if (!sectionEl) return;
 
+  // Kill previous scrub-based triggers (from prior language switch)
+  _claimsScrubTriggers.forEach(function(st) { st.kill(); });
+  _claimsScrubTriggers = [];
+
+  var isMobile = window.innerWidth <= 768;
+
   // Section title animation
   const title = sectionEl.querySelector('.section-title');
   if (title) {
     gsap.fromTo(title,
       { y: 30, opacity: 0 },
       {
-        y: 0,
-        opacity: 1,
-        duration: 1,
-        scrollTrigger: {
-          trigger: sectionEl,
-          start: 'top 70%',
-          once: true
-        }
+        y: 0, opacity: 1, duration: 1,
+        scrollTrigger: { trigger: sectionEl, start: 'top 70%', once: true }
       }
     );
   }
@@ -732,41 +734,90 @@ function animateClaimIssues() {
     gsap.fromTo(underline,
       { scaleX: 0 },
       {
-        scaleX: 1,
-        duration: 1.2,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: sectionEl,
-          start: 'top 70%',
-          once: true
-        }
+        scaleX: 1, duration: 1.2, ease: 'power3.out',
+        scrollTrigger: { trigger: sectionEl, start: 'top 70%', once: true }
       }
     );
   }
 
-  // Issue blocks fade in
+  // Enhanced issue block animations
   const issues = sectionEl.querySelectorAll('.claims-issue');
-  issues.forEach((issue, i) => {
-    gsap.fromTo(issue,
-      { y: 40, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 0.8,
-        delay: i * 0.1,
-        scrollTrigger: {
-          trigger: issue,
-          start: 'top 85%',
-          once: true
-        }
+  issues.forEach(function(issue) {
+    var header = issue.querySelector('.claims-issue__header');
+    var koreaCol = issue.querySelector('.claims-col--korea');
+    var japanCol = issue.querySelector('.claims-col--japan');
+    var analysis = issue.querySelector('.claims-analysis');
+    var meterFillK = issue.querySelector('.claims-meter__fill--korea');
+    var meterFillJ = issue.querySelector('.claims-meter__fill--japan');
+
+    // Pre-set initial invisible state (gsap.set is immediate)
+    gsap.set(header, { y: 20, opacity: 0 });
+    if (isMobile) {
+      gsap.set(koreaCol, { y: 30, opacity: 0 });
+      gsap.set(japanCol, { y: 30, opacity: 0 });
+    } else {
+      gsap.set(koreaCol, { x: -40, opacity: 0 });
+      gsap.set(japanCol, { x: 40, opacity: 0 });
+    }
+    gsap.set(analysis, { y: 25, opacity: 0 });
+
+    // Sequenced entrance timeline
+    var tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: issue,
+        start: 'top 85%',
+        once: true
       }
-    );
+    });
+
+    // Step 1: Header fades in
+    tl.to(header, { y: 0, opacity: 1, duration: 0.6, ease: 'power2.out' });
+
+    // Step 2: Columns slide in from opposite sides (or bottom on mobile)
+    if (isMobile) {
+      tl.to(koreaCol, { y: 0, opacity: 1, duration: 0.6, ease: 'power2.out' }, '-=0.2');
+      tl.to(japanCol, { y: 0, opacity: 1, duration: 0.6, ease: 'power2.out' }, '-=0.3');
+    } else {
+      tl.to(koreaCol, { x: 0, opacity: 1, duration: 0.7, ease: 'power2.out' }, '-=0.2');
+      tl.to(japanCol, { x: 0, opacity: 1, duration: 0.7, ease: 'power2.out' }, '-=0.6');
+    }
+
+    // Step 3: Analysis section reveals with gold line wipe
+    tl.to(analysis, {
+      y: 0, opacity: 1, duration: 0.6, ease: 'power2.out',
+      onStart: function() { analysis.classList.add('claims-analysis--revealed'); }
+    }, '+=0.15');
+
+    // Step 4: Meter bars fill to target width
+    if (meterFillK && meterFillJ) {
+      var targetK = meterFillK.getAttribute('data-target-width') || '50';
+      var targetJ = meterFillJ.getAttribute('data-target-width') || '50';
+      tl.to(meterFillK, { width: targetK + '%', duration: 1, ease: 'power2.out' }, '-=0.3');
+      tl.to(meterFillJ, { width: targetJ + '%', duration: 1, ease: 'power2.out' }, '<');
+    }
+
+    // Subtle parallax on issue headers (desktop only)
+    if (!isMobile && header) {
+      var parallaxST = ScrollTrigger.create({
+        trigger: issue,
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: 0.5,
+        onUpdate: function(self) {
+          var offset = (self.progress - 0.5) * -12;
+          header.style.transform = 'translateY(' + offset + 'px)';
+        }
+      });
+      _claimsScrubTriggers.push(parallaxST);
+    }
   });
 }
 
 /* ========================================
    International Law Section Animations
    ======================================== */
+
+var _lawScrubTriggers = [];
 
 function initLawAnimations() {
   // Scale icon elastic entrance
@@ -814,38 +865,94 @@ function initLawAnimations() {
 }
 
 function animateLawPrinciples() {
-  const items = document.querySelectorAll('.law__principle');
-  items.forEach((item, i) => {
+  // Kill previous scrub-based triggers
+  _lawScrubTriggers.forEach(function(st) { st.kill(); });
+  _lawScrubTriggers = [];
+
+  var items = document.querySelectorAll('.law__principle');
+  var scaleIcon = document.querySelector('.law__scale-icon');
+  var favorValues = [];
+
+  items.forEach(function(item, i) {
+    var indicator = item.querySelector('.law__indicator');
+    var isEven = i % 2 === 1;
+
+    // Determine favor direction from indicator class
+    var favor = null;
+    if (indicator) {
+      if (indicator.classList.contains('law__indicator--korea')) favor = true;
+      else if (indicator.classList.contains('law__indicator--japan')) favor = false;
+    }
+    favorValues.push(favor);
+
+    // Alternating entrance: odd from left, even from right
+    var fromX = isEven ? 40 : -40;
     gsap.fromTo(item,
-      { x: -40, opacity: 0 },
+      { x: fromX, opacity: 0 },
       {
-        x: 0,
-        opacity: 1,
-        duration: 0.8,
-        delay: i * 0.15,
+        x: 0, opacity: 1, duration: 0.8, delay: i * 0.12,
+        ease: 'power2.out',
         scrollTrigger: {
           trigger: item,
           start: 'top 85%',
           once: true
+        },
+        onComplete: function() {
+          // Pop indicator badge with elastic ease
+          if (indicator) {
+            gsap.fromTo(indicator,
+              { scale: 0, opacity: 0 },
+              { scale: 1, opacity: 1, duration: 0.5, ease: 'elastic.out(1, 0.4)' }
+            );
+          }
         }
       }
     );
+
+    // Set initial state for indicator badge
+    if (indicator) {
+      gsap.set(indicator, { scale: 0, opacity: 0 });
+    }
   });
+
+  // Scale icon tilt based on scroll position through principles
+  if (scaleIcon && items.length > 0) {
+    var principlesContainer = document.getElementById('law-principles');
+    if (principlesContainer) {
+      var tiltST = ScrollTrigger.create({
+        trigger: principlesContainer,
+        start: 'top 60%',
+        end: 'bottom 40%',
+        scrub: 0.5,
+        onUpdate: function(self) {
+          var activeIdx = Math.round(self.progress * (items.length - 1));
+          var favor = favorValues[Math.min(activeIdx, favorValues.length - 1)];
+          var tiltAngle = 0;
+          if (favor === true) tiltAngle = -10;
+          else if (favor === false) tiltAngle = 10;
+          gsap.to(scaleIcon, { rotation: tiltAngle, duration: 0.6, ease: 'power2.out' });
+        }
+      });
+      _lawScrubTriggers.push(tiltST);
+    }
+  }
 }
 
 function animateLawSummary() {
-  const summary = document.querySelector('.law__summary-box');
+  var summary = document.querySelector('.law__summary-box');
   if (summary) {
     gsap.fromTo(summary,
-      { y: 30, opacity: 0 },
+      { y: 40, opacity: 0, scale: 0.97 },
       {
-        y: 0,
-        opacity: 1,
-        duration: 1,
+        y: 0, opacity: 1, scale: 1,
+        duration: 1, ease: 'power2.out',
         scrollTrigger: {
           trigger: summary,
           start: 'top 85%',
           once: true
+        },
+        onComplete: function() {
+          summary.classList.add('law__summary-box--revealed');
         }
       }
     );

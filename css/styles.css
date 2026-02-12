@@ -35,7 +35,7 @@
 
   /* Typography */
   --font-body: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-display: 'Playfair Display', 'Noto Sans KR', serif;
+  --font-display: 'Playfair Display', 'Noto Serif KR', serif;
 
   /* Spacing */
   --space-xs: 0.5rem;
@@ -131,19 +131,19 @@ body.lang-en .hero__title {
 
 body.lang-ko .section-title,
 body.lang-ko .hero__title {
-  font-family: var(--font-body);
+  font-family: 'Noto Serif KR', serif;
   letter-spacing: -0.04em;
 }
 
 body.lang-ja {
   --font-body: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-display: 'Playfair Display', 'Noto Sans JP', serif;
+  --font-display: 'Playfair Display', 'Noto Serif JP', serif;
   font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 body.lang-ja .section-title,
 body.lang-ja .hero__title {
-  font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Noto Serif JP', -apple-system, BlinkMacSystemFont, serif;
   letter-spacing: -0.02em;
 }
 
@@ -1202,6 +1202,7 @@ body.lang-ja .hero__title {
   padding: var(--space-md) var(--space-md);
   background: linear-gradient(135deg, rgba(139, 105, 20, 0.08) 0%, rgba(139, 105, 20, 0.03) 100%);
   border-bottom: 1px solid var(--color-worn);
+  will-change: transform;
 }
 
 .claims-issue__number {
@@ -1286,9 +1287,26 @@ body.lang-ja .hero__title {
 }
 
 .claims-analysis {
+  position: relative;
   padding: var(--space-md);
   background: linear-gradient(135deg, rgba(139, 105, 20, 0.06) 0%, rgba(139, 105, 20, 0.02) 100%);
   border-top: 1px solid var(--color-worn);
+}
+
+.claims-analysis::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--color-gold);
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+.claims-analysis--revealed::before {
+  opacity: 1;
 }
 
 .claims-analysis__label {
@@ -1333,7 +1351,7 @@ body.lang-ja .hero__title {
 
 .claims-meter__bar {
   flex: 1;
-  display: flex;
+  position: relative;
   height: 8px;
   border-radius: 4px;
   overflow: hidden;
@@ -1341,15 +1359,21 @@ body.lang-ja .hero__title {
 }
 
 .claims-meter__fill--korea {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
   background: var(--color-korea);
   border-radius: 4px 0 0 4px;
-  transition: width 0.6s ease;
 }
 
 .claims-meter__fill--japan {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
   background: var(--color-japan);
   border-radius: 0 4px 4px 0;
-  transition: width 0.6s ease;
 }
 
 .claims-analysis__text {
@@ -1387,11 +1411,18 @@ body.lang-ja .hero__title {
 .law__principle {
   margin-bottom: var(--space-md);
   padding: var(--space-md);
-  border-left: 3px solid var(--color-gold);
   background: var(--color-parchment);
   border-radius: 0 4px 4px 0;
   border: 1px solid var(--color-worn);
   border-left: 3px solid var(--color-gold);
+}
+
+.law__principle--favor-korea {
+  border-left-color: var(--color-korea);
+}
+
+.law__principle--favor-japan {
+  border-left-color: var(--color-japan);
 }
 
 .law__principle-header {
@@ -1408,27 +1439,30 @@ body.lang-ja .hero__title {
 }
 
 .law__indicator {
-  font-size: 0.65rem;
+  font-size: 0.7rem;
   font-weight: 700;
-  padding: 2px 8px;
-  border-radius: 10px;
+  padding: 4px 10px;
+  border-radius: 12px;
   flex-shrink: 0;
   letter-spacing: 0.05em;
 }
 
 .law__indicator--korea {
-  background: rgba(42, 107, 90, 0.12);
+  background: rgba(42, 107, 90, 0.2);
   color: var(--color-korea);
+  border: 1px solid rgba(42, 107, 90, 0.3);
 }
 
 .law__indicator--japan {
-  background: rgba(155, 58, 48, 0.12);
+  background: rgba(155, 58, 48, 0.2);
   color: var(--color-japan);
+  border: 1px solid rgba(155, 58, 48, 0.3);
 }
 
 .law__indicator--neutral {
-  background: rgba(139, 105, 20, 0.12);
+  background: rgba(139, 105, 20, 0.2);
   color: var(--color-gold);
+  border: 1px solid rgba(139, 105, 20, 0.3);
 }
 
 .law__principle-text {
@@ -1473,6 +1507,16 @@ body.lang-ja .hero__title {
   font-size: 0.92rem;
   color: var(--color-ink);
   line-height: 1.8;
+}
+
+@keyframes lawSummaryGlow {
+  0% { box-shadow: 0 0 0 0 rgba(139, 105, 20, 0); }
+  50% { box-shadow: 0 0 20px 4px rgba(139, 105, 20, 0.15); }
+  100% { box-shadow: 0 0 0 0 rgba(139, 105, 20, 0); }
+}
+
+.law__summary-box--revealed {
+  animation: lawSummaryGlow 1.5s ease-out;
 }
 
 /* --- Conclusion Section --- */

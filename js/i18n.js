@@ -1736,8 +1736,8 @@ function renderClaimsSection(lang) {
         <div class="claims-meter">
           <span class="claims-meter__label claims-meter__label--korea">${data.koreaLabel} ${issue.koreaWeight}%</span>
           <div class="claims-meter__bar">
-            <div class="claims-meter__fill claims-meter__fill--korea" style="width:${issue.koreaWeight}%"></div>
-            <div class="claims-meter__fill claims-meter__fill--japan" style="width:${100 - issue.koreaWeight}%"></div>
+            <div class="claims-meter__fill claims-meter__fill--korea" data-target-width="${issue.koreaWeight}" style="width:0%"></div>
+            <div class="claims-meter__fill claims-meter__fill--japan" data-target-width="${100 - issue.koreaWeight}" style="width:0%"></div>
           </div>
           <span class="claims-meter__label claims-meter__label--japan">${100 - issue.koreaWeight}% ${data.japanLabel}</span>
         </div>
@@ -1745,6 +1745,14 @@ function renderClaimsSection(lang) {
       </div>
     </div>
   `).join('');
+
+  // If reduced motion, set meter fills to final width immediately
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    container.querySelectorAll('.claims-meter__fill--korea, .claims-meter__fill--japan').forEach(fill => {
+      const target = fill.getAttribute('data-target-width');
+      if (target) fill.style.width = target + '%';
+    });
+  }
 }
 
 function renderLawSection(lang) {
@@ -1757,11 +1765,16 @@ function renderLawSection(lang) {
       const indicatorClass = p.favorKorea === true ? 'law__indicator--korea'
         : p.favorKorea === false ? 'law__indicator--japan'
         : 'law__indicator--neutral';
-      const indicatorLabel = p.favorKorea === true ? '&#9664; K'
-        : p.favorKorea === false ? 'J &#9654;'
-        : '&#9670;';
+      const favorClass = p.favorKorea === true ? 'law__principle--favor-korea'
+        : p.favorKorea === false ? 'law__principle--favor-japan'
+        : '';
+      const indicatorLabel = p.favorKorea === true
+        ? (lang === 'ko' ? '&#9664; 한국 유리' : lang === 'ja' ? '&#9664; 韓国有利' : '&#9664; Favors Korea')
+        : p.favorKorea === false
+        ? (lang === 'ko' ? '일본 유리 &#9654;' : lang === 'ja' ? '日本有利 &#9654;' : 'Favors Japan &#9654;')
+        : (lang === 'ko' ? '&#9670; 중립' : lang === 'ja' ? '&#9670; 中立' : '&#9670; Neutral');
       return `
-      <div class="law__principle fade-up">
+      <div class="law__principle ${favorClass}">
         <div class="law__principle-header">
           <div class="law__principle-title">${p.title}</div>
           <span class="law__indicator ${indicatorClass}">${indicatorLabel}</span>

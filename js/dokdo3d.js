@@ -7,6 +7,7 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
+import * as BufferGeometryUtils from 'three/addons/utils/BufferGeometryUtils.js';
 
 (function () {
   'use strict';
@@ -114,6 +115,20 @@ import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
     'assets/models/dokdo.glb',
     function (gltf) {
       var model = gltf.scene;
+
+      // Smooth shading: merge duplicate vertices then recompute normals
+      model.traverse(function (child) {
+        if (child.isMesh && child.geometry) {
+          // Merge co-located vertices so normals can be averaged across shared faces
+          child.geometry = BufferGeometryUtils.mergeVertices(child.geometry);
+          child.geometry.computeVertexNormals();
+          if (child.material) {
+            child.material.flatShading = false;
+            child.material.needsUpdate = true;
+          }
+        }
+      });
+
       modelGroup.add(model);
 
       // Auto-fit
